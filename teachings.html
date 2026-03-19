@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Teachings & Services — Yahweh's House of Prayer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;0,600;1,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#B8860B;--gold-light:#DAA520;--gold-pale:#F5DEB3;--gold-bg:#FDF6E3;
+  --parchment:#FAF0DC;--parchment-dark:#F0E0B0;--parchment-deeper:#E8D5A0;
+  --ink:#2C1810;--ink-light:#4A2E1A;--ink-mid:#6B4423;
+  --royal:#1B2B6B;--scroll-border:#C9A84C;
+  --shadow:rgba(44,24,16,0.15);--shadow-deep:rgba(44,24,16,0.25);
+}
+html{scroll-behavior:smooth}
+body{background:var(--parchment);color:var(--ink);font-family:'EB Garamond',serif;font-size:17px;line-height:1.7;}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--parchment-dark)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--ink);border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;gap:0;padding:0 24px;height:58px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;}
+.nav-brand span{font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold-pale);white-space:nowrap;}
+.nav-links{display:flex;gap:0;}
+.nav-link{
+  padding:0 14px;height:58px;display:flex;align-items:center;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:#C9A84C99;text-decoration:none;border-bottom:2px solid transparent;
+  transition:all 0.2s;white-space:nowrap;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-pale);border-bottom-color:var(--gold);}
+.nav-link.home-link{color:var(--gold-pale);border-bottom-color:var(--gold);}
+.nav-toggle{display:none;background:none;border:none;color:var(--gold-pale);font-size:22px;cursor:pointer;margin-left:12px;}
+@media(max-width:700px){
+  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--ink);flex-direction:column;border-bottom:2px solid var(--gold);padding:8px 0;}
+  .nav-links.open{display:flex;}
+  .nav-link{height:44px;padding:0 24px;border-bottom:1px solid #C9A84C22;}
+  .nav-toggle{display:block;}
+}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  min-height:320px;padding:120px 24px 60px;
+  background:linear-gradient(180deg,var(--ink) 0%,var(--royal) 60%,var(--parchment) 100%);
+  text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.page-hero h1{font-family:'Cinzel Decorative',serif;font-size:clamp(24px,5vw,42px);font-weight:900;color:var(--gold-pale);margin-bottom:10px;position:relative;}
+.page-hero h1 span{color:var(--gold-light);}
+.page-hero-sub{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.3em;color:rgba(201,168,76,0.7);text-transform:uppercase;margin-bottom:16px;position:relative;}
+.page-hero-verse{
+  max-width:500px;margin:20px auto 0;padding:16px 24px;
+  border:1px solid rgba(201,168,76,0.3);border-radius:2px;
+  background:rgba(0,0,0,0.2);
+  font-style:italic;font-size:15px;color:rgba(245,222,179,0.8);line-height:1.6;position:relative;
+}
+
+/* ── TABS ── */
+.tabs-bar{
+  background:var(--ink);border-bottom:2px solid var(--gold);
+  display:flex;justify-content:center;gap:0;position:sticky;top:58px;z-index:90;
+}
+.tab-btn{
+  padding:16px 28px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.15em;
+  text-transform:uppercase;color:#C9A84C88;background:none;border:none;
+  border-bottom:3px solid transparent;cursor:pointer;transition:all 0.2s;
+  margin-bottom:-2px;
+}
+.tab-btn:hover{color:var(--gold-pale);}
+.tab-btn.active{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+@media(max-width:500px){.tab-btn{padding:14px 16px;font-size:10px;}}
+
+/* ── MAIN LAYOUT ── */
+.main-content{max-width:1020px;margin:0 auto;padding:48px 24px 80px;}
+
+/* ── SECTION HEADERS ── */
+.sec-head{text-align:center;margin-bottom:40px;}
+.sec-head h2{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,28px);color:var(--ink);margin-bottom:8px;}
+.sec-head p{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;}
+.orn{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:12px;}
+.orn-line{width:60px;height:1px;background:var(--gold);}
+
+/* ── TEACHING CARDS ── */
+.teachings-grid{display:flex;flex-direction:column;gap:28px;}
+.teaching-card{
+  background:white;border:1px solid var(--parchment-deeper);
+  border-radius:3px;overflow:hidden;
+  box-shadow:0 3px 18px var(--shadow);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.teaching-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px var(--shadow-deep);}
+.tc-top{
+  background:linear-gradient(135deg,var(--ink),var(--royal));
+  padding:22px 28px 18px;position:relative;overflow:hidden;
+}
+.tc-top::after{
+  content:'';position:absolute;right:-20px;top:-20px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(201,168,76,0.06);
+}
+.tc-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.tc-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:rgba(201,168,76,0.6);text-transform:uppercase;}
+.tc-category{
+  padding:3px 10px;border:1px solid rgba(201,168,76,0.3);border-radius:12px;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;color:var(--gold-light);text-transform:uppercase;
+}
+.tc-title{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,3vw,22px);color:var(--gold-pale);line-height:1.3;margin-bottom:6px;}
+.tc-scripture{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:rgba(201,168,76,0.55);font-style:italic;}
+.tc-body{padding:24px 28px;}
+.tc-excerpt{font-size:16px;line-height:1.85;color:var(--ink-light);margin-bottom:20px;}
+.tc-excerpt p{margin-bottom:12px;}
+.tc-excerpt p:first-child::first-letter{font-size:2.8em;font-family:'Cinzel Decorative',serif;color:var(--gold);float:left;line-height:0.85;margin:4px 8px 0 0;}
+.tc-full{display:none;}
+.tc-full.open{display:block;}
+.tc-full p{font-size:16px;line-height:1.85;color:var(--ink-light);margin-bottom:14px;}
+.tc-read-more{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);padding:9px 20px;border-radius:2px;
+  background:none;cursor:pointer;transition:all 0.2s;
+}
+.tc-read-more:hover{background:rgba(184,134,11,0.08);}
+.tc-actions{display:flex;align-items:center;gap:12px;padding:16px 28px;border-top:1px solid var(--parchment-deeper);flex-wrap:wrap;}
+
+/* ── COMMENTS ── */
+.comments-section{margin-top:28px;padding:24px 28px;background:var(--parchment);border-top:1px solid var(--parchment-deeper);}
+.comments-head{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.comments-head::after{content:'';flex:1;height:1px;background:var(--parchment-deeper);}
+.social-comment-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.social-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:4px;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all 0.2s;font-weight:600;
+}
+.social-btn.fb{background:#1877F2;color:white;}
+.social-btn.fb:hover{background:#1464d8;}
+.social-btn.x{background:#000;color:white;}
+.social-btn.x:hover{background:#222;}
+.social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+.comment-note{font-size:13px;color:var(--ink-mid);font-style:italic;margin-bottom:16px;}
+.comments-list{display:flex;flex-direction:column;gap:14px;}
+.comment-item{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:2px;
+  padding:14px 18px;
+}
+.comment-author{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:4px;}
+.comment-via{font-size:11px;color:var(--ink-mid);margin-left:6px;font-style:italic;}
+.comment-text{font-size:15px;color:var(--ink-light);line-height:1.7;}
+.comment-date{font-size:11px;color:var(--ink-mid);margin-top:6px;font-style:italic;}
+.no-comments{font-size:15px;color:var(--ink-mid);font-style:italic;text-align:center;padding:20px 0;}
+
+/* ── VIDEO SECTION ── */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-bottom:40px;}
+.video-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  overflow:hidden;box-shadow:0 3px 16px var(--shadow);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.video-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px var(--shadow-deep);}
+.video-embed{position:relative;padding-top:56.25%;background:var(--ink);}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.video-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,var(--ink),var(--royal));
+  color:rgba(201,168,76,0.6);text-align:center;padding:20px;
+}
+.video-placeholder .vp-icon{font-size:42px;opacity:0.7;}
+.video-placeholder .vp-title{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,168,76,0.5);}
+.video-placeholder .vp-sub{font-size:13px;color:rgba(245,222,179,0.35);margin-top:4px;}
+.video-info{padding:18px 20px;}
+.video-title{font-family:'Cinzel',serif;font-size:14px;color:var(--ink);margin-bottom:4px;line-height:1.4;}
+.video-meta{font-size:13px;color:var(--ink-mid);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.video-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;}
+
+/* ── DIVIDER ── */
+.section-divider{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 60px;max-width:600px;}
+
+/* ── ADMIN PANEL ── */
+#adminPanel{display:none;}
+#adminPanel.open{display:block;}
+.admin-gate{
+  max-width:400px;margin:60px auto;padding:40px;
+  background:white;border:1px solid var(--parchment-deeper);
+  border-radius:3px;box-shadow:0 4px 24px var(--shadow);text-align:center;
+}
+.admin-gate h2{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--ink);margin-bottom:8px;}
+.admin-gate p{font-size:15px;color:var(--ink-mid);margin-bottom:24px;}
+.admin-form{display:flex;flex-direction:column;gap:10px;}
+.admin-input{
+  padding:12px 16px;border:1px solid var(--parchment-deeper);border-radius:2px;
+  font-family:'EB Garamond',serif;font-size:16px;color:var(--ink);
+  background:var(--parchment);outline:none;transition:border 0.2s;
+}
+.admin-input:focus{border-color:var(--gold);}
+.admin-btn{
+  padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--ink);font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;
+  border-radius:2px;box-shadow:0 4px 16px rgba(184,134,11,0.3);transition:all 0.2s;
+}
+.admin-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(184,134,11,0.45);}
+.admin-btn.danger{background:linear-gradient(135deg,#8B1A1A,#C0392B);color:white;box-shadow:none;}
+.admin-error{color:#C0392B;font-size:14px;margin-top:4px;display:none;}
+
+/* ── POST EDITOR ── */
+.post-editor{
+  max-width:760px;margin:0 auto;padding:40px;
+  background:white;border:1px solid var(--parchment-deeper);
+  border-radius:3px;box-shadow:0 4px 24px var(--shadow);
+}
+.post-editor h2{font-family:'Cinzel Decorative',serif;font-size:22px;color:var(--ink);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--parchment-deeper);}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.editor-grid{grid-template-columns:1fr;}}
+.field-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.field-group.full{grid-column:1/-1;}
+.field-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.field-input,.field-textarea,.field-select{
+  padding:11px 14px;border:1px solid var(--parchment-deeper);border-radius:2px;
+  font-family:'EB Garamond',serif;font-size:16px;color:var(--ink);
+  background:var(--parchment);outline:none;transition:border 0.2s;width:100%;
+}
+.field-input:focus,.field-textarea:focus,.field-select:focus{border-color:var(--gold);}
+.field-textarea{resize:vertical;min-height:120px;line-height:1.7;}
+.field-textarea.tall{min-height:220px;}
+.editor-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--parchment-deeper);}
+.save-btn{
+  padding:12px 28px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--ink);font-family:'Cinzel',serif;font-size:12px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;
+  border-radius:2px;box-shadow:0 3px 14px rgba(184,134,11,0.3);transition:all 0.2s;
+}
+.save-btn:hover{transform:translateY(-1px);}
+.cancel-btn{
+  padding:11px 24px;background:transparent;color:var(--gold);
+  font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;border:1px solid var(--gold);cursor:pointer;
+  border-radius:2px;transition:all 0.2s;
+}
+.cancel-btn:hover{background:rgba(184,134,11,0.06);}
+
+/* VIDEO MANAGER */
+.video-manager{max-width:760px;margin:40px auto 0;padding:32px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;box-shadow:0 4px 24px var(--shadow);}
+.video-manager h3{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--ink);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--parchment-deeper);}
+.platform-tabs{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--parchment-deeper);border-radius:2px;overflow:hidden;}
+.plat-tab{flex:1;padding:10px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--parchment);border:none;cursor:pointer;color:var(--ink-mid);transition:all 0.15s;}
+.plat-tab.active{background:var(--gold);color:var(--ink);font-weight:600;}
+.admin-saved-posts{margin-top:32px;}
+.admin-post-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 16px;border:1px solid var(--parchment-deeper);border-radius:2px;
+  margin-bottom:8px;background:var(--parchment);flex-wrap:wrap;
+}
+.apr-title{font-family:'Cinzel',serif;font-size:13px;color:var(--ink);flex:1;}
+.apr-date{font-size:12px;color:var(--ink-mid);}
+.apr-del{background:none;border:1px solid #C0392B;color:#C0392B;padding:5px 12px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;cursor:pointer;border-radius:2px;transition:all 0.15s;}
+.apr-del:hover{background:#C0392B;color:white;}
+.admin-logout{margin-top:24px;text-align:right;}
+
+/* ── ADMIN TOGGLE BTN ── */
+.admin-fab{
+  position:fixed;bottom:28px;right:24px;z-index:200;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--ink),var(--royal));
+  border:2px solid var(--gold);color:var(--gold);
+  font-size:22px;cursor:pointer;
+  box-shadow:0 4px 20px rgba(44,24,16,0.4);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.admin-fab:hover{transform:scale(1.1);box-shadow:0 6px 26px rgba(184,134,11,0.4);}
+
+/* ── SHARE BUTTONS ── */
+.share-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:3px;font-family:'Cinzel',serif;
+  font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;
+}
+.share-btn.fb{background:#1877F2;color:white;}
+.share-btn.x{background:#000;color:white;}
+.share-btn:hover{opacity:0.85;transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:var(--gold-pale);
+  text-align:center;padding:40px 24px;
+  border-top:2px solid var(--gold);
+}
+footer .footer-logo{font-family:'Cinzel Decorative',serif;font-size:16px;color:var(--gold);margin-bottom:8px;}
+footer p{font-size:14px;color:rgba(245,222,179,0.5);margin-bottom:12px;}
+footer a{color:#C9A84C88;text-decoration:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;margin:0 10px;}
+footer a:hover{color:var(--gold-pale);}
+.footer-blessing{font-style:italic;color:rgba(245,222,179,0.35);font-size:13px;margin-top:16px;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);border:1px solid var(--gold);color:var(--gold-pale);
+  font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.1em;
+  padding:12px 24px;border-radius:3px;z-index:999;
+  opacity:0;transition:all 0.3s;pointer-events:none;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── TAB PANELS ── */
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span>✦ Yahweh's House of Prayer</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link home-link">← Home</a>
+    <button class="nav-link active" onclick="showTab('teachings')">Teachings</button>
+    <button class="nav-link" onclick="showTab('services')">Services</button>
+    <button class="nav-link" onclick="showTab('videos')">Videos</button>
+  </div>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-sub">Yahweh's House of Prayer</div>
+  <h1>📜 <span>Teachings</span> & Services</h1>
+  <div class="page-hero-verse">
+    "Teach me Thy way, O Yahweh; I will walk in Thy truth." — Tehillim 86:11
+  </div>
+</div>
+
+<!-- TABS BAR -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('teachings')">✦ Teachings</button>
+  <button class="tab-btn" onclick="showTab('services')">🎥 Services</button>
+  <button class="tab-btn" onclick="showTab('videos')">📺 Videos</button>
+</div>
+
+<!-- MAIN -->
+<div class="main-content">
+
+  <!-- ── TEACHINGS TAB ── -->
+  <div class="tab-panel active" id="tab-teachings">
+    <div class="sec-head">
+      <h2>Shabbat Teachings</h2>
+      <p>Word of Yahweh · Torah Observant · Hebrew Roots</p>
+      <div class="orn"><div class="orn-line"></div><span style="color:var(--gold)">✦</span><div class="orn-line"></div></div>
+    </div>
+    <div class="teachings-grid" id="teachingsGrid">
+      <!-- Posts rendered by JS -->
+    </div>
+    <div id="noPostsMsg" style="text-align:center;padding:60px 20px;display:none;">
+      <div style="font-size:48px;margin-bottom:16px;">📜</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--ink);margin-bottom:8px;">Teachings Coming Soon</div>
+      <div style="font-size:15px;color:var(--ink-mid);font-style:italic;">Check back after Shabbat for the latest teachings from the congregation.</div>
+    </div>
+  </div>
+
+  <!-- ── SERVICES TAB ── -->
+  <div class="tab-panel" id="tab-services">
+    <div class="sec-head">
+      <h2>Sabbath Services</h2>
+      <p>Live &amp; Recorded · Friday Eve – Saturday Eve</p>
+      <div class="orn"><div class="orn-line"></div><span style="color:var(--gold)">✦</span><div class="orn-line"></div></div>
+    </div>
+    <div class="video-grid" id="servicesGrid">
+      <!-- Services rendered by JS -->
+    </div>
+    <div id="noServicesMsg" style="text-align:center;padding:60px 20px;">
+      <div style="font-size:48px;margin-bottom:16px;">🎥</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--ink);margin-bottom:8px;">Services Will Be Posted Here</div>
+      <div style="font-size:15px;color:var(--ink-mid);font-style:italic;max-width:420px;margin:0 auto;">Each Shabbat service recording will be added here after the service. Subscribe to our Facebook page for live service notifications.</div>
+      <div style="margin-top:24px;">
+        <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" class="share-btn fb" style="font-size:13px;padding:12px 24px;">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Follow on Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VIDEOS TAB ── -->
+  <div class="tab-panel" id="tab-videos">
+    <div class="sec-head">
+      <h2>Teaching Videos</h2>
+      <p>Torah · Hebrew Roots · Ministry Teachings</p>
+      <div class="orn"><div class="orn-line"></div><span style="color:var(--gold)">✦</span><div class="orn-line"></div></div>
+    </div>
+    <div class="video-grid" id="videosGrid">
+      <!-- Videos rendered by JS -->
+    </div>
+    <div id="noVideosMsg" style="text-align:center;padding:60px 20px;">
+      <div style="font-size:48px;margin-bottom:16px;">📺</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--ink);margin-bottom:8px;">Videos Coming Soon</div>
+      <div style="font-size:15px;color:var(--ink-mid);font-style:italic;">Teaching videos and ministry content will be posted here.</div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<!-- ── ADMIN PANEL ── -->
+<div id="adminPanel">
+  <div style="background:linear-gradient(180deg,var(--ink),var(--royal));padding:24px;text-align:center;border-bottom:2px solid var(--gold);">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold);margin-bottom:4px;">✦ Admin Panel</div>
+    <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;">Yahweh's House of Prayer</div>
+  </div>
+  <div class="main-content" style="padding-top:40px;">
+
+    <!-- NEW TEACHING FORM -->
+    <div class="post-editor" id="teachingEditor">
+      <h2>📜 Post a New Teaching</h2>
+      <div class="editor-grid">
+        <div class="field-group">
+          <label class="field-label">Teaching Title</label>
+          <input type="text" id="postTitle" class="field-input" placeholder="e.g. The Remnant Walks in Truth"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Scripture Reference</label>
+          <input type="text" id="postScripture" class="field-input" placeholder="e.g. Tzephaniyah 3:13"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Date</label>
+          <input type="date" id="postDate" class="field-input"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Category</label>
+          <select id="postCategory" class="field-select">
+            <option>Shabbat Teaching</option>
+            <option>Torah Portion</option>
+            <option>Holy Day Teaching</option>
+            <option>Hebrew Roots</option>
+            <option>Prophecy</option>
+            <option>Social Media Post</option>
+            <option>Ministry Update</option>
+          </select>
+        </div>
+        <div class="field-group full">
+          <label class="field-label">Opening / Excerpt (shown on card preview)</label>
+          <textarea id="postExcerpt" class="field-textarea" placeholder="Opening paragraph — this is what people see first before clicking 'Read More'..."></textarea>
+        </div>
+        <div class="field-group full">
+          <label class="field-label">Full Teaching Body</label>
+          <textarea id="postBody" class="field-textarea tall" placeholder="Full teaching content — the complete text of the Shabbat teaching..."></textarea>
+        </div>
+        <div class="field-group full">
+          <label class="field-label">Teacher / Author</label>
+          <input type="text" id="postAuthor" class="field-input" placeholder="e.g. Co-Pastor Sh'muyl Ben Yahdah"/>
+        </div>
+      </div>
+      <div class="editor-actions">
+        <button class="save-btn" onclick="saveTeaching()">✦ Publish Teaching</button>
+        <button class="cancel-btn" onclick="clearTeachingForm()">Clear Form</button>
+      </div>
+    </div>
+
+    <!-- VIDEO MANAGER -->
+    <div class="video-manager" id="videoEditor">
+      <h3>🎥 Add a Service / Video</h3>
+      <div class="platform-tabs">
+        <button class="plat-tab active" onclick="setPlatform('youtube',this)">▶ YouTube</button>
+        <button class="plat-tab" onclick="setPlatform('facebook',this)">f Facebook</button>
+        <button class="plat-tab" onclick="setPlatform('vimeo',this)">◈ Vimeo</button>
+      </div>
+      <div class="editor-grid">
+        <div class="field-group">
+          <label class="field-label">Video Title</label>
+          <input type="text" id="vidTitle" class="field-input" placeholder="e.g. Shabbat Service — Nisan 14"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Date</label>
+          <input type="date" id="vidDate" class="field-input"/>
+        </div>
+        <div class="field-group full">
+          <label class="field-label" id="vidUrlLabel">YouTube Video ID or Full URL</label>
+          <input type="text" id="vidUrl" class="field-input" placeholder="e.g. dQw4w9WgXcQ or full URL"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Section</label>
+          <select id="vidSection" class="field-select">
+            <option value="services">Sabbath Services</option>
+            <option value="videos">Teaching Videos</option>
+          </select>
+        </div>
+      </div>
+      <div class="editor-actions">
+        <button class="save-btn" onclick="saveVideo()">✦ Add Video</button>
+        <button class="cancel-btn" onclick="clearVideoForm()">Clear</button>
+      </div>
+    </div>
+
+    <!-- MANAGE EXISTING POSTS -->
+    <div class="admin-saved-posts" id="adminPostsList">
+      <h3 style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--ink);margin-bottom:16px;">Manage Teachings</h3>
+      <div id="adminPostsContainer"></div>
+    </div>
+
+    <div class="admin-logout">
+      <button class="admin-btn danger" onclick="adminLogout()">⬡ Lock Admin Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Yahweh's House of Prayer</div>
+  <p>Global Kingdom of Yehudah · Racine, Wisconsin · Est. 2011</p>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="index.html#beliefs">Beliefs</a>
+    <a href="index.html#holydays">Holy Days</a>
+    <a href="index.html#scrolls">Bible Scrolls</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank">Facebook</a>
+  </div>
+  <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
+</footer>
+
+<!-- ADMIN FAB -->
+<button class="admin-fab" onclick="toggleAdmin()" title="Admin" id="adminFab">⚙</button>
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="adminLoginOverlay" style="display:none;position:fixed;inset:0;background:rgba(44,24,16,0.85);z-index:500;display:none;align-items:center;justify-content:center;">
+  <div class="admin-gate">
+    <div style="font-size:36px;margin-bottom:12px;">🔐</div>
+    <h2>Admin Access</h2>
+    <p>Enter your password to manage teachings and videos.</p>
+    <div class="admin-form">
+      <input type="password" id="adminPwInput" class="admin-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()"/>
+      <div class="admin-error" id="adminError">Incorrect password. Try again.</div>
+      <button class="admin-btn" onclick="checkAdminPw()">✦ Enter</button>
+      <button class="cancel-btn" style="margin-top:4px;" onclick="closeAdminLogin()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── STATE ──
+const ADMIN_PW = 'yhop2024';
+let adminUnlocked = false;
+let currentPlatform = 'youtube';
+
+// ── STORAGE HELPERS ──
+function getPosts() {
+  try { return JSON.parse(localStorage.getItem('yhop_posts') || '[]'); } catch(e) { return []; }
+}
+function savePosts(posts) {
+  localStorage.setItem('yhop_posts', JSON.stringify(posts));
+}
+function getVideos() {
+  try { return JSON.parse(localStorage.getItem('yhop_videos') || '[]'); } catch(e) { return []; }
+}
+function saveVideos(videos) {
+  localStorage.setItem('yhop_videos', JSON.stringify(videos));
+}
+
+// ── TABS ──
+function showTab(tab) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  const map = {teachings:0, services:1, videos:2};
+  if(map[tab] !== undefined) btns[map[tab]].classList.add('active');
+  document.getElementById('adminPanel').classList.remove('open');
+  renderAll();
+}
+
+// ── RENDER TEACHINGS ──
+function renderTeachings() {
+  const posts = getPosts();
+  const grid = document.getElementById('teachingsGrid');
+  const noMsg = document.getElementById('noPostsMsg');
+  if(posts.length === 0) {
+    grid.innerHTML = '';
+    noMsg.style.display = 'block';
+    return;
+  }
+  noMsg.style.display = 'none';
+  grid.innerHTML = posts.map((p,i) => `
+    <div class="teaching-card" id="tc-${p.id}">
+      <div class="tc-top">
+        <div class="tc-meta">
+          <span class="tc-date">${formatDate(p.date)}</span>
+          <span class="tc-category">${p.category}</span>
+        </div>
+        <div class="tc-title">${p.title}</div>
+        ${p.scripture ? `<div class="tc-scripture">📖 ${p.scripture}</div>` : ''}
+      </div>
+      <div class="tc-body">
+        <div class="tc-excerpt"><p>${p.excerpt}</p></div>
+        ${p.body ? `
+        <div class="tc-full" id="full-${p.id}">
+          ${p.body.split('\n\n').map(para => `<p>${para}</p>`).join('')}
+        </div>
+        <button class="tc-read-more" id="rmBtn-${p.id}" onclick="toggleFull('${p.id}')">
+          Read Full Teaching <span id="rmArrow-${p.id}">↓</span>
+        </button>` : ''}
+        ${p.author ? `<div style="margin-top:16px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;">— ${p.author}</div>` : ''}
+      </div>
+      <div class="tc-actions">
+        <a class="share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href+'#tc-'+p.id)}" target="_blank">
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Share
+        </a>
+        <a class="share-btn x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(p.title + ' — Yahweh\'s House of Prayer')}&url=${encodeURIComponent(location.href)}" target="_blank">
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Post on X
+        </a>
+      </div>
+      <div class="comments-section">
+        <div class="comments-head">💬 Comments</div>
+        <p class="comment-note">Sign in with your Facebook or X (Twitter) account to leave a comment on this teaching.</p>
+        <div class="social-comment-btns">
+          <button class="social-btn fb" onclick="fbComment('${p.id}','${escapeAttr(p.title)}')">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Comment via Facebook
+          </button>
+          <button class="social-btn x" onclick="xComment('${p.id}','${escapeAttr(p.title)}')">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Reply on X / Twitter
+          </button>
+        </div>
+        <div class="comments-list" id="comments-${p.id}">
+          ${renderComments(p.id)}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderComments(postId) {
+  const comments = getComments(postId);
+  if(comments.length === 0) return '<div class="no-comments">Be the first to share your thoughts on this teaching. 🕎</div>';
+  return comments.map(c => `
+    <div class="comment-item">
+      <div class="comment-author">${c.name} <span class="comment-via">via ${c.via}</span></div>
+      <div class="comment-text">${c.text}</div>
+      <div class="comment-date">${formatDate(c.date)}</div>
+    </div>
+  `).join('');
+}
+
+function getComments(postId) {
+  try { return JSON.parse(localStorage.getItem('yhop_comments_' + postId) || '[]'); } catch(e) { return []; }
+}
+
+function toggleFull(id) {
+  const full = document.getElementById('full-' + id);
+  const btn = document.getElementById('rmBtn-' + id);
+  const arrow = document.getElementById('rmArrow-' + id);
+  const isOpen = full.classList.contains('open');
+  full.classList.toggle('open');
+  btn.textContent = isOpen ? 'Read Full Teaching ↓' : 'Close ↑';
+  btn.innerHTML = isOpen
+    ? 'Read Full Teaching <span>↓</span>'
+    : 'Close Teaching <span>↑</span>';
+}
+
+// ── SOCIAL COMMENTS ──
+function fbComment(postId, title) {
+  // Opens Facebook — user can share/comment on the page
+  const pageUrl = encodeURIComponent(location.href + '#tc-' + postId);
+  window.open(`https://www.facebook.com/dialog/share?app_id=&href=${pageUrl}&display=popup`, '_blank', 'width=600,height=500');
+  // Also open a simple comment prompt for users who want to leave a note
+  openCommentPrompt(postId, 'Facebook');
+}
+
+function xComment(postId, title) {
+  const text = encodeURIComponent('I just read "' + title + '" at Yahweh\'s House of Prayer 🕎 ');
+  const url = encodeURIComponent(location.href);
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=HebrewRoots,YahwehsHouseOfPrayer`, '_blank', 'width=600,height=400');
+  openCommentPrompt(postId, 'X / Twitter');
+}
+
+function openCommentPrompt(postId, via) {
+  const name = prompt('Your name (as it appears on ' + via + '):');
+  if(!name) return;
+  const text = prompt('Your comment on this teaching:');
+  if(!text) return;
+  const comments = getComments(postId);
+  comments.unshift({ name, via, text, date: new Date().toISOString().split('T')[0], id: Date.now() });
+  localStorage.setItem('yhop_comments_' + postId, JSON.stringify(comments));
+  const list = document.getElementById('comments-' + postId);
+  if(list) list.innerHTML = renderComments(postId);
+  showToast('Comment posted! Shalom 🕎');
+}
+
+// ── RENDER VIDEOS ──
+function renderVideos() {
+  const videos = getVideos();
+  const services = videos.filter(v => v.section === 'services');
+  const vids = videos.filter(v => v.section === 'videos');
+
+  const servicesGrid = document.getElementById('servicesGrid');
+  const videosGrid = document.getElementById('videosGrid');
+  const noSvc = document.getElementById('noServicesMsg');
+  const noVid = document.getElementById('noVideosMsg');
+
+  if(services.length > 0) {
+    noSvc.style.display = 'none';
+    servicesGrid.innerHTML = services.map(v => videoCardHTML(v)).join('');
+  } else {
+    servicesGrid.innerHTML = '';
+    noSvc.style.display = 'block';
+  }
+  if(vids.length > 0) {
+    noVid.style.display = 'none';
+    videosGrid.innerHTML = vids.map(v => videoCardHTML(v)).join('');
+  } else {
+    videosGrid.innerHTML = '';
+    noVid.style.display = 'block';
+  }
+}
+
+function videoCardHTML(v) {
+  let embedHTML = '';
+  if(v.platform === 'youtube' && v.videoId) {
+    embedHTML = `<iframe src="https://www.youtube.com/embed/${v.videoId}" allowfullscreen></iframe>`;
+  } else if(v.platform === 'facebook' && v.videoId) {
+    embedHTML = `<iframe src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(v.videoId)}&show_text=false" allowfullscreen scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+  } else if(v.platform === 'vimeo' && v.videoId) {
+    embedHTML = `<iframe src="https://player.vimeo.com/video/${v.videoId}" allowfullscreen></iframe>`;
+  } else {
+    embedHTML = `<div class="video-placeholder"><div class="vp-icon">🎥</div><div class="vp-title">${v.title}</div><div class="vp-sub">Video link pending</div></div>`;
+  }
+  return `
+    <div class="video-card">
+      <div class="video-embed">${embedHTML}</div>
+      <div class="video-info">
+        <div class="video-title">${v.title}</div>
+        <div class="video-meta">
+          <span class="video-date">${formatDate(v.date)}</span>
+          <span style="color:var(--ink-mid);font-size:12px;">${v.platform || ''}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── ADMIN ──
+function toggleAdmin() {
+  if(adminUnlocked) {
+    const panel = document.getElementById('adminPanel');
+    if(panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      panel.classList.add('open');
+      window.scrollTo({top:0,behavior:'smooth'});
+      renderAdminPosts();
+    }
+  } else {
+    const overlay = document.getElementById('adminLoginOverlay');
+    overlay.style.display = 'flex';
+    setTimeout(() => document.getElementById('adminPwInput').focus(), 100);
+  }
+}
+
+function checkAdminPw() {
+  const pw = document.getElementById('adminPwInput').value;
+  if(pw === ADMIN_PW) {
+    adminUnlocked = true;
+    document.getElementById('adminLoginOverlay').style.display = 'none';
+    document.getElementById('adminPwInput').value = '';
+    document.getElementById('adminError').style.display = 'none';
+    document.getElementById('adminPanel').classList.add('open');
+    document.getElementById('adminFab').textContent = '🔓';
+    // Set today's date
+    document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('vidDate').value = new Date().toISOString().split('T')[0];
+    window.scrollTo({top:0,behavior:'smooth'});
+    renderAdminPosts();
+    showToast('Admin panel unlocked. Shalom! ✦');
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+    document.getElementById('adminPwInput').value = '';
+  }
+}
+
+function closeAdminLogin() {
+  document.getElementById('adminLoginOverlay').style.display = 'none';
+  document.getElementById('adminPwInput').value = '';
+  document.getElementById('adminError').style.display = 'none';
+}
+
+function adminLogout() {
+  adminUnlocked = false;
+  document.getElementById('adminPanel').classList.remove('open');
+  document.getElementById('adminFab').textContent = '⚙';
+  showToast('Admin panel locked.');
+}
+
+function saveTeaching() {
+  const title = document.getElementById('postTitle').value.trim();
+  const excerpt = document.getElementById('postExcerpt').value.trim();
+  if(!title || !excerpt) { showToast('Please fill in at least a title and excerpt.'); return; }
+  const posts = getPosts();
+  const newPost = {
+    id: 'p' + Date.now(),
+    title,
+    scripture: document.getElementById('postScripture').value.trim(),
+    date: document.getElementById('postDate').value,
+    category: document.getElementById('postCategory').value,
+    excerpt,
+    body: document.getElementById('postBody').value.trim(),
+    author: document.getElementById('postAuthor').value.trim(),
+  };
+  posts.unshift(newPost);
+  savePosts(posts);
+  clearTeachingForm();
+  renderAdminPosts();
+  showToast('✦ Teaching published! Baruch HaShem Yahweh!');
+}
+
+function clearTeachingForm() {
+  ['postTitle','postScripture','postExcerpt','postBody','postAuthor'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+}
+
+function deletePost(id) {
+  if(!confirm('Delete this teaching? This cannot be undone.')) return;
+  savePosts(getPosts().filter(p => p.id !== id));
+  renderAdminPosts();
+  renderTeachings();
+  showToast('Teaching deleted.');
+}
+
+function renderAdminPosts() {
+  const posts = getPosts();
+  const container = document.getElementById('adminPostsContainer');
+  if(posts.length === 0) {
+    container.innerHTML = '<div style="font-size:14px;color:var(--ink-mid);font-style:italic;padding:12px 0;">No teachings posted yet.</div>';
+    return;
+  }
+  container.innerHTML = posts.map(p => `
+    <div class="admin-post-row">
+      <span class="apr-title">${p.title}</span>
+      <span class="apr-date">${formatDate(p.date)}</span>
+      <button class="apr-del" onclick="deletePost('${p.id}')">Delete</button>
+    </div>`).join('');
+}
+
+// ── VIDEO MANAGER ──
+function setPlatform(plat, btn) {
+  currentPlatform = plat;
+  document.querySelectorAll('.plat-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const labels = {youtube:'YouTube Video ID or Full URL', facebook:'Facebook Video URL', vimeo:'Vimeo Video ID or URL'};
+  const placeholders = {youtube:'e.g. dQw4w9WgXcQ or https://youtube.com/watch?v=...', facebook:'https://www.facebook.com/video/...', vimeo:'e.g. 123456789'};
+  document.getElementById('vidUrlLabel').textContent = labels[plat];
+  document.getElementById('vidUrl').placeholder = placeholders[plat];
+}
+
+function extractVideoId(url, platform) {
+  if(!url) return '';
+  url = url.trim();
+  if(platform === 'youtube') {
+    const match = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : url;
+  }
+  if(platform === 'vimeo') {
+    const match = url.match(/vimeo\.com\/(\d+)/);
+    return match ? match[1] : url;
+  }
+  return url; // facebook: return full URL
+}
+
+function saveVideo() {
+  const title = document.getElementById('vidTitle').value.trim();
+  const url = document.getElementById('vidUrl').value.trim();
+  if(!title) { showToast('Please enter a video title.'); return; }
+  const videos = getVideos();
+  videos.unshift({
+    id: 'v' + Date.now(),
+    title,
+    date: document.getElementById('vidDate').value,
+    platform: currentPlatform,
+    videoId: extractVideoId(url, currentPlatform),
+    section: document.getElementById('vidSection').value,
+  });
+  saveVideos(videos);
+  clearVideoForm();
+  renderVideos();
+  showToast('✦ Video added!');
+}
+
+function clearVideoForm() {
+  document.getElementById('vidTitle').value = '';
+  document.getElementById('vidUrl').value = '';
+  document.getElementById('vidDate').value = new Date().toISOString().split('T')[0];
+}
+
+// ── HELPERS ──
+function formatDate(d) {
+  if(!d) return '';
+  try {
+    const date = new Date(d + 'T12:00:00');
+    return date.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+  } catch(e) { return d; }
+}
+function escapeAttr(s) {
+  return (s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+function renderAll() {
+  renderTeachings();
+  renderVideos();
+}
+
+// ── INIT ──
+// Seed sample post if first visit
+if(getPosts().length === 0) {
+  const sample = [{
+    id: 'p_sample_1',
+    title: "The Remnant Walks in Truth",
+    scripture: "Tzephaniyah 3:13",
+    date: new Date().toISOString().split('T')[0],
+    category: "Shabbat Teaching",
+    excerpt: "This is not a promise made to a comfortable, compromising people. This is the mark of a remnant — those who, in the spirit of the earliest Nazarene and Ebionite believers, refused to trade the truth of Yahweh's Torah for the convenience of religious tradition.",
+    body: "The first followers of Yeshua the Messiah did not abandon the covenant. They walked in righteousness, spoke truth, and kept their hands clean before Yahweh. They were led not by councils of men or Greek philosophy, but by the commandments of the Most High and the living example of Messiah Yeshua himself.\n\nJames, the brother of Yeshua and pillar of the Yerushalayim assembly, made clear: faith without works is dead. Righteousness is not merely believed — it is lived.\n\nWhen Tzephaniyah spoke of a remnant without deceit in their mouths, he was describing a people whose inner character had been transformed by covenant obedience. No lies. No iniquity. No fear. That is the fruit of a life surrendered fully to Yahweh — not religion built on the traditions of men, but a walk rooted in His Torah and anchored in the truth of His Messiah.\n\nAt Yahweh's House of Prayer, we are not chasing popular theology. We are pressing toward what the earliest believers already knew — that Yahweh's ways are perfect, His name is holy, and His remnant will dwell in peace because they chose truth over comfort.",
+    author: "Co-Pastor Sh'muyl Ben Yahdah",
+  }];
+  savePosts(sample);
+}
+
+renderAll();
+</script>
+</body>
+</html>
