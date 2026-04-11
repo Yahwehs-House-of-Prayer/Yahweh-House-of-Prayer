@@ -322,10 +322,6 @@ section{padding:80px 24px;max-width:1000px;margin:0 auto;}
 .cal-scripture-banner span{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.15em;color:var(--gold);display:block;margin-top:6px;}
 
 /* ── BIBLE SCROLLS ── */
-#scrolls{background:var(--parchment-dark);padding:60px 0 0;}
-#scrolls .section-header{padding:0 24px;max-width:1000px;margin:0 auto 32px;}
-#scrolls iframe{width:100%;height:700px;border:none;border-top:2px solid var(--gold);display:block;}
-
 /* ── CONTACT ── */
 #contact{background:var(--parchment);}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
@@ -371,7 +367,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a class="nav-link" href="#ministries">Ministries</a>
     <a class="nav-link" href="#holydays">Holy Days</a>
     <a class="nav-link" href="#calendar">Calendar</a>
-    <a class="nav-link" href="#scrolls">Bible Scrolls</a>
+    <a class="nav-link" href="yahweh-bible-scrolls-app.html">Bible Scrolls</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
@@ -403,7 +399,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="hero-btns">
     <a class="btn-gold" href="#leadership">Meet Our Leaders</a>
     <a class="btn-outline" href="#ministries">Our Ministries</a>
-    <a class="btn-outline" href="#scrolls">Study the Word</a>
+    <a class="btn-outline" href="yahweh-bible-scrolls-app.html">Study the Word</a>
   </div>
 </div>
 
@@ -986,14 +982,44 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
 <div class="section-divider"></div>
 
-<!-- BIBLE SCROLLS EMBED -->
-<div id="scrolls">
-  <div class="section-header" style="padding:60px 24px 0;max-width:1000px;margin:0 auto 32px;">
-    <h2>📜 Yahweh's Bible Scrolls</h2>
-    <p>AI-Powered Hebrew Roots Study Platform</p>
+<!-- BIBLE SCROLLS LAUNCH -->
+<div id="scrolls" style="background:var(--royal-deep);padding:80px 24px;">
+<section style="padding:0">
+  <div class="section-header">
+    <h2 style="color:var(--gold-pale)">Yahweh's Bible Scrolls</h2>
+    <p style="color:var(--gold)">AI-Powered Hebrew Roots Study Platform</p>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
-  <iframe src="yahweh-bible-scrolls-app.html" title="Yahweh's Bible Scrolls App" allowfullscreen></iframe>
+
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.25);border-radius:2px;padding:48px 36px;">
+      <div style="font-size:64px;margin-bottom:24px;">📜</div>
+      <h3 style="font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,26px);color:var(--gold-light);margin-bottom:16px;">Study the Ancient Paths</h3>
+      <p style="font-size:17px;color:rgba(245,222,179,0.8);line-height:1.85;margin-bottom:12px;">
+        An AI-powered Hebrew Roots Bible study experience — built on the Ebionite and Nazarene tradition of Yahweh's House of Prayer.
+      </p>
+      <p style="font-size:15px;color:rgba(245,222,179,0.55);line-height:1.75;margin-bottom:36px;">
+        Interlinear Hebrew &amp; Aramaic texts · Paleo Hebrew word studies · AI Torah scholar · 
+        Dead Sea Scrolls · Ethiopian Orthodox canon · Holy Day calendar · Hebrew lessons · Prayer &amp; worship
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:36px;">
+        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">100% Free</span>
+        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">AI Powered</span>
+        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">Hebrew Roots</span>
+        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">Mobile Friendly</span>
+      </div>
+      <a href="yahweh-bible-scrolls-app.html"
+         style="display:inline-block;padding:16px 48px;
+                background:linear-gradient(135deg,var(--gold),var(--gold-light));
+                color:var(--ink);font-family:'Cinzel',serif;font-size:13px;font-weight:700;
+                letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;
+                border-radius:2px;box-shadow:0 4px 24px rgba(184,134,11,0.4);
+                transition:all 0.25s;">
+        Open Bible Scrolls ✦
+      </a>
+    </div>
+  </div>
+</section>
 </div>
 
 <div class="section-divider"></div>
@@ -1059,7 +1085,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a href="#ministries">Ministries</a>
     <a href="#holydays">Holy Days</a>
     <a href="#calendar">Calendar</a>
-    <a href="#scrolls">Bible Scrolls</a>
+    <a href="yahweh-bible-scrolls-app.html">Bible Scrolls</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
@@ -1073,7 +1099,7 @@ function closeNav(){document.getElementById('navLinks').classList.remove('open')
 document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeNav));
 
 // Highlight active nav on scroll
-const sections = ['about','beliefs','leadership','ministries','holydays','calendar','scrolls','contact'];
+const sections = ['about','beliefs','leadership','ministries','holydays','calendar','contact'];
 
 // ── SACRED CALENDAR ──
 (function(){
