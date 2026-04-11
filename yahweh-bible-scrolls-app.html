@@ -456,45 +456,7 @@ body{
 .source-tag.eth{background:rgba(74,100,155,0.3);color:#88A4E8;border:1px solid rgba(74,100,155,0.4);}
 .source-tag.kn{background:rgba(155,74,74,0.3);color:#E88888;border:1px solid rgba(155,74,74,0.4);}
 
-/* ── PREMIUM MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.85);
-  z-index:500;display:flex;align-items:flex-end;
-  opacity:0;pointer-events:none;transition:opacity 0.3s;
-}
-.modal-overlay.open{opacity:1;pointer-events:all;}
-.modal-sheet{
-  background:linear-gradient(180deg,var(--royal),var(--ink-light));
-  border:1px solid rgba(201,168,76,0.3);border-radius:24px 24px 0 0;
-  width:100%;padding:28px 24px 40px;
-  transform:translateY(100%);transition:transform 0.3s ease;
-}
-.modal-overlay.open .modal-sheet{transform:translateY(0);}
-.modal-handle{width:40px;height:4px;background:rgba(201,168,76,0.3);border-radius:2px;margin:0 auto 24px;}
-.modal-title{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold);text-align:center;margin-bottom:8px;}
-.modal-sub{font-size:14px;color:rgba(245,222,179,0.6);text-align:center;margin-bottom:24px;line-height:1.6;}
-.plan-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
-.plan-card{
-  border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-sm);padding:16px;
-  display:flex;justify-content:space-between;align-items:center;cursor:pointer;
-  transition:all 0.2s;
-}
-.plan-card.selected,.plan-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.08);}
-.plan-card.featured{border-color:var(--gold);background:rgba(201,168,76,0.06);}
-.plan-name{font-family:'Cinzel',serif;font-size:14px;color:var(--gold-pale);}
-.plan-desc{font-size:12px;color:rgba(245,222,179,0.5);margin-top:2px;}
-.plan-price{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);}
-.plan-period{font-size:11px;color:rgba(201,168,76,0.5);}
-.modal-btn{
-  width:100%;padding:16px;border-radius:var(--radius-sm);border:none;cursor:pointer;
-  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
-  font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:0.1em;
-  color:var(--ink);text-transform:uppercase;
-}
-.modal-close{
-  margin-top:12px;width:100%;padding:12px;background:none;border:none;
-  color:rgba(245,222,179,0.4);font-size:14px;cursor:pointer;font-family:'EB Garamond',serif;
-}
+/* premium modal removed — all content is free */
 
 /* ── SCREENS VISIBILITY ── */
 .screen-view{display:none;}
@@ -553,7 +515,7 @@ body{
       <div class="header-title">📜 Yahweh's Bible Scrolls</div>
       <div class="header-sub">Yahweh's House of Prayer</div>
     </div>
-    <button class="header-premium" onclick="openPremium()">✦ Upgrade</button>
+    <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.12em;color:rgba(201,168,76,0.6);text-transform:uppercase;">Free · All Access</div>
   </div>
 
   <!-- SCREENS CONTAINER -->
@@ -596,11 +558,11 @@ body{
         <div class="qc-desc">Feast calendar &amp; countdowns</div>
         <span class="pill pill-green">Free</span>
       </div>
-      <div class="quick-card" onclick="openPremium()">
+      <div class="quick-card" onclick="switchTab('commentary')">
         <div class="qc-icon">📖</div>
         <div class="qc-title">Commentary</div>
         <div class="qc-desc">Dead Sea Scrolls &amp; Hebrew Roots</div>
-        <span class="pill pill-gold">Premium</span>
+        <span class="pill pill-green">Free</span>
       </div>
       <div class="quick-card" onclick="switchTab('prayer')">
         <div class="qc-icon">🙏</div>
@@ -608,11 +570,11 @@ body{
         <div class="qc-desc">Shabbat liturgy &amp; Hebrew prayers</div>
         <span class="pill pill-green">Free</span>
       </div>
-      <div class="quick-card" onclick="openPremium()">
+      <div class="quick-card" onclick="switchTab('hebrew')">
         <div class="qc-icon">🎓</div>
         <div class="qc-title">Full Courses</div>
         <div class="qc-desc">Complete Hebrew language courses</div>
-        <span class="pill pill-gold">Premium</span>
+        <span class="pill pill-green">Free</span>
       </div>
     </div>
     <div class="pb-safe"></div>
@@ -655,7 +617,7 @@ body{
       <button class="lesson-tab active" onclick="switchLesson(this,'biblical')">Biblical Hebrew</button>
       <button class="lesson-tab" onclick="switchLesson(this,'paleo')">Paleo Hebrew</button>
       <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
-      <button class="lesson-tab" onclick="openPremium()">✦ Full Course</button>
+      <button class="lesson-tab" onclick="switchLesson(this,'advanced')">✦ Full Course</button>
     </div>
 
     <div id="lesson-biblical">
@@ -1054,30 +1016,7 @@ body{
 
 </div><!-- end app -->
 
-<!-- PREMIUM MODAL -->
-<div class="modal-overlay" id="premiumModal" onclick="closePremiumOutside(event)">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <div class="modal-title">✦ Yahweh's Bible Scrolls</div>
-    <div class="modal-sub">Unlock the complete Hebrew Roots study experience — commentary, full courses, offline access, and more.</div>
-    <div class="plan-cards">
-      <div class="plan-card" onclick="selectPlan(this)">
-        <div><div class="plan-name">Monthly</div><div class="plan-desc">Full access, cancel anytime</div></div>
-        <div style="text-align:right"><div class="plan-price">$4.99</div><div class="plan-period">/month</div></div>
-      </div>
-      <div class="plan-card featured selected" onclick="selectPlan(this)">
-        <div><div class="plan-name">Annual ✦ Best Value</div><div class="plan-desc">Save 40% — most popular</div></div>
-        <div style="text-align:right"><div class="plan-price">$34.99</div><div class="plan-period">/year</div></div>
-      </div>
-      <div class="plan-card" onclick="selectPlan(this)">
-        <div><div class="plan-name">Ministry License</div><div class="plan-desc">For churches &amp; ministries (10 users)</div></div>
-        <div style="text-align:right"><div class="plan-price">$99</div><div class="plan-period">/year</div></div>
-      </div>
-    </div>
-    <button class="modal-btn">Unlock Premium Access</button>
-    <button class="modal-close" onclick="closePremium()">Maybe later</button>
-  </div>
-</div>
+<!-- all content free — no premium modal -->
 
 <script>
 // ── TAB SWITCHING ──
@@ -1746,20 +1685,7 @@ window.switchTab = function(tab) {
   }
 };
 
-// ── PREMIUM MODAL ──
-function openPremium() {
-  document.getElementById('premiumModal').classList.add('open');
-}
-function closePremium() {
-  document.getElementById('premiumModal').classList.remove('open');
-}
-function closePremiumOutside(e) {
-  if(e.target === document.getElementById('premiumModal')) closePremium();
-}
-function selectPlan(card) {
-  document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
-  card.classList.add('selected');
-}
+// all content free — premium functions removed
 
 // ── COUNTDOWN TIMER ──
 function updateCountdown() {
