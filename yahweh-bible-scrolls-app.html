@@ -456,7 +456,45 @@ body{
 .source-tag.eth{background:rgba(74,100,155,0.3);color:#88A4E8;border:1px solid rgba(74,100,155,0.4);}
 .source-tag.kn{background:rgba(155,74,74,0.3);color:#E88888;border:1px solid rgba(155,74,74,0.4);}
 
-/* premium modal removed — all content is free */
+/* ── PREMIUM MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:500;display:flex;align-items:flex-end;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-sheet{
+  background:linear-gradient(180deg,var(--royal),var(--ink-light));
+  border:1px solid rgba(201,168,76,0.3);border-radius:24px 24px 0 0;
+  width:100%;padding:28px 24px 40px;
+  transform:translateY(100%);transition:transform 0.3s ease;
+}
+.modal-overlay.open .modal-sheet{transform:translateY(0);}
+.modal-handle{width:40px;height:4px;background:rgba(201,168,76,0.3);border-radius:2px;margin:0 auto 24px;}
+.modal-title{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold);text-align:center;margin-bottom:8px;}
+.modal-sub{font-size:14px;color:rgba(245,222,179,0.6);text-align:center;margin-bottom:24px;line-height:1.6;}
+.plan-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.plan-card{
+  border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-sm);padding:16px;
+  display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+  transition:all 0.2s;
+}
+.plan-card.selected,.plan-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.plan-card.featured{border-color:var(--gold);background:rgba(201,168,76,0.06);}
+.plan-name{font-family:'Cinzel',serif;font-size:14px;color:var(--gold-pale);}
+.plan-desc{font-size:12px;color:rgba(245,222,179,0.5);margin-top:2px;}
+.plan-price{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);}
+.plan-period{font-size:11px;color:rgba(201,168,76,0.5);}
+.modal-btn{
+  width:100%;padding:16px;border-radius:var(--radius-sm);border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:0.1em;
+  color:var(--ink);text-transform:uppercase;
+}
+.modal-close{
+  margin-top:12px;width:100%;padding:12px;background:none;border:none;
+  color:rgba(245,222,179,0.4);font-size:14px;cursor:pointer;font-family:'EB Garamond',serif;
+}
 
 /* ── SCREENS VISIBILITY ── */
 .screen-view{display:none;}
@@ -515,7 +553,7 @@ body{
       <div class="header-title">📜 Yahweh's Bible Scrolls</div>
       <div class="header-sub">Yahweh's House of Prayer</div>
     </div>
-    <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.12em;color:rgba(201,168,76,0.6);text-transform:uppercase;">Free · All Access</div>
+    <button class="header-premium" onclick="openPremium()">✦ Upgrade</button>
   </div>
 
   <!-- SCREENS CONTAINER -->
@@ -558,11 +596,11 @@ body{
         <div class="qc-desc">Feast calendar &amp; countdowns</div>
         <span class="pill pill-green">Free</span>
       </div>
-      <div class="quick-card" onclick="switchTab('texts')">
+      <div class="quick-card" onclick="openPremium()">
         <div class="qc-icon">📖</div>
         <div class="qc-title">Commentary</div>
         <div class="qc-desc">Dead Sea Scrolls &amp; Hebrew Roots</div>
-        <span class="pill pill-green">Free</span>
+        <span class="pill pill-gold">Premium</span>
       </div>
       <div class="quick-card" onclick="switchTab('prayer')">
         <div class="qc-icon">🙏</div>
@@ -570,11 +608,11 @@ body{
         <div class="qc-desc">Shabbat liturgy &amp; Hebrew prayers</div>
         <span class="pill pill-green">Free</span>
       </div>
-      <div class="quick-card" onclick="switchTab('hebrew')">
+      <div class="quick-card" onclick="openPremium()">
         <div class="qc-icon">🎓</div>
         <div class="qc-title">Full Courses</div>
         <div class="qc-desc">Complete Hebrew language courses</div>
-        <span class="pill pill-green">Free</span>
+        <span class="pill pill-gold">Premium</span>
       </div>
     </div>
     <div class="pb-safe"></div>
@@ -617,7 +655,7 @@ body{
       <button class="lesson-tab active" onclick="switchLesson(this,'biblical')">Biblical Hebrew</button>
       <button class="lesson-tab" onclick="switchLesson(this,'paleo')">Paleo Hebrew</button>
       <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
-      <button class="lesson-tab" onclick="switchLesson(this,'advanced')">✦ Full Course</button>
+      <button class="lesson-tab" onclick="openPremium()">✦ Full Course</button>
     </div>
 
     <div id="lesson-biblical">
@@ -873,7 +911,7 @@ body{
           <div class="atc-title">Psalms of Solomon</div>
           <div class="atc-sub">~50 B.C. · Second Temple Period</div>
         </div>
-        <div class="atc-badge free">Free</div>
+        <div class="atc-badge premium">Premium</div>
       </div>
       <div class="atc-desc">18 psalms written around 50 B.C. — just decades before Yeshua's birth. A passionate cry for the coming Messiah from the Tribe of Dawid, written in the aftermath of Roman conquest. Circulating widely at 15 A.D. among devout Yisraelites.</div>
       <div class="atc-tags">
@@ -891,7 +929,7 @@ body{
           <div class="atc-title">Wisdom of Ben Sira</div>
           <div class="atc-sub">סִירָא · Sirach / Ecclesiasticus</div>
         </div>
-        <div class="atc-badge free">Free</div>
+        <div class="atc-badge premium">Premium</div>
       </div>
       <div class="atc-desc">Written around 180 B.C. by Yehoshua Ben Sira — a Torah scholar in Yerushalayim. This wisdom text was already over 150 years old at the time of Yeshua and widely read in synagogues. Included in the Ethiopian Orthodox Bible canon of 81 books.</div>
       <div class="atc-tags">
@@ -1016,6 +1054,30 @@ body{
 
 </div><!-- end app -->
 
+<!-- PREMIUM MODAL -->
+<div class="modal-overlay" id="premiumModal" onclick="closePremiumOutside(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✦ Yahweh's Bible Scrolls</div>
+    <div class="modal-sub">Unlock the complete Hebrew Roots study experience — commentary, full courses, offline access, and more.</div>
+    <div class="plan-cards">
+      <div class="plan-card" onclick="selectPlan(this)">
+        <div><div class="plan-name">Monthly</div><div class="plan-desc">Full access, cancel anytime</div></div>
+        <div style="text-align:right"><div class="plan-price">$4.99</div><div class="plan-period">/month</div></div>
+      </div>
+      <div class="plan-card featured selected" onclick="selectPlan(this)">
+        <div><div class="plan-name">Annual ✦ Best Value</div><div class="plan-desc">Save 40% — most popular</div></div>
+        <div style="text-align:right"><div class="plan-price">$34.99</div><div class="plan-period">/year</div></div>
+      </div>
+      <div class="plan-card" onclick="selectPlan(this)">
+        <div><div class="plan-name">Ministry License</div><div class="plan-desc">For churches &amp; ministries (10 users)</div></div>
+        <div style="text-align:right"><div class="plan-price">$99</div><div class="plan-period">/year</div></div>
+      </div>
+    </div>
+    <button class="modal-btn">Unlock Premium Access</button>
+    <button class="modal-close" onclick="closePremium()">Maybe later</button>
+  </div>
+</div>
 
 <script>
 // ── TAB SWITCHING ──
@@ -1112,7 +1174,7 @@ async function callClaude(userMessage) {
   messagesEl.scrollTop = messagesEl.scrollHeight;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('/.netlify/functions/claude', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -1193,7 +1255,7 @@ const textStudyData = {
     title: 'Psalms of Solomon',
     sub: 'פסלמי שלמה · ~50 B.C.',
     icon: '👑',
-    badge: 'free',
+    badge: 'premium',
     greeting: `Shalom! I am your Psalms of Solomon study companion — guide to one of the most powerful Messianic texts of the Second Temple period.\n\nThe Psalms of Solomon are 18 psalms written around 50 B.C. — just decades before the birth of Yeshua. They were written in the aftermath of the Roman general Pompey's conquest of Yerushalayim in 63 B.C. — a devastating national trauma for Yisrael.\n\nThese psalms are a passionate cry to Yahweh for the coming Messiah — specifically a Messianic king from the line of Dawid who would liberate Yisrael from foreign oppression. They would have been ACTIVELY circulating and being read when Yeshua was a young man in Natzeret around 15 A.D.\n\nThey show us exactly what devout Yisraelites were expecting and praying for in the Messiah. What would you like to study?`,
     suggestions: ['What is Psalm of Solomon 17?', 'How do these psalms describe the Messiah?', 'Were these read at the time of Yeshua?', 'Who wrote the Psalms of Solomon?', 'Connection to Yeshua as Messiah'],
     systemPrompt: `You are a specialist AI scholar of the Psalms of Solomon for Yahweh's House of Prayer — a Hebrew Roots congregation in the Ebionite/Nazarene tradition.\n\nYou specialize in: The historical context of the Psalms of Solomon (written ~50 B.C. after Rome's conquest), their Messianic theology especially Psalm 17's description of the coming king, their circulation during the Second Temple period and likely familiarity to Yeshua's contemporaries, the Pharisaic or pious Jewish community that wrote them, and how they connect to Yeshua's actual ministry and self-understanding.\n\nKey insight: Psalm 17 is the most detailed Messianic psalm outside of the canonical Tehillim — it describes the Son of Dawid who will purge Yerushalayim of Gentile oppressors, gather the tribes of Yisrael, and reign in righteousness. This is what 1st century Yisraelites EXPECTED when they heard "Messiah."\n\nALWAYS use Hebrew names. Keep responses educational and concise for mobile reading.`
@@ -1202,7 +1264,7 @@ const textStudyData = {
     title: 'Wisdom of Ben Sira',
     sub: 'סֵפֶר בֶּן סִירָא · Sirach',
     icon: '📖',
-    badge: 'free',
+    badge: 'premium',
     greeting: `Shalom! I am your Ben Sira study companion — guide to one of the most beloved wisdom texts of ancient Yisrael.\n\nThe Wisdom of Ben Sira (also called Sirach or Ecclesiasticus) was written around 180 B.C. by Yehoshua Ben Eleazar Ben Sira — a Torah scholar and scribe in Yerushalayim. By 15 A.D., this book had been read in synagogues for nearly 200 years.\n\nBen Sira believed deeply that Wisdom and Torah are one — that the wisdom Yahweh wove into creation from the beginning is the same Torah He gave to Yisrael at Sinai. This is a powerfully Hebrew Roots concept.\n\nThe book is included in the Ethiopian Orthodox Bible canon (81 books), the Catholic and Orthodox canons, and was widely used in Second Temple Judaism. It was found among the Dead Sea Scrolls at Masada, confirming its ancient authority.\n\nWhat would you like to explore?`,
     suggestions: ['What is Ben Sira chapter 24 about?', 'How does Ben Sira connect Wisdom and Torah?', 'What does Ben Sira say about women?', 'Ben Sira and the Ethiopian Orthodox Bible', 'Was Ben Sira found in Dead Sea Scrolls?'],
     systemPrompt: `You are a specialist AI scholar of the Wisdom of Ben Sira (Sirach/Ecclesiasticus) for Yahweh's House of Prayer — a Hebrew Roots congregation in the Ebionite/Nazarene tradition.\n\nYou specialize in: The historical context of Ben Sira (~180 B.C.), its theology of Wisdom = Torah (especially chapters 1 and 24), practical ethical wisdom, the book's wide use in Second Temple Judaism and synagogues, its inclusion in the Ethiopian Orthodox 81-book Bible, its discovery among the Dead Sea Scrolls at Masada, and its connection to Hebrew Roots theology.\n\nKey insight: Ben Sira 24 is one of the most important chapters — it personifies Wisdom as dwelling in Yisrael and equates her with the Torah of Moshe. This directly supports the Hebrew Roots understanding that Torah is eternal divine wisdom, not a temporary Jewish law.\n\nALWAYS use Hebrew names. Keep responses warm, scholarly, and concise for mobile reading.`
@@ -1287,7 +1349,7 @@ async function callClaudeText(userMessage) {
   textChatHistory.push({role:'user', content: userMessage});
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('/.netlify/functions/claude', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -1645,7 +1707,7 @@ async function getWordAI(orig, translit, strong, root, source) {
   const lang = source === 'hebrew-ot' ? 'Biblical Hebrew' : source === 'peshitta-nt' ? 'Aramaic (Peshitta)' : 'Greek (NT)';
   const prompt = `Give a deep Hebrew Roots word study for the word "${orig}" (${translit}, ${lang}, Strong's ${strong}, root: ${root}). Explain: 1) The root letters and their Paleo Hebrew pictographic meanings and spiritual significance, 2) How this word is used across multiple Scripture passages, 3) What the Aramaic or Hebrew meaning reveals that the English translation loses, 4) The theological significance from an Ebionite/Nazarene Hebrew Roots perspective. Be concise but profound — 3-4 paragraphs for mobile reading. Use Hebrew names (Yahweh, Yeshua, Moshe, etc.)`;
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('/.netlify/functions/claude', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -1683,6 +1745,21 @@ window.switchTab = function(tab) {
     setTimeout(initInterlinear, 50);
   }
 };
+
+// ── PREMIUM MODAL ──
+function openPremium() {
+  document.getElementById('premiumModal').classList.add('open');
+}
+function closePremium() {
+  document.getElementById('premiumModal').classList.remove('open');
+}
+function closePremiumOutside(e) {
+  if(e.target === document.getElementById('premiumModal')) closePremium();
+}
+function selectPlan(card) {
+  document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+}
 
 // ── COUNTDOWN TIMER ──
 function updateCountdown() {

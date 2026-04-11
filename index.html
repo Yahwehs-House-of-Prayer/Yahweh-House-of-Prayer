@@ -278,6 +278,49 @@ section{padding:80px 24px;max-width:1000px;margin:0 auto;}
 .shabbat-box p{font-size:16px;color:var(--gold-pale);opacity:0.9;margin-bottom:6px;}
 .shabbat-box .shabbat-times{font-family:'Cinzel',serif;font-size:13px;letter-spacing:0.15em;color:var(--gold);margin-top:12px;}
 
+/* ── SACRED CALENDAR ── */
+#calendar{background:var(--parchment-dark);padding:80px 24px;}
+#calendar section{padding:0;}
+.cal-outer{max-width:960px;margin:0 auto;}
+.cal-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.cal-month-title{font-family:'Cinzel Decorative',serif;font-size:clamp(15px,2.5vw,22px);color:var(--ink);letter-spacing:0.05em;}
+.cal-nav-group{display:flex;gap:6px;align-items:center;}
+.cal-nav-btn{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-size:16px;width:34px;height:34px;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Cinzel',serif;}
+.cal-nav-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.cal-view-btn{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;padding:6px 14px;cursor:pointer;border-radius:2px;text-transform:uppercase;transition:all 0.2s;}
+.cal-view-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px;}
+.cal-leg{display:flex;align-items:center;gap:5px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.08em;color:var(--ink-mid);text-transform:uppercase;}
+.cal-leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.cal-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.cal-filter{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:0.1em;padding:5px 13px;cursor:pointer;border-radius:1px;text-transform:uppercase;transition:all 0.2s;}
+.cal-filter.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.cal-grid-head{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px;}
+.cal-gh-cell{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-align:center;padding:5px 0;text-transform:uppercase;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-day{min-height:78px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;padding:5px;transition:border-color 0.2s;}
+.cal-day:hover{border-color:var(--gold);}
+.cal-day.cal-today{border:2px solid var(--gold);background:var(--gold-bg);}
+.cal-day.cal-other{opacity:0.3;background:var(--parchment);}
+.cal-day-num{font-family:'Cinzel',serif;font-size:11px;color:var(--ink-mid);margin-bottom:3px;}
+.cal-ev{font-size:9px;line-height:1.4;border-radius:1px;padding:1px 4px;margin-bottom:1px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'EB Garamond',serif;}
+.cal-ev-hebrew{background:#d4edda;color:#1a5c2a;border-left:2px solid #1D9E75;}
+.cal-ev-ethiopian{background:#fde8d8;color:#7a2e0e;border-left:2px solid #D85A30;}
+.cal-ev-fast{background:#fff3cd;color:#6b4c0a;border-left:2px solid #BA7517;}
+.cal-ev-shabbat{background:#e8f4e8;color:#2d5a1a;border-left:2px solid #639922;}
+.cal-ev-newmoon{background:#e8e6fb;color:#3b2f8a;border-left:2px solid #7F77DD;}
+.cal-more{font-size:9px;color:var(--gold);font-family:'Cinzel',serif;padding:1px 4px;cursor:pointer;}
+.cal-tip{position:fixed;background:var(--ink);border:1px solid var(--gold);border-radius:2px;padding:10px 14px;font-size:13px;max-width:260px;z-index:999;pointer-events:none;display:none;color:var(--gold-pale);line-height:1.65;font-family:'EB Garamond',serif;box-shadow:0 4px 20px rgba(44,24,16,0.35);}
+.cal-tip strong{color:var(--gold);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:4px;}
+.cal-list{display:none;flex-direction:column;gap:8px;}
+.cal-list-item{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;border-left:3px solid var(--gold);}
+.cal-list-date{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);min-width:90px;letter-spacing:0.05em;}
+.cal-list-name{font-size:15px;color:var(--ink);font-family:'EB Garamond',serif;font-weight:500;}
+.cal-list-desc{font-size:13px;color:var(--ink-light);font-family:'EB Garamond',serif;font-style:italic;}
+.cal-scripture-banner{margin-top:32px;padding:22px 28px;border:1px solid var(--scroll-border);background:rgba(255,255,255,0.5);border-radius:2px;text-align:center;}
+.cal-scripture-banner p{font-size:16px;font-style:italic;color:var(--ink-light);line-height:1.75;}
+.cal-scripture-banner span{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.15em;color:var(--gold);display:block;margin-top:6px;}
+
 /* ── BIBLE SCROLLS ── */
 #scrolls{background:var(--parchment-dark);padding:60px 0 0;}
 #scrolls .section-header{padding:0 24px;max-width:1000px;margin:0 auto 32px;}
@@ -327,8 +370,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a class="nav-link" href="#leadership">Leadership</a>
     <a class="nav-link" href="#ministries">Ministries</a>
     <a class="nav-link" href="#holydays">Holy Days</a>
+    <a class="nav-link" href="#calendar">Calendar</a>
     <a class="nav-link" href="#scrolls">Bible Scrolls</a>
-    <a class="nav-link" href="teachings.html">✦ Teachings</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
@@ -338,7 +381,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 <div class="hero">
   <div class="hero-ornament"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
 
-  <img class="hero-seal" src="Corp_seal_YHOP.jpg" alt="Yahweh's House of Prayer Seal" onerror="this.style.display='none'"/>
+  <img class="hero-seal" src="corp_seal_YHOP_gold.jpeg" alt="Yahweh's House of Prayer Seal" onerror="this.style.display='none'"/>
 
   <div class="hero-sub">Restoring the Ancient Paths · Est. 2011</div>
   <h1>Yahweh's House<br/><span>of Prayer</span></h1>
@@ -888,6 +931,61 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
 <div class="section-divider"></div>
 
+<!-- SACRED CALENDAR -->
+<div id="calendar" style="background:var(--parchment-dark);padding:80px 24px;">
+<section style="padding:0">
+  <div class="section-header">
+    <h2>Sacred Calendar</h2>
+    <p>Hebrew Mo'edim · Ethiopian Holy Days · Rosh Chodesh · Fasts</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+
+  <div class="cal-outer">
+
+    <div class="cal-toolbar">
+      <div class="cal-month-title" id="yhop-cal-title">Loading...</div>
+      <div class="cal-nav-group">
+        <div style="display:flex;gap:4px;margin-right:8px;">
+          <button class="cal-view-btn active" id="yhop-btn-month" onclick="yhopSetView('month')">Month</button>
+          <button class="cal-view-btn" id="yhop-btn-list" onclick="yhopSetView('list')">List</button>
+        </div>
+        <button class="cal-nav-btn" onclick="yhopChangeMonth(-1)">&#8249;</button>
+        <button class="cal-nav-btn" onclick="yhopChangeMonth(1)">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="cal-legend">
+      <div class="cal-leg"><div class="cal-leg-dot" style="background:#1D9E75"></div>Hebrew Mo'edim</div>
+      <div class="cal-leg"><div class="cal-leg-dot" style="background:#D85A30"></div>Ethiopian Feast</div>
+      <div class="cal-leg"><div class="cal-leg-dot" style="background:#BA7517"></div>Fast Day</div>
+      <div class="cal-leg"><div class="cal-leg-dot" style="background:#639922"></div>Shabbat</div>
+      <div class="cal-leg"><div class="cal-leg-dot" style="background:#7F77DD"></div>Rosh Chodesh</div>
+    </div>
+
+    <div class="cal-filters">
+      <button class="cal-filter active" data-yhop-filter="all" onclick="yhopSetFilter('all')">All</button>
+      <button class="cal-filter" data-yhop-filter="hebrew" onclick="yhopSetFilter('hebrew')">Hebrew</button>
+      <button class="cal-filter" data-yhop-filter="ethiopian" onclick="yhopSetFilter('ethiopian')">Ethiopian</button>
+      <button class="cal-filter" data-yhop-filter="fast" onclick="yhopSetFilter('fast')">Fasts</button>
+      <button class="cal-filter" data-yhop-filter="shabbat" onclick="yhopSetFilter('shabbat')">Shabbat</button>
+      <button class="cal-filter" data-yhop-filter="newmoon" onclick="yhopSetFilter('newmoon')">New Moons</button>
+    </div>
+
+    <div class="cal-grid-head" id="yhop-grid-head"></div>
+    <div class="cal-grid" id="yhop-cal-grid"></div>
+    <div class="cal-list" id="yhop-cal-list"></div>
+
+    <div class="cal-scripture-banner">
+      <p>"These are the appointed feasts of Yahweh, the holy convocations, which you shall proclaim at the time appointed for them."</p>
+      <span>— Vayikra (Leviticus) 23:4 · Numbers 10:10 (Rosh Chodesh) · Bereshit 1:14 (Signs &amp; Seasons)</span>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<div class="section-divider"></div>
+
 <!-- BIBLE SCROLLS EMBED -->
 <div id="scrolls">
   <div class="section-header" style="padding:60px 24px 0;max-width:1000px;margin:0 auto 32px;">
@@ -960,8 +1058,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a href="#leadership">Leadership</a>
     <a href="#ministries">Ministries</a>
     <a href="#holydays">Holy Days</a>
+    <a href="#calendar">Calendar</a>
     <a href="#scrolls">Bible Scrolls</a>
-    <a href="teachings.html">✦ Teachings</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
@@ -975,7 +1073,200 @@ function closeNav(){document.getElementById('navLinks').classList.remove('open')
 document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeNav));
 
 // Highlight active nav on scroll
-const sections = ['about','beliefs','leadership','ministries','holydays','scrolls','contact'];
+const sections = ['about','beliefs','leadership','ministries','holydays','calendar','scrolls','contact'];
+
+// ── SACRED CALENDAR ──
+(function(){
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Shabbat'];
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+let curDate=new Date();curDate.setDate(1);
+let curFilter='all',curView='month';
+const today=new Date();
+
+const events=[
+  {date:'2025-09-11',name:"Rosh HaShanah / Yom Teruah",type:'hebrew',note:'Feast of Trumpets — 1 Tishrei. Shofar is blown. Beginning of the Days of Awe.'},
+  {date:'2025-09-12',name:"Rosh HaShanah Day 2",type:'hebrew',note:'Second day of the Feast of Trumpets — 2 Tishrei.'},
+  {date:'2025-09-11',name:"Ethiopian New Year (Enkutatash)",type:'ethiopian',note:'Ethiopian New Year — Meskerem 1, 2018.'},
+  {date:'2025-09-20',name:"Yom Kippur",type:'hebrew',note:'Day of Atonement — 10 Tishrei. Complete 25-hour fast. Holiest day of the year.'},
+  {date:'2025-09-20',name:"Yom Kippur Fast",type:'fast',note:'Complete 25-hour fast. No food, water, or work from sunset to nightfall.'},
+  {date:'2025-09-25',name:"Sukkot begins",type:'hebrew',note:'Feast of Tabernacles — 15 Tishrei. Seven-day feast in booths.'},
+  {date:'2025-09-27',name:"Meskel (Finding of the Cross)",type:'ethiopian',note:'Major Ethiopian feast celebrating the finding of the True Cross.'},
+  {date:'2025-09-28',name:"Holiday of Metq",type:'ethiopian',note:'Ethiopian feast in honor of the Virgin Mary — Meskerem 18.'},
+  {date:'2025-10-02',name:"Shmini Atzeret",type:'hebrew',note:'Eighth Day Assembly — 22 Tishrei. Holy convocation following Sukkot.'},
+  {date:'2025-10-03',name:"Simchat Torah",type:'hebrew',note:'Rejoicing in the Torah — 23 Tishrei.'},
+  {date:'2025-10-21',name:"Rosh Chodesh Cheshvan",type:'newmoon',note:'New Moon of Cheshvan — 1 Cheshvan 5786.'},
+  {date:'2025-10-22',name:"Rosh Chodesh Cheshvan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Cheshvan.'},
+  {date:'2025-11-20',name:"Rosh Chodesh Kislev",type:'newmoon',note:'New Moon of Kislev — 1 Kislev 5786.'},
+  {date:'2025-11-21',name:"Rosh Chodesh Kislev (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Kislev.'},
+  {date:'2025-12-14',name:"Hanukkah begins",type:'hebrew',note:'8-day Festival of Lights — 25 Kislev.'},
+  {date:'2025-12-19',name:"Rosh Chodesh Tevet",type:'newmoon',note:'New Moon of Tevet — 1 Tevet 5786. Falls during Hanukkah.'},
+  {date:'2025-12-20',name:"Rosh Chodesh Tevet (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Tevet.'},
+  {date:'2025-12-21',name:"Rosh Chodesh Tevet (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Tevet.'},
+  {date:'2025-12-22',name:"Hanukkah ends",type:'hebrew',note:'Final (8th) night of Hanukkah — 2 Tevet.'},
+  {date:'2025-12-30',name:"Asara B'Tevet Fast",type:'fast',note:'Fast of 10 Tevet — siege of Jerusalem.'},
+  {date:'2026-01-07',name:"Genna (Ethiopian Christmas)",type:'ethiopian',note:'Ethiopian Christmas — Birth of Yeshua the Messiah. Tahsas 29.'},
+  {date:'2026-01-18',name:"Rosh Chodesh Sh'vat",type:'newmoon',note:"New Moon of Sh'vat — 1 Sh'vat 5786."},
+  {date:'2026-01-19',name:"Rosh Chodesh Sh'vat (Day 2)",type:'newmoon',note:"Second day of Rosh Chodesh Sh'vat."},
+  {date:'2026-01-19',name:"Timket (Theophany/Epiphany)",type:'ethiopian',note:'Ethiopian Epiphany — Baptism of Yeshua in the Jordan.'},
+  {date:'2026-02-01',name:"Tu BiShvat",type:'hebrew',note:"New Year for Trees — 15 Sh'vat."},
+  {date:'2026-02-02',name:"Tsome Nenewe begins",type:'fast',note:'3-day Fast of Nineveh — Ethiopian Orthodox.'},
+  {date:'2026-02-04',name:"Tsome Nenewe ends",type:'fast',note:'Conclusion of the Fast of Nineveh.'},
+  {date:'2026-02-16',name:"Rosh Chodesh Adar",type:'newmoon',note:'New Moon of Adar — 1 Adar 5786.'},
+  {date:'2026-02-17',name:"Rosh Chodesh Adar (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Adar.'},
+  {date:'2026-02-18',name:"Rosh Chodesh Adar (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Adar.'},
+  {date:'2026-02-16',name:"Abiy Tsom / Great Lent begins",type:'fast',note:'Ethiopian Great Lent — 56-day fast before Easter.'},
+  {date:'2026-03-02',name:"Ta'anit Esther Fast",type:'fast',note:"Fast of Esther — precedes Purim."},
+  {date:'2026-03-02',name:"Purim",type:'hebrew',note:'Feast of Lots — 14 Adar. Celebrates deliverance from Haman.'},
+  {date:'2026-03-15',name:"Debre Zeitun (Mount Olives)",type:'ethiopian',note:"Ethiopian observance of Yeshua's time on the Mount of Olives."},
+  {date:'2026-03-18',name:"Rosh Chodesh Nisan",type:'newmoon',note:'New Moon of Nisan — 1 Nisan 5786. First month of the biblical year!'},
+  {date:'2026-03-19',name:"Rosh Chodesh Nisan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Nisan.'},
+  {date:'2026-04-01',name:"Pesach (Passover) begins",type:'hebrew',note:'Feast of Unleavened Bread — 15 Nisan. Commemorates the Exodus.'},
+  {date:'2026-04-05',name:"Hosana (Palm Sunday)",type:'ethiopian',note:"Ethiopian Palm Sunday — Yeshua's entry into Yerushalayim."},
+  {date:'2026-04-09',name:"Pesach ends",type:'hebrew',note:'Passover / Feast of Unleavened Bread concludes — 22 Nisan.'},
+  {date:'2026-04-10',name:"Good Friday (Siklet)",type:'ethiopian',note:'Ethiopian Good Friday — Death of Yeshua the Messiah.'},
+  {date:'2026-04-11',name:"Tsome Himamat (Holy Week Fast)",type:'fast',note:'7-day Holy Week fast within the Great Lent.'},
+  {date:'2026-04-12',name:"Fasika (Ethiopian Easter)",type:'ethiopian',note:'Ethiopian Resurrection Day — Yeshua rises. Miazia 4.'},
+  {date:'2026-04-16',name:"Rosh Chodesh Iyyar",type:'newmoon',note:'New Moon of Iyyar — 1 Iyyar 5786.'},
+  {date:'2026-04-17',name:"Rosh Chodesh Iyyar (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Iyyar.'},
+  {date:'2026-04-18',name:"Rosh Chodesh Iyyar (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Iyyar.'},
+  {date:'2026-05-06',name:"Rikbe Kahnat",type:'ethiopian',note:'Ethiopian feast day — Genbot 28.'},
+  {date:'2026-05-16',name:"Rosh Chodesh Sivan",type:'newmoon',note:'New Moon of Sivan — 1 Sivan 5786. Month of Shavuot.'},
+  {date:'2026-05-17',name:"Rosh Chodesh Sivan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Sivan.'},
+  {date:'2026-05-21',name:"Erget (Ascension)",type:'ethiopian',note:'Ethiopian Ascension of Yeshua — Genbot 13.'},
+  {date:'2026-05-21',name:"Shavuot (Feast of Weeks)",type:'hebrew',note:'Feast of Weeks / Pentecost — 6 Sivan. Giving of Torah at Sinai.'},
+  {date:'2026-05-31',name:"Paracletos (Pentecost)",type:'ethiopian',note:'Ethiopian Feast of Pentecost — Descent of the Ruach HaKodesh.'},
+  {date:'2026-06-01',name:"Fast of Apostles begins",type:'fast',note:'Ethiopian Fast of the Apostles — begins after Pentecost.'},
+  {date:'2026-06-03',name:"Fast of Salvation",type:'fast',note:'Ethiopian Fast of Salvation — Sene 26.'},
+  {date:'2026-06-14',name:"Rosh Chodesh Tamuz",type:'newmoon',note:'New Moon of Tamuz — 1 Tamuz 5786.'},
+  {date:'2026-06-15',name:"Rosh Chodesh Tamuz (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Tamuz.'},
+  {date:'2026-06-16',name:"Rosh Chodesh Tamuz (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Tamuz.'},
+  {date:'2026-07-02',name:"Tzom Tammuz Fast",type:'fast',note:'17 Tammuz — Breach of walls of Yerushalayim.'},
+  {date:'2026-07-12',name:"Fast of Apostles ends",type:'fast',note:'Tsome Hawariat concludes — Hamele 5.'},
+  {date:'2026-07-14',name:"Rosh Chodesh Av",type:'newmoon',note:'New Moon of Av — 1 Av 5786. Month of mourning for the Temples.'},
+  {date:'2026-07-15',name:"Rosh Chodesh Av (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Av.'},
+  {date:'2026-07-22',name:"Tisha B'Av Fast",type:'fast',note:'9 Av — Mourning the destruction of both Temples in Yerushalayim.'},
+  {date:'2026-08-07',name:"Filseta Tsom begins",type:'fast',note:"Ethiopian 16-day fast in honor of the Virgin Mary. Nehasse 1."},
+  {date:'2026-08-12',name:"Rosh Chodesh Elul",type:'newmoon',note:'New Moon of Elul — 1 Elul 5786. Month of repentance before Rosh HaShanah.'},
+  {date:'2026-08-13',name:"Rosh Chodesh Elul (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Elul. Shofar blown daily throughout Elul.'},
+  {date:'2026-08-14',name:"Rosh Chodesh Elul (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Elul.'},
+  {date:'2026-08-19',name:"Debre Tabor (Transfiguration)",type:'ethiopian',note:'Ethiopian Feast of the Transfiguration of Yeshua on Mount Tabor.'},
+  {date:'2026-08-22',name:"Filseta (Assumption of Mary)",type:'ethiopian',note:'Ethiopian Feast of the Assumption of the Virgin Mary — Nehasse 16.'},
+  {date:'2026-08-23',name:"Filseta Tsom ends",type:'fast',note:'Ethiopian Fast of the Assumption concludes.'},
+];
+
+function getShabbats(y,m){const a=[];const d=new Date(y,m,1);while(d.getMonth()===m){if(d.getDay()===6)a.push(new Date(d));d.setDate(d.getDate()+1);}return a;}
+function toKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+
+function yhopSetFilter(f){
+  curFilter=f;
+  document.querySelectorAll('[data-yhop-filter]').forEach(b=>b.classList.toggle('active',b.dataset.yhopFilter===f));
+  yhopRender();
+}
+window.yhopSetFilter=yhopSetFilter;
+
+function yhopSetView(v){
+  curView=v;
+  document.getElementById('yhop-btn-month').classList.toggle('active',v==='month');
+  document.getElementById('yhop-btn-list').classList.toggle('active',v==='list');
+  document.getElementById('yhop-cal-grid').style.display=v==='month'?'grid':'none';
+  document.getElementById('yhop-grid-head').style.display=v==='month'?'grid':'none';
+  document.getElementById('yhop-cal-list').style.display=v==='list'?'flex':'none';
+  yhopRender();
+}
+window.yhopSetView=yhopSetView;
+
+function yhopChangeMonth(d){curDate=new Date(curDate.getFullYear(),curDate.getMonth()+d,1);yhopRender();}
+window.yhopChangeMonth=yhopChangeMonth;
+
+function showCalTip(e,name,note){
+  const t=document.getElementById('yhop-cal-tip');
+  t.innerHTML='<strong>'+name+'</strong>'+note;
+  t.style.display='block';
+  t.style.left=Math.min(e.clientX+12,window.innerWidth-275)+'px';
+  t.style.top=(e.clientY+12)+'px';
+}
+document.addEventListener('click',function(){const t=document.getElementById('yhop-cal-tip');if(t)t.style.display='none';});
+
+function buildMap(y,m){
+  const map={};
+  events.forEach(ev=>{if(!map[ev.date])map[ev.date]=[];map[ev.date].push(ev);});
+  getShabbats(y,m).forEach(sd=>{
+    const k=toKey(sd);if(!map[k])map[k]=[];
+    if(!map[k].find(e=>e.type==='shabbat'))
+      map[k].unshift({date:k,name:'Shabbat',type:'shabbat',note:'Weekly Shabbat — Friday sunset to Saturday nightfall. Day of rest and holy assembly before Yahweh.'});
+  });
+  return map;
+}
+
+function yhopRender(){
+  const y=curDate.getFullYear(),m=curDate.getMonth();
+  document.getElementById('yhop-cal-title').textContent=MONTHS[m]+' '+y;
+  const map=buildMap(y,m);
+  if(curView==='list'){yhopRenderList(map,y,m);return;}
+  const gh=document.getElementById('yhop-grid-head');
+  gh.innerHTML='';
+  DAYS.forEach(d=>{const el=document.createElement('div');el.className='cal-gh-cell';el.textContent=d;gh.appendChild(el);});
+  const grid=document.getElementById('yhop-cal-grid');grid.innerHTML='';
+  const firstDay=new Date(y,m,1).getDay();
+  const daysInMonth=new Date(y,m+1,0).getDate();
+  const prevDays=new Date(y,m,0).getDate();
+  for(let i=0;i<firstDay;i++){
+    const el=document.createElement('div');el.className='cal-day cal-other';
+    el.innerHTML='<div class="cal-day-num">'+(prevDays-firstDay+1+i)+'</div>';grid.appendChild(el);
+  }
+  for(let d=1;d<=daysInMonth;d++){
+    const date=new Date(y,m,d);const key=toKey(date);
+    const el=document.createElement('div');el.className='cal-day';
+    if(toKey(today)===key)el.classList.add('cal-today');
+    let html='<div class="cal-day-num">'+d+'</div>';
+    const dayEvs=(map[key]||[]).filter(ev=>curFilter==='all'||ev.type===curFilter);
+    dayEvs.slice(0,3).forEach(ev=>{
+      const s=ev.name.length>17?ev.name.substring(0,15)+'…':ev.name;
+      html+='<div class="cal-ev cal-ev-'+ev.type+'" data-cal-name="'+encodeURIComponent(ev.name)+'" data-cal-note="'+encodeURIComponent(ev.note)+'">'+s+'</div>';
+    });
+    if(dayEvs.length>3)html+='<div class="cal-more">+'+(dayEvs.length-3)+' more</div>';
+    el.innerHTML=html;
+    el.querySelectorAll('.cal-ev').forEach(dot=>{
+      dot.addEventListener('click',function(e){
+        e.stopPropagation();
+        showCalTip(e,decodeURIComponent(this.dataset.calName),decodeURIComponent(this.dataset.calNote));
+      });
+    });
+    grid.appendChild(el);
+  }
+  const total=firstDay+daysInMonth;
+  const trailing=(7-(total%7))%7;
+  for(let i=1;i<=trailing;i++){
+    const el=document.createElement('div');el.className='cal-day cal-other';
+    el.innerHTML='<div class="cal-day-num">'+i+'</div>';grid.appendChild(el);
+  }
+}
+
+function yhopRenderList(map,y,m){
+  const lv=document.getElementById('yhop-cal-list');lv.innerHTML='';
+  const typeLabel={hebrew:"Hebrew Mo'edim",ethiopian:'Ethiopian Orthodox',fast:'Fast Day',shabbat:'Shabbat',newmoon:'Rosh Chodesh'};
+  const dotColor={hebrew:'#1D9E75',ethiopian:'#D85A30',fast:'#BA7517',shabbat:'#639922',newmoon:'#7F77DD'};
+  const allDates=Object.keys(map).filter(k=>{const d=new Date(k+'T00:00:00');return d.getFullYear()===y&&d.getMonth()===m;}).sort();
+  if(!allDates.length){lv.innerHTML='<div style="color:var(--ink-mid);font-style:italic;padding:1rem">No events for selected filter this month.</div>';return;}
+  allDates.forEach(k=>{
+    const dayEvs=(map[k]||[]).filter(ev=>curFilter==='all'||ev.type===curFilter);
+    if(!dayEvs.length)return;
+    const d=new Date(k+'T00:00:00');
+    const dStr=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate();
+    dayEvs.forEach(ev=>{
+      const item=document.createElement('div');item.className='cal-list-item';
+      item.style.borderLeftColor=dotColor[ev.type]||'var(--gold)';
+      item.innerHTML='<div><div class="cal-list-date">'+dStr+'</div><div class="cal-list-name">'+ev.name+'</div><div class="cal-list-desc">'+(typeLabel[ev.type]||ev.type)+' — '+ev.note+'</div></div>';
+      lv.appendChild(item);
+    });
+  });
+}
+
+// Inject tooltip element
+const tipEl=document.createElement('div');tipEl.id='yhop-cal-tip';tipEl.className='cal-tip';document.body.appendChild(tipEl);
+
+yhopRender();
+})();
 window.addEventListener('scroll', () => {
   let cur = '';
   sections.forEach(id => {

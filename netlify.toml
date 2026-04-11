@@ -1,0 +1,24 @@
+# ============================================================
+# Yahweh's House of Prayer — Netlify Configuration
+# This file tells Netlify how to build and serve your site
+# ============================================================
+
+[build]
+  # Your main website files are in the root folder
+  publish = "."
+  # Netlify will automatically find functions in this folder
+  functions = "netlify/functions"
+
+# Route all calls to /.netlify/functions/claude through the proxy
+[[redirects]]
+  from = "/api/claude"
+  to = "/.netlify/functions/claude"
+  status = 200
+
+# Security headers for your site
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
