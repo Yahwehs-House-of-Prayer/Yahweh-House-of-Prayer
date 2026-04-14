@@ -18,15 +18,15 @@
   --shadow:0 8px 32px rgba(13,10,5,0.3);
   --shadow-gold:0 4px 20px rgba(201,168,76,0.3);
 }
-html,body{height:100%;overflow-y:auto;overflow-x:hidden;}
+html,body{height:100%;overflow:hidden;}
 body{
   background:var(--ink);
   font-family:'EB Garamond',serif;
-  font-size:17px;
+  font-size:16px;
   color:var(--cream);
   display:flex;
   flex-direction:column;
-  max-width:860px;
+  max-width:430px;
   margin:0 auto;
   position:relative;
 }
@@ -56,25 +56,31 @@ body{
 @keyframes barFill{from{width:0}to{width:100%}}
 
 /* ── APP SHELL ── */
-#app{display:flex;flex-direction:column;min-height:100vh;opacity:0;animation:fadeIn 0.5s ease 2.8s forwards;}
+#app{display:flex;flex-direction:column;height:100vh;opacity:0;animation:fadeIn 0.5s ease 2.8s forwards;}
 @keyframes fadeIn{to{opacity:1}}
 
 /* ── HEADER ── */
 .app-header{
   background:linear-gradient(135deg,var(--royal),var(--ink-light));
-  border-bottom:2px solid rgba(201,168,76,0.4);
-  padding:18px 28px 16px;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+  padding:14px 20px 12px;
   display:flex;align-items:center;justify-content:space-between;
   flex-shrink:0;
-  position:sticky;top:0;z-index:50;
 }
 .header-brand{display:flex;flex-direction:column;}
-.header-title{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);line-height:1.2;}
-.header-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-top:2px;}
+.header-title{font-family:'Cinzel Decorative',serif;font-size:14px;color:var(--gold);line-height:1.2;}
+.header-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.header-premium{
+  padding:5px 12px;border-radius:20px;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;
+  color:var(--ink);font-weight:700;text-transform:uppercase;cursor:pointer;
+  border:none;
+}
 
 /* ── SCROLL AREA ── */
 .screen{
-  flex:1;overflow-y:visible;overflow-x:hidden;
+  flex:1;overflow-y:auto;overflow-x:hidden;
   scroll-behavior:smooth;
   -webkit-overflow-scrolling:touch;
 }
@@ -199,24 +205,20 @@ body{
 }
 /* ── BOTTOM NAV ── */
 .bottom-nav{
-  background:linear-gradient(180deg,var(--ink-light),#0a0804);
-  border-top:2px solid rgba(201,168,76,0.35);
+  background:var(--ink-light);
+  border-top:1px solid rgba(201,168,76,0.2);
   display:grid;grid-template-columns:repeat(7,1fr);
-  flex-shrink:0;
-  padding:6px 0 calc(6px + env(safe-area-inset-bottom));
-  position:sticky;bottom:0;z-index:50;
+  flex-shrink:0;padding:0 0 env(safe-area-inset-bottom);
 }
 .nav-btn{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:10px 2px 8px;gap:5px;background:none;border:none;cursor:pointer;
-  transition:all 0.2s;border-top:2px solid transparent;
+  padding:8px 2px 6px;gap:3px;background:none;border:none;cursor:pointer;
+  transition:all 0.2s;
 }
-.nav-btn:hover{background:rgba(201,168,76,0.06);}
-.nav-btn.active{border-top-color:var(--gold);background:rgba(201,168,76,0.08);}
-.nav-btn .nav-icon{font-size:24px;line-height:1;}
-.nav-btn .nav-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:0.06em;color:rgba(201,168,76,0.45);text-transform:uppercase;white-space:nowrap;}
-.nav-btn.active .nav-label{color:var(--gold);font-weight:600;}
-.nav-btn.active .nav-icon{filter:drop-shadow(0 0 6px rgba(201,168,76,0.9));}
+.nav-btn .nav-icon{font-size:18px;line-height:1;}
+.nav-btn .nav-label{font-family:'Cinzel',serif;font-size:7px;letter-spacing:0.05em;color:rgba(201,168,76,0.4);text-transform:uppercase;white-space:nowrap;}
+.nav-btn.active .nav-label{color:var(--gold);}
+.nav-btn.active .nav-icon{filter:drop-shadow(0 0 4px rgba(201,168,76,0.8));}
 
 /* ── HOME SCREEN ── */
 .home-hero{
@@ -253,32 +255,31 @@ body{
 }
 
 .section-title{
-  font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.2em;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;
   color:rgba(201,168,76,0.6);text-transform:uppercase;
-  padding:0 20px;margin:24px 0 14px;
+  padding:0 16px;margin:20px 0 12px;
 }
-.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 20px 8px;}
-@media(max-width:500px){.quick-grid{grid-template-columns:1fr 1fr;}}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 8px;}
 .quick-card{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.18);
-  border-radius:var(--radius);padding:18px 14px;cursor:pointer;
-  transition:all 0.2s;text-decoration:none;display:flex;flex-direction:column;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);
+  border-radius:var(--radius-sm);padding:16px 14px;cursor:pointer;
+  transition:all 0.2s;text-decoration:none;
 }
-.quick-card:hover{border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.08);transform:translateY(-2px);}
-.quick-card .qc-icon{font-size:32px;margin-bottom:10px;}
-.quick-card .qc-title{font-family:'Cinzel',serif;font-size:13px;color:var(--gold-pale);margin-bottom:5px;}
-.quick-card .qc-desc{font-size:13px;color:rgba(245,222,179,0.55);line-height:1.5;flex:1;}
+.quick-card:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.06);}
+.quick-card .qc-icon{font-size:28px;margin-bottom:8px;}
+.quick-card .qc-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold-pale);margin-bottom:4px;}
+.quick-card .qc-desc{font-size:12px;color:rgba(245,222,179,0.5);line-height:1.4;}
 .premium-badge{font-size:9px;background:var(--gold);color:var(--ink);padding:2px 6px;border-radius:4px;font-family:'Cinzel',serif;letter-spacing:0.05em;margin-top:4px;display:inline-block;}
 
 /* ── AI STUDY SCREEN ── */
-.ai-screen{display:flex;flex-direction:column;min-height:calc(100vh - 120px);}
-.chat-messages{flex:1;overflow-y:visible;padding:20px 24px;display:flex;flex-direction:column;gap:18px;}
+.ai-screen{display:flex;flex-direction:column;height:100%;}
+.chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
 .chat-messages::-webkit-scrollbar{display:none;}
-.msg{max-width:80%;display:flex;flex-direction:column;gap:5px;}
+.msg{max-width:85%;display:flex;flex-direction:column;gap:4px;}
 .msg.user{align-self:flex-end;align-items:flex-end;}
 .msg.ai{align-self:flex-start;align-items:flex-start;}
 .msg-bubble{
-  padding:16px 20px;border-radius:20px;font-size:16px;line-height:1.75;
+  padding:12px 16px;border-radius:18px;font-size:15px;line-height:1.6;
 }
 .msg.user .msg-bubble{
   background:linear-gradient(135deg,var(--royal-mid),var(--royal-light));
@@ -286,44 +287,42 @@ body{
   border-bottom-right-radius:4px;
 }
 .msg.ai .msg-bubble{
-  background:rgba(255,255,255,0.07);border:1px solid rgba(201,168,76,0.2);
+  background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.15);
   color:var(--cream);border-bottom-left-radius:4px;
 }
-.msg-name{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:rgba(201,168,76,0.5);text-transform:uppercase;padding:0 4px;}
-.ai-avatar{font-size:24px;margin-bottom:3px;}
-.chat-suggestions{display:flex;gap:10px;padding:0 20px 14px;overflow-x:auto;flex-shrink:0;}
+.msg-name{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;color:rgba(201,168,76,0.5);text-transform:uppercase;padding:0 4px;}
+.ai-avatar{font-size:20px;margin-bottom:2px;}
+.chat-suggestions{display:flex;gap:8px;padding:0 16px 10px;overflow-x:auto;flex-shrink:0;}
 .chat-suggestions::-webkit-scrollbar{display:none;}
 .suggestion{
-  white-space:nowrap;padding:10px 18px;
-  border:1px solid rgba(201,168,76,0.3);border-radius:20px;
-  font-size:14px;color:rgba(245,222,179,0.8);background:rgba(255,255,255,0.04);
+  white-space:nowrap;padding:8px 14px;
+  border:1px solid rgba(201,168,76,0.25);border-radius:20px;
+  font-size:12px;color:rgba(245,222,179,0.7);background:rgba(255,255,255,0.03);
   cursor:pointer;transition:all 0.2s;flex-shrink:0;
 }
-.suggestion:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08);}
+.suggestion:hover{border-color:var(--gold);color:var(--gold);}
 .chat-input-row{
-  padding:14px 20px;display:flex;gap:12px;align-items:flex-end;
-  border-top:1px solid rgba(201,168,76,0.15);flex-shrink:0;
+  padding:12px 16px;display:flex;gap:10px;align-items:flex-end;
+  border-top:1px solid rgba(201,168,76,0.1);flex-shrink:0;
   background:var(--ink-light);
-  position:sticky;bottom:72px;
 }
 .chat-input{
-  flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(201,168,76,0.25);
-  border-radius:24px;padding:12px 20px;color:var(--cream);font-size:16px;
-  font-family:'EB Garamond',serif;resize:none;outline:none;max-height:120px;
-  line-height:1.5;
+  flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);
+  border-radius:22px;padding:10px 16px;color:var(--cream);font-size:15px;
+  font-family:'EB Garamond',serif;resize:none;outline:none;max-height:100px;
+  line-height:1.4;
 }
-.chat-input::placeholder{color:rgba(245,222,179,0.35);}
-.chat-input:focus{border-color:rgba(201,168,76,0.5);}
+.chat-input::placeholder{color:rgba(245,222,179,0.3);}
 .chat-send{
-  width:48px;height:48px;border-radius:50%;flex-shrink:0;
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
   background:linear-gradient(135deg,var(--gold-dim),var(--gold));
-  border:none;cursor:pointer;font-size:20px;
+  border:none;cursor:pointer;font-size:18px;
   display:flex;align-items:center;justify-content:center;
   transition:transform 0.2s;
 }
-.chat-send:hover{transform:scale(1.08);}
-.typing{display:flex;gap:5px;padding:4px 2px;}
-.typing span{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:typingDot 1.2s ease infinite;}
+.chat-send:hover{transform:scale(1.05);}
+.typing{display:flex;gap:4px;padding:4px 2px;}
+.typing span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:typingDot 1.2s ease infinite;}
 .typing span:nth-child(2){animation-delay:0.2s;}
 .typing span:nth-child(3){animation-delay:0.4s;}
 @keyframes typingDot{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
@@ -457,13 +456,50 @@ body{
 .source-tag.eth{background:rgba(74,100,155,0.3);color:#88A4E8;border:1px solid rgba(74,100,155,0.4);}
 .source-tag.kn{background:rgba(155,74,74,0.3);color:#E88888;border:1px solid rgba(155,74,74,0.4);}
 
-/* premium modal removed — all content is free */
-
+/* ── PREMIUM MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:500;display:flex;align-items:flex-end;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-sheet{
+  background:linear-gradient(180deg,var(--royal),var(--ink-light));
+  border:1px solid rgba(201,168,76,0.3);border-radius:24px 24px 0 0;
+  width:100%;padding:28px 24px 40px;
+  transform:translateY(100%);transition:transform 0.3s ease;
+}
+.modal-overlay.open .modal-sheet{transform:translateY(0);}
+.modal-handle{width:40px;height:4px;background:rgba(201,168,76,0.3);border-radius:2px;margin:0 auto 24px;}
+.modal-title{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold);text-align:center;margin-bottom:8px;}
+.modal-sub{font-size:14px;color:rgba(245,222,179,0.6);text-align:center;margin-bottom:24px;line-height:1.6;}
+.plan-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.plan-card{
+  border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-sm);padding:16px;
+  display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+  transition:all 0.2s;
+}
+.plan-card.selected,.plan-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.plan-card.featured{border-color:var(--gold);background:rgba(201,168,76,0.06);}
+.plan-name{font-family:'Cinzel',serif;font-size:14px;color:var(--gold-pale);}
+.plan-desc{font-size:12px;color:rgba(245,222,179,0.5);margin-top:2px;}
+.plan-price{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);}
+.plan-period{font-size:11px;color:rgba(201,168,76,0.5);}
+.modal-btn{
+  width:100%;padding:16px;border-radius:var(--radius-sm);border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:0.1em;
+  color:var(--ink);text-transform:uppercase;
+}
+.modal-close{
+  margin-top:12px;width:100%;padding:12px;background:none;border:none;
+  color:rgba(245,222,179,0.4);font-size:14px;cursor:pointer;font-family:'EB Garamond',serif;
+}
 
 /* ── SCREENS VISIBILITY ── */
 .screen-view{display:none;}
-.screen-view.active{display:flex;flex-direction:column;min-height:calc(100vh - 120px);}
-.screen{flex:1;overflow-y:visible;overflow-x:hidden;}
+.screen-view.active{display:flex;flex-direction:column;}
+.screen{flex:1;overflow-y:auto;}
 
 /* ── LOADING STATES ── */
 .loading-dots{display:flex;gap:6px;padding:8px 0;}
@@ -493,7 +529,7 @@ body{
 /* ── UTILITY ── */
 .pb-safe{padding-bottom:20px;}
 .divider{height:1px;background:rgba(201,168,76,0.1);margin:8px 16px;}
-.pill{display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;margin-top:8px;}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;}
 .pill-gold{background:rgba(201,168,76,0.15);color:var(--gold);border:1px solid rgba(201,168,76,0.25);}
 .pill-green{background:rgba(74,155,111,0.15);color:#6FD4A0;border:1px solid rgba(74,155,111,0.25);}
 </style>
@@ -517,14 +553,11 @@ body{
       <div class="header-title">📜 Yahweh's Bible Scrolls</div>
       <div class="header-sub">Yahweh's House of Prayer</div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
-      <a href="index.html" style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:rgba(201,168,76,0.5);text-decoration:none;text-transform:uppercase;">← Back to Site</a>
-      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:rgba(201,168,76,0.6);text-transform:uppercase;border:1px solid rgba(201,168,76,0.3);padding:5px 12px;border-radius:2px;">Free · All Access</div>
-    </div>
+    <a href="/" style="padding:5px 12px;border-radius:20px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;text-decoration:none;">← Site</a>
   </div>
 
   <!-- SCREENS CONTAINER -->
-  <div style="flex:1;display:flex;flex-direction:column;">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">
 
   <!-- HOME -->
   <div id="screen-home" class="screen-view active">
@@ -565,8 +598,8 @@ body{
       </div>
       <div class="quick-card" onclick="switchTab('commentary')">
         <div class="qc-icon">📖</div>
-        <div class="qc-title">Commentary</div>
-        <div class="qc-desc">Dead Sea Scrolls &amp; Hebrew Roots</div>
+        <div class="qc-title">Ancient Library</div>
+        <div class="qc-desc">81-book Ethiopian canon · Dead Sea Scrolls</div>
         <span class="pill pill-green">Free</span>
       </div>
       <div class="quick-card" onclick="switchTab('prayer')">
@@ -577,8 +610,8 @@ body{
       </div>
       <div class="quick-card" onclick="switchTab('hebrew')">
         <div class="qc-icon">🎓</div>
-        <div class="qc-title">Full Courses</div>
-        <div class="qc-desc">Complete Hebrew language courses</div>
+        <div class="qc-title">Full Hebrew Course</div>
+        <div class="qc-desc">Aleph-Bet · Vocab · Verbs · Reading · Amharic</div>
         <span class="pill pill-green">Free</span>
       </div>
     </div>
@@ -619,13 +652,16 @@ body{
       <div style="font-size:13px;color:rgba(245,222,179,0.6);">Biblical Hebrew &amp; Paleo Hebrew — the ancient script of Yisrael</div>
     </div>
     <div class="lessons-tabs">
-      <button class="lesson-tab active" onclick="switchLesson(this,'biblical')">Biblical Hebrew</button>
-      <button class="lesson-tab" onclick="switchLesson(this,'paleo')">Paleo Hebrew</button>
-      <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
-      <button class="lesson-tab" onclick="switchLesson(this,'advanced')">✦ Full Course</button>
+      <button class="lesson-tab active" onclick="switchLesson(this,'aleph-bet')" id="lt-aleph-bet">Aleph-Bet</button>
+      <button class="lesson-tab" onclick="switchLesson(this,'vocab')" id="lt-vocab">Vocabulary</button>
+      <button class="lesson-tab" onclick="switchLesson(this,'verbs')" id="lt-verbs">Verbs</button>
+      <button class="lesson-tab" onclick="switchLesson(this,'reading')" id="lt-reading">Reading</button>
+      <button class="lesson-tab" onclick="switchLesson(this,'amharic')" id="lt-amharic">🇪🇹 Amharic</button>
     </div>
 
-    <div id="lesson-biblical">
+    <!-- ALEPH-BET -->
+    <div id="lesson-aleph-bet" class="lesson-section">
+      <div style="padding:8px 16px 4px;font-size:13px;color:rgba(245,222,179,0.5);font-style:italic;">Tap any letter to learn its name, meaning, and Paleo form</div>
       <div style="padding:8px 16px 4px;font-size:13px;color:rgba(245,222,179,0.5);font-style:italic;">Tap any letter to learn its name, meaning, and Paleo form</div>
       <div class="aleph-bet-grid">
         <div class="letter-card" onclick="showLetter('aleph')"><div class="letter-hebrew">א</div><div class="letter-paleo">𐤀</div><div class="letter-name">Aleph</div></div>
@@ -652,7 +688,111 @@ body{
         <div class="letter-card" onclick="showLetter('tav')"><div class="letter-hebrew">ת</div><div class="letter-paleo">𐤕</div><div class="letter-name">Tav</div></div>
       </div>
       <div id="letterDetail" class="letter-detail" style="display:none;"></div>
+    </div><!-- end aleph-bet -->
+
+    <!-- VOCABULARY — Level 2 -->
+    <div id="lesson-vocab" class="lesson-section" style="display:none;">
+      <div style="padding:12px 16px 4px;">
+        <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);margin-bottom:4px;">Level 2 — Sacred Vocabulary</div>
+        <div style="font-size:12px;color:rgba(245,222,179,0.5);margin-bottom:12px;">500 most important Biblical Hebrew words · Tap a card to flip</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;" id="vocab-cat-btns">
+          <button onclick="filterVocab('all',this)" style="padding:6px 14px;border-radius:16px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">All</button>
+          <button onclick="filterVocab('covenant',this)" style="padding:6px 14px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:none;color:rgba(201,168,76,0.6);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">Covenant</button>
+          <button onclick="filterVocab('worship',this)" style="padding:6px 14px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:none;color:rgba(201,168,76,0.6);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">Worship</button>
+          <button onclick="filterVocab('family',this)" style="padding:6px 14px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:none;color:rgba(201,168,76,0.6);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">Family</button>
+          <button onclick="filterVocab('creation',this)" style="padding:6px 14px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:none;color:rgba(201,168,76,0.6);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">Creation</button>
+          <button onclick="filterVocab('commands',this)" style="padding:6px 14px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:none;color:rgba(201,168,76,0.6);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;">Commands</button>
+        </div>
+      </div>
+      <div id="vocab-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 16px;"></div>
     </div>
+
+    <!-- VERBS — Level 3 -->
+    <div id="lesson-verbs" class="lesson-section" style="display:none;">
+      <div style="padding:12px 16px;">
+        <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);margin-bottom:4px;">Level 3 — Hebrew Verb System</div>
+        <div style="font-size:12px;color:rgba(245,222,179,0.5);margin-bottom:16px;">The 7 Binyanim (verb stems) · How Hebrew action works</div>
+
+        <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:16px;margin-bottom:16px;">
+          <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);margin-bottom:10px;">✦ The 7 Binyanim (Verb Stems)</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Qal</span>
+              <span style="color:rgba(245,222,179,0.7);">Simple active — basic action</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Niphal</span>
+              <span style="color:rgba(245,222,179,0.7);">Simple passive / reflexive</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Piel</span>
+              <span style="color:rgba(245,222,179,0.7);">Intensive active action</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Pual</span>
+              <span style="color:rgba(245,222,179,0.7);">Intensive passive action</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Hitpael</span>
+              <span style="color:rgba(245,222,179,0.7);">Intensive reflexive</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(201,168,76,0.1);">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Hiphil</span>
+              <span style="color:rgba(245,222,179,0.7);">Causative active</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;">
+              <span style="color:var(--gold);font-family:'Cinzel',serif;min-width:70px;">Hophal</span>
+              <span style="color:rgba(245,222,179,0.7);">Causative passive</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);margin-bottom:10px;">✦ Key Covenant Verbs — Tap to Study</div>
+        <div style="display:flex;flex-direction:column;gap:10px;" id="verb-list"></div>
+      </div>
+    </div>
+
+    <!-- READING PRACTICE — Level 4 -->
+    <div id="lesson-reading" class="lesson-section" style="display:none;">
+      <div style="padding:12px 16px;">
+        <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);margin-bottom:4px;">Level 4 — Reading Practice</div>
+        <div style="font-size:12px;color:rgba(245,222,179,0.5);margin-bottom:14px;">Sacred passages with word-by-word breakdown</div>
+        <div style="display:flex;flex-direction:column;gap:14px;" id="reading-passages"></div>
+      </div>
+    </div>
+
+    <!-- AMHARIC-HEBREW — Level 5 -->
+    <div id="lesson-amharic" class="lesson-section" style="display:none;">
+      <div style="padding:12px 16px;">
+        <div style="font-family:'Cinzel Decorative',serif;font-size:15px;color:var(--gold);margin-bottom:4px;">Amharic ↔ Hebrew</div>
+        <div style="font-size:12px;color:rgba(245,222,179,0.5);margin-bottom:4px;">ኢትዮጵያ · The Ancient Connection</div>
+        <div style="font-size:13px;color:rgba(245,222,179,0.7);line-height:1.6;margin-bottom:14px;padding:10px;background:rgba(201,168,76,0.06);border-radius:8px;border-left:2px solid var(--gold);">
+          Amharic (አማርኛ) and Hebrew share a Semitic root — both descended from the same Proto-Semitic language family. The Ethiopian faith preserved Torah, the Ark of the Covenant, and Hebrew sacred traditions for thousands of years.
+        </div>
+
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);margin-bottom:8px;letter-spacing:0.1em;">✦ SHARED SACRED WORDS</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;" id="amharic-words"></div>
+
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);margin-bottom:8px;letter-spacing:0.1em;">✦ THE FIDEL SCRIPT — Ethiopian Alphabet</div>
+        <div style="font-size:13px;color:rgba(245,222,179,0.6);margin-bottom:10px;">Amharic uses the Ge'ez Fidel script — an abugida (each character = consonant + vowel)</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;" id="fidel-grid"></div>
+
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);margin-bottom:8px;letter-spacing:0.1em;">✦ AI AMHARIC STUDY SESSION</div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:14px;margin-bottom:10px;">
+          <div id="amharic-ai-output" style="font-size:14px;color:rgba(245,222,179,0.8);line-height:1.7;min-height:40px;">Ask me about the connection between Amharic, Ge'ez, and Hebrew scriptures.</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <input id="amharic-ai-input" placeholder="Ask about Amharic-Hebrew connections..." style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:10px 14px;color:var(--cream);font-family:'EB Garamond',serif;font-size:14px;outline:none;" onkeydown="if(event.key==='Enter')askAmharicAI()"/>
+          <button onclick="askAmharicAI()" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));border:none;cursor:pointer;font-size:16px;">➤</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+          <button onclick="document.getElementById('amharic-ai-input').value=this.textContent;askAmharicAI()" style="padding:6px 12px;border-radius:14px;border:1px solid rgba(201,168,76,0.25);background:none;color:rgba(245,222,179,0.6);font-size:12px;cursor:pointer;">How are Amharic and Hebrew related?</button>
+          <button onclick="document.getElementById('amharic-ai-input').value=this.textContent;askAmharicAI()" style="padding:6px 12px;border-radius:14px;border:1px solid rgba(201,168,76,0.25);background:none;color:rgba(245,222,179,0.6);font-size:12px;cursor:pointer;">What is Ge'ez script?</button>
+          <button onclick="document.getElementById('amharic-ai-input').value=this.textContent;askAmharicAI()" style="padding:6px 12px;border-radius:14px;border:1px solid rgba(201,168,76,0.25);background:none;color:rgba(245,222,179,0.6);font-size:12px;cursor:pointer;">Kebra Nagast and Hebrew scripture</button>
+        </div>
+      </div>
+    </div>
+
     <div class="pb-safe"></div>
   </div>
   </div>
@@ -770,6 +910,18 @@ body{
     </div>
     <div class="prayer-list">
       <div class="prayer-card">
+        <h3>🌅 Morning — Raising of the Ark</h3>
+        <div class="prayer-heb">וַיְהִי בִּנְסֹעַ הָאָרֹן וַיֹּאמֶר מֹשֶׁה קוּמָה יְהוָה וְיָפֻצוּ אֹיְבֶיךָ</div>
+        <p>"Rise up, Yahweh! Let Your enemies be scattered, and let those who hate You flee before You."</p>
+        <div class="prayer-ref">Bamidbar (Numbers) 10:35 · Morning Declaration — When the Ark Set Out</div>
+      </div>
+      <div class="prayer-card">
+        <h3>🌙 Evening — Lowering of the Ark</h3>
+        <div class="prayer-heb">וּבְנֻחֹה יֹאמַר שׁוּבָה יְהוָה רִבְבוֹת אַלְפֵי יִשְׂרָאֵל</div>
+        <p>"Return, Yahweh, to the countless thousands of Yisrael."</p>
+        <div class="prayer-ref">Bamidbar (Numbers) 10:36 · Evening Declaration — When the Ark Rested</div>
+      </div>
+      <div class="prayer-card">
         <h3>The Shema</h3>
         <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
         <p>"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One. And you shall love Yahweh your Elohim with all your heart, with all your soul, and with all your strength."</p>
@@ -878,7 +1030,7 @@ body{
           <div class="atc-title">Psalms of Solomon</div>
           <div class="atc-sub">~50 B.C. · Second Temple Period</div>
         </div>
-        <div class="atc-badge premium">Premium</div>
+        <div class="atc-badge free">Free</div>
       </div>
       <div class="atc-desc">18 psalms written around 50 B.C. — just decades before Yeshua's birth. A passionate cry for the coming Messiah from the Tribe of Dawid, written in the aftermath of Roman conquest. Circulating widely at 15 A.D. among devout Yisraelites.</div>
       <div class="atc-tags">
@@ -896,13 +1048,157 @@ body{
           <div class="atc-title">Wisdom of Ben Sira</div>
           <div class="atc-sub">סִירָא · Sirach / Ecclesiasticus</div>
         </div>
-        <div class="atc-badge premium">Premium</div>
+        <div class="atc-badge free">Free</div>
       </div>
       <div class="atc-desc">Written around 180 B.C. by Yehoshua Ben Sira — a Torah scholar in Yerushalayim. This wisdom text was already over 150 years old at the time of Yeshua and widely read in synagogues. Included in the Ethiopian Orthodox Bible canon of 81 books.</div>
       <div class="atc-tags">
         <span class="source-tag eth">ETH CANON</span>
         <span class="source-tag dss">~180 B.C.</span>
       </div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="divider" style="margin:20px 16px 8px;"></div>
+    <div class="section-title">✦ Core Library</div>
+    <div class="topic-grid">
+      <div class="topic-card" onclick="openTextStudy('dead-sea-scrolls')">
+        <div class="tc-icon">📜</div>
+        <h3>Dead Sea Scrolls</h3>
+        <p>Qumran texts revealing original Hebrew faith</p>
+        <div class="source-tags"><span class="source-tag dss">DSS</span></div>
+      </div>
+      <div class="topic-card" onclick="openTextStudy('kebra-nagast')">
+        <div class="tc-icon">🦁</div>
+        <h3>Kebra Nagast</h3>
+        <p>Glory of Kings — Ethiopian sacred text</p>
+        <div class="source-tags"><span class="source-tag eth">ETH</span><span class="source-tag kn">KN</span></div>
+      </div>
+      <div class="topic-card" onclick="openTextStudy('book-of-enoch')">
+        <div class="tc-icon">👁️</div>
+        <h3>Book of Enoch</h3>
+        <p>Watchers, Nephilim &amp; ancient revelation</p>
+        <div class="source-tags"><span class="source-tag eth">ETH</span><span class="source-tag dss">DSS</span></div>
+      </div>
+      <div class="topic-card" onclick="openTextStudy('ebionite')">
+        <div class="tc-icon">🕎</div>
+        <h3>Ebionite Tradition</h3>
+        <p>Original Hebrew followers of Yeshua</p>
+        <div class="source-tags"><span class="source-tag dss">DSS</span></div>
+      </div>
+    </div>
+
+    <div class="divider" style="margin:20px 16px 8px;"></div>
+    <div class="section-title">✦ Ethiopian Canon — 81 Books</div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('kebra-nagast')">
+      <div class="atc-header">
+        <div class="atc-icon">🦁</div>
+        <div class="atc-info">
+          <div class="atc-title">Kebra Nagast</div>
+          <div class="atc-sub">ክብረ ነገሥት · Glory of Kings</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">The sacred Ethiopian text revealing that the Ark of the Covenant was brought to Ethiopia by Menelik I — son of King Shlomo (Solomon) and the Queen of Sheba. Preserved in the Ethiopian Orthodox Church for over 2,000 years. Foundational to Hebrew Roots understanding of the African covenant lineage.</div>
+      <div class="atc-tags"><span class="source-tag eth">ETH CANON</span><span class="source-tag kn">ARK OF COVENANT</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('fetha-nagast')">
+      <div class="atc-header">
+        <div class="atc-icon">⚖️</div>
+        <div class="atc-info">
+          <div class="atc-title">Fetha Nagast</div>
+          <div class="atc-sub">ፍትሐ ነገሥት · Law of the Kings</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">Ethiopia's ancient sacred law code — combining ecclesiastical and civil law. In use since the 15th century, it governed the Ethiopian Empire for 500 years. Declares the 81-book canon authoritative. Traces its roots to the 318 Fathers of Nicaea and preserves both Torah principles and early apostolic law.</div>
+      <div class="atc-tags"><span class="source-tag eth">ETH LAW</span><span class="source-tag dss">81 BOOKS</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('sinodos')">
+      <div class="atc-header">
+        <div class="atc-icon">📋</div>
+        <div class="atc-info">
+          <div class="atc-title">Sinodos (Senodos)</div>
+          <div class="atc-sub">ሲኖዶስ · Apostolic Canons of Ethiopia</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">The earliest Ethiopian canon law collection, fixed by the 14th century. Contains four sets of Apostolic Canons and is the primary source for the 81-book Ethiopian Biblical canon. Preserves the most ancient Aksumite church tradition — predating Roman Catholic or Protestant canon decisions.</div>
+      <div class="atc-tags"><span class="source-tag eth">AKSUMITE</span><span class="source-tag dss">CANON LAW</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('didascalia')">
+      <div class="atc-header">
+        <div class="atc-icon">🕊️</div>
+        <div class="atc-info">
+          <div class="atc-title">Ethiopic Didascalia</div>
+          <div class="atc-sub">ዲዳስቃልያ · Apostolic Teachings</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">Ancient apostolic teaching document preserved in Ethiopia — giving instructions on church order, worship, leadership, and community life as practiced by the earliest followers of Yeshua. The Ethiopic version preserves elements not found in other recensions, making it uniquely valuable for Hebrew Roots study.</div>
+      <div class="atc-tags"><span class="source-tag eth">APOSTOLIC</span><span class="source-tag kn">EARLY CHURCH</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('book-of-enoch')">
+      <div class="atc-header">
+        <div class="atc-icon">👁️</div>
+        <div class="atc-info">
+          <div class="atc-title">Book of Enoch (1 Enoch)</div>
+          <div class="atc-sub">መጽሐፈ ሄኖክ · Watchers & Nephilim</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">Preserved ONLY in the Ethiopian Orthodox Bible — lost to the Western church for over 1,000 years until rediscovered in Ethiopia in the 1700s. Cited directly in the epistle of Yehudah (Jude). Reveals the Watcher angels, the Nephilim, Messianic visions, and the cosmic judgment of Yahweh. Foundational to Second Temple Jewish thought.</div>
+      <div class="atc-tags"><span class="source-tag eth">ETH CANON</span><span class="source-tag dss">CITED IN BRIT</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('ethiopian-gospels')">
+      <div class="atc-header">
+        <div class="atc-icon">✝️</div>
+        <div class="atc-info">
+          <div class="atc-title">Ethiopian Gospels</div>
+          <div class="atc-sub">ወንጌል · Ge'ez Gospel Tradition</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">The Gospels as preserved in the ancient Ge'ez language of Ethiopia — one of the oldest Christian literary languages in the world. The Ge'ez Bible (dating from the 4th century Aksumite era) preserves textual variants and additional verses not found in Greek or Latin manuscripts, including unique readings of Matthew, Mark, Luke and John.</div>
+      <div class="atc-tags"><span class="source-tag eth">GE'EZ</span><span class="source-tag kn">4TH CENTURY</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('apocrypha-100')">
+      <div class="atc-header">
+        <div class="atc-icon">📚</div>
+        <div class="atc-info">
+          <div class="atc-title">100 Books of the Apocrypha</div>
+          <div class="atc-sub">Hidden Books · Suppressed Scripture</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">The books systematically removed from Western Bibles — including Jubilees, Jasher, 1-4 Maccabees, Psalms of Solomon, Odes of Solomon, Testament of the Twelve Patriarchs, and many more. These texts circulated freely among Torah-observant Yisraelites in the Second Temple period and were read alongside scripture by early followers of Yeshua.</div>
+      <div class="atc-tags"><span class="source-tag eth">SUPPRESSED</span><span class="source-tag dss">SECOND TEMPLE</span></div>
+      <div class="atc-cta">Open AI Study Session →</div>
+    </div>
+
+    <div class="ancient-text-card" onclick="openTextStudy('testament-lord')">
+      <div class="atc-header">
+        <div class="atc-icon">📜</div>
+        <div class="atc-info">
+          <div class="atc-title">Testament of Our Master</div>
+          <div class="atc-sub">Early Church Order — 2nd Century</div>
+        </div>
+        <div class="atc-badge free">Free</div>
+      </div>
+      <div class="atc-desc">An early church order document claiming to record the words of Yeshua after His resurrection — covering worship, prayer times, fasting, the role of deacons and bishops, and how the early assembly gathered. Preserved in Ethiopic, Syriac, and Arabic — unknown to most Western Christians. Reveals the Shabbat-observing, Torah-honoring early assembly.</div>
+      <div class="atc-tags"><span class="source-tag eth">ETH CANON</span><span class="source-tag kn">2ND CENTURY</span></div>
       <div class="atc-cta">Open AI Study Session →</div>
     </div>
 
@@ -962,12 +1258,14 @@ body{
   <div id="screen-interlinear" class="screen-view">
     <div class="interlinear-header">
       <div class="interlinear-title">📖 Interlinear Bible</div>
-      <div class="interlinear-sub">Hebrew OT · Aramaic Peshitta NT · Greek NT — Tap any word to study</div>
+      <div class="interlinear-sub">Hebrew OT · ESV Interlinear · Peshitta NT · Greek NT · Ge'ez — Tap any word to study</div>
     </div>
     <div class="il-source-tabs">
       <button class="il-source-tab active" onclick="setILSource('hebrew-ot',this)">Hebrew OT</button>
+      <button class="il-source-tab" onclick="setILSource('esv-interlinear',this)">ESV Interlinear</button>
       <button class="il-source-tab" onclick="setILSource('peshitta-nt',this)">Peshitta NT</button>
       <button class="il-source-tab" onclick="setILSource('greek-nt',this)">Greek NT</button>
+      <button class="il-source-tab" onclick="setILSource('geez',this)">Ge'ez</button>
     </div>
     <div class="il-book-bar">
       <select class="il-book-select" id="ilBookSelect" onchange="loadILChapter()"></select>
@@ -1021,7 +1319,30 @@ body{
 
 </div><!-- end app -->
 
-<!-- all content free — no premium modal -->
+<!-- PREMIUM MODAL -->
+<div class="modal-overlay" id="premiumModal" onclick="closePremiumOutside(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✦ Yahweh's Bible Scrolls</div>
+    <div class="modal-sub">Unlock the complete Hebrew Roots study experience — commentary, full courses, offline access, and more.</div>
+    <div class="plan-cards">
+      <div class="plan-card" onclick="selectPlan(this)">
+        <div><div class="plan-name">Monthly</div><div class="plan-desc">Full access, cancel anytime</div></div>
+        <div style="text-align:right"><div class="plan-price">$4.99</div><div class="plan-period">/month</div></div>
+      </div>
+      <div class="plan-card featured selected" onclick="selectPlan(this)">
+        <div><div class="plan-name">Annual ✦ Best Value</div><div class="plan-desc">Save 40% — most popular</div></div>
+        <div style="text-align:right"><div class="plan-price">$34.99</div><div class="plan-period">/year</div></div>
+      </div>
+      <div class="plan-card" onclick="selectPlan(this)">
+        <div><div class="plan-name">Ministry License</div><div class="plan-desc">For churches &amp; ministries (10 users)</div></div>
+        <div style="text-align:right"><div class="plan-price">$99</div><div class="plan-period">/year</div></div>
+      </div>
+    </div>
+    <button class="modal-btn">Unlock Premium Access</button>
+    <button class="modal-close" onclick="closePremium()">Maybe later</button>
+  </div>
+</div>
 
 <script>
 // ── TAB SWITCHING ──
@@ -1042,6 +1363,343 @@ function switchTab(tab) {
 function switchLesson(btn, type) {
   document.querySelectorAll('.lesson-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
+  document.querySelectorAll('.lesson-section').forEach(s => s.style.display = 'none');
+  const section = document.getElementById('lesson-' + type);
+  if(section) section.style.display = 'block';
+  if(type === 'vocab' && !vocabInitialized) initVocab();
+  if(type === 'verbs' && !verbsInitialized) initVerbs();
+  if(type === 'reading' && !readingInitialized) initReading();
+  if(type === 'amharic' && !amharicInitialized) initAmharic();
+}
+
+// ── VOCABULARY DATA (from 500 Hebrew Words) ──
+const vocabWords = [
+  {heb:'אָב',translit:'av',eng:'Father',category:'family',verse:'Bereshit 2:24'},
+  {heb:'אֵם',translit:'em',eng:'Mother',category:'family',verse:'Shemot 20:12'},
+  {heb:'בֵּן',translit:'ben',eng:'Son',category:'family',verse:'Bereshit 22:2'},
+  {heb:'בַּת',translit:'bat',eng:'Daughter',category:'family',verse:'Bereshit 30:21'},
+  {heb:'אָח',translit:'ach',eng:'Brother',category:'family',verse:'Bereshit 4:2'},
+  {heb:'אָחוֹת',translit:'achot',eng:'Sister',category:'family',verse:'Bereshit 20:5'},
+  {heb:'אִישׁ',translit:'ish',eng:'Man / Husband',category:'family',verse:'Bereshit 2:23'},
+  {heb:'אִשָּׁה',translit:'ishah',eng:'Woman / Wife',category:'family',verse:'Bereshit 2:22'},
+  {heb:'יֶלֶד',translit:'yeled',eng:'Child',category:'family',verse:'Shemot 2:3'},
+  {heb:'נַעַר',translit:"na'ar",eng:'Youth / Servant',category:'family',verse:'Bereshit 22:5'},
+  {heb:'בְּרִית',translit:'berit',eng:'Covenant',category:'covenant',verse:'Bereshit 9:9'},
+  {heb:'תּוֹרָה',translit:'Torah',eng:'Instruction / Law',category:'covenant',verse:'Shemot 24:12'},
+  {heb:'שָׁלוֹם',translit:'shalom',eng:'Peace / Wholeness',category:'covenant',verse:'Bamidbar 6:26'},
+  {heb:'חֶסֶד',translit:'chesed',eng:'Lovingkindness / Covenant Love',category:'covenant',verse:'Tehillim 136:1'},
+  {heb:'אֱמוּנָה',translit:'emunah',eng:'Faithfulness / Truth',category:'covenant',verse:'Tehillim 119:30'},
+  {heb:'צְדָקָה',translit:'tzedakah',eng:'Righteousness / Justice',category:'covenant',verse:'Bereshit 15:6'},
+  {heb:'מִשְׁפָּט',translit:'mishpat',eng:'Judgment / Justice',category:'covenant',verse:'Devarim 16:20'},
+  {heb:'קָדוֹשׁ',translit:'kadosh',eng:'Holy / Set-Apart',category:'worship',verse:'Vayikra 11:44'},
+  {heb:'עָלָה',translit:'olah',eng:'Burnt offering / Ascend',category:'worship',verse:'Vayikra 1:3'},
+  {heb:'תְּפִלָּה',translit:'tefillah',eng:'Prayer',category:'worship',verse:'1 Melachim 8:28'},
+  {heb:'הַלְלוּ',translit:'hallelu',eng:'Praise! (command)',category:'worship',verse:'Tehillim 150:1'},
+  {heb:'שָׁבַת',translit:'shavat',eng:'To rest / Shabbat',category:'worship',verse:'Bereshit 2:2'},
+  {heb:'מוֹעֵד',translit:"mo'ed",eng:'Appointed time / Feast',category:'worship',verse:'Vayikra 23:2'},
+  {heb:'מִזְבֵּחַ',translit:'mizbeach',eng:'Altar',category:'worship',verse:'Bereshit 8:20'},
+  {heb:'בָּרֵךְ',translit:'barech',eng:'Bless',category:'worship',verse:'Bamidbar 6:24'},
+  {heb:'בְּרֵאשִׁית',translit:'bereshit',eng:'In the beginning',category:'creation',verse:'Bereshit 1:1'},
+  {heb:'שָׁמַיִם',translit:'shamayim',eng:'Heavens / Sky',category:'creation',verse:'Bereshit 1:1'},
+  {heb:'אֶרֶץ',translit:'eretz',eng:'Earth / Land',category:'creation',verse:'Bereshit 1:1'},
+  {heb:'אוֹר',translit:'or',eng:'Light',category:'creation',verse:'Bereshit 1:3'},
+  {heb:'מַיִם',translit:'mayim',eng:'Water / Waters',category:'creation',verse:'Bereshit 1:2'},
+  {heb:'יוֹם',translit:'yom',eng:'Day',category:'creation',verse:'Bereshit 1:5'},
+  {heb:'לַיְלָה',translit:'laylah',eng:'Night',category:'creation',verse:'Bereshit 1:5'},
+  {heb:'נֶפֶשׁ',translit:'nefesh',eng:'Soul / Living being',category:'creation',verse:'Bereshit 2:7'},
+  {heb:'רוּחַ',translit:'ruach',eng:'Spirit / Wind / Breath',category:'creation',verse:'Bereshit 1:2'},
+  {heb:'שָׁמַע',translit:'shama',eng:'Hear / Obey',category:'commands',verse:'Devarim 6:4'},
+  {heb:'שָׁמַר',translit:'shamar',eng:'Guard / Keep / Watch',category:'commands',verse:'Bereshit 2:15'},
+  {heb:'עָשָׂה',translit:"asah",eng:'Do / Make',category:'commands',verse:'Bereshit 1:7'},
+  {heb:'הָלַךְ',translit:'halach',eng:'Walk / Go',category:'commands',verse:'Bereshit 17:1'},
+  {heb:'זָכַר',translit:'zachar',eng:'Remember',category:'commands',verse:'Shemot 20:8'},
+  {heb:'קוּם',translit:'kum',eng:'Rise up / Stand',category:'commands',verse:'Bamidbar 10:35'},
+  {heb:'יָדַע',translit:"yada",eng:'Know / Experience',category:'commands',verse:'Bereshit 4:1'},
+  {heb:'אָהַב',translit:'ahav',eng:'Love',category:'commands',verse:'Devarim 6:5'},
+];
+
+let vocabInitialized = false;
+let currentVocabFilter = 'all';
+let flippedCards = new Set();
+
+function initVocab() {
+  vocabInitialized = true;
+  renderVocab('all');
+}
+
+function filterVocab(cat, btn) {
+  currentVocabFilter = cat;
+  document.querySelectorAll('#vocab-cat-btns button').forEach(b => {
+    b.style.background = 'none';
+    b.style.color = 'rgba(201,168,76,0.6)';
+    b.style.borderColor = 'rgba(201,168,76,0.3)';
+  });
+  btn.style.background = 'var(--gold)';
+  btn.style.color = 'var(--ink)';
+  btn.style.borderColor = 'var(--gold)';
+  renderVocab(cat);
+}
+
+function renderVocab(cat) {
+  const grid = document.getElementById('vocab-grid');
+  const words = cat === 'all' ? vocabWords : vocabWords.filter(w => w.category === cat);
+  grid.innerHTML = words.map((w,i) => `
+    <div onclick="flipCard(this)" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:12px;padding:16px;cursor:pointer;transition:all 0.3s;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;" data-flipped="false">
+      <div class="card-front">
+        <div style="font-size:32px;color:var(--gold);direction:rtl;margin-bottom:6px;">${w.heb}</div>
+        <div style="font-size:11px;color:rgba(201,168,76,0.6);font-style:italic;margin-bottom:4px;">${w.translit}</div>
+        <div style="font-size:9px;color:rgba(245,222,179,0.3);font-family:'Cinzel',serif;letter-spacing:0.05em;">TAP TO REVEAL</div>
+      </div>
+      <div class="card-back" style="display:none;">
+        <div style="font-size:15px;color:var(--cream);margin-bottom:6px;">${w.eng}</div>
+        <div style="font-size:10px;color:rgba(201,168,76,0.5);font-family:'Cinzel',serif;">${w.verse}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function flipCard(card) {
+  const front = card.querySelector('.card-front');
+  const back = card.querySelector('.card-back');
+  if(card.dataset.flipped === 'false') {
+    front.style.display = 'none';
+    back.style.display = 'block';
+    card.style.borderColor = 'var(--gold)';
+    card.style.background = 'rgba(201,168,76,0.1)';
+    card.dataset.flipped = 'true';
+  } else {
+    front.style.display = 'flex';
+    front.style.flexDirection = 'column';
+    front.style.alignItems = 'center';
+    back.style.display = 'none';
+    card.style.borderColor = 'rgba(201,168,76,0.15)';
+    card.style.background = 'rgba(255,255,255,0.04)';
+    card.dataset.flipped = 'false';
+  }
+}
+
+// ── VERB DATA ──
+const verbData = [
+  {heb:'שָׁמַע',translit:'shama',root:'שׁ·מ·ע',eng:'To Hear / Obey',qalPerf:'שָׁמַע',qalImp:'יִשְׁמַע',meaning:'The root means to hear with the intent to obey. The Shema starts with this word. True hearing in Hebrew = action.',verse:'Devarim 6:4'},
+  {heb:'הָלַךְ',translit:'halach',root:'ה·ל·ך',eng:'To Walk / Go',qalPerf:'הָלַךְ',qalImp:'יֵלֵךְ',meaning:'Walking before Yahweh (halach liphnei) means living your entire life in His presence. Avraham was told "walk before Me and be blameless."',verse:'Bereshit 17:1'},
+  {heb:'אָמַר',translit:'amar',root:'א·מ·ר',eng:'To Say / Speak',qalPerf:'אָמַר',qalImp:'יֹאמַר',meaning:'The most common verb in Torah. Yahweh speaks creation into existence — "And Elohim said (vayomer)..." — the Aleph-Mem-Resh of divine utterance.',verse:'Bereshit 1:3'},
+  {heb:'נָתַן',translit:'natan',root:'נ·ת·נ',eng:'To Give',qalPerf:'נָתַן',qalImp:'יִתֵּן',meaning:'A palindrome in Hebrew — reads the same forwards and backwards. Reflects how giving creates a circle — what Yahweh gives, He expects returned in worship and generosity.',verse:'Bereshit 9:12'},
+  {heb:'יָדַע',translit:"yada",root:'י·ד·ע',eng:'To Know / Experience',qalPerf:'יָדַע',qalImp:'יֵדַע',meaning:'Hebrew knowing is not intellectual but experiential — Yahweh "knew" Moshe face to face. Adam "knew" Chavah and she conceived. Knowing = intimate relationship.',verse:'Bereshit 4:1'},
+  {heb:'קוּם',translit:'kum',root:'ק·ו·מ',eng:'To Rise / Stand',qalPerf:'קָם',qalImp:'יָקוּם',meaning:'The command at the Ark — "Kumah Yahweh!" Rise up, Yahweh! Also used for resurrection. Yeshua said to the girl "Talitha kumi" — Little girl, arise.',verse:'Bamidbar 10:35'},
+];
+
+let verbsInitialized = false;
+
+function initVerbs() {
+  verbsInitialized = true;
+  const list = document.getElementById('verb-list');
+  list.innerHTML = verbData.map((v,i) => `
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:12px;overflow:hidden;">
+      <div onclick="toggleVerb(${i})" style="padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:28px;color:var(--gold);direction:rtl;">${v.heb}</div>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold-pale);">${v.eng}</div>
+            <div style="font-size:11px;color:rgba(201,168,76,0.5);font-style:italic;">${v.translit} · root: ${v.root}</div>
+          </div>
+        </div>
+        <div id="verb-arrow-${i}" style="color:var(--gold);font-size:16px;">›</div>
+      </div>
+      <div id="verb-detail-${i}" style="display:none;padding:0 16px 16px;border-top:1px solid rgba(201,168,76,0.1);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 10px;">
+          <div style="background:rgba(201,168,76,0.08);border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-size:9px;font-family:'Cinzel',serif;color:rgba(201,168,76,0.5);letter-spacing:0.1em;margin-bottom:6px;">QAL PERFECT</div>
+            <div style="font-size:22px;color:var(--gold);direction:rtl;">${v.qalPerf}</div>
+            <div style="font-size:10px;color:rgba(245,222,179,0.5);margin-top:4px;">Past action</div>
+          </div>
+          <div style="background:rgba(201,168,76,0.08);border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-size:9px;font-family:'Cinzel',serif;color:rgba(201,168,76,0.5);letter-spacing:0.1em;margin-bottom:6px;">QAL IMPERFECT</div>
+            <div style="font-size:22px;color:var(--gold);direction:rtl;">${v.qalImp}</div>
+            <div style="font-size:10px;color:rgba(245,222,179,0.5);margin-top:4px;">Ongoing action</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:rgba(245,222,179,0.75);line-height:1.6;margin-bottom:8px;">${v.meaning}</div>
+        <div style="font-size:11px;color:rgba(201,168,76,0.5);font-family:'Cinzel',serif;">${v.verse}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleVerb(i) {
+  const detail = document.getElementById('verb-detail-' + i);
+  const arrow = document.getElementById('verb-arrow-' + i);
+  if(detail.style.display === 'none') {
+    detail.style.display = 'block';
+    arrow.textContent = '˅';
+  } else {
+    detail.style.display = 'none';
+    arrow.textContent = '›';
+  }
+}
+
+// ── READING PRACTICE DATA ──
+const readingPassages = [
+  {
+    title:'The Shema',
+    ref:'Devarim (Deuteronomy) 6:4',
+    words:[
+      {heb:'שְׁמַע',translit:'shema',eng:'Hear/Obey'},
+      {heb:'יִשְׂרָאֵל',translit:'Yisrael',eng:'Israel'},
+      {heb:'יַהְוֶה',translit:'Yahweh',eng:'Yahweh'},
+      {heb:'אֱלֹהֵינוּ',translit:'Eloheinu',eng:'our Elohim'},
+      {heb:'יַהְוֶה',translit:'Yahweh',eng:'Yahweh'},
+      {heb:'אֶחָד',translit:'echad',eng:'One/United'},
+    ],
+    note:'The foundational declaration of faith. "Echad" means a compound unity — not absolute singularity. The same word describes how a husband and wife become "one flesh."'
+  },
+  {
+    title:'Bereshit — In The Beginning',
+    ref:'Bereshit (Genesis) 1:1',
+    words:[
+      {heb:'בְּרֵאשִׁית',translit:'bereshit',eng:'In the beginning'},
+      {heb:'בָּרָא',translit:'bara',eng:'created'},
+      {heb:'אֱלֹהִים',translit:'Elohim',eng:'Elohim'},
+      {heb:'אֵת',translit:'et',eng:'[direct object]'},
+      {heb:'הַשָּׁמַיִם',translit:'hashamayim',eng:'the heavens'},
+      {heb:'וְאֵת',translit:'ve-et',eng:'and'},
+      {heb:'הָאָרֶץ',translit:'ha-aretz',eng:'the earth'},
+    ],
+    note:'The untranslatable Aleph-Tav (את) appears — the first and last letters of the Hebrew alphabet. Yeshua declared "I am the Aleph and the Tav." This silent mark is in the very first verse of creation.'
+  },
+  {
+    title:'The Aaronic Blessing',
+    ref:'Bamidbar (Numbers) 6:24-26',
+    words:[
+      {heb:'יְבָרֶכְךָ',translit:'yevarechecha',eng:'May He bless you'},
+      {heb:'יַהְוֶה',translit:'Yahweh',eng:'Yahweh'},
+      {heb:'וְיִשְׁמְרֶךָ',translit:'veyishmerecha',eng:'and guard you'},
+      {heb:'יָאֵר',translit:"ya'er",eng:'May He shine'},
+      {heb:'יַהְוֶה',translit:'Yahweh',eng:'Yahweh'},
+      {heb:'פָּנָיו',translit:'panav',eng:'His face'},
+      {heb:'אֵלֶיךָ',translit:'elecha',eng:'toward you'},
+      {heb:'וִיחֻנֶּךָּ',translit:'vichuneka',eng:'and be gracious'},
+    ],
+    note:'The ancient priestly blessing Yahweh gave Moshe to bless the people. Notice His Name (Yahweh) is spoken three times — the triple blessing of the Father.'
+  },
+  {
+    title:'The Morning Ark Prayer',
+    ref:'Bamidbar (Numbers) 10:35',
+    words:[
+      {heb:'קוּמָה',translit:'kumah',eng:'Rise up!'},
+      {heb:'יַהְוֶה',translit:'Yahweh',eng:'Yahweh'},
+      {heb:'וְיָפֻצוּ',translit:'veyafutzu',eng:'and let scatter'},
+      {heb:'אֹיְבֶיךָ',translit:'oyevecha',eng:'Your enemies'},
+      {heb:'וְיָנֻסוּ',translit:'veyanusu',eng:'and let flee'},
+      {heb:'מְשַׂנְאֶיךָ',translit:"mesanecha",eng:'those who hate You'},
+    ],
+    note:'Prayed every morning when the Ark set out. YHOP prays this daily as a morning declaration of Yahweh\'s power going before His people.'
+  },
+];
+
+let readingInitialized = false;
+
+function initReading() {
+  readingInitialized = true;
+  const container = document.getElementById('reading-passages');
+  container.innerHTML = readingPassages.map((p,pi) => `
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:16px;">
+      <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--gold);margin-bottom:2px;">${p.title}</div>
+      <div style="font-size:11px;color:rgba(201,168,76,0.5);font-family:'Cinzel',serif;margin-bottom:14px;">${p.ref}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;direction:rtl;margin-bottom:14px;">
+        ${p.words.map(w => `
+          <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:8px 10px;text-align:center;min-width:50px;cursor:default;">
+            <div style="font-size:20px;color:var(--gold);line-height:1.2;margin-bottom:3px;">${w.heb}</div>
+            <div style="font-size:9px;color:rgba(201,168,76,0.5);font-style:italic;direction:ltr;margin-bottom:2px;">${w.translit}</div>
+            <div style="font-size:10px;color:rgba(245,222,179,0.65);direction:ltr;">${w.eng}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div style="font-size:13px;color:rgba(245,222,179,0.65);line-height:1.6;font-style:italic;border-left:2px solid rgba(201,168,76,0.3);padding-left:10px;">${p.note}</div>
+    </div>
+  `).join('');
+}
+
+// ── AMHARIC DATA ──
+const amharicWords = [
+  {amh:'አምላክ',ge_ez:'ʾamlāk',heb:'אֱלֹהִים',hebTrans:'Elohim',eng:'Elohim / God',connection:'Both refer to the Divine Creator. Amharic preserved this name through the Aksumite tradition.'},
+  {amh:'አባ',ge_ez:'ʾabbā',heb:'אָב',hebTrans:'av',eng:'Father',connection:'Directly cognate — Semitic root shared by both languages for thousands of years.'},
+  {amh:'ሰላም',ge_ez:'salām',heb:'שָׁלוֹם',hebTrans:'shalom',eng:'Peace / Wholeness',connection:'Salaam in Arabic, Shalom in Hebrew, Salam in Amharic — all from the same Semitic root meaning completeness.'},
+  {amh:'ወንጌል',ge_ez:"wangel",heb:'בְּשׂוֹרָה',hebTrans:'besorah',eng:'Good News / Gospel',connection:'The Ge\'ez "wangel" comes from the Greek, but Ethiopians received it while already holding Torah. They heard good news through a Hebrew lens.'},
+  {amh:'ኪዳን',ge_ez:"kidan",heb:'בְּרִית',hebTrans:'berit',eng:'Covenant',connection:'Both languages have a central word for covenant relationship with the Creator — the heart of both faiths.'},
+  {amh:'ጸሎት',ge_ez:"tsalot",heb:'תְּפִלָּה',hebTrans:'tefillah',eng:'Prayer',connection:'Ethiopian prayer (tsalot) is structured similarly to Hebrew prayer — set times, bowing, communal recitation. Same ancient practice.'},
+];
+
+const fidelChars = [
+  {char:'ሀ',name:'Ha',sound:'ha'},{char:'ለ',name:'Le',sound:'le'},{char:'ሐ',name:'He',sound:'he'},{char:'መ',name:'Me',sound:'me'},
+  {char:'ሠ',name:'Se',sound:'se'},{char:'ረ',name:'Re',sound:'re'},{char:'ሰ',name:'Se',sound:'si'},{char:'ቀ',name:'Qe',sound:'qe'},
+  {char:'በ',name:'Be',sound:'be'},{char:'ተ',name:'Te',sound:'te'},{char:'ነ',name:'Ne',sound:'ne'},{char:'አ',name:'A',sound:'a'},
+  {char:'ከ',name:'Ke',sound:'ke'},{char:'ወ',name:'We',sound:'we'},{char:'ዐ',name:'E',sound:"'e"},{char:'ዘ',name:'Ze',sound:'ze'},
+  {char:'የ',name:'Ye',sound:'ye'},{char:'ደ',name:'De',sound:'de'},{char:'ጀ',name:'Je',sound:'je'},{char:'ገ',name:'Ge',sound:'ge'},
+  {char:'ጰ',name:'Pe',sound:'pe'},{char:'ጸ',name:'Tse',sound:'tse'},{char:'ፀ',name:'Tse',sound:'tse'},{char:'ፈ',name:'Fe',sound:'fe'},
+  {char:'ፐ',name:'Pe',sound:'pe'},{char:'ቨ',name:'Ve',sound:'ve'},{char:'ሎ',name:'Lo',sound:'lo'},{char:'ሎ',name:'Lo',sound:'lo'},
+];
+
+let amharicInitialized = false;
+
+function initAmharic() {
+  amharicInitialized = true;
+  // Render shared words
+  const wordsEl = document.getElementById('amharic-words');
+  wordsEl.innerHTML = amharicWords.map(w => `
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div style="text-align:center;">
+          <div style="font-size:26px;color:#88A4E8;">${w.amh}</div>
+          <div style="font-size:9px;color:rgba(136,164,232,0.6);font-style:italic;">${w.ge_ez}</div>
+          <div style="font-size:9px;color:rgba(245,222,179,0.4);font-family:'Cinzel',serif;">AMHARIC</div>
+        </div>
+        <div style="font-size:20px;color:rgba(201,168,76,0.4);">⟷</div>
+        <div style="text-align:center;">
+          <div style="font-size:26px;color:var(--gold);direction:rtl;">${w.heb}</div>
+          <div style="font-size:9px;color:rgba(201,168,76,0.6);font-style:italic;">${w.hebTrans}</div>
+          <div style="font-size:9px;color:rgba(245,222,179,0.4);font-family:'Cinzel',serif;">HEBREW</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:0 8px;">
+          <div style="font-size:13px;color:var(--cream);margin-bottom:4px;">${w.eng}</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:rgba(245,222,179,0.55);font-style:italic;border-top:1px solid rgba(201,168,76,0.08);padding-top:8px;">${w.connection}</div>
+    </div>
+  `).join('');
+
+  // Render Fidel grid
+  const fidelEl = document.getElementById('fidel-grid');
+  fidelEl.innerHTML = fidelChars.slice(0,20).map(f => `
+    <div style="background:rgba(136,164,232,0.08);border:1px solid rgba(136,164,232,0.2);border-radius:8px;padding:10px 6px;text-align:center;">
+      <div style="font-size:22px;color:#88A4E8;">${f.char}</div>
+      <div style="font-size:9px;color:rgba(136,164,232,0.6);font-family:'Cinzel',serif;">${f.name}</div>
+      <div style="font-size:9px;color:rgba(245,222,179,0.4);">${f.sound}</div>
+    </div>
+  `).join('');
+}
+
+async function askAmharicAI() {
+  const input = document.getElementById('amharic-ai-input');
+  const output = document.getElementById('amharic-ai-output');
+  const question = input.value.trim();
+  if(!question) return;
+  input.value = '';
+  output.innerHTML = '<span style="color:rgba(201,168,76,0.5);font-style:italic;">Searching ancient connections...</span>';
+  try {
+    const response = await fetch('/.netlify/functions/claude', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:800,
+        system:`You are a scholar of Amharic, Ge'ez, and Biblical Hebrew for Yahweh's House of Prayer — a Hebrew Roots / Ebionite congregation. You specialize in the deep connection between Ethiopian faith tradition and Hebrew scripture. Always use sacred names: Yahweh, Yeshua, Moshe. Highlight Semitic language connections, the Ethiopian Orthodox 81-book canon, the Kebra Nagast, and the Ge'ez Fidel script's relationship to ancient Semitic writing. Keep responses warm, educational, and concise.`,
+        messages:[{role:'user',content:question}]
+      })
+    });
+    const data = await response.json();
+    output.innerHTML = (data.content?.[0]?.text || 'Shalom! Please ask about Amharic-Hebrew connections.').replace(/\n/g,'<br/>');
+  } catch(e) {
+    output.innerHTML = 'Shalom! Both Amharic and Hebrew descend from Proto-Semitic roots — they are language cousins. The Ge\'ez Fidel script, like Hebrew, writes right-to-left and encodes consonants with vowel markings. Ask a specific question for a deeper study.';
+  }
 }
 
 // ── PRAYER CATS ──
@@ -1195,11 +1853,101 @@ const textStudyData = {
     suggestions: ['Where is Jasher cited in Torah?', 'What extra details does Jasher give about Avraham?', "Jasher's account of Moshe's birth", 'Is Jasher authentic scripture?', "Jasher and the Tower of Babel account"],
     systemPrompt: `You are a specialist AI scholar of the Book of Jasher (Sefer HaYashar) for Yahweh's House of Prayer — a Hebrew Roots congregation in the Ebionite/Nazarene tradition.\n\nYou specialize in: The Book of Jasher's content and structure, its citations in Yehoshua 10:13 and 2 Shemuel 1:18, expanded patriarchal narratives (Avraham, Yitzhak, Yaakov), the account of Yosef in Egypt, the birth and life of Moshe with additional details, the Exodus period, authenticity debates, and how Jasher complements and expands the Torah narrative.\n\nKey principle: The fact that Yahweh's own Word cites this book gives it authority and credibility. Approach it as a legitimate ancient source that fills in Torah narrative gaps.\n\nALWAYS use Hebrew names (Avraham, Yitzhak, Yaakov, Moshe, Yosef, Yehoshua). Keep responses warm, educational, and concise for mobile reading.`
   },
+  'kebra-nagast': {
+    title: 'Kebra Nagast',
+    sub: 'ክብረ ነገሥት · Glory of Kings',
+    icon: '🦁',
+    badge: 'free',
+    greeting: `Shalom! I am your Kebra Nagast study companion — guide to one of the most profound sacred texts of the African covenant tradition.\n\nThe Kebra Nagast ("Glory of Kings" in Ge'ez) reveals that the Ark of the Covenant was brought to Ethiopia by Menelik I — the son born to King Shlomo and Makeda, the Queen of Sheba. This is not mythology but tradition preserved for thousands of years by the Ethiopian Orthodox Church, which has maintained a replica of the Ark in every church since ancient times.\n\nThe Kebra Nagast establishes that the covenant of Yahweh extends through Africa — the Ethiopian people are part of the covenant family of Yisrael. This truth was suppressed in Western Christianity but preserved faithfully in Ethiopia.\n\nWhat would you like to explore?`,
+    suggestions: ['What happened when the Queen of Sheba met Shlomo?', 'How was the Ark brought to Ethiopia?', 'Where is the Ark of the Covenant today?', 'What does Kebra Nagast say about Yeshua?', 'Ethiopian covenant connection to Yisrael'],
+    systemPrompt: `You are a specialist AI scholar of the Kebra Nagast for Yahweh's House of Prayer — a Hebrew Roots congregation led by B'deyah Ben Benyamin and Sh'muyl Ben Yahdah.\n\nSpecialize in: The narrative of Queen Makeda and King Shlomo, the birth of Menelik I, the transfer of the Ark to Ethiopia, Ethiopian covenant identity as heirs of Yisrael, and the African dimensions of Hebrew scripture.\n\nKey insight: The Kebra Nagast is deeply relevant to YHOP — a predominantly Black congregation reclaiming Hebrew covenant identity. Ethiopia's covenant with Yahweh predates Rome's Christianity by centuries.\n\nALWAYS use Hebrew names (Shlomo, Makeda, Yahweh, Yeshua). Keep responses warm and educational.`
+  },
+  'fetha-nagast': {
+    title: 'Fetha Nagast',
+    sub: 'ፍትሐ ነገሥት · Law of the Kings',
+    icon: '⚖️',
+    badge: 'free',
+    greeting: `Shalom! I am your Fetha Nagast study companion — guide to Ethiopia's ancient sacred law code.\n\nThe Fetha Nagast (ፍትሐ ነገሥት — "Law of the Kings") governed Christian Ethiopia for over 500 years. It combines ecclesiastical and civil law — treating all of life as belonging to Yahweh, exactly like Torah.\n\nChapter II of the Fetha Nagast explicitly declares the 81-book Ethiopian canon authoritative — confirming Enoch, Jubilees, and the other books as recognized scripture. Emperor Haile Selassie's 20th century law codes explicitly referenced it as foundational.\n\nWhat would you like to study?`,
+    suggestions: ['What is the Fetha Nagast?', 'What does it say about the 81-book canon?', 'How does it compare to Torah law?', 'What are the rights and duties of the king?', 'How was it used in Ethiopian history?'],
+    systemPrompt: `You are a specialist AI scholar of the Fetha Nagast for Yahweh's House of Prayer — a Hebrew Roots congregation.\n\nSpecialize in: The Fetha Nagast's two-part structure (ecclesiastical + civil), its declaration of the 81-book Ethiopian canon, its roots in Coptic and Torah legal tradition, its use in Ethiopian governance from the 15th-20th centuries, and how it models Torah as the governing principle of ALL life.\n\nALWAYS use Hebrew names. Keep responses educational.`
+  },
+  'sinodos': {
+    title: 'Sinodos',
+    sub: 'ሲኖዶስ · Apostolic Canons of Ethiopia',
+    icon: '📋',
+    badge: 'free',
+    greeting: `Shalom! I am your Sinodos study companion — guide to the ancient Ethiopian canon law collection.\n\nThe Sinodos (ሲኖዶስ) is the earliest and most important Ethiopian canon law collection, fixed around the beginning of the 14th century. It contains four sets of Apostolic Canons — the rules by which the original apostolic assembly governed itself.\n\nMost significantly, the Sinodos contains the EARLIEST formulation of the Ethiopian 81-book Biblical canon. It preserves the Aksumite church tradition — Christianity in Ethiopia predates Rome's Christianization and certainly predates the Council of Nicaea in 325 CE.\n\nWhat would you like to explore?`,
+    suggestions: ['What are the Apostolic Canons?', 'How does Sinodos define the 81-book canon?', 'What is the Aksumite church tradition?', 'How does Sinodos compare to Roman canons?', 'What worship practices does it prescribe?'],
+    systemPrompt: `You are a specialist AI scholar of the Ethiopian Sinodos for Yahweh's House of Prayer.\n\nSpecialize in: The Sinodos as Ethiopia's earliest canon law collection, its four sets of Apostolic Canons, its formulation of the 81-book canon, the Aksumite church tradition, and its contrast with Roman Catholic canon decisions.\n\nKey insight: The Sinodos represents apostolic tradition preserved OUTSIDE Roman influence — closer to the original Hebrew Roots assembly. It is Torah-observant and recognizes the full Ethiopian canon.\n\nALWAYS use sacred names. Keep responses warm and educational.`
+  },
+  'didascalia': {
+    title: 'Ethiopic Didascalia',
+    sub: 'ዲዳስቃልያ · Apostolic Teachings',
+    icon: '🕊️',
+    badge: 'free',
+    greeting: `Shalom! I am your Didascalia study companion — guide to one of the earliest apostolic teaching documents preserved in the Ethiopian tradition.\n\nThe Didascalia is an early church order document — a manual for how the original assembly of Yeshua's followers organized their worship, resolved disputes, cared for the poor, and governed their communities.\n\nThe Ethiopic version preserves elements not found in Greek, Syriac, or Latin recensions. The Didascalia covers Shabbat observance, the treatment of widows and orphans, bishop and deacon roles, and how the community responds to persecution.\n\nThis connects directly to YHOP's own community structure and IDH housing mission. What would you like to study?`,
+    suggestions: ['What does Didascalia say about Shabbat?', 'How did the early assembly handle disputes?', 'What are the roles of bishops and deacons?', 'How does it describe care for the poor?', 'What makes the Ethiopian version unique?'],
+    systemPrompt: `You are a specialist AI scholar of the Ethiopic Didascalia for Yahweh's House of Prayer.\n\nSpecialize in: Shabbat and feast day observance in the early assembly, care for widows and orphans (connecting to YHOP's IDH housing mission), community governance, the unique Ethiopian recension elements, and its relevance to modern Torah-observant communities.\n\nKey connection: The Didascalia describes a Shabbat-observing, Torah-honoring community — exactly what YHOP is. It shows the original assembly was NOT following Sunday worship.\n\nALWAYS use sacred names. Keep responses warm and practical.`
+  },
+  'ethiopian-gospels': {
+    title: 'Ethiopian Gospels',
+    sub: "ወንጌል · Ancient Ge'ez Gospel Tradition",
+    icon: '✝️',
+    badge: 'free',
+    greeting: `Shalom! I am your Ethiopian Gospels study companion — guide to the Gospels as preserved in the ancient Ge'ez language of Ethiopia.\n\nThe Ge'ez Bible has roots in the 4th century Aksumite era — when Ethiopia became one of the FIRST nations to adopt the faith of Yeshua, well before Rome. The Ethiopian Gospels contain textual variants and additional readings not found in Greek or Latin traditions.\n\nStudying the Ethiopian Gospels alongside Greek and Aramaic texts gives us a fuller picture of the original Good News — preserved through African covenant tradition rather than Roman political transmission. What would you like to explore?`,
+    suggestions: ["How old is the Ge'ez Bible?", 'What unique readings does it contain?', 'How does Ethiopian Matthew differ?', 'What language did the earliest believers use?', 'Ethiopian Gospel tradition and Hebrew Roots'],
+    systemPrompt: `You are a specialist AI scholar of the Ethiopian Gospels (Ge'ez tradition) for Yahweh's House of Prayer.\n\nSpecialize in: The Ge'ez language as an ancient Semitic liturgical language, the 4th century Aksumite adoption of the faith, unique textual variants in Ethiopian Gospel manuscripts, comparison between Ge'ez, Greek, and Aramaic traditions, and the theological significance of African Gospel preservation.\n\nALWAYS use sacred names (Yeshua, Yahweh, Moshe). Keep responses scholarly but accessible.`
+  },
+  'apocrypha-100': {
+    title: '100 Books of the Apocrypha',
+    sub: 'Hidden Books · Suppressed Scripture',
+    icon: '📚',
+    badge: 'free',
+    greeting: `Shalom! I am your Apocrypha study companion — guide to the books systematically removed from Western Bibles.\n\nBetween the Council of Nicaea (325 CE) and the Protestant Reformation (1500s), church councils progressively narrowed the Biblical canon — removing books that Torah-observant followers of Yeshua had read for centuries.\n\nThese include Jubilees, Jasher, 1-4 Maccabees, Psalms of Solomon, Odes of Solomon, Testament of the Twelve Patriarchs, the Book of Adam and Eve, and dozens more. Many were preserved ONLY in the Ethiopian Orthodox Church. The Dead Sea Scrolls confirm several were treated as authoritative at Qumran.\n\nWhat would you like to explore?`,
+    suggestions: ['Why were books removed from the Bible?', 'What is the Book of Jubilees?', 'What is the Testament of the Twelve Patriarchs?', 'Which books were found at Qumran?', 'How does the Ethiopian canon preserve these?'],
+    systemPrompt: `You are a specialist AI scholar of the Apocryphal texts for Yahweh's House of Prayer.\n\nSpecialize in: Books removed from Western canons, the Ethiopian 81-book canon's preservation, Dead Sea Scrolls confirmation of ancient authority (especially Jubilees and Enoch), the political history of canon-narrowing, and the theological value of each apocryphal book for Hebrew Roots study.\n\nKey principle: These books were not invented — they were REMOVED. The Ethiopian Orthodox Church and the Qumran community both treated many as authoritative. YHOP recognizes the 81-book canon.\n\nALWAYS use Hebrew names. Keep responses educational.`
+  },
+  'testament-lord': {
+    title: 'Testament of Our Master',
+    sub: 'Testamentum Domini — 2nd Century',
+    icon: '📜',
+    badge: 'free',
+    greeting: `Shalom! I am your study companion for the Testament of Our Master (Testamentum Domini) — one of the most remarkable early church documents most Western Christians have never heard of.\n\nThis text claims to record Yeshua's post-resurrection instructions to His disciples — covering assembly organization, worship times, fasting, the role of the Ruach HaQodesh, and community governance.\n\nPreserved in Ethiopic, Syriac, and Arabic, it describes an assembly that:\n• Prays at the third, sixth, and ninth hours (ancient Hebrew prayer times)\n• Observes Shabbat from Friday evening\n• Fasts on the 4th day and the Preparation (6th day)\n• Gathers at sunrise facing East toward Yerushalayim\n\nThis IS the Hebrew Roots assembly. What would you like to study?`,
+    suggestions: ['What prayer times does it prescribe?', 'How does it describe Shabbat worship?', 'What does it say about the Ruach HaQodesh?', 'What are the roles of bishops and deacons?', 'How does this compare to modern church practice?'],
+    systemPrompt: `You are a specialist AI scholar of the Testamentum Domini for Yahweh's House of Prayer.\n\nSpecialize in: The Testament's prayer time instructions (third, sixth, ninth hour), Shabbat observance, community governance, preservation in Ethiopia/Syria/Arabia, and contrast with modern church practice.\n\nKey insight: The Testamentum Domini describes exactly what YHOP practices — Shabbat, Hebrew prayer times, covenant community governance. This shows YHOP practices the ORIGINAL faith.\n\nALWAYS use sacred names. Keep responses practical and relevant.`
+  },
+  'book-of-enoch': {
+    title: 'Book of Enoch',
+    sub: 'መጽሐፈ ሄኖክ · 1 Enoch',
+    icon: '👁️',
+    badge: 'free',
+    greeting: `Shalom! I am your Book of Enoch study companion — guide to one of the most remarkable texts in all of ancient Yisraelite literature.\n\nThe Book of Enoch (1 Enoch) was preserved ONLY in the Ethiopian Orthodox Bible — lost to the Western church for over 1,000 years until rediscovered in Ethiopia in the 1770s by Scottish explorer James Bruce.\n\nYet it was never truly lost — it is directly quoted in the Epistle of Yehudah (Jude 14-15): "Enoch, the seventh from Adam, prophesied saying, 'Behold, Yahweh comes with ten thousands of His holy ones...'" This means Enoch was considered authoritative scripture by at least one apostolic writer.\n\nEnoch reveals: The Watcher angels who fell and took human wives, the Nephilim giants, detailed visions of Messianic judgment, the heavenly Bet HaMikdash (Temple), and cosmic secrets about creation. What would you like to explore?`,
+    suggestions: ['Who were the Watcher angels?', 'What are the Nephilim?', "Enoch's vision of the Messiah", 'How is Enoch quoted in the Bible?', 'Why was Enoch removed from Western Bibles?'],
+    systemPrompt: `You are a specialist AI scholar of the Book of Enoch (1 Enoch) for Yahweh's House of Prayer — a Hebrew Roots congregation.\n\nSpecialize in: The Watcher angels (chapters 1-36), the astronomical sections (72-82), the Dream Visions (83-90), the Epistle of Enoch (91-108), Enoch's Messianic visions, its citation in Yehudah (Jude), its preservation in the Ethiopian canon, and its discovery by James Bruce in 1770.\n\nALWAYS use Hebrew names. Keep responses educational and grounded in scripture connections.`
+  },
+  'dead-sea-scrolls': {
+    title: 'Dead Sea Scrolls',
+    sub: 'Qumran · The Ancient Manuscripts',
+    icon: '📜',
+    badge: 'free',
+    greeting: `Shalom! I am your Dead Sea Scrolls study companion. Discovered between 1947 and 1956 in caves near Qumran, the Dead Sea Scrolls are the most significant archaeological discovery in biblical history — manuscripts over 2,000 years old, written by a Torah-observant community who rejected the corruption of the Jerusalem priesthood.\n\nThey contain every book of the Hebrew scriptures (except Esther), the Book of Enoch, the Book of Jubilees, the Community Rule, the War Scroll, and many other texts illuminating the world Yeshua was born into.\n\nWhat would you like to study?`,
+    suggestions: ['What are the most important DSS texts?', 'What did the Qumran community believe?', 'DSS and the Book of Enoch', 'How do DSS confirm Hebrew Bible accuracy?', "DSS and Yeshua's time period"],
+    systemPrompt: `You are a specialist AI scholar of the Dead Sea Scrolls for Yahweh's House of Prayer — a Hebrew Roots congregation.\n\nSpecialize in: The major scroll collections (Isaiah Scroll, Community Rule, War Scroll, Temple Scroll, Copper Scroll), the Qumran community's Torah-observant beliefs, how the scrolls confirm the Hebrew text, the Books of Enoch and Jubilees found at Qumran, and connections to Yeshua's Second Temple world.\n\nALWAYS use Hebrew names. Keep responses educational and grounded.`
+  },
+  'ebionite': {
+    title: 'Ebionite Tradition',
+    sub: 'אֶבְיוֹנִים · The Poor Ones',
+    icon: '🕎',
+    badge: 'free',
+    greeting: `Shalom! I am your Ebionite study companion — guide to the original Hebrew followers of Yeshua.\n\nThe Ebionites (from the Hebrew אֶבְיוֹנִים — "the poor ones") were the earliest followers of Yeshua — Torah-observant Yisraelites who believed Yeshua was the Messiah while continuing to keep Shabbat, observe the feasts of Yahweh, and follow Torah. They are the original Hebrew Roots community.\n\nThey were eventually declared "heretical" by the Roman church — not because they were wrong, but because they refused to abandon Torah observance for Greek philosophy. The Ebionite tradition is the direct ancestor of what YHOP practices today.\n\nWhat would you like to explore?`,
+    suggestions: ['Who were the Ebionites?', 'Why were they called heretics?', 'What did Ebionites believe about Yeshua?', 'Ebionites and Torah observance', 'Connection between Ebionites and YHOP'],
+    systemPrompt: `You are a specialist AI scholar of the Ebionite tradition for Yahweh's House of Prayer — itself an Ebionite/Nazarene congregation led by B'deyah Ben Benyamin and Sh'muyl Ben Yahdah.\n\nSpecialize in: The Ebionite identity as Torah-observant followers of Yeshua, their rejection by the Roman church, their use of a Hebrew Gospel of Matthew, their Shabbat and feast observance, the Nazarene sect's relationship to Ebionites, and how the YHOP congregation directly continues this ancient tradition.\n\nKey insight: YHOP is not a modern innovation — it is a continuation of the original faith. The Ebionites were the FIRST followers of Yeshua. Make this connection vivid and personal.\n\nALWAYS use Hebrew names. Keep responses warm and empowering.`
+  },
   'psalms-solomon': {
     title: 'Psalms of Solomon',
     sub: 'פסלמי שלמה · ~50 B.C.',
     icon: '👑',
-    badge: 'premium',
+    badge: 'free',
     greeting: `Shalom! I am your Psalms of Solomon study companion — guide to one of the most powerful Messianic texts of the Second Temple period.\n\nThe Psalms of Solomon are 18 psalms written around 50 B.C. — just decades before the birth of Yeshua. They were written in the aftermath of the Roman general Pompey's conquest of Yerushalayim in 63 B.C. — a devastating national trauma for Yisrael.\n\nThese psalms are a passionate cry to Yahweh for the coming Messiah — specifically a Messianic king from the line of Dawid who would liberate Yisrael from foreign oppression. They would have been ACTIVELY circulating and being read when Yeshua was a young man in Natzeret around 15 A.D.\n\nThey show us exactly what devout Yisraelites were expecting and praying for in the Messiah. What would you like to study?`,
     suggestions: ['What is Psalm of Solomon 17?', 'How do these psalms describe the Messiah?', 'Were these read at the time of Yeshua?', 'Who wrote the Psalms of Solomon?', 'Connection to Yeshua as Messiah'],
     systemPrompt: `You are a specialist AI scholar of the Psalms of Solomon for Yahweh's House of Prayer — a Hebrew Roots congregation in the Ebionite/Nazarene tradition.\n\nYou specialize in: The historical context of the Psalms of Solomon (written ~50 B.C. after Rome's conquest), their Messianic theology especially Psalm 17's description of the coming king, their circulation during the Second Temple period and likely familiarity to Yeshua's contemporaries, the Pharisaic or pious Jewish community that wrote them, and how they connect to Yeshua's actual ministry and self-understanding.\n\nKey insight: Psalm 17 is the most detailed Messianic psalm outside of the canonical Tehillim — it describes the Son of Dawid who will purge Yerushalayim of Gentile oppressors, gather the tribes of Yisrael, and reign in righteousness. This is what 1st century Yisraelites EXPECTED when they heard "Messiah."\n\nALWAYS use Hebrew names. Keep responses educational and concise for mobile reading.`
@@ -1208,7 +1956,7 @@ const textStudyData = {
     title: 'Wisdom of Ben Sira',
     sub: 'סֵפֶר בֶּן סִירָא · Sirach',
     icon: '📖',
-    badge: 'premium',
+    badge: 'free',
     greeting: `Shalom! I am your Ben Sira study companion — guide to one of the most beloved wisdom texts of ancient Yisrael.\n\nThe Wisdom of Ben Sira (also called Sirach or Ecclesiasticus) was written around 180 B.C. by Yehoshua Ben Eleazar Ben Sira — a Torah scholar and scribe in Yerushalayim. By 15 A.D., this book had been read in synagogues for nearly 200 years.\n\nBen Sira believed deeply that Wisdom and Torah are one — that the wisdom Yahweh wove into creation from the beginning is the same Torah He gave to Yisrael at Sinai. This is a powerfully Hebrew Roots concept.\n\nThe book is included in the Ethiopian Orthodox Bible canon (81 books), the Catholic and Orthodox canons, and was widely used in Second Temple Judaism. It was found among the Dead Sea Scrolls at Masada, confirming its ancient authority.\n\nWhat would you like to explore?`,
     suggestions: ['What is Ben Sira chapter 24 about?', 'How does Ben Sira connect Wisdom and Torah?', 'What does Ben Sira say about women?', 'Ben Sira and the Ethiopian Orthodox Bible', 'Was Ben Sira found in Dead Sea Scrolls?'],
     systemPrompt: `You are a specialist AI scholar of the Wisdom of Ben Sira (Sirach/Ecclesiasticus) for Yahweh's House of Prayer — a Hebrew Roots congregation in the Ebionite/Nazarene tradition.\n\nYou specialize in: The historical context of Ben Sira (~180 B.C.), its theology of Wisdom = Torah (especially chapters 1 and 24), practical ethical wisdom, the book's wide use in Second Temple Judaism and synagogues, its inclusion in the Ethiopian Orthodox 81-book Bible, its discovery among the Dead Sea Scrolls at Masada, and its connection to Hebrew Roots theology.\n\nKey insight: Ben Sira 24 is one of the most important chapters — it personifies Wisdom as dwelling in Yisrael and equates her with the Torah of Moshe. This directly supports the Hebrew Roots understanding that Torah is eternal divine wisdom, not a temporary Jewish law.\n\nALWAYS use Hebrew names. Keep responses warm, scholarly, and concise for mobile reading.`
@@ -1343,18 +2091,37 @@ function handleTextKey(e) {
 const ilBooksOT = [
   'Bereshit (Genesis)','Shemot (Exodus)','Vayikra (Leviticus)','Bamidbar (Numbers)','Devarim (Deuteronomy)',
   'Yehoshua (Joshua)','Shoftim (Judges)','Rut (Ruth)','1 Shemuel','2 Shemuel',
-  '1 Melakhim (Kings)','2 Melakhim','Tehillim (Psalms)','Mishle (Proverbs)','Iyov (Job)',
-  'Yeshayahu (Isaiah)','Yirmeyahu (Jeremiah)','Yechezkel (Ezekiel)','Daniyel (Daniel)','Hoshea'
+  '1 Melakhim (Kings)','2 Melakhim','1 Divrei HaYamim','2 Divrei HaYamim',
+  'Ezra','Nechemiah','Ester','Iyov (Job)','Tehillim (Psalms)','Mishle (Proverbs)',
+  'Kohelet (Ecclesiastes)','Shir HaShirim (Song of Songs)','Yeshayahu (Isaiah)',
+  'Yirmeyahu (Jeremiah)','Eichah (Lamentations)','Yechezkel (Ezekiel)',
+  'Daniyel (Daniel)','Hoshea','Yoel','Amos','Ovadyah','Yonah','Michah',
+  'Nachum','Chavakuk','Tzefanyah','Chaggai','Zechariah','Malachi'
 ];
 const ilBooksNT = [
   'Mattityahu (Matthew)','Marqus (Mark)','Luqa (Luke)','Yochanan (John)','Acts',
-  'Yaakov (James)','1 Kefa (Peter)','2 Kefa','1 Yochanan','Revelation'
+  'Romans','1 Corinthians','2 Corinthians','Galatians','Ephesians','Philippians',
+  'Colossians','1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy',
+  'Titus','Philemon','Hebrews','Yaakov (James)','1 Kefa (Peter)','2 Kefa',
+  '1 Yochanan','2 Yochanan','3 Yochanan','Yehudah (Jude)','Revelation'
+];
+const ilBooksEthiopian = [
+  'Bereshit (Genesis)','Shemot (Exodus)','Vayikra (Leviticus)','Bamidbar (Numbers)','Devarim (Deuteronomy)',
+  'Tehillim (Psalms)','Mishle (Proverbs)','Yeshayahu (Isaiah)',
+  'Mattityahu (Matthew)','Marqus (Mark)','Luqa (Luke)','Yochanan (John)',
+  '1 Enoch','Jubilees','Sirach (Ben Sira)','Tobit','Judith',
+  '1 Maccabees','2 Maccabees','3 Maccabees','4 Maccabees',
+  'Psalms of Solomon','Odes of Solomon','Book of Jasher',
+  'Kebra Nagast Selections','Sinodos Canons'
 ];
 const ilChaptersMap = {
   'Bereshit (Genesis)':50,'Shemot (Exodus)':40,'Vayikra (Leviticus)':27,'Bamidbar (Numbers)':36,
   'Devarim (Deuteronomy)':34,'Tehillim (Psalms)':150,'Yeshayahu (Isaiah)':66,
-  'Yirmeyahu (Jeremiah)':52,'Mattityahu (Matthew)':28,'Marqus (Mark)':16,
-  'Luqa (Luke)':24,'Yochanan (John)':21,'Acts':28,'Yaakov (James)':5,'Revelation':22
+  'Yirmeyahu (Jeremiah)':52,'Yechezkel (Ezekiel)':48,'Daniyel (Daniel)':12,
+  'Mattityahu (Matthew)':28,'Marqus (Mark)':16,'Luqa (Luke)':24,'Yochanan (John)':21,
+  'Acts':28,'Romans':16,'Hebrews':13,'Yaakov (James)':5,'Revelation':22,
+  '1 Enoch':108,'Jubilees':50,'Sirach (Ben Sira)':51,'1 Maccabees':16,
+  'Kebra Nagast Selections':30,'Sinodos Canons':10
 };
 
 let ilSource = 'hebrew-ot';
@@ -1487,20 +2254,22 @@ function initInterlinear() {
 function populateILBooks() {
   const select = document.getElementById('ilBookSelect');
   select.innerHTML = '';
-  const books = ilSource === 'hebrew-ot' ? ilBooksOT : ilBooksNT;
+  let books;
+  if(ilSource === 'hebrew-ot' || ilSource === 'esv-interlinear') books = ilBooksOT;
+  else if(ilSource === 'geez') books = ilBooksEthiopian;
+  else books = ilBooksNT;
   books.forEach(b => {
     const opt = document.createElement('option');
     opt.value = b; opt.textContent = b;
     select.appendChild(opt);
   });
-  // Default to first book with data
   const sourceData = ilWordData[ilSource];
   if(sourceData) {
     const firstBook = Object.keys(sourceData)[0];
-    if(firstBook) {
-      select.value = firstBook;
-      ilCurrentBook = firstBook;
-    }
+    if(firstBook) { select.value = firstBook; ilCurrentBook = firstBook; }
+  } else {
+    ilCurrentBook = books[0];
+    select.value = books[0];
   }
 }
 
@@ -1528,6 +2297,29 @@ function loadILChapter() {
   document.getElementById('ilChapterNum').textContent = ilCurrentChapter;
   const container = document.getElementById('ilScroll');
 
+  // For ESV Interlinear and Ge'ez — use AI-powered generation
+  if(ilSource === 'esv-interlinear' || ilSource === 'geez') {
+    container.innerHTML = `
+      <div style="padding:20px 16px;">
+        <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:16px;margin-bottom:16px;text-align:center;">
+          <div style="font-size:11px;font-family:'Cinzel',serif;color:var(--gold);letter-spacing:0.1em;margin-bottom:6px;">
+            ${ilSource === 'esv-interlinear' ? '📖 ESV INTERLINEAR · HEBREW-ENGLISH' : "🇪🇹 GE'EZ · ETHIOPIC SCRIPTURE"}
+          </div>
+          <div style="font-family:'Cinzel Decorative',serif;font-size:15px;color:var(--gold-pale);">${ilCurrentBook} ${ilCurrentChapter}</div>
+        </div>
+        <div id="esv-ai-output" style="font-size:14px;color:rgba(245,222,179,0.8);line-height:1.8;"></div>
+        <div style="text-align:center;margin-top:16px;">
+          <button onclick="loadESVChapterAI()" style="padding:12px 28px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--gold-dim),var(--gold));font-family:'Cinzel',serif;font-size:12px;color:var(--ink);cursor:pointer;letter-spacing:0.08em;">
+            ✦ Generate Interlinear with AI
+          </button>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:rgba(245,222,179,0.4);text-align:center;font-style:italic;">
+          AI will generate a full word-by-word breakdown from the ESV Interlinear data
+        </div>
+      </div>`;
+    return;
+  }
+
   const sourceData = ilWordData[ilSource];
   const bookData = sourceData?.[ilCurrentBook]?.[ilCurrentChapter];
 
@@ -1537,11 +2329,10 @@ function loadILChapter() {
         <div style="font-size:40px;margin-bottom:16px;">📜</div>
         <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--gold);margin-bottom:8px;">${ilCurrentBook} ${ilCurrentChapter}</div>
         <div style="font-size:13px;color:rgba(245,222,179,0.5);line-height:1.7;margin-bottom:20px;">
-          This chapter's interlinear data is being prepared.<br/>
-          The full database will be available in the complete app release.<br/><br/>
-          <span style="font-style:italic;">Try Bereshit (Genesis) Chapter 1 for Hebrew OT,<br/>Yochanan (John) Ch. 1 or Mattityahu Ch. 5 for NT.</span>
+          Full interlinear data for this chapter is being added.<br/>
+          <span style="font-style:italic;">Try Bereshit Ch. 1 (Hebrew OT), Yochanan Ch. 1 or Mattityahu Ch. 5 (NT)</span>
         </div>
-        <button class="daily-btn" onclick="switchTab('ai')">Study with AI instead →</button>
+        <button class="daily-btn" onclick="quickAIStudy('${ilCurrentBook}','${ilCurrentChapter}','${ilSource}')">✦ AI Study This Chapter →</button>
       </div>`;
     return;
   }
@@ -1565,6 +2356,48 @@ function loadILChapter() {
   });
   container.innerHTML = html;
   container.scrollTop = 0;
+}
+
+async function loadESVChapterAI() {
+  const output = document.getElementById('esv-ai-output');
+  const btn = output.nextElementSibling.querySelector('button');
+  if(btn) btn.textContent = 'Generating...';
+  output.innerHTML = '<div style="text-align:center;padding:20px;"><div style="font-size:11px;color:rgba(201,168,76,0.5);font-family:\'Cinzel\',serif;letter-spacing:0.1em;">LOADING INTERLINEAR DATA...</div></div>';
+
+  const sourceLabel = ilSource === 'geez' ? "Ge'ez Ethiopian Scriptures" : 'ESV Hebrew-English Interlinear';
+  const prompt = `Generate a word-by-word interlinear breakdown of ${ilCurrentBook} Chapter ${ilCurrentChapter} from the ${sourceLabel}. For each key verse (do the first 5 verses), show:
+- The verse number
+- Each significant word in its original script (Hebrew for OT, Ge'ez/Amharic characters if Ethiopic)
+- Transliteration
+- English meaning
+- A brief note on the Hebrew Roots theological significance
+
+Use Hebrew sacred names only: Yahweh, Yeshua, Moshe, Yisrael. Format clearly for mobile reading. Focus on the most spiritually significant words.`;
+
+  try {
+    const response = await fetch('/.netlify/functions/claude', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514', max_tokens:1200,
+        system:`You are a Biblical Hebrew, Aramaic, and Ge'ez language scholar for Yahweh's House of Prayer — a Hebrew Roots/Ebionite congregation. Generate beautiful, educational interlinear breakdowns that reveal the depth of scripture hidden in the original languages. Always use Hebrew names (Yahweh, Yeshua, Moshe). Format your response with clear verse numbers, original script words, transliterations, and theological insights.`,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await response.json();
+    output.innerHTML = (data.content?.[0]?.text || '').replace(/\n/g,'<br/>').replace(/\*\*(.*?)\*\*/g,'<strong style="color:var(--gold)">$1</strong>');
+    if(btn) btn.textContent = '↺ Regenerate';
+  } catch(e) {
+    output.innerHTML = `<div style="font-style:italic;color:rgba(245,222,179,0.5);">Connect to the Netlify proxy to generate live interlinear content. The AI will produce a full Hebrew Roots word study for ${ilCurrentBook} ${ilCurrentChapter}.</div>`;
+    if(btn) btn.textContent = '✦ Generate Interlinear with AI';
+  }
+}
+
+async function quickAIStudy(book, chapter, source) {
+  switchTab('ai');
+  const lang = source === 'hebrew-ot' ? 'Hebrew OT' : source === 'peshitta-nt' ? 'Aramaic Peshitta' : 'Greek NT';
+  document.getElementById('chatInput').value = `Please give me a Hebrew Roots word study of ${book} Chapter ${chapter} from the ${lang}. What are the key Hebrew/Aramaic words, what do the original languages reveal, and what is the Ebionite/Nazarene significance?`;
+  sendMessage();
 }
 
 function showWordPanel(verseNum, wordIdx) {
@@ -1690,7 +2523,20 @@ window.switchTab = function(tab) {
   }
 };
 
-// all content free — premium functions removed
+// ── PREMIUM MODAL ──
+function openPremium() {
+  document.getElementById('premiumModal').classList.add('open');
+}
+function closePremium() {
+  document.getElementById('premiumModal').classList.remove('open');
+}
+function closePremiumOutside(e) {
+  if(e.target === document.getElementById('premiumModal')) closePremium();
+}
+function selectPlan(card) {
+  document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+}
 
 // ── COUNTDOWN TIMER ──
 function updateCountdown() {
