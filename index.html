@@ -278,50 +278,11 @@ section{padding:80px 24px;max-width:1000px;margin:0 auto;}
 .shabbat-box p{font-size:16px;color:var(--gold-pale);opacity:0.9;margin-bottom:6px;}
 .shabbat-box .shabbat-times{font-family:'Cinzel',serif;font-size:13px;letter-spacing:0.15em;color:var(--gold);margin-top:12px;}
 
-/* ── SACRED CALENDAR ── */
-#calendar{background:var(--parchment-dark);padding:80px 24px;}
-#calendar section{padding:0;}
-.cal-outer{max-width:960px;margin:0 auto;}
-.cal-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
-.cal-month-title{font-family:'Cinzel Decorative',serif;font-size:clamp(15px,2.5vw,22px);color:var(--ink);letter-spacing:0.05em;}
-.cal-nav-group{display:flex;gap:6px;align-items:center;}
-.cal-nav-btn{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-size:16px;width:34px;height:34px;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Cinzel',serif;}
-.cal-nav-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-.cal-view-btn{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;padding:6px 14px;cursor:pointer;border-radius:2px;text-transform:uppercase;transition:all 0.2s;}
-.cal-view-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-.cal-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px;}
-.cal-leg{display:flex;align-items:center;gap:5px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.08em;color:var(--ink-mid);text-transform:uppercase;}
-.cal-leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.cal-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.cal-filter{background:transparent;border:1px solid var(--scroll-border);color:var(--ink-mid);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:0.1em;padding:5px 13px;cursor:pointer;border-radius:1px;text-transform:uppercase;transition:all 0.2s;}
-.cal-filter.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-.cal-grid-head{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px;}
-.cal-gh-cell{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-align:center;padding:5px 0;text-transform:uppercase;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
-.cal-day{min-height:78px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;padding:5px;transition:border-color 0.2s;}
-.cal-day:hover{border-color:var(--gold);}
-.cal-day.cal-today{border:2px solid var(--gold);background:var(--gold-bg);}
-.cal-day.cal-other{opacity:0.3;background:var(--parchment);}
-.cal-day-num{font-family:'Cinzel',serif;font-size:11px;color:var(--ink-mid);margin-bottom:3px;}
-.cal-ev{font-size:9px;line-height:1.4;border-radius:1px;padding:1px 4px;margin-bottom:1px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'EB Garamond',serif;}
-.cal-ev-hebrew{background:#d4edda;color:#1a5c2a;border-left:2px solid #1D9E75;}
-.cal-ev-ethiopian{background:#fde8d8;color:#7a2e0e;border-left:2px solid #D85A30;}
-.cal-ev-fast{background:#fff3cd;color:#6b4c0a;border-left:2px solid #BA7517;}
-.cal-ev-shabbat{background:#e8f4e8;color:#2d5a1a;border-left:2px solid #639922;}
-.cal-ev-newmoon{background:#e8e6fb;color:#3b2f8a;border-left:2px solid #7F77DD;}
-.cal-more{font-size:9px;color:var(--gold);font-family:'Cinzel',serif;padding:1px 4px;cursor:pointer;}
-.cal-tip{position:fixed;background:var(--ink);border:1px solid var(--gold);border-radius:2px;padding:10px 14px;font-size:13px;max-width:260px;z-index:999;pointer-events:none;display:none;color:var(--gold-pale);line-height:1.65;font-family:'EB Garamond',serif;box-shadow:0 4px 20px rgba(44,24,16,0.35);}
-.cal-tip strong{color:var(--gold);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:4px;}
-.cal-list{display:none;flex-direction:column;gap:8px;}
-.cal-list-item{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;border-left:3px solid var(--gold);}
-.cal-list-date{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);min-width:90px;letter-spacing:0.05em;}
-.cal-list-name{font-size:15px;color:var(--ink);font-family:'EB Garamond',serif;font-weight:500;}
-.cal-list-desc{font-size:13px;color:var(--ink-light);font-family:'EB Garamond',serif;font-style:italic;}
-.cal-scripture-banner{margin-top:32px;padding:22px 28px;border:1px solid var(--scroll-border);background:rgba(255,255,255,0.5);border-radius:2px;text-align:center;}
-.cal-scripture-banner p{font-size:16px;font-style:italic;color:var(--ink-light);line-height:1.75;}
-.cal-scripture-banner span{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.15em;color:var(--gold);display:block;margin-top:6px;}
-
 /* ── BIBLE SCROLLS ── */
+#scrolls{background:var(--parchment-dark);padding:60px 0 0;}
+#scrolls .section-header{padding:0 24px;max-width:1000px;margin:0 auto 32px;}
+#scrolls iframe{width:100%;height:700px;border:none;border-top:2px solid var(--gold);display:block;}
+
 /* ── CONTACT ── */
 #contact{background:var(--parchment);}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
@@ -350,8 +311,120 @@ footer .footer-affil a:hover{border-color:var(--gold);}
 footer .footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:16px 0;}
 footer .footer-links a{color:#C9A84C88;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;}
 footer .footer-links a:hover{color:var(--gold);}
-footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamond',serif;font-size:16px;color:#C9A84C99;}
-</style>
+/* ── SOCIAL MEDIA BAR ── */
+.social-bar{
+  background:var(--royal-deep);border-bottom:1px solid rgba(201,168,76,0.2);
+  display:flex;justify-content:center;align-items:center;gap:16px;
+  padding:8px 24px;flex-wrap:wrap;
+}
+.social-btn{
+  display:flex;align-items:center;gap:7px;
+  padding:6px 14px;border-radius:2px;
+  border:1px solid rgba(201,168,76,0.25);
+  color:var(--gold-pale);text-decoration:none;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;
+  transition:all 0.2s;background:rgba(255,255,255,0.04);
+}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08);}
+.social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+
+/* ── TEACHINGS SECTION ── */
+#teachings{background:var(--parchment-dark);padding:80px 24px;}
+.teachings-intro{
+  max-width:680px;margin:0 auto 48px;text-align:center;
+  font-size:17px;font-style:italic;color:var(--ink-light);line-height:1.8;
+  padding:24px 30px;border:1px solid var(--scroll-border);
+  background:rgba(255,255,255,0.4);border-radius:2px;
+}
+.teachings-filters{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px;
+}
+.teach-filter{
+  padding:7px 18px;border:1px solid var(--scroll-border);border-radius:2px;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--ink-mid);background:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;
+}
+.teach-filter:hover,.teach-filter.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.teachings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-bottom:48px;}
+.teaching-card{
+  background:white;border:1px solid var(--parchment-deeper);
+  border-radius:2px;overflow:hidden;
+  box-shadow:0 2px 12px var(--shadow);
+  transition:transform 0.25s,box-shadow 0.25s;
+  display:flex;flex-direction:column;
+}
+.teaching-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px var(--shadow);}
+.teaching-card::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.tc-type{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;margin:16px 16px 0;
+  border:1px solid var(--scroll-border);border-radius:1px;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.15em;
+  color:var(--gold);text-transform:uppercase;width:fit-content;
+}
+.tc-body{padding:14px 18px 18px;flex:1;display:flex;flex-direction:column;}
+.tc-title{font-family:'Cinzel',serif;font-size:15px;color:var(--ink);margin-bottom:6px;line-height:1.4;}
+.tc-meta{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.tc-desc{font-size:15px;color:var(--ink-light);line-height:1.7;flex:1;margin-bottom:14px;}
+.tc-scripture{font-style:italic;font-size:13px;color:var(--gold);border-left:2px solid var(--gold);padding-left:10px;margin-bottom:14px;}
+.tc-footer{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto;}
+.tc-btn{
+  padding:8px 18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--ink);font-family:'Cinzel',serif;font-size:10px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;border-radius:2px;transition:all 0.2s;
+}
+.tc-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(184,134,11,0.4);}
+.tc-btn.outline{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+.tc-btn.outline:hover{background:rgba(184,134,11,0.08);}
+.tc-tag{
+  padding:4px 10px;border:1px solid var(--parchment-deeper);
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;
+  color:var(--ink-mid);border-radius:1px;
+}
+
+/* Admin Panel */
+.admin-bar{
+  background:var(--ink);border:1px solid rgba(201,168,76,0.3);
+  border-radius:2px;padding:20px 24px;margin-bottom:32px;
+  display:none;
+}
+.admin-bar.open{display:block;}
+.admin-bar h3{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.admin-form{grid-template-columns:1fr;}}
+.admin-input{
+  padding:10px 14px;background:rgba(255,255,255,0.07);
+  border:1px solid rgba(201,168,76,0.25);border-radius:2px;
+  color:var(--gold-pale);font-family:'EB Garamond',serif;font-size:15px;outline:none;
+  transition:border-color 0.2s;
+}
+.admin-input:focus{border-color:var(--gold);}
+.admin-input::placeholder{color:rgba(201,168,76,0.3);}
+.admin-input.full{grid-column:1/-1;}
+select.admin-input option{background:var(--ink);color:var(--gold-pale);}
+.admin-submit{
+  grid-column:1/-1;padding:12px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--ink);font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
+}
+.admin-login{text-align:center;margin-bottom:32px;}
+.admin-toggle{
+  padding:8px 24px;background:transparent;
+  border:1px solid rgba(201,168,76,0.3);border-radius:2px;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;
+  color:rgba(201,168,76,0.5);cursor:pointer;transition:all 0.2s;text-transform:uppercase;
+}
+.admin-toggle:hover{border-color:var(--gold);color:var(--gold);}
+.upload-area{
+  grid-column:1/-1;border:2px dashed rgba(201,168,76,0.3);border-radius:2px;
+  padding:24px;text-align:center;cursor:pointer;transition:border-color 0.2s;
+}
+.upload-area:hover{border-color:var(--gold);}
+.upload-area p{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:rgba(201,168,76,0.5);}
+.upload-area input{display:none;}
+
 </head>
 <body>
 
@@ -365,19 +438,35 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a class="nav-link" href="#beliefs">Beliefs</a>
     <a class="nav-link" href="#leadership">Leadership</a>
     <a class="nav-link" href="#ministries">Ministries</a>
+    <a class="nav-link" href="#teachings">Teachings</a>
     <a class="nav-link" href="#holydays">Holy Days</a>
-    <a class="nav-link" href="#calendar">Calendar</a>
-    <a class="nav-link" href="yahweh-bible-scrolls-app.html">Bible Scrolls</a>
+    <a class="nav-link" href="#scrolls">Bible Scrolls</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
 </nav>
 
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <a class="social-btn" href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
+  <a class="social-btn" href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    X (Twitter)
+  </a>
+  <a class="social-btn" href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Instagram
+  </a>
+</div>
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-ornament"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
 
-  <img class="hero-seal" src="corp_seal_YHOP_gold.jpeg" alt="Yahweh's House of Prayer Seal" onerror="this.style.display='none'"/>
+  <img class="hero-seal" src="Corp_seal_YHOP.jpg" alt="Yahweh's House of Prayer Seal" onerror="this.style.display='none'"/>
 
   <div class="hero-sub">Restoring the Ancient Paths · Est. 2011</div>
   <h1>Yahweh's House<br/><span>of Prayer</span></h1>
@@ -399,7 +488,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="hero-btns">
     <a class="btn-gold" href="#leadership">Meet Our Leaders</a>
     <a class="btn-outline" href="#ministries">Our Ministries</a>
-    <a class="btn-outline" href="yahweh-bible-scrolls-app.html">Study the Word</a>
+    <a class="btn-outline" href="#scrolls">Study the Word</a>
   </div>
 </div>
 
@@ -840,6 +929,168 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
 <div class="section-divider"></div>
 
+<!-- TEACHINGS & RESEARCH PAPERS -->
+<div id="teachings" style="background:var(--parchment-dark);padding:80px 24px;">
+<section style="padding:0">
+  <div class="section-header">
+    <h2>Teachings &amp; Research</h2>
+    <p>Torah · Hebrew Roots · Ancient Paths</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+
+  <div class="teachings-intro">
+    "My people are destroyed for lack of knowledge." — Hoshea 4:6<br/>
+    <span style="font-size:15px;">These teachings and research papers are provided freely for study, sharing, and the edification of the body of Messiah.</span>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="teachings-filters">
+    <button class="teach-filter active" onclick="filterTeachings('all',this)">All</button>
+    <button class="teach-filter" onclick="filterTeachings('torah',this)">Torah</button>
+    <button class="teach-filter" onclick="filterTeachings('history',this)">Church History</button>
+    <button class="teach-filter" onclick="filterTeachings('prophecy',this)">Prophecy</button>
+    <button class="teach-filter" onclick="filterTeachings('identity',this)">Identity</button>
+    <button class="teach-filter" onclick="filterTeachings('research',this)">Research Papers</button>
+  </div>
+
+  <!-- Teachings Grid -->
+  <div class="teachings-grid" id="teachings-grid">
+
+    <!-- Teaching 1 -->
+    <div class="teaching-card" data-category="torah">
+      <div class="tc-type">📜 Teaching</div>
+      <div class="tc-body">
+        <div class="tc-title">The Name of Yahweh — Why It Matters</div>
+        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Torah Study</div>
+        <div class="tc-desc">Yahweh's Name was removed over 6,000 times from scripture and replaced with "LORD." This teaching explores the importance of restoring His Name, the Hebrew meaning of YHWH, and why calling upon the true Name is a covenant requirement.</div>
+        <div class="tc-scripture">"I am Yahweh — that is My Name; I will not give My glory to another." — Yeshayahu 42:8</div>
+        <div class="tc-footer">
+          <span class="tc-tag">Torah</span>
+          <span class="tc-tag">Sacred Name</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaching 2 -->
+    <div class="teaching-card" data-category="torah">
+      <div class="tc-type">📜 Teaching</div>
+      <div class="tc-body">
+        <div class="tc-title">Torah Was Never Abolished — Mattityahu 5:17 Explained</div>
+        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Torah Observance</div>
+        <div class="tc-desc">Yeshua said "I did not come to abolish the Torah." The Greek word plēroō — translated "fulfill" — means to make full or complete, not to terminate. A deep study of this foundational verse and what it means for believers today.</div>
+        <div class="tc-scripture">"Do not think that I came to abolish the Torah or the Prophets." — Mattityahu 5:17</div>
+        <div class="tc-footer">
+          <span class="tc-tag">Torah</span>
+          <span class="tc-tag">Greek Study</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaching 3 -->
+    <div class="teaching-card" data-category="history">
+      <div class="tc-type">📖 Church History</div>
+      <div class="tc-body">
+        <div class="tc-title">Constantine, Nicaea, and the Corruption of the Faith</div>
+        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Early Church History</div>
+        <div class="tc-desc">In 325 CE the Roman Emperor Constantine convened the Council of Nicaea — imposing Roman political structure on the faith of Yeshua. Shabbat was changed to Sunday, the Name suppressed, and Hebrew identity stripped from the assembly. This teaching documents what happened and why it matters.</div>
+        <div class="tc-scripture">"Contend earnestly for the faith which was once for all delivered to the saints." — Yehudah 1:3</div>
+        <div class="tc-footer">
+          <span class="tc-tag">History</span>
+          <span class="tc-tag">Nicaea</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaching 4 -->
+    <div class="teaching-card" data-category="identity">
+      <div class="tc-type">🦁 Identity Teaching</div>
+      <div class="tc-body">
+        <div class="tc-title">The Kebra Nagast — Ethiopia's Covenant with Yahweh</div>
+        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Covenant Identity</div>
+        <div class="tc-desc">The Kebra Nagast reveals that the Ark of the Covenant was brought to Ethiopia by Menelik I, son of King Shlomo and the Queen of Sheba. This teaching explores the African covenant lineage, the Ethiopian Orthodox 81-book canon, and what this means for our identity as Yisrael.</div>
+        <div class="tc-scripture">"Ethiopia shall quickly stretch out her hands to Yahweh." — Tehillim 68:31</div>
+        <div class="tc-footer">
+          <span class="tc-tag">Ethiopia</span>
+          <span class="tc-tag">Covenant</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaching 5 -->
+    <div class="teaching-card" data-category="prophecy">
+      <div class="tc-type">🔯 Prophecy</div>
+      <div class="tc-body">
+        <div class="tc-title">The Seven Feasts of Yahweh — Prophetic Fulfillment</div>
+        <div class="tc-meta">Head Pastor B'deyah Ben Benyamin · Prophetic Teaching</div>
+        <div class="tc-desc">The seven feasts of Leviticus 23 are not merely ancient Jewish rituals — they are prophetic appointments of Yahweh pointing to the full redemptive work of the Messiah. The spring feasts were fulfilled in Yeshua's first coming; the fall feasts await His return.</div>
+        <div class="tc-scripture">"These are My appointed feasts, the appointed feasts of Yahweh." — Vayikra 23:2</div>
+        <div class="tc-footer">
+          <span class="tc-tag">Prophecy</span>
+          <span class="tc-tag">Mo'edim</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaching 6 -->
+    <div class="teaching-card" data-category="research">
+      <div class="tc-type">📄 Research Paper</div>
+      <div class="tc-body">
+        <div class="tc-title">The Ebionites — First Followers of Yeshua</div>
+        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah, D.D. · Academic Research</div>
+        <div class="tc-desc">A research paper examining the historical Ebionite movement — the original Hebrew followers of Yeshua who maintained Torah observance, used Hebrew names, and were later declared "heretical" by Rome. Includes citations from early church fathers and the Dead Sea Scrolls community.</div>
+        <div class="tc-scripture">"Ask for the ancient paths, where the good way is, and walk in it." — Yirmeyahu 6:16</div>
+        <div class="tc-footer">
+          <span class="tc-tag">Research</span>
+          <span class="tc-tag">Ebionites</span>
+          <span class="tc-tag">D.D. Thesis</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end teachings-grid -->
+
+  <!-- Admin Upload Section -->
+  <div class="admin-login" id="admin-login-section">
+    <button class="admin-toggle" onclick="showAdminLogin()">✦ Pastor Login — Add Teaching</button>
+  </div>
+
+  <div id="admin-password-form" style="display:none;max-width:400px;margin:0 auto 24px;text-align:center;">
+    <input type="password" id="admin-pw" class="admin-input" placeholder="Enter admin password" style="width:100%;margin-bottom:10px;"/>
+    <button onclick="checkAdminPW()" class="tc-btn" style="width:100%;">Unlock Admin Panel</button>
+    <div id="pw-error" style="color:#e88;font-size:13px;margin-top:8px;display:none;">Incorrect password. Try again.</div>
+  </div>
+
+  <div class="admin-bar" id="admin-panel">
+    <h3>✦ Add New Teaching or Research Paper</h3>
+    <p style="font-size:14px;color:rgba(201,168,76,0.6);margin-bottom:16px;">Fill in the details below. For PDF papers, paste the Google Drive share link or direct file URL.</p>
+    <div class="admin-form">
+      <input class="admin-input" id="new-title" placeholder="Title of Teaching / Paper" />
+      <input class="admin-input" id="new-author" placeholder="Author (e.g. Co-Pastor Sh'muyl Ben Yahdah)" />
+      <select class="admin-input" id="new-category">
+        <option value="torah">Torah</option>
+        <option value="history">Church History</option>
+        <option value="prophecy">Prophecy</option>
+        <option value="identity">Identity</option>
+        <option value="research">Research Paper</option>
+      </select>
+      <input class="admin-input" id="new-tags" placeholder="Tags (e.g. Torah, Sacred Name)" />
+      <textarea class="admin-input full" id="new-desc" placeholder="Description / Summary" rows="3" style="resize:vertical;"></textarea>
+      <input class="admin-input full" id="new-scripture" placeholder="Key scripture reference (e.g. Yirmeyahu 6:16)" />
+      <input class="admin-input full" id="new-pdf-url" placeholder="PDF link — Google Drive share URL or direct file link (optional)" />
+      <div class="upload-area full" onclick="document.getElementById('pdf-file-input').click()">
+        <input type="file" id="pdf-file-input" accept=".pdf,.doc,.docx" onchange="handleFileSelect(event)"/>
+        <p>📄 Or drag &amp; drop a PDF / Word document here to attach<br/><span style="font-size:10px;opacity:0.6;">Supported: PDF, DOC, DOCX</span></p>
+        <div id="file-selected" style="margin-top:8px;font-size:13px;color:var(--gold);display:none;"></div>
+      </div>
+      <button class="admin-submit" onclick="addTeaching()">✦ Publish Teaching</button>
+    </div>
+  </div>
+
+</section>
+</div>
+
+<div class="section-divider"></div>
+
 <!-- HOLY DAYS -->
 <div id="holydays" style="background:var(--parchment);padding:80px 24px;">
 <section style="padding:0">
@@ -927,99 +1178,14 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
 <div class="section-divider"></div>
 
-<!-- SACRED CALENDAR -->
-<div id="calendar" style="background:var(--parchment-dark);padding:80px 24px;">
-<section style="padding:0">
-  <div class="section-header">
-    <h2>Sacred Calendar</h2>
-    <p>Hebrew Mo'edim · Ethiopian Holy Days · Rosh Chodesh · Fasts</p>
+<!-- BIBLE SCROLLS EMBED -->
+<div id="scrolls">
+  <div class="section-header" style="padding:60px 24px 0;max-width:1000px;margin:0 auto 32px;">
+    <h2>📜 Yahweh's Bible Scrolls</h2>
+    <p>AI-Powered Hebrew Roots Study Platform</p>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
-
-  <div class="cal-outer">
-
-    <div class="cal-toolbar">
-      <div class="cal-month-title" id="yhop-cal-title">Loading...</div>
-      <div class="cal-nav-group">
-        <div style="display:flex;gap:4px;margin-right:8px;">
-          <button class="cal-view-btn active" id="yhop-btn-month" onclick="yhopSetView('month')">Month</button>
-          <button class="cal-view-btn" id="yhop-btn-list" onclick="yhopSetView('list')">List</button>
-        </div>
-        <button class="cal-nav-btn" onclick="yhopChangeMonth(-1)">&#8249;</button>
-        <button class="cal-nav-btn" onclick="yhopChangeMonth(1)">&#8250;</button>
-      </div>
-    </div>
-
-    <div class="cal-legend">
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:#1D9E75"></div>Hebrew Mo'edim</div>
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:#D85A30"></div>Ethiopian Feast</div>
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:#BA7517"></div>Fast Day</div>
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:#639922"></div>Shabbat</div>
-      <div class="cal-leg"><div class="cal-leg-dot" style="background:#7F77DD"></div>Rosh Chodesh</div>
-    </div>
-
-    <div class="cal-filters">
-      <button class="cal-filter active" data-yhop-filter="all" onclick="yhopSetFilter('all')">All</button>
-      <button class="cal-filter" data-yhop-filter="hebrew" onclick="yhopSetFilter('hebrew')">Hebrew</button>
-      <button class="cal-filter" data-yhop-filter="ethiopian" onclick="yhopSetFilter('ethiopian')">Ethiopian</button>
-      <button class="cal-filter" data-yhop-filter="fast" onclick="yhopSetFilter('fast')">Fasts</button>
-      <button class="cal-filter" data-yhop-filter="shabbat" onclick="yhopSetFilter('shabbat')">Shabbat</button>
-      <button class="cal-filter" data-yhop-filter="newmoon" onclick="yhopSetFilter('newmoon')">New Moons</button>
-    </div>
-
-    <div class="cal-grid-head" id="yhop-grid-head"></div>
-    <div class="cal-grid" id="yhop-cal-grid"></div>
-    <div class="cal-list" id="yhop-cal-list"></div>
-
-    <div class="cal-scripture-banner">
-      <p>"These are the appointed feasts of Yahweh, the holy convocations, which you shall proclaim at the time appointed for them."</p>
-      <span>— Vayikra (Leviticus) 23:4 · Numbers 10:10 (Rosh Chodesh) · Bereshit 1:14 (Signs &amp; Seasons)</span>
-    </div>
-
-  </div>
-</section>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- BIBLE SCROLLS LAUNCH -->
-<div id="scrolls" style="background:var(--royal-deep);padding:80px 24px;">
-<section style="padding:0">
-  <div class="section-header">
-    <h2 style="color:var(--gold-pale)">Yahweh's Bible Scrolls</h2>
-    <p style="color:var(--gold)">AI-Powered Hebrew Roots Study Platform</p>
-    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
-  </div>
-
-  <div style="max-width:680px;margin:0 auto;text-align:center;">
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.25);border-radius:2px;padding:48px 36px;">
-      <div style="font-size:64px;margin-bottom:24px;">📜</div>
-      <h3 style="font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,26px);color:var(--gold-light);margin-bottom:16px;">Study the Ancient Paths</h3>
-      <p style="font-size:17px;color:rgba(245,222,179,0.8);line-height:1.85;margin-bottom:12px;">
-        An AI-powered Hebrew Roots Bible study experience — built on the Ebionite and Nazarene tradition of Yahweh's House of Prayer.
-      </p>
-      <p style="font-size:15px;color:rgba(245,222,179,0.55);line-height:1.75;margin-bottom:36px;">
-        Interlinear Hebrew &amp; Aramaic texts · Paleo Hebrew word studies · AI Torah scholar · 
-        Dead Sea Scrolls · Ethiopian Orthodox canon · Holy Day calendar · Hebrew lessons · Prayer &amp; worship
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:36px;">
-        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">100% Free</span>
-        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">AI Powered</span>
-        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">Hebrew Roots</span>
-        <span style="padding:6px 16px;border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border-radius:1px;">Mobile Friendly</span>
-      </div>
-      <a href="yahweh-bible-scrolls-app.html"
-         style="display:inline-block;padding:16px 48px;
-                background:linear-gradient(135deg,var(--gold),var(--gold-light));
-                color:var(--ink);font-family:'Cinzel',serif;font-size:13px;font-weight:700;
-                letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;
-                border-radius:2px;box-shadow:0 4px 24px rgba(184,134,11,0.4);
-                transition:all 0.25s;">
-        Open Bible Scrolls ✦
-      </a>
-    </div>
-  </div>
-</section>
+  <iframe src="yahweh-bible-scrolls-app.html" title="Yahweh's Bible Scrolls App" allowfullscreen></iframe>
 </div>
 
 <div class="section-divider"></div>
@@ -1038,6 +1204,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
         <h3>✦ Find Us Online</h3>
         <div class="contact-row"><span class="icon">📍</span><span>Racine, Wisconsin — Natchez, MS — Atlanta, GA — Global Online Congregation</span></div>
         <div class="contact-row"><span class="icon">📘</span><a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">Facebook: Yahweh's House of Prayer</a></div>
+        <div class="contact-row"><span class="icon">✖️</span><a href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">X (Twitter): @YahwehHousePray</a></div>
+        <div class="contact-row"><span class="icon">📸</span><a href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">Instagram: @YahwehHousePray</a></div>
         <div class="contact-row"><span class="icon">🌐</span><a href="http://yahwehshouseofprayer.com">yahwehshouseofprayer.com</a></div>
         <div class="contact-row"><span class="icon">📜</span><a href="yahweh-bible-scrolls-app.html">Open Bible Scrolls Study App</a></div>
         <div class="contact-row"><span class="icon">🌍</span><a href="https://global-kingdom-of-yehudah.netlify.app/#home" target="_blank" style="color:var(--gold);text-decoration:none;">Global Kingdom of Yehudah — Visit Website ↗</a></div>
@@ -1074,18 +1242,20 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="footer-logo">Yahweh's House of Prayer</div>
   <p>Saints of Yahweh · Racine, Wisconsin · Est. 2011 · EIN: 35-2924426</p>
   <div class="footer-affil">
-    <a href="#ministries">Global Kingdom of Yehudah</a>
+    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">📘 Facebook</a>
+    <a href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">✖️ X (Twitter)</a>
+    <a href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">📸 Instagram</a>
+    <a href="https://global-kingdom-of-yehudah.netlify.app" target="_blank" rel="noopener">Global Kingdom of Yehudah</a>
     <a href="#ministries">Infiniti Diviniti Habitats</a>
-    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank">Facebook</a>
   </div>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#beliefs">Beliefs</a>
     <a href="#leadership">Leadership</a>
     <a href="#ministries">Ministries</a>
+    <a href="#teachings">Teachings</a>
     <a href="#holydays">Holy Days</a>
-    <a href="#calendar">Calendar</a>
-    <a href="yahweh-bible-scrolls-app.html">Bible Scrolls</a>
+    <a href="#scrolls">Bible Scrolls</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
@@ -1099,200 +1269,7 @@ function closeNav(){document.getElementById('navLinks').classList.remove('open')
 document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeNav));
 
 // Highlight active nav on scroll
-const sections = ['about','beliefs','leadership','ministries','holydays','calendar','contact'];
-
-// ── SACRED CALENDAR ──
-(function(){
-const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Shabbat'];
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-let curDate=new Date();curDate.setDate(1);
-let curFilter='all',curView='month';
-const today=new Date();
-
-const events=[
-  {date:'2025-09-11',name:"Rosh HaShanah / Yom Teruah",type:'hebrew',note:'Feast of Trumpets — 1 Tishrei. Shofar is blown. Beginning of the Days of Awe.'},
-  {date:'2025-09-12',name:"Rosh HaShanah Day 2",type:'hebrew',note:'Second day of the Feast of Trumpets — 2 Tishrei.'},
-  {date:'2025-09-11',name:"Ethiopian New Year (Enkutatash)",type:'ethiopian',note:'Ethiopian New Year — Meskerem 1, 2018.'},
-  {date:'2025-09-20',name:"Yom Kippur",type:'hebrew',note:'Day of Atonement — 10 Tishrei. Complete 25-hour fast. Holiest day of the year.'},
-  {date:'2025-09-20',name:"Yom Kippur Fast",type:'fast',note:'Complete 25-hour fast. No food, water, or work from sunset to nightfall.'},
-  {date:'2025-09-25',name:"Sukkot begins",type:'hebrew',note:'Feast of Tabernacles — 15 Tishrei. Seven-day feast in booths.'},
-  {date:'2025-09-27',name:"Meskel (Finding of the Cross)",type:'ethiopian',note:'Major Ethiopian feast celebrating the finding of the True Cross.'},
-  {date:'2025-09-28',name:"Holiday of Metq",type:'ethiopian',note:'Ethiopian feast in honor of the Virgin Mary — Meskerem 18.'},
-  {date:'2025-10-02',name:"Shmini Atzeret",type:'hebrew',note:'Eighth Day Assembly — 22 Tishrei. Holy convocation following Sukkot.'},
-  {date:'2025-10-03',name:"Simchat Torah",type:'hebrew',note:'Rejoicing in the Torah — 23 Tishrei.'},
-  {date:'2025-10-21',name:"Rosh Chodesh Cheshvan",type:'newmoon',note:'New Moon of Cheshvan — 1 Cheshvan 5786.'},
-  {date:'2025-10-22',name:"Rosh Chodesh Cheshvan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Cheshvan.'},
-  {date:'2025-11-20',name:"Rosh Chodesh Kislev",type:'newmoon',note:'New Moon of Kislev — 1 Kislev 5786.'},
-  {date:'2025-11-21',name:"Rosh Chodesh Kislev (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Kislev.'},
-  {date:'2025-12-14',name:"Hanukkah begins",type:'hebrew',note:'8-day Festival of Lights — 25 Kislev.'},
-  {date:'2025-12-19',name:"Rosh Chodesh Tevet",type:'newmoon',note:'New Moon of Tevet — 1 Tevet 5786. Falls during Hanukkah.'},
-  {date:'2025-12-20',name:"Rosh Chodesh Tevet (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Tevet.'},
-  {date:'2025-12-21',name:"Rosh Chodesh Tevet (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Tevet.'},
-  {date:'2025-12-22',name:"Hanukkah ends",type:'hebrew',note:'Final (8th) night of Hanukkah — 2 Tevet.'},
-  {date:'2025-12-30',name:"Asara B'Tevet Fast",type:'fast',note:'Fast of 10 Tevet — siege of Jerusalem.'},
-  {date:'2026-01-07',name:"Genna (Ethiopian Christmas)",type:'ethiopian',note:'Ethiopian Christmas — Birth of Yeshua the Messiah. Tahsas 29.'},
-  {date:'2026-01-18',name:"Rosh Chodesh Sh'vat",type:'newmoon',note:"New Moon of Sh'vat — 1 Sh'vat 5786."},
-  {date:'2026-01-19',name:"Rosh Chodesh Sh'vat (Day 2)",type:'newmoon',note:"Second day of Rosh Chodesh Sh'vat."},
-  {date:'2026-01-19',name:"Timket (Theophany/Epiphany)",type:'ethiopian',note:'Ethiopian Epiphany — Baptism of Yeshua in the Jordan.'},
-  {date:'2026-02-01',name:"Tu BiShvat",type:'hebrew',note:"New Year for Trees — 15 Sh'vat."},
-  {date:'2026-02-02',name:"Tsome Nenewe begins",type:'fast',note:'3-day Fast of Nineveh — Ethiopian Orthodox.'},
-  {date:'2026-02-04',name:"Tsome Nenewe ends",type:'fast',note:'Conclusion of the Fast of Nineveh.'},
-  {date:'2026-02-16',name:"Rosh Chodesh Adar",type:'newmoon',note:'New Moon of Adar — 1 Adar 5786.'},
-  {date:'2026-02-17',name:"Rosh Chodesh Adar (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Adar.'},
-  {date:'2026-02-18',name:"Rosh Chodesh Adar (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Adar.'},
-  {date:'2026-02-16',name:"Abiy Tsom / Great Lent begins",type:'fast',note:'Ethiopian Great Lent — 56-day fast before Easter.'},
-  {date:'2026-03-02',name:"Ta'anit Esther Fast",type:'fast',note:"Fast of Esther — precedes Purim."},
-  {date:'2026-03-02',name:"Purim",type:'hebrew',note:'Feast of Lots — 14 Adar. Celebrates deliverance from Haman.'},
-  {date:'2026-03-15',name:"Debre Zeitun (Mount Olives)",type:'ethiopian',note:"Ethiopian observance of Yeshua's time on the Mount of Olives."},
-  {date:'2026-03-18',name:"Rosh Chodesh Nisan",type:'newmoon',note:'New Moon of Nisan — 1 Nisan 5786. First month of the biblical year!'},
-  {date:'2026-03-19',name:"Rosh Chodesh Nisan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Nisan.'},
-  {date:'2026-04-01',name:"Pesach (Passover) begins",type:'hebrew',note:'Feast of Unleavened Bread — 15 Nisan. Commemorates the Exodus.'},
-  {date:'2026-04-05',name:"Hosana (Palm Sunday)",type:'ethiopian',note:"Ethiopian Palm Sunday — Yeshua's entry into Yerushalayim."},
-  {date:'2026-04-09',name:"Pesach ends",type:'hebrew',note:'Passover / Feast of Unleavened Bread concludes — 22 Nisan.'},
-  {date:'2026-04-10',name:"Good Friday (Siklet)",type:'ethiopian',note:'Ethiopian Good Friday — Death of Yeshua the Messiah.'},
-  {date:'2026-04-11',name:"Tsome Himamat (Holy Week Fast)",type:'fast',note:'7-day Holy Week fast within the Great Lent.'},
-  {date:'2026-04-12',name:"Fasika (Ethiopian Easter)",type:'ethiopian',note:'Ethiopian Resurrection Day — Yeshua rises. Miazia 4.'},
-  {date:'2026-04-16',name:"Rosh Chodesh Iyyar",type:'newmoon',note:'New Moon of Iyyar — 1 Iyyar 5786.'},
-  {date:'2026-04-17',name:"Rosh Chodesh Iyyar (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Iyyar.'},
-  {date:'2026-04-18',name:"Rosh Chodesh Iyyar (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Iyyar.'},
-  {date:'2026-05-06',name:"Rikbe Kahnat",type:'ethiopian',note:'Ethiopian feast day — Genbot 28.'},
-  {date:'2026-05-16',name:"Rosh Chodesh Sivan",type:'newmoon',note:'New Moon of Sivan — 1 Sivan 5786. Month of Shavuot.'},
-  {date:'2026-05-17',name:"Rosh Chodesh Sivan (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Sivan.'},
-  {date:'2026-05-21',name:"Erget (Ascension)",type:'ethiopian',note:'Ethiopian Ascension of Yeshua — Genbot 13.'},
-  {date:'2026-05-21',name:"Shavuot (Feast of Weeks)",type:'hebrew',note:'Feast of Weeks / Pentecost — 6 Sivan. Giving of Torah at Sinai.'},
-  {date:'2026-05-31',name:"Paracletos (Pentecost)",type:'ethiopian',note:'Ethiopian Feast of Pentecost — Descent of the Ruach HaKodesh.'},
-  {date:'2026-06-01',name:"Fast of Apostles begins",type:'fast',note:'Ethiopian Fast of the Apostles — begins after Pentecost.'},
-  {date:'2026-06-03',name:"Fast of Salvation",type:'fast',note:'Ethiopian Fast of Salvation — Sene 26.'},
-  {date:'2026-06-14',name:"Rosh Chodesh Tamuz",type:'newmoon',note:'New Moon of Tamuz — 1 Tamuz 5786.'},
-  {date:'2026-06-15',name:"Rosh Chodesh Tamuz (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Tamuz.'},
-  {date:'2026-06-16',name:"Rosh Chodesh Tamuz (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Tamuz.'},
-  {date:'2026-07-02',name:"Tzom Tammuz Fast",type:'fast',note:'17 Tammuz — Breach of walls of Yerushalayim.'},
-  {date:'2026-07-12',name:"Fast of Apostles ends",type:'fast',note:'Tsome Hawariat concludes — Hamele 5.'},
-  {date:'2026-07-14',name:"Rosh Chodesh Av",type:'newmoon',note:'New Moon of Av — 1 Av 5786. Month of mourning for the Temples.'},
-  {date:'2026-07-15',name:"Rosh Chodesh Av (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Av.'},
-  {date:'2026-07-22',name:"Tisha B'Av Fast",type:'fast',note:'9 Av — Mourning the destruction of both Temples in Yerushalayim.'},
-  {date:'2026-08-07',name:"Filseta Tsom begins",type:'fast',note:"Ethiopian 16-day fast in honor of the Virgin Mary. Nehasse 1."},
-  {date:'2026-08-12',name:"Rosh Chodesh Elul",type:'newmoon',note:'New Moon of Elul — 1 Elul 5786. Month of repentance before Rosh HaShanah.'},
-  {date:'2026-08-13',name:"Rosh Chodesh Elul (Day 2)",type:'newmoon',note:'Second day of Rosh Chodesh Elul. Shofar blown daily throughout Elul.'},
-  {date:'2026-08-14',name:"Rosh Chodesh Elul (Day 3)",type:'newmoon',note:'Third day of Rosh Chodesh Elul.'},
-  {date:'2026-08-19',name:"Debre Tabor (Transfiguration)",type:'ethiopian',note:'Ethiopian Feast of the Transfiguration of Yeshua on Mount Tabor.'},
-  {date:'2026-08-22',name:"Filseta (Assumption of Mary)",type:'ethiopian',note:'Ethiopian Feast of the Assumption of the Virgin Mary — Nehasse 16.'},
-  {date:'2026-08-23',name:"Filseta Tsom ends",type:'fast',note:'Ethiopian Fast of the Assumption concludes.'},
-];
-
-function getShabbats(y,m){const a=[];const d=new Date(y,m,1);while(d.getMonth()===m){if(d.getDay()===6)a.push(new Date(d));d.setDate(d.getDate()+1);}return a;}
-function toKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
-
-function yhopSetFilter(f){
-  curFilter=f;
-  document.querySelectorAll('[data-yhop-filter]').forEach(b=>b.classList.toggle('active',b.dataset.yhopFilter===f));
-  yhopRender();
-}
-window.yhopSetFilter=yhopSetFilter;
-
-function yhopSetView(v){
-  curView=v;
-  document.getElementById('yhop-btn-month').classList.toggle('active',v==='month');
-  document.getElementById('yhop-btn-list').classList.toggle('active',v==='list');
-  document.getElementById('yhop-cal-grid').style.display=v==='month'?'grid':'none';
-  document.getElementById('yhop-grid-head').style.display=v==='month'?'grid':'none';
-  document.getElementById('yhop-cal-list').style.display=v==='list'?'flex':'none';
-  yhopRender();
-}
-window.yhopSetView=yhopSetView;
-
-function yhopChangeMonth(d){curDate=new Date(curDate.getFullYear(),curDate.getMonth()+d,1);yhopRender();}
-window.yhopChangeMonth=yhopChangeMonth;
-
-function showCalTip(e,name,note){
-  const t=document.getElementById('yhop-cal-tip');
-  t.innerHTML='<strong>'+name+'</strong>'+note;
-  t.style.display='block';
-  t.style.left=Math.min(e.clientX+12,window.innerWidth-275)+'px';
-  t.style.top=(e.clientY+12)+'px';
-}
-document.addEventListener('click',function(){const t=document.getElementById('yhop-cal-tip');if(t)t.style.display='none';});
-
-function buildMap(y,m){
-  const map={};
-  events.forEach(ev=>{if(!map[ev.date])map[ev.date]=[];map[ev.date].push(ev);});
-  getShabbats(y,m).forEach(sd=>{
-    const k=toKey(sd);if(!map[k])map[k]=[];
-    if(!map[k].find(e=>e.type==='shabbat'))
-      map[k].unshift({date:k,name:'Shabbat',type:'shabbat',note:'Weekly Shabbat — Friday sunset to Saturday nightfall. Day of rest and holy assembly before Yahweh.'});
-  });
-  return map;
-}
-
-function yhopRender(){
-  const y=curDate.getFullYear(),m=curDate.getMonth();
-  document.getElementById('yhop-cal-title').textContent=MONTHS[m]+' '+y;
-  const map=buildMap(y,m);
-  if(curView==='list'){yhopRenderList(map,y,m);return;}
-  const gh=document.getElementById('yhop-grid-head');
-  gh.innerHTML='';
-  DAYS.forEach(d=>{const el=document.createElement('div');el.className='cal-gh-cell';el.textContent=d;gh.appendChild(el);});
-  const grid=document.getElementById('yhop-cal-grid');grid.innerHTML='';
-  const firstDay=new Date(y,m,1).getDay();
-  const daysInMonth=new Date(y,m+1,0).getDate();
-  const prevDays=new Date(y,m,0).getDate();
-  for(let i=0;i<firstDay;i++){
-    const el=document.createElement('div');el.className='cal-day cal-other';
-    el.innerHTML='<div class="cal-day-num">'+(prevDays-firstDay+1+i)+'</div>';grid.appendChild(el);
-  }
-  for(let d=1;d<=daysInMonth;d++){
-    const date=new Date(y,m,d);const key=toKey(date);
-    const el=document.createElement('div');el.className='cal-day';
-    if(toKey(today)===key)el.classList.add('cal-today');
-    let html='<div class="cal-day-num">'+d+'</div>';
-    const dayEvs=(map[key]||[]).filter(ev=>curFilter==='all'||ev.type===curFilter);
-    dayEvs.slice(0,3).forEach(ev=>{
-      const s=ev.name.length>17?ev.name.substring(0,15)+'…':ev.name;
-      html+='<div class="cal-ev cal-ev-'+ev.type+'" data-cal-name="'+encodeURIComponent(ev.name)+'" data-cal-note="'+encodeURIComponent(ev.note)+'">'+s+'</div>';
-    });
-    if(dayEvs.length>3)html+='<div class="cal-more">+'+(dayEvs.length-3)+' more</div>';
-    el.innerHTML=html;
-    el.querySelectorAll('.cal-ev').forEach(dot=>{
-      dot.addEventListener('click',function(e){
-        e.stopPropagation();
-        showCalTip(e,decodeURIComponent(this.dataset.calName),decodeURIComponent(this.dataset.calNote));
-      });
-    });
-    grid.appendChild(el);
-  }
-  const total=firstDay+daysInMonth;
-  const trailing=(7-(total%7))%7;
-  for(let i=1;i<=trailing;i++){
-    const el=document.createElement('div');el.className='cal-day cal-other';
-    el.innerHTML='<div class="cal-day-num">'+i+'</div>';grid.appendChild(el);
-  }
-}
-
-function yhopRenderList(map,y,m){
-  const lv=document.getElementById('yhop-cal-list');lv.innerHTML='';
-  const typeLabel={hebrew:"Hebrew Mo'edim",ethiopian:'Ethiopian Orthodox',fast:'Fast Day',shabbat:'Shabbat',newmoon:'Rosh Chodesh'};
-  const dotColor={hebrew:'#1D9E75',ethiopian:'#D85A30',fast:'#BA7517',shabbat:'#639922',newmoon:'#7F77DD'};
-  const allDates=Object.keys(map).filter(k=>{const d=new Date(k+'T00:00:00');return d.getFullYear()===y&&d.getMonth()===m;}).sort();
-  if(!allDates.length){lv.innerHTML='<div style="color:var(--ink-mid);font-style:italic;padding:1rem">No events for selected filter this month.</div>';return;}
-  allDates.forEach(k=>{
-    const dayEvs=(map[k]||[]).filter(ev=>curFilter==='all'||ev.type===curFilter);
-    if(!dayEvs.length)return;
-    const d=new Date(k+'T00:00:00');
-    const dStr=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate();
-    dayEvs.forEach(ev=>{
-      const item=document.createElement('div');item.className='cal-list-item';
-      item.style.borderLeftColor=dotColor[ev.type]||'var(--gold)';
-      item.innerHTML='<div><div class="cal-list-date">'+dStr+'</div><div class="cal-list-name">'+ev.name+'</div><div class="cal-list-desc">'+(typeLabel[ev.type]||ev.type)+' — '+ev.note+'</div></div>';
-      lv.appendChild(item);
-    });
-  });
-}
-
-// Inject tooltip element
-const tipEl=document.createElement('div');tipEl.id='yhop-cal-tip';tipEl.className='cal-tip';document.body.appendChild(tipEl);
-
-yhopRender();
-})();
+const sections = ['about','beliefs','leadership','ministries','teachings','holydays','scrolls','contact'];
 window.addEventListener('scroll', () => {
   let cur = '';
   sections.forEach(id => {
@@ -1303,6 +1280,126 @@ window.addEventListener('scroll', () => {
     l.classList.toggle('active', l.getAttribute('href') === '#'+cur);
   });
 });
+
+// ── TEACHINGS FILTER ──
+function filterTeachings(cat, btn) {
+  document.querySelectorAll('.teach-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.teaching-card').forEach(card => {
+    if(cat === 'all' || card.dataset.category === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ── ADMIN PANEL ──
+const ADMIN_PASSWORD = 'yhop2024';
+
+function showAdminLogin() {
+  document.getElementById('admin-login-section').style.display = 'none';
+  document.getElementById('admin-password-form').style.display = 'block';
+  setTimeout(() => document.getElementById('admin-pw').focus(), 100);
+}
+
+function checkAdminPW() {
+  const pw = document.getElementById('admin-pw').value;
+  if(pw === ADMIN_PASSWORD) {
+    document.getElementById('admin-password-form').style.display = 'none';
+    document.getElementById('admin-panel').classList.add('open');
+    document.getElementById('pw-error').style.display = 'none';
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+    document.getElementById('admin-pw').value = '';
+  }
+}
+
+document.getElementById('admin-pw').addEventListener('keydown', function(e) {
+  if(e.key === 'Enter') checkAdminPW();
+});
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const el = document.getElementById('file-selected');
+    el.style.display = 'block';
+    el.textContent = '📄 Selected: ' + file.name;
+    // Pre-fill title if empty
+    if(!document.getElementById('new-title').value) {
+      document.getElementById('new-title').value = file.name.replace(/\.(pdf|doc|docx)$/i,'').replace(/_/g,' ');
+    }
+  }
+}
+
+function addTeaching() {
+  const title = document.getElementById('new-title').value.trim();
+  const author = document.getElementById('new-author').value.trim();
+  const category = document.getElementById('new-category').value;
+  const tags = document.getElementById('new-tags').value.trim();
+  const desc = document.getElementById('new-desc').value.trim();
+  const scripture = document.getElementById('new-scripture').value.trim();
+  const pdfUrl = document.getElementById('new-pdf-url').value.trim();
+  const fileInput = document.getElementById('pdf-file-input');
+
+  if(!title || !desc) {
+    alert('Please fill in at least the title and description.');
+    return;
+  }
+
+  const typeLabels = {
+    torah:'📜 Teaching', history:'📖 Church History',
+    prophecy:'🔯 Prophecy', identity:'🦁 Identity Teaching', research:'📄 Research Paper'
+  };
+
+  const tagList = tags.split(',').map(t => t.trim()).filter(Boolean);
+  const tagsHtml = tagList.map(t => `<span class="tc-tag">${t}</span>`).join('');
+
+  let btnHtml = '';
+  if(pdfUrl) {
+    btnHtml = `<a class="tc-btn" href="${pdfUrl}" target="_blank" rel="noopener">📄 Download PDF</a>`;
+  } else if(fileInput.files[0]) {
+    // Create object URL for local file (works in same session)
+    const objectUrl = URL.createObjectURL(fileInput.files[0]);
+    btnHtml = `<a class="tc-btn" href="${objectUrl}" target="_blank" download="${fileInput.files[0].name}">📄 Download PDF</a>`;
+  }
+
+  const card = document.createElement('div');
+  card.className = 'teaching-card';
+  card.dataset.category = category;
+  card.innerHTML = `
+    <div class="tc-type">${typeLabels[category] || '📜 Teaching'}</div>
+    <div class="tc-body">
+      <div class="tc-title">${title}</div>
+      <div class="tc-meta">${author || 'Yahweh\'s House of Prayer'}</div>
+      <div class="tc-desc">${desc}</div>
+      ${scripture ? `<div class="tc-scripture">${scripture}</div>` : ''}
+      <div class="tc-footer">${btnHtml}${tagsHtml}</div>
+    </div>`;
+
+  // Insert at top of grid
+  const grid = document.getElementById('teachings-grid');
+  grid.insertBefore(card, grid.firstChild);
+
+  // Clear form
+  ['new-title','new-author','new-tags','new-desc','new-scripture','new-pdf-url'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  fileInput.value = '';
+  document.getElementById('file-selected').style.display = 'none';
+
+  // Show success
+  const btn = document.querySelector('.admin-submit');
+  btn.textContent = '✦ Published!';
+  btn.style.background = '#4A9B6F';
+  setTimeout(() => {
+    btn.textContent = '✦ Publish Teaching';
+    btn.style.background = '';
+  }, 2500);
+
+  // Scroll to new card
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+}
 </script>
 </body>
 </html>
