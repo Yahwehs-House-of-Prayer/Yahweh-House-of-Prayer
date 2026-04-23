@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Bible Study — Yahweh's House of Prayer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#B8860B;--gold-light:#DAA520;--gold-pale:#F5DEB3;--gold-bg:#FDF6E3;
+  --parchment:#FAF0DC;--parchment-dark:#F0E0B0;--parchment-deeper:#E8D5A0;
+  --ink:#2C1810;--ink-light:#4A2E1A;--ink-mid:#6B4423;
+  --royal:#1B2B6B;--royal-deep:#0e1a40;--scroll-border:#C9A84C;
+  --shadow:rgba(44,24,16,0.15);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink);font-family:'EB Garamond',serif;font-size:17px;line-height:1.7;}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--parchment-dark)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── NAV (matches index.html exactly) ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--ink);border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;gap:0;padding:0 24px;height:58px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;}
+.nav-brand img{height:36px;border:1px solid #C9A84C55;border-radius:2px;}
+.nav-brand span{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold-pale);white-space:nowrap;}
+.nav-links{display:flex;gap:0;}
+.nav-link{
+  padding:0 13px;height:58px;display:flex;align-items:center;
+  font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+  color:#C9A84C99;text-decoration:none;transition:all 0.2s;white-space:nowrap;
+  background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-pale);border-bottom-color:var(--gold);}
+.nav-toggle{display:none;background:none;border:none;color:var(--gold-pale);font-size:22px;cursor:pointer;margin-left:12px;}
+@media(max-width:800px){
+  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--ink);flex-direction:column;border-bottom:2px solid var(--gold);padding:8px 0;z-index:99;}
+  .nav-links.open{display:flex;}
+  .nav-link{height:44px;padding:0 24px;border-bottom:1px solid #C9A84C22;}
+  .nav-toggle{display:block;}
+}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  margin-top:58px;
+  background:linear-gradient(180deg,var(--royal-deep) 0%,var(--royal) 40%,var(--ink) 100%);
+  padding:70px 24px 60px;text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23B8860B' fill-opacity='0.04'%3E%3Cpath d='M40 0 L42 38 L80 40 L42 42 L40 80 L38 42 L0 40 L38 38Z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.page-hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+  background:linear-gradient(transparent,var(--parchment));pointer-events:none;
+}
+.hero-ornament{display:flex;align-items:center;gap:14px;margin:0 auto 20px;width:min(440px,88vw);}
+.orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.page-hero-emblem{font-size:52px;margin-bottom:16px;position:relative;z-index:1;filter:drop-shadow(0 4px 20px rgba(184,134,11,0.4));}
+.page-hero h1{
+  font-family:'Cinzel Decorative',serif;font-size:clamp(22px,5vw,42px);font-weight:900;
+  color:var(--gold-pale);line-height:1.2;margin-bottom:10px;position:relative;z-index:1;
+}
+.page-hero-sub{
+  font-family:'Cinzel',serif;font-size:clamp(10px,1.6vw,12px);letter-spacing:0.3em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:18px;position:relative;z-index:1;
+}
+.page-hero-verse{
+  max-width:560px;margin:0 auto 32px;font-size:clamp(15px,2vw,18px);
+  font-style:italic;color:rgba(245,222,179,0.8);line-height:1.75;position:relative;z-index:1;
+}
+
+/* ── STUDY TABS NAV ── */
+.study-tabs{
+  background:var(--ink);border-bottom:2px solid var(--gold);
+  position:sticky;top:58px;z-index:90;
+  display:flex;overflow-x:auto;
+}
+.study-tabs::-webkit-scrollbar{display:none;}
+.study-tab{
+  padding:0 20px;height:50px;display:flex;align-items:center;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:#C9A84C88;background:none;border:none;border-bottom:3px solid transparent;
+  cursor:pointer;white-space:nowrap;transition:all 0.2s;flex-shrink:0;
+}
+.study-tab:hover{color:var(--gold-pale);}
+.study-tab.active{color:var(--gold-pale);border-bottom-color:var(--gold);}
+
+/* ── TAB PANELS ── */
+.tab-panel{display:none;padding:60px 24px;max-width:1000px;margin:0 auto;}
+.tab-panel.active{display:block;}
+
+/* ── SECTION HEADERS ── */
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header h2{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,28px);color:var(--ink);margin-bottom:10px;}
+.section-header p{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;}
+.orn{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:14px;}
+.orn-line2{width:60px;height:1px;background:var(--gold);}
+.section-divider{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto;max-width:700px;}
+
+/* ── AI STUDY PANEL ── */
+.ai-study-wrap{
+  display:grid;grid-template-columns:1fr;gap:24px;max-width:760px;margin:0 auto;
+}
+.ai-chat-container{
+  background:white;border:1px solid var(--parchment-deeper);
+  border-radius:4px;box-shadow:0 4px 20px var(--shadow);overflow:hidden;
+}
+.ai-chat-header{
+  background:linear-gradient(135deg,var(--royal-deep),var(--royal));
+  padding:18px 24px;display:flex;align-items:center;gap:14px;
+}
+.ai-chat-header-icon{font-size:28px;}
+.ai-chat-header-text h3{font-family:'Cinzel',serif;font-size:14px;color:var(--gold-pale);margin-bottom:2px;}
+.ai-chat-header-text p{font-size:13px;color:rgba(245,222,179,0.6);}
+.chat-messages{
+  height:420px;overflow-y:auto;padding:20px;
+  display:flex;flex-direction:column;gap:16px;
+  background:var(--parchment);
+}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+.msg{max-width:82%;display:flex;flex-direction:column;gap:4px;}
+.msg.user{align-self:flex-end;align-items:flex-end;}
+.msg.ai{align-self:flex-start;align-items:flex-start;}
+.msg-bubble{
+  padding:13px 18px;border-radius:4px;font-size:16px;line-height:1.7;
+}
+.msg.user .msg-bubble{
+  background:linear-gradient(135deg,var(--royal),var(--royal-deep));
+  color:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);
+}
+.msg.ai .msg-bubble{
+  background:white;color:var(--ink-light);
+  border:1px solid var(--parchment-deeper);
+  box-shadow:0 2px 8px var(--shadow);
+}
+.msg-name{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;padding:0 4px;}
+.ai-avatar{font-size:18px;margin-bottom:2px;}
+.typing{display:flex;gap:4px;padding:4px 2px;}
+.typing span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:typingDot 1.2s ease infinite;}
+.typing span:nth-child(2){animation-delay:0.2s;}
+.typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes typingDot{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.chat-suggestions{
+  display:flex;gap:8px;padding:12px 16px;overflow-x:auto;
+  background:var(--parchment-dark);border-top:1px solid var(--parchment-deeper);
+}
+.chat-suggestions::-webkit-scrollbar{display:none;}
+.suggestion{
+  white-space:nowrap;padding:7px 14px;
+  border:1px solid var(--scroll-border);border-radius:2px;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--ink-mid);background:white;cursor:pointer;transition:all 0.2s;flex-shrink:0;
+}
+.suggestion:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.chat-input-row{
+  padding:14px 18px;display:flex;gap:10px;align-items:flex-end;
+  border-top:1px solid var(--parchment-deeper);background:white;
+}
+.chat-input{
+  flex:1;background:var(--parchment);border:1px solid var(--parchment-deeper);
+  border-radius:3px;padding:10px 14px;color:var(--ink);font-size:16px;
+  font-family:'EB Garamond',serif;resize:none;outline:none;max-height:100px;line-height:1.5;
+}
+.chat-input:focus{border-color:var(--gold);}
+.chat-input::placeholder{color:var(--ink-mid);opacity:0.5;}
+.chat-send{
+  padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  border:none;border-radius:3px;cursor:pointer;font-family:'Cinzel',serif;
+  font-size:11px;letter-spacing:0.1em;font-weight:700;color:var(--ink);
+  text-transform:uppercase;transition:all 0.2s;flex-shrink:0;
+}
+.chat-send:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(184,134,11,0.4);}
+
+/* ── HEBREW LESSONS ── */
+.lessons-tabs{display:flex;gap:0;border-bottom:2px solid var(--parchment-deeper);margin-bottom:32px;overflow-x:auto;}
+.lessons-tabs::-webkit-scrollbar{display:none;}
+.lesson-tab{
+  padding:10px 22px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--ink-mid);background:none;border:none;
+  border-bottom:3px solid transparent;cursor:pointer;transition:all 0.2s;white-space:nowrap;
+  margin-bottom:-2px;
+}
+.lesson-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.aleph-bet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px;margin-bottom:24px;}
+.letter-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:14px 8px;text-align:center;cursor:pointer;transition:all 0.2s;
+  box-shadow:0 1px 4px var(--shadow);
+}
+.letter-card:hover,.letter-card.active{border-color:var(--gold);box-shadow:0 4px 14px var(--shadow);transform:translateY(-2px);}
+.letter-hebrew{font-size:32px;color:var(--gold);line-height:1;margin-bottom:4px;}
+.letter-paleo{font-size:18px;color:var(--ink-mid);margin-bottom:4px;}
+.letter-name{font-family:'Cinzel',serif;font-size:9px;color:var(--ink-mid);letter-spacing:0.05em;}
+.letter-detail{
+  background:white;border:1px solid var(--scroll-border);border-radius:3px;
+  padding:24px;box-shadow:0 4px 16px var(--shadow);margin-top:8px;
+  border-top:3px solid var(--gold);
+}
+.letter-detail h3{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);margin-bottom:10px;}
+.letter-detail .meaning{font-size:16px;font-style:italic;color:var(--royal);margin-bottom:10px;}
+.letter-detail p{font-size:16px;line-height:1.75;color:var(--ink-light);}
+
+/* ── VOCABULARY FLASHCARDS ── */
+.flashcard-wrap{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.flashcard{
+  width:100%;max-width:440px;height:220px;cursor:pointer;perspective:1000px;
+}
+.flashcard-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;transition:transform 0.5s ease;
+}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg);}
+.flashcard-front,.flashcard-back{
+  position:absolute;inset:0;backface-visibility:hidden;
+  background:white;border:1px solid var(--scroll-border);border-radius:4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;box-shadow:0 6px 24px var(--shadow);
+  border-top:4px solid var(--gold);
+}
+.flashcard-back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--royal-deep),var(--royal));}
+.fc-hebrew{font-size:64px;color:var(--gold);direction:rtl;line-height:1;}
+.fc-hint{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--ink-mid);text-transform:uppercase;margin-top:12px;}
+.fc-english{font-family:'Cinzel',serif;font-size:22px;color:var(--gold-pale);margin-bottom:8px;}
+.fc-translit{font-size:18px;font-style:italic;color:rgba(245,222,179,0.7);}
+.fc-desc{font-size:14px;color:rgba(245,222,179,0.6);text-align:center;line-height:1.6;margin-top:8px;}
+.fc-controls{display:flex;gap:14px;}
+.fc-btn{
+  padding:10px 28px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;
+  text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;
+}
+.fc-btn-prev{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+.fc-btn-prev:hover{background:rgba(184,134,11,0.1);}
+.fc-btn-next{background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--ink);font-weight:700;}
+.fc-btn-next:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(184,134,11,0.4);}
+.fc-counter{font-family:'Cinzel',serif;font-size:11px;color:var(--ink-mid);letter-spacing:0.1em;}
+
+/* ── HOLY DAYS ── */
+.feast-grid{display:flex;flex-direction:column;gap:14px;}
+.feast-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:20px;display:flex;gap:18px;align-items:center;
+  box-shadow:0 2px 10px var(--shadow);transition:all 0.2s;
+  border-left:4px solid var(--gold);
+}
+.feast-card:hover{transform:translateX(4px);box-shadow:0 4px 18px var(--shadow);}
+.feast-card.upcoming{border-left-color:var(--royal);background:linear-gradient(135deg,rgba(27,43,107,0.04),white);}
+.feast-date-box{
+  min-width:64px;text-align:center;background:var(--parchment-dark);
+  border:1px solid var(--parchment-deeper);border-radius:3px;padding:10px 6px;flex-shrink:0;
+}
+.feast-month{font-family:'Cinzel',serif;font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;}
+.feast-day{font-family:'Cinzel Decorative',serif;font-size:22px;color:var(--ink);line-height:1.1;}
+.feast-info h3{font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:3px;}
+.feast-info .feast-heb{font-size:13px;color:var(--gold);font-style:italic;margin-bottom:5px;}
+.feast-info p{font-size:15px;line-height:1.6;color:var(--ink-light);}
+.feast-badge{
+  margin-left:auto;align-self:flex-start;flex-shrink:0;
+  padding:4px 10px;border-radius:2px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.08em;
+}
+.feast-badge.spring{background:rgba(74,155,111,0.12);color:#2d7a50;border:1px solid rgba(74,155,111,0.3);}
+.feast-badge.fall{background:rgba(184,134,11,0.1);color:var(--gold);border:1px solid rgba(184,134,11,0.3);}
+.feast-badge.weekly{background:rgba(27,43,107,0.08);color:var(--royal);border:1px solid rgba(27,43,107,0.2);}
+.feast-badge.next{background:var(--royal);color:var(--gold-pale);border:1px solid var(--royal);}
+.countdown-box{
+  background:linear-gradient(135deg,var(--royal-deep),var(--royal));
+  border:1px solid rgba(201,168,76,0.3);border-radius:4px;
+  padding:28px;text-align:center;margin-bottom:32px;
+}
+.cd-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.cd-feast{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold-pale);margin-bottom:18px;}
+.cd-nums{display:flex;gap:20px;justify-content:center;}
+.cd-unit{text-align:center;}
+.cd-num{font-family:'Cinzel Decorative',serif;font-size:36px;color:var(--gold);line-height:1;}
+.cd-unit-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.12em;color:rgba(201,168,76,0.6);text-transform:uppercase;}
+
+/* ── PRAYER ── */
+.prayer-grid{display:flex;flex-direction:column;gap:16px;}
+.prayer-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:24px;box-shadow:0 2px 10px var(--shadow);transition:all 0.2s;
+  border-top:3px solid var(--gold);
+}
+.prayer-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow);}
+.prayer-card h3{font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:10px;letter-spacing:0.05em;}
+.prayer-heb{font-size:24px;color:var(--gold);direction:rtl;line-height:1.5;margin-bottom:12px;padding:12px;background:var(--parchment);border-radius:3px;}
+.prayer-text{font-size:16px;line-height:1.8;font-style:italic;color:var(--ink-light);margin-bottom:10px;}
+.prayer-ref{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;}
+
+/* ── LIBRARY ── */
+.library-section{margin-bottom:48px;}
+.library-section-title{
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);padding-bottom:10px;border-bottom:1px solid var(--parchment-deeper);
+  margin-bottom:20px;
+}
+.text-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.ancient-text-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:20px;cursor:pointer;transition:all 0.25s;box-shadow:0 2px 10px var(--shadow);
+  border-top:3px solid var(--gold);
+}
+.ancient-text-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow);border-top-color:var(--royal);}
+.atc-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.atc-icon{font-size:26px;flex-shrink:0;}
+.atc-info{flex:1;}
+.atc-title{font-family:'Cinzel',serif;font-size:13px;color:var(--royal);margin-bottom:2px;}
+.atc-sub{font-size:12px;color:var(--gold);font-style:italic;}
+.atc-desc{font-size:14px;color:var(--ink-light);line-height:1.6;margin-bottom:12px;}
+.atc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.source-tag{font-size:9px;padding:2px 7px;border-radius:2px;font-family:'Cinzel',serif;letter-spacing:0.04em;}
+.source-tag.dss{background:rgba(139,105,20,0.12);color:#7a5c00;border:1px solid rgba(139,105,20,0.3);}
+.source-tag.eth{background:rgba(27,43,107,0.1);color:var(--royal);border:1px solid rgba(27,43,107,0.25);}
+.source-tag.kn{background:rgba(155,74,74,0.1);color:#8b2020;border:1px solid rgba(155,74,74,0.3);}
+.atc-cta{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;}
+
+/* ── PDF LIBRARY ── */
+.pdf-card{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:18px;display:flex;align-items:center;gap:16px;
+  cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px var(--shadow);
+  text-decoration:none;margin-bottom:12px;
+}
+.pdf-card:hover{border-color:var(--gold);transform:translateX(4px);box-shadow:0 4px 16px var(--shadow);}
+.pdf-icon{
+  width:54px;height:64px;flex-shrink:0;
+  background:linear-gradient(160deg,var(--royal-deep),var(--royal));
+  border-radius:3px;border:1px solid rgba(201,168,76,0.3);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+}
+.pdf-icon-sym{font-size:22px;line-height:1;}
+.pdf-icon-label{font-family:'Cinzel',serif;font-size:7px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;}
+.pdf-info{flex:1;min-width:0;}
+.pdf-title{font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:3px;}
+.pdf-desc{font-size:13px;color:var(--ink-mid);line-height:1.5;margin-bottom:7px;}
+.pdf-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.pdf-tag{font-size:9px;padding:2px 7px;border-radius:2px;font-family:'Cinzel',serif;letter-spacing:0.04em;background:rgba(184,134,11,0.1);color:var(--gold);border:1px solid rgba(184,134,11,0.25);}
+.pdf-tag.blue{background:rgba(27,43,107,0.08);color:var(--royal);border-color:rgba(27,43,107,0.2);}
+.pdf-tag.green{background:rgba(74,155,111,0.1);color:#2d7a50;border-color:rgba(74,155,111,0.25);}
+.pdf-open{
+  flex-shrink:0;width:36px;height:36px;border-radius:3px;
+  background:var(--parchment);border:1px solid var(--parchment-deeper);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:16px;color:var(--gold);
+}
+
+/* ── AI TEXT STUDY ── */
+#textStudyPanel{display:none;}
+#textStudyPanel.active{display:block;}
+.text-study-back{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);background:none;border:none;cursor:pointer;padding:0;transition:all 0.2s;
+}
+.text-study-back:hover{color:var(--ink);}
+
+/* ── INTERLINEAR ── */
+.il-controls{
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  background:white;border:1px solid var(--parchment-deeper);padding:16px 20px;
+  border-radius:3px;margin-bottom:24px;box-shadow:0 2px 8px var(--shadow);
+}
+.il-source-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.il-source-btn{
+  padding:7px 14px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;
+  text-transform:uppercase;border:1px solid var(--parchment-deeper);border-radius:2px;
+  background:var(--parchment);color:var(--ink-mid);cursor:pointer;transition:all 0.2s;
+}
+.il-source-btn.active{background:var(--royal);color:var(--gold-pale);border-color:var(--royal);}
+.il-book-select{
+  background:var(--parchment);border:1px solid var(--parchment-deeper);
+  border-radius:2px;padding:7px 12px;color:var(--ink);font-family:'Cinzel',serif;
+  font-size:11px;outline:none;cursor:pointer;
+}
+.il-book-select:focus{border-color:var(--gold);}
+.il-chapter-nav{display:flex;align-items:center;gap:8px;}
+.il-ch-btn{
+  width:32px;height:32px;border-radius:2px;background:var(--parchment-dark);
+  border:1px solid var(--parchment-deeper);color:var(--gold);font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all 0.2s;
+}
+.il-ch-btn:hover{background:var(--gold);color:var(--ink);}
+.il-ch-num{font-family:'Cinzel Decorative',serif;font-size:15px;color:var(--royal);min-width:32px;text-align:center;}
+.il-verse-block{
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:20px;margin-bottom:16px;box-shadow:0 2px 8px var(--shadow);
+}
+.il-verse-num{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;
+}
+.il-verse-num::after{content:'';flex:1;height:1px;background:var(--parchment-deeper);}
+.il-words-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;direction:rtl;}
+.il-word{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--parchment);border:1px solid var(--parchment-deeper);
+  border-radius:3px;padding:8px 10px;cursor:pointer;transition:all 0.2s;min-width:56px;
+}
+.il-word:hover,.il-word.active{border-color:var(--gold);background:rgba(184,134,11,0.06);box-shadow:0 2px 8px var(--shadow);}
+.il-word-orig{font-size:20px;color:var(--gold);line-height:1.2;margin-bottom:3px;}
+.il-word-translit{font-size:10px;color:var(--ink-mid);direction:ltr;margin-bottom:2px;font-style:italic;}
+.il-word-eng{font-size:10px;color:var(--ink-light);direction:ltr;text-align:center;line-height:1.2;}
+.il-english-verse{
+  font-size:15px;color:var(--ink-mid);line-height:1.75;font-style:italic;
+  padding:12px 16px;background:var(--parchment);border-left:3px solid var(--gold);
+  border-radius:0 3px 3px 0;margin-bottom:8px;direction:ltr;
+}
+.il-ai-btn{
+  padding:7px 16px;border-radius:2px;border:1px solid var(--gold);cursor:pointer;
+  background:transparent;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.08em;
+  color:var(--gold);text-transform:uppercase;transition:all 0.2s;
+}
+.il-ai-btn:hover{background:var(--gold);color:var(--ink);}
+
+/* ── WORD PANEL (slide up) ── */
+.word-panel{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);
+  width:100%;max-width:720px;
+  background:white;border:1px solid var(--scroll-border);border-radius:12px 12px 0 0;
+  box-shadow:0 -8px 40px var(--shadow);z-index:400;
+  transition:transform 0.3s ease;max-height:80vh;display:flex;flex-direction:column;
+}
+.word-panel.open{transform:translateX(-50%) translateY(0);}
+.word-panel-handle{width:40px;height:4px;background:var(--parchment-deeper);border-radius:2px;margin:14px auto 0;}
+.wp-close{
+  position:absolute;top:14px;right:18px;
+  background:var(--parchment);border:1px solid var(--parchment-deeper);border-radius:50%;
+  width:28px;height:28px;color:var(--ink-mid);font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all 0.2s;
+}
+.wp-close:hover{background:var(--gold);color:var(--ink);}
+.word-panel-scroll{overflow-y:auto;padding:16px 24px 28px;}
+.word-panel-scroll::-webkit-scrollbar{width:4px;}
+.word-panel-scroll::-webkit-scrollbar-thumb{background:var(--gold);}
+.wp-original{font-size:44px;color:var(--gold);direction:rtl;margin-bottom:4px;line-height:1;}
+.wp-translit{font-size:17px;color:var(--ink-mid);font-style:italic;margin-bottom:14px;}
+.wp-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--parchment-deeper);}
+.wp-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;flex-shrink:0;margin-right:16px;padding-top:3px;}
+.wp-value{font-size:15px;color:var(--ink-light);line-height:1.6;text-align:right;flex:1;}
+.wp-strong{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--royal);}
+.wp-root-letters{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+.wp-root-letter{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--parchment);border:1px solid var(--parchment-deeper);
+  border-radius:3px;padding:8px 10px;min-width:48px;
+}
+.wp-root-letter .rl-heb{font-size:24px;color:var(--gold);direction:rtl;}
+.wp-root-letter .rl-name{font-family:'Cinzel',serif;font-size:8px;color:var(--gold);letter-spacing:0.05em;margin-top:2px;}
+.wp-root-letter .rl-mean{font-size:10px;color:var(--ink-mid);margin-top:1px;text-align:center;}
+.wp-audio-btn{
+  width:100%;margin-top:12px;padding:11px;border-radius:3px;border:1px solid var(--gold);cursor:pointer;
+  background:var(--parchment);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.08em;color:var(--gold);
+  text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;
+}
+.wp-audio-btn:hover{background:var(--gold);color:var(--ink);}
+.wp-ai-section{margin-top:14px;}
+.wp-ai-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.wp-ai-text{font-size:15px;color:var(--ink-light);line-height:1.75;background:var(--parchment);border-radius:3px;padding:14px;border-left:3px solid var(--gold);}
+
+/* ── ADMIN PANEL ── */
+.admin-trigger{
+  display:block;margin:32px auto 0;padding:8px 20px;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(184,134,11,0.35);background:none;border:1px solid rgba(184,134,11,0.2);
+  border-radius:2px;cursor:pointer;transition:all 0.2s;
+}
+.admin-trigger:hover{color:var(--gold);border-color:var(--gold);}
+.admin-overlay{
+  display:none;position:fixed;inset:0;background:rgba(44,24,16,0.75);
+  z-index:800;align-items:center;justify-content:center;padding:20px;
+}
+.admin-overlay.open{display:flex;}
+.admin-sheet{
+  background:var(--parchment);border:2px solid var(--gold);border-radius:4px;
+  width:100%;max-width:660px;max-height:90vh;overflow-y:auto;
+  box-shadow:0 16px 60px rgba(44,24,16,0.5);
+}
+.admin-header{
+  background:linear-gradient(135deg,var(--royal-deep),var(--royal));
+  padding:20px 24px;display:flex;align-items:center;justify-content:space-between;
+}
+.admin-header h3{font-family:'Cinzel Decorative',serif;font-size:15px;color:var(--gold);margin:0;}
+.admin-close{background:none;border:none;color:var(--gold-pale);font-size:22px;cursor:pointer;padding:0;}
+.admin-body{padding:24px;}
+.admin-login{text-align:center;padding:16px 0 8px;}
+.admin-login p{font-size:15px;color:var(--ink-mid);margin-bottom:16px;}
+.admin-pw-row{display:flex;gap:10px;max-width:320px;margin:0 auto;}
+.admin-pw{
+  flex:1;padding:10px 14px;border:1px solid var(--parchment-deeper);border-radius:3px;
+  font-family:'EB Garamond',serif;font-size:16px;color:var(--ink);background:white;outline:none;
+}
+.admin-pw:focus{border-color:var(--gold);}
+.admin-pw-btn{
+  padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  border:none;border-radius:3px;font-family:'Cinzel',serif;font-size:11px;
+  letter-spacing:0.1em;font-weight:700;color:var(--ink);cursor:pointer;text-transform:uppercase;
+}
+.admin-pw-error{color:#c0392b;font-size:13px;margin-top:8px;font-style:italic;}
+.admin-content{display:none;}
+.admin-content.visible{display:block;}
+.admin-section-title{
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);padding-bottom:8px;border-bottom:1px solid var(--parchment-deeper);margin-bottom:16px;
+}
+.admin-pdf-row{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;
+  background:white;border:1px solid var(--parchment-deeper);border-radius:3px;
+  padding:14px;margin-bottom:10px;
+}
+.admin-pdf-label{font-family:'Cinzel',serif;font-size:12px;color:var(--royal);margin-bottom:6px;letter-spacing:0.05em;}
+.admin-pdf-input{
+  width:100%;padding:8px 12px;border:1px solid var(--parchment-deeper);border-radius:3px;
+  font-family:'EB Garamond',serif;font-size:14px;color:var(--ink);background:var(--parchment);outline:none;
+}
+.admin-pdf-input:focus{border-color:var(--gold);}
+.admin-pdf-input.active{border-color:#2d7a50;background:rgba(74,155,111,0.05);}
+.admin-save-btn{
+  padding:8px 16px;background:var(--royal);border:none;border-radius:3px;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold-pale);cursor:pointer;transition:all 0.2s;white-space:nowrap;align-self:end;
+}
+.admin-save-btn:hover{background:var(--royal-deep);}
+.admin-save-btn.saved{background:#2d7a50;color:white;}
+.admin-hint{font-size:13px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;line-height:1.6;padding:12px 14px;background:rgba(184,134,11,0.07);border-left:3px solid var(--gold);border-radius:0 3px 3px 0;}
+.admin-save-all{
+  width:100%;padding:12px;margin-top:8px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  border:none;border-radius:3px;font-family:'Cinzel',serif;font-size:12px;
+  letter-spacing:0.12em;font-weight:700;color:var(--ink);cursor:pointer;text-transform:uppercase;transition:all 0.2s;
+}
+.admin-save-all:hover{box-shadow:0 4px 16px rgba(184,134,11,0.4);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:var(--gold-pale);text-align:center;
+  padding:48px 24px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.1em;
+}
+.footer-logo{font-family:'Cinzel Decorative',serif;font-size:16px;color:var(--gold);margin-bottom:10px;}
+footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-spacing:0.12em;}
+.footer-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:20px;}
+.footer-links a{color:#C9A84C88;text-decoration:none;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold-pale);}
+.footer-blessing{font-size:13px;font-style:italic;color:var(--gold);letter-spacing:0.08em;font-family:'EB Garamond',serif;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .tab-panel{padding:40px 16px;}
+  .aleph-bet-grid{grid-template-columns:repeat(auto-fill,minmax(68px,1fr));}
+  .text-card-grid{grid-template-columns:1fr;}
+  .cd-nums{gap:12px;}
+  .cd-num{font-size:28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="corp_seal_YHOP_gold.jpeg" alt="YHOP Seal"/>
+    <span>Yahweh's House of Prayer</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a class="nav-link" href="index.html#about">About</a>
+    <a class="nav-link" href="index.html#beliefs">Beliefs</a>
+    <a class="nav-link" href="index.html#leadership">Leadership</a>
+    <a class="nav-link" href="index.html#ministries">Ministries</a>
+    <a class="nav-link" href="index.html#holydays">Holy Days</a>
+    <a class="nav-link active" href="bible.html">Bible Study</a>
+    <a class="nav-link" href="teachings.html">Teachings</a>
+    <a class="nav-link" href="index.html#contact">Contact</a>
+  </div>
+  <button class="nav-toggle" onclick="toggleNav()">☰</button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-ornament"><div class="orn-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="orn-line"></div></div>
+  <div class="page-hero-emblem">𐤉𐤄𐤅𐤄</div>
+  <h1>Bible Study</h1>
+  <div class="page-hero-sub">Yahweh's House of Prayer · Hebrew Roots · Ancient Paths</div>
+  <div class="page-hero-verse">"Ask for the ancient paths, where the good way is, and walk in it, and you will find rest for your souls." — Yirmeyahu 6:16</div>
+</div>
+
+<!-- STUDY TABS -->
+<div class="study-tabs" id="studyTabs">
+  <button class="study-tab active" onclick="switchStudyTab('ai',this)">🤖 AI Study</button>
+  <button class="study-tab" onclick="switchStudyTab('interlinear',this)">📖 Interlinear</button>
+  <button class="study-tab" onclick="switchStudyTab('hebrew',this)">א Hebrew</button>
+  <button class="study-tab" onclick="switchStudyTab('calendar',this)">🌙 Feasts</button>
+  <button class="study-tab" onclick="switchStudyTab('prayer',this)">🙏 Prayer</button>
+  <button class="study-tab" onclick="switchStudyTab('library',this)">📜 Library</button>
+</div>
+
+<!-- ══════════════ AI STUDY ══════════════ -->
+<div id="panel-ai" class="tab-panel active">
+  <div class="section-header">
+    <h2>AI Bible Study</h2>
+    <p>Hebrew Roots · Ebionite · Nazarene Tradition</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="ai-study-wrap">
+    <div class="ai-chat-container">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-icon">📜</div>
+        <div class="ai-chat-header-text">
+          <h3>Yahweh's Bible Scrolls — AI Scholar</h3>
+          <p>Ebionite · Nazarene · Hebrew Roots · Ethiopian Canon</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg ai">
+          <div class="ai-avatar">📜</div>
+          <div class="msg-bubble">Shalom and welcome! I am your Hebrew Roots study companion, grounded in the Ebionite and Nazarene tradition — the original faith of Yeshua's disciples. I study through Hebrew names, honor Torah, and reference the Dead Sea Scrolls and the Ethiopian Orthodox canon of 81 books. What would you like to explore today?</div>
+          <div class="msg-name">Yahweh's Bible Scrolls AI</div>
+        </div>
+      </div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <div class="suggestion" onclick="sendSuggestion(this)">What is the Shema?</div>
+        <div class="suggestion" onclick="sendSuggestion(this)">Explain Acts 15:21</div>
+        <div class="suggestion" onclick="sendSuggestion(this)">What is Shabbat?</div>
+        <div class="suggestion" onclick="sendSuggestion(this)">Who were the Ebionites?</div>
+        <div class="suggestion" onclick="sendSuggestion(this)">Feasts of Yahweh explained</div>
+        <div class="suggestion" onclick="sendSuggestion(this)">Why use Hebrew names?</div>
+      </div>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="chatInput" placeholder="Ask about Torah, Hebrew Roots, the ancient paths..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="chat-send" onclick="sendMessage()">Send ➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ INTERLINEAR ══════════════ -->
+<div id="panel-interlinear" class="tab-panel">
+  <div class="section-header">
+    <h2>Interlinear Bible</h2>
+    <p>Hebrew OT · Aramaic Peshitta NT · Greek NT — Tap any word to study</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="il-controls">
+    <div class="il-source-btns">
+      <button class="il-source-btn active" onclick="setILSource('hebrew-ot',this)">Hebrew OT</button>
+      <button class="il-source-btn" onclick="setILSource('peshitta-nt',this)">Peshitta NT</button>
+      <button class="il-source-btn" onclick="setILSource('greek-nt',this)">Greek NT</button>
+    </div>
+    <select class="il-book-select" id="ilBookSelect" onchange="loadILChapter()"></select>
+    <div class="il-chapter-nav">
+      <button class="il-ch-btn" onclick="changeChapter(-1)">‹</button>
+      <div class="il-ch-num" id="ilChapterNum">1</div>
+      <button class="il-ch-btn" onclick="changeChapter(1)">›</button>
+    </div>
+  </div>
+  <div id="ilContent"></div>
+</div>
+
+<!-- ══════════════ HEBREW LESSONS ══════════════ -->
+<div id="panel-hebrew" class="tab-panel">
+  <div class="section-header">
+    <h2>Hebrew Lessons</h2>
+    <p>Biblical Hebrew · Paleo Hebrew · Ancient Script of Yisrael</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="lessons-tabs">
+    <button class="lesson-tab active" onclick="switchLesson(this,'alephbet')">Aleph-Bet</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'covenant')">Covenant Words</button>
+  </div>
+
+  <!-- Aleph-Bet -->
+  <div id="lesson-alephbet">
+    <p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Tap any letter to learn its name, Paleo form, meaning, and spiritual significance.</p>
+    <div class="aleph-bet-grid">
+      <div class="letter-card" onclick="showLetter('aleph')"><div class="letter-hebrew">א</div><div class="letter-paleo">𐤀</div><div class="letter-name">Aleph</div></div>
+      <div class="letter-card" onclick="showLetter('bet')"><div class="letter-hebrew">ב</div><div class="letter-paleo">𐤁</div><div class="letter-name">Bet</div></div>
+      <div class="letter-card" onclick="showLetter('gimel')"><div class="letter-hebrew">ג</div><div class="letter-paleo">𐤂</div><div class="letter-name">Gimel</div></div>
+      <div class="letter-card" onclick="showLetter('dalet')"><div class="letter-hebrew">ד</div><div class="letter-paleo">𐤃</div><div class="letter-name">Dalet</div></div>
+      <div class="letter-card" onclick="showLetter('hey')"><div class="letter-hebrew">ה</div><div class="letter-paleo">𐤄</div><div class="letter-name">Hey</div></div>
+      <div class="letter-card" onclick="showLetter('vav')"><div class="letter-hebrew">ו</div><div class="letter-paleo">𐤅</div><div class="letter-name">Vav</div></div>
+      <div class="letter-card" onclick="showLetter('zayin')"><div class="letter-hebrew">ז</div><div class="letter-paleo">𐤆</div><div class="letter-name">Zayin</div></div>
+      <div class="letter-card" onclick="showLetter('chet')"><div class="letter-hebrew">ח</div><div class="letter-paleo">𐤇</div><div class="letter-name">Chet</div></div>
+      <div class="letter-card" onclick="showLetter('tet')"><div class="letter-hebrew">ט</div><div class="letter-paleo">𐤈</div><div class="letter-name">Tet</div></div>
+      <div class="letter-card" onclick="showLetter('yod')"><div class="letter-hebrew">י</div><div class="letter-paleo">𐤉</div><div class="letter-name">Yod</div></div>
+      <div class="letter-card" onclick="showLetter('kaf')"><div class="letter-hebrew">כ</div><div class="letter-paleo">𐤊</div><div class="letter-name">Kaf</div></div>
+      <div class="letter-card" onclick="showLetter('lamed')"><div class="letter-hebrew">ל</div><div class="letter-paleo">𐤋</div><div class="letter-name">Lamed</div></div>
+      <div class="letter-card" onclick="showLetter('mem')"><div class="letter-hebrew">מ</div><div class="letter-paleo">𐤌</div><div class="letter-name">Mem</div></div>
+      <div class="letter-card" onclick="showLetter('nun')"><div class="letter-hebrew">נ</div><div class="letter-paleo">𐤍</div><div class="letter-name">Nun</div></div>
+      <div class="letter-card" onclick="showLetter('samech')"><div class="letter-hebrew">ס</div><div class="letter-paleo">𐤎</div><div class="letter-name">Samech</div></div>
+      <div class="letter-card" onclick="showLetter('ayin')"><div class="letter-hebrew">ע</div><div class="letter-paleo">𐤏</div><div class="letter-name">Ayin</div></div>
+      <div class="letter-card" onclick="showLetter('pey')"><div class="letter-hebrew">פ</div><div class="letter-paleo">𐤐</div><div class="letter-name">Pey</div></div>
+      <div class="letter-card" onclick="showLetter('tsadi')"><div class="letter-hebrew">צ</div><div class="letter-paleo">𐤑</div><div class="letter-name">Tsadi</div></div>
+      <div class="letter-card" onclick="showLetter('qof')"><div class="letter-hebrew">ק</div><div class="letter-paleo">𐤒</div><div class="letter-name">Qof</div></div>
+      <div class="letter-card" onclick="showLetter('resh')"><div class="letter-hebrew">ר</div><div class="letter-paleo">𐤓</div><div class="letter-name">Resh</div></div>
+      <div class="letter-card" onclick="showLetter('shin')"><div class="letter-hebrew">ש</div><div class="letter-paleo">𐤔</div><div class="letter-name">Shin</div></div>
+      <div class="letter-card" onclick="showLetter('tav')"><div class="letter-hebrew">ת</div><div class="letter-paleo">𐤕</div><div class="letter-name">Tav</div></div>
+    </div>
+    <div id="letterDetail" class="letter-detail" style="display:none;"></div>
+  </div>
+
+  <!-- Vocabulary Flashcards -->
+  <div id="lesson-vocab" style="display:none;">
+    <div class="flashcard-wrap">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="fc-hebrew" id="fc-hebrew">שָׁלוֹם</div>
+            <div class="fc-hint">Tap to reveal</div>
+          </div>
+          <div class="flashcard-back">
+            <div class="fc-english" id="fc-english">Shalom</div>
+            <div class="fc-translit" id="fc-translit">sha-LOME</div>
+            <div class="fc-desc" id="fc-desc">Peace, wholeness, completeness — the state of nothing missing, nothing broken. Yahweh's covenant blessing over His people.</div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-counter" id="fc-counter">1 / 12</div>
+      <div class="fc-controls">
+        <button class="fc-btn fc-btn-prev" onclick="prevCard()">← Prev</button>
+        <button class="fc-btn fc-btn-next" onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Covenant Words -->
+  <div id="lesson-covenant" style="display:none;">
+    <div style="display:flex;flex-direction:column;gap:16px;" id="covenantWords"></div>
+  </div>
+</div>
+
+<!-- ══════════════ FEASTS / CALENDAR ══════════════ -->
+<div id="panel-calendar" class="tab-panel">
+  <div class="section-header">
+    <h2>Holy Days of Yahweh</h2>
+    <p>Mo'edim · The Appointed Times · Vayikra (Leviticus) 23</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="countdown-box">
+    <div class="cd-label">Next Appointed Time</div>
+    <div class="cd-feast">Shavuot — Feast of Weeks</div>
+    <div class="cd-nums">
+      <div class="cd-unit"><div class="cd-num" id="cd-days">--</div><div class="cd-unit-label">Days</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit-label">Hours</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-mins">--</div><div class="cd-unit-label">Mins</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-secs">--</div><div class="cd-unit-label">Secs</div></div>
+    </div>
+  </div>
+  <div class="feast-grid">
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Nisan</div><div class="feast-day">14</div></div><div class="feast-info"><h3>Passover — Pesach</h3><div class="feast-heb">פֶּסַח · Deliverance from Egypt</div><p>Remembering Yahweh's mighty hand of redemption. Yeshua is our Passover Lamb, slain on this very day.</p></div><span class="feast-badge spring">Spring</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Nisan</div><div class="feast-day">15–21</div></div><div class="feast-info"><h3>Feast of Unleavened Bread</h3><div class="feast-heb">חַג הַמַּצּוֹת · Remove the leaven</div><p>Seven days of removing leaven — removing sin and walking in the purity of covenant life.</p></div><span class="feast-badge spring">Spring</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Nisan</div><div class="feast-day">16</div></div><div class="feast-info"><h3>Firstfruits — Yom HaBikkurim</h3><div class="feast-heb">יוֹם הַבִּכּוּרִים · First of the harvest</div><p>Yeshua rose as the firstfruit of the resurrection on this very appointed day.</p></div><span class="feast-badge spring">Spring</span></div>
+    <div class="feast-card upcoming"><div class="feast-date-box"><div class="feast-month">Sivan</div><div class="feast-day">6</div></div><div class="feast-info"><h3>Feast of Weeks — Shavuot</h3><div class="feast-heb">שָׁבוּעוֹת · Torah given at Sinai</div><p>50 days after Firstfruits — Torah given at Sinai, and the Ruach poured out in Acts 2.</p></div><span class="feast-badge next">↑ Next</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Tishri</div><div class="feast-day">1</div></div><div class="feast-info"><h3>Feast of Trumpets — Yom Teruah</h3><div class="feast-heb">יוֹם תְּרוּעָה · Shofar awakening</div><p>The shofar blast — awakening, repentance, and foreshadowing the return of the Messiah.</p></div><span class="feast-badge fall">Fall</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Tishri</div><div class="feast-day">10</div></div><div class="feast-info"><h3>Day of Atonement — Yom Kippur</h3><div class="feast-heb">יוֹם כִּפּוּר · Holiest day of the year</div><p>A day of fasting and standing before Yahweh — the holiest appointed time in the Hebrew calendar.</p></div><span class="feast-badge fall">Fall</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Tishri</div><div class="feast-day">15–21</div></div><div class="feast-info"><h3>Feast of Tabernacles — Sukkot</h3><div class="feast-heb">סֻכּוֹת · Dwell in booths</div><p>Seven days in booths — celebrating Yahweh's provision and His eternal dwelling among His people.</p></div><span class="feast-badge fall">Fall</span></div>
+    <div class="feast-card"><div class="feast-date-box"><div class="feast-month">Every</div><div class="feast-day">7th</div></div><div class="feast-info"><h3>Shabbat — Weekly Rest</h3><div class="feast-heb">שַׁבָּת · Friday eve to Saturday eve</div><p>The eternal sign between Yahweh and His people — never abolished, never changed, never moved to Sunday.</p></div><span class="feast-badge weekly">Weekly</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ PRAYER ══════════════ -->
+<div id="panel-prayer" class="tab-panel">
+  <div class="section-header">
+    <h2>Prayer &amp; Worship</h2>
+    <p>Shabbat Liturgy · Hebrew Prayers · Psalms of Yahweh</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="prayer-grid">
+    <div class="prayer-card">
+      <h3>The Shema — Foundation of Faith</h3>
+      <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
+      <div class="prayer-text">"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One. And you shall love Yahweh your Elohim with all your heart, with all your soul, and with all your strength."</div>
+      <div class="prayer-ref">Devarim (Deuteronomy) 6:4–5</div>
+    </div>
+    <div class="prayer-card">
+      <h3>Shabbat Candle Blessing</h3>
+      <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה</div>
+      <div class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the universe, who has sanctified us with His commandments and commanded us to kindle the Shabbat light."</div>
+      <div class="prayer-ref">Friday Evening · Shabbat Begins at Sundown</div>
+    </div>
+    <div class="prayer-card">
+      <h3>Kiddush — Shabbat Sanctification</h3>
+      <div class="prayer-heb">וַיְכֻלּוּ הַשָּׁמַיִם וְהָאָרֶץ</div>
+      <div class="prayer-text">"And the heavens and the earth were finished, and all the host of them. And on the seventh day Yahweh finished His work... and He rested on the seventh day from all His work that He had done."</div>
+      <div class="prayer-ref">Bereshit (Genesis) 2:1–3 · Shabbat Evening Kiddush</div>
+    </div>
+    <div class="prayer-card">
+      <h3>Havdalah — End of Shabbat</h3>
+      <div class="prayer-heb">הַמַּבְדִּיל בֵּין קֹדֶשׁ לְחֹל</div>
+      <div class="prayer-text">"Blessed is Yahweh who separates between the holy and the ordinary, between light and darkness, between Yisrael and the nations, between the seventh day and the six days of creation."</div>
+      <div class="prayer-ref">Saturday Evening · Shabbat Ends · Week Begins</div>
+    </div>
+    <div class="prayer-card">
+      <h3>Psalm 119 — Torah Meditation</h3>
+      <div class="prayer-heb">אַשְׁרֵי תְמִימֵי דָרֶךְ הַהֹלְכִים בְּתוֹרַת יַהְוֶה</div>
+      <div class="prayer-text">"How blessed are those whose way is blameless, who walk in the Torah of Yahweh. How blessed are those who keep His testimonies, who seek Him with all their heart."</div>
+      <div class="prayer-ref">Tehillim (Psalms) 119:1–2 · The Great Torah Psalm</div>
+    </div>
+    <div class="prayer-card">
+      <h3>The Priestly Blessing</h3>
+      <div class="prayer-heb">יְבָרֶכְךָ יַהְוֶה וְיִשְׁמְרֶךָ</div>
+      <div class="prayer-text">"Yahweh bless you and keep you; Yahweh make His face shine on you and be gracious to you; Yahweh turn His face toward you and give you peace."</div>
+      <div class="prayer-ref">Bamidbar (Numbers) 6:24–26 · The Aaronic Blessing</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ LIBRARY ══════════════ -->
+<div id="panel-library" class="tab-panel">
+  <!-- Main Library view -->
+  <div id="libraryMain">
+    <div class="section-header">
+      <h2>Ancient Texts Library</h2>
+      <p>Ethiopian Canon · Dead Sea Scrolls · Ebionite Tradition · PDF Bibles</p>
+      <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+    </div>
+
+    <div class="library-section">
+      <div class="library-section-title">✦ Ancient Texts — AI Study Sessions</div>
+      <p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Each text has a dedicated AI scholar. Click to open a full study session.</p>
+      <div class="text-card-grid">
+        <div class="ancient-text-card" onclick="openTextStudy('peshitta')"><div class="atc-header"><div class="atc-icon">🕊️</div><div class="atc-info"><div class="atc-title">The Peshitta</div><div class="atc-sub">ܦܫܝܛܬܐ · Aramaic Scriptures</div></div></div><div class="atc-desc">The ancient Aramaic Bible — the language Yeshua and His disciples actually spoke. Preserves the original Semitic voice of Scripture.</div><div class="atc-tags"><span class="source-tag dss">ARAMAIC</span><span class="source-tag eth">SYRIAC</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('maccabees')"><div class="atc-header"><div class="atc-icon">⚔️</div><div class="atc-info"><div class="atc-title">Books of Maccabees</div><div class="atc-sub">מַכַּבִּים · 1st, 2nd, 3rd & 4th</div></div></div><div class="atc-desc">Yisrael's heroic resistance against Greek Hellenization — the same corruption our ministry stands against today.</div><div class="atc-tags"><span class="source-tag eth">DEUTEROCANON</span><span class="source-tag kn">~167 B.C.</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('jasher')"><div class="atc-header"><div class="atc-icon">📜</div><div class="atc-info"><div class="atc-title">Book of Jasher</div><div class="atc-sub">סֵפֶר הַיָּשָׁר · The Upright Book</div></div></div><div class="atc-desc">Cited twice in Torah itself — Yehoshua 10:13 and 2 Shemuel 1:18. Expanded accounts from Bereshit through the Exodus.</div><div class="atc-tags"><span class="source-tag dss">CITED IN TORAH</span><span class="source-tag eth">ANCIENT</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('dead-sea-scrolls')"><div class="atc-header"><div class="atc-icon">🏺</div><div class="atc-info"><div class="atc-title">Dead Sea Scrolls</div><div class="atc-sub">Qumran · ~250 BCE</div></div></div><div class="atc-desc">The most significant archaeological discovery in biblical history — manuscripts 1,000 years older than the Masoretic text.</div><div class="atc-tags"><span class="source-tag dss">DSS</span><span class="source-tag eth">QUMRAN</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('kebra-nagast')"><div class="atc-header"><div class="atc-icon">🦁</div><div class="atc-info"><div class="atc-title">Kebra Nagast</div><div class="atc-sub">Glory of Kings · Ethiopian Canon</div></div></div><div class="atc-desc">The sacred Ethiopian text chronicling the covenant transfer through Shelomoh, the Queen of Sheba, and Menelik I.</div><div class="atc-tags"><span class="source-tag eth">ETH CANON</span><span class="source-tag kn">KEBRA NAGAST</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('book-of-enoch')"><div class="atc-header"><div class="atc-icon">👁️</div><div class="atc-info"><div class="atc-title">Book of Enoch</div><div class="atc-sub">1 Enoch · Ethiopian Orthodox Canon</div></div></div><div class="atc-desc">Quoted directly in Yehudah (Jude) 1:14-15, found in the Dead Sea Scrolls, and included in the 81-book Ethiopian Bible.</div><div class="atc-tags"><span class="source-tag eth">ETH</span><span class="source-tag dss">DSS</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('ebionite')"><div class="atc-header"><div class="atc-icon">🕎</div><div class="atc-info"><div class="atc-title">Ebionite Tradition</div><div class="atc-sub">The Original Hebrew Believers</div></div></div><div class="atc-desc">The Torah-observant Hebrew followers of Yeshua who maintained the Jerusalem faith under Ya'akov — the tradition YHOP stands in.</div><div class="atc-tags"><span class="source-tag dss">NAZARENE</span><span class="source-tag eth">HEBREW ROOTS</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+        <div class="ancient-text-card" onclick="openTextStudy('psalms-solomon')"><div class="atc-header"><div class="atc-icon">👑</div><div class="atc-info"><div class="atc-title">Psalms of Solomon</div><div class="atc-sub">~50 B.C. · Second Temple Period</div></div></div><div class="atc-desc">18 psalms written decades before Yeshua — a passionate Messianic cry from devout Yisraelites after Rome's conquest.</div><div class="atc-tags"><span class="source-tag dss">~50 B.C.</span><span class="source-tag kn">MESSIANIC</span></div><div class="atc-cta">Open AI Study Session →</div></div>
+      </div>
+    </div>
+
+    <div class="section-divider" style="margin:40px 0;"></div>
+
+    <div class="library-section">
+      <div class="library-section-title">✦ PDF Bible Library</div>
+      <p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Click any Bible to open or download. Each version is provided for study and comparison from a Hebrew Roots perspective.</p>
+
+      <a class="pdf-card" href="613laws2.pdf" target="_blank" rel="noopener">
+        <div class="pdf-icon"><div class="pdf-icon-sym">⚖️</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Yahweh's 613 Laws</div><div class="pdf-desc">All 613 commandments of Torah — the complete covenant instructions of Yahweh. The foundation of Hebrew Roots observance.</div><div class="pdf-tags"><span class="pdf-tag">TORAH</span><span class="pdf-tag blue">613 MITZVOT</span><span class="pdf-tag green">AVAILABLE</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="ethiopian" href="#" onclick="pdfSoon(event,'Ethiopian Orthodox Bible (81 Books)')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">🦁</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Ethiopian Orthodox Bible</div><div class="pdf-desc">The full 81-book canon including Enoch, Jubilees, Kebra Nagast, and all texts of the Ethiopian Orthodox Tewahedo Church.</div><div class="pdf-tags"><span class="pdf-tag">81 BOOKS</span><span class="pdf-tag blue">ETHIOPIC</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="isr" href="#" onclick="pdfSoon(event,'The Scriptures (ISR)')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">📜</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">The Scriptures (ISR)</div><div class="pdf-desc">Institute for Scripture Research — restores the sacred Names Yahweh and Yeshua throughout. One of the most Name-accurate translations available.</div><div class="pdf-tags"><span class="pdf-tag">SACRED NAMES</span><span class="pdf-tag blue">ISR</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="dss" href="#" onclick="pdfSoon(event,'Dead Sea Scrolls Bible')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">🏺</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Dead Sea Scrolls Bible</div><div class="pdf-desc">Translation from the Qumran manuscripts — the oldest surviving Hebrew scripture, predating the Masoretic text by 1,000 years.</div><div class="pdf-tags"><span class="pdf-tag">~250 BCE</span><span class="pdf-tag blue">QUMRAN</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="cepher" href="#" onclick="pdfSoon(event,'Cepher Bible (87 Books)')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">✡️</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Cepher Bible (87 Books)</div><div class="pdf-desc">87-book expanded canon using Hebrew sacred Names — includes Enoch, Jubilees, Jasher, and Maccabees.</div><div class="pdf-tags"><span class="pdf-tag">87 BOOKS</span><span class="pdf-tag blue">SACRED NAMES</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="peshitta-pdf" href="#" onclick="pdfSoon(event,'Peshitta — Aramaic NT')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">🕊️</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Peshitta — Aramaic NT</div><div class="pdf-desc">The ancient Aramaic New Testament — the language Yeshua and His talmidim actually spoke. Preserves Semitic idioms lost in Greek.</div><div class="pdf-tags"><span class="pdf-tag">ARAMAIC</span><span class="pdf-tag blue">SYRIAC</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="hrb" href="#" onclick="pdfSoon(event,'Hebrew Roots Bible (HRB)')">
+        <div class="pdf-icon"><div class="pdf-icon-sym">🌿</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title">Hebrew Roots Bible (HRB)</div><div class="pdf-desc">Translation from a Hebrew Roots perspective — restores Hebraic context, sacred Names, and Torah-observant lens that mainline translations remove.</div><div class="pdf-tags"><span class="pdf-tag">HEBREW ROOTS</span><span class="pdf-tag blue">RESTORED</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="custom1" href="#" onclick="pdfSoon(event,'Custom Text 1')" style="display:none;">
+        <div class="pdf-icon"><div class="pdf-icon-sym">📖</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title" id="custom1-title">Custom Text</div><div class="pdf-desc">Added via admin panel.</div><div class="pdf-tags"><span class="pdf-tag">CUSTOM</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+      <a class="pdf-card" data-pdf="custom2" href="#" onclick="pdfSoon(event,'Custom Text 2')" style="display:none;">
+        <div class="pdf-icon"><div class="pdf-icon-sym">📖</div><div class="pdf-icon-label">PDF</div></div>
+        <div class="pdf-info"><div class="pdf-title" id="custom2-title">Custom Text</div><div class="pdf-desc">Added via admin panel.</div><div class="pdf-tags"><span class="pdf-tag">CUSTOM</span></div></div>
+        <div class="pdf-open">↗</div>
+      </a>
+    </div>
+  </div>
+
+      <button class="admin-trigger" onclick="openAdmin()">⚙ Admin — Manage PDF Links</button>
+    </div>
+  </div>
+
+  <!-- ADMIN OVERLAY -->
+  <div class="admin-overlay" id="adminOverlay" onclick="closeAdminOutside(event)">
+    <div class="admin-sheet">
+      <div class="admin-header">
+        <h3>📖 PDF Library Admin</h3>
+        <button class="admin-close" onclick="closeAdmin()">✕</button>
+      </div>
+      <div class="admin-body">
+        <!-- Login -->
+        <div class="admin-login" id="adminLogin">
+          <p>Enter the admin password to manage PDF links.</p>
+          <div class="admin-pw-row">
+            <input class="admin-pw" type="password" id="adminPw" placeholder="Password..." onkeydown="if(event.key==='Enter')checkAdminPw()"/>
+            <button class="admin-pw-btn" onclick="checkAdminPw()">Enter</button>
+          </div>
+          <div class="admin-pw-error" id="adminPwError" style="display:none;">Incorrect password. Try again.</div>
+        </div>
+        <!-- Content (shown after login) -->
+        <div class="admin-content" id="adminContent">
+          <div class="admin-hint">
+            <strong>Two ways to add a PDF:</strong><br/>
+            <strong>Small files (under 100MB):</strong> Upload the PDF to your GitHub repo → use just the filename as the link (e.g. <code>ethiopian-bible.pdf</code>).<br/>
+            <strong>Large files (over 100MB):</strong> Go to your Netlify dashboard → your site → Blobs → upload the PDF → copy the URL it gives you → paste it here.<br/><br/>
+            Links are saved in your browser and activate the card immediately. No coding needed.
+          </div>
+          <div class="admin-section-title">✦ PDF Bible Links</div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">🦁 Ethiopian Orthodox Bible (81 Books)</div>
+              <input class="admin-pdf-input" id="link-ethiopian" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('ethiopian')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">📜 The Scriptures (ISR)</div>
+              <input class="admin-pdf-input" id="link-isr" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('isr')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">🏺 Dead Sea Scrolls Bible</div>
+              <input class="admin-pdf-input" id="link-dss" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('dss')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">✡️ Cepher Bible (87 Books)</div>
+              <input class="admin-pdf-input" id="link-cepher" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('cepher')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">🕊️ Peshitta — Aramaic NT</div>
+              <input class="admin-pdf-input" id="link-peshitta" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('peshitta-pdf')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">🌿 Hebrew Roots Bible (HRB)</div>
+              <input class="admin-pdf-input" id="link-hrb" type="url" placeholder="Paste Google Drive or direct URL..."/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('hrb')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">📖 Custom Bible / Text (Slot 1)</div>
+              <input class="admin-pdf-input" id="link-custom1" type="url" placeholder="Paste Google Drive or direct URL..."/>
+              <input class="admin-pdf-input" id="label-custom1" type="text" placeholder="Title (e.g. Book of Jubilees)" style="margin-top:6px;"/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('custom1')">Save</button>
+          </div>
+
+          <div class="admin-pdf-row">
+            <div>
+              <div class="admin-pdf-label">📖 Custom Bible / Text (Slot 2)</div>
+              <input class="admin-pdf-input" id="link-custom2" type="url" placeholder="Paste Google Drive or direct URL..."/>
+              <input class="admin-pdf-input" id="label-custom2" type="text" placeholder="Title (e.g. Book of Jasher PDF)" style="margin-top:6px;"/>
+            </div>
+            <button class="admin-save-btn" onclick="saveLink('custom2')">Save</button>
+          </div>
+
+          <button class="admin-save-all" onclick="saveAllLinks()">✦ Save All Links &amp; Update Library</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text Study AI Panel (shown when a text is opened) -->
+  <div id="textStudyPanel">
+    <button class="text-study-back" onclick="closeTextStudy()">← Back to Library</button>
+    <div class="ai-chat-container">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-icon" id="tsIcon">📜</div>
+        <div class="ai-chat-header-text">
+          <h3 id="tsTitle">Text Study</h3>
+          <p id="tsSub">AI Scholar Mode</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="textChatMessages" style="height:460px;"></div>
+      <div class="chat-suggestions" id="textSuggestions"></div>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="textChatInput" placeholder="Ask about this text..." rows="1" onkeydown="handleTextKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="chat-send" onclick="sendTextMessage()">Send ➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORD PANEL -->
+<div class="word-panel" id="wordPanel">
+  <div class="word-panel-handle"></div>
+  <button class="wp-close" onclick="closeWordPanel()">✕</button>
+  <div class="word-panel-scroll" id="wordPanelContent"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Yahweh's House of Prayer</div>
+  <p>Saints of Yahweh · Racine, Wisconsin · Est. 2011 · EIN: 35-2924426</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#beliefs">Beliefs</a>
+    <a href="index.html#leadership">Leadership</a>
+    <a href="teachings.html">Teachings</a>
+    <a href="https://global-kingdom-of-yehudah.netlify.app/" target="_blank">Global Kingdom of Yehudah</a>
+    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank">Facebook</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
+</footer>
+
+<script>
+// ── NAV ──
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+// ── STUDY TABS ──
+function switchStudyTab(tab, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.study-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:document.getElementById('studyTabs').offsetTop - 60, behavior:'smooth'});
+  if(tab==='interlinear') setTimeout(initInterlinear,50);
+  if(tab==='hebrew') buildCovenantWords();
+}
+
+// ── CLAUDE API (via Netlify proxy) ──
+const PROXY = '/.netlify/functions/claude';
+
+const systemPrompt = `You are a Hebrew Roots Bible study AI for Yahweh's House of Prayer, led by Pastor B'deyah Ben Benyamin (Melvin Peyton) and Co-Pastor Sh'muyl Ben Yahdah (Samuel Fields). You study and teach from the Ebionite and Nazarene tradition.
+ALWAYS: Use Hebrew names — Yahweh (never LORD/God), Yeshua (never Jesus), Moshe, Miryam, Yisrael, Yerushalayim, Avraham, Yitzhak, Yaakov. Prioritize Yeshua's direct teachings over Pauline doctrine. Reference Dead Sea Scrolls and Ethiopian Orthodox Bible (81 books) as valid sources. Shabbat is Friday evening to Saturday evening. Holy Days are Leviticus 23 only. Keep responses warm, clear, and formatted for web reading with paragraph breaks.`;
+
+async function callClaude(userMessage, messagesEl, history, avatarIcon, systemOverride) {
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'msg ai';
+  typingDiv.innerHTML = `<div class="ai-avatar">${avatarIcon||'📜'}</div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  messagesEl.appendChild(typingDiv);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  try {
+    const res = await fetch(PROXY, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:systemOverride||systemPrompt,messages:history})
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Shalom — please ask your question.';
+    typingDiv.querySelector('.msg-bubble').innerHTML = reply.replace(/\n/g,'<br/>');
+    return reply;
+  } catch(e) {
+    const fb = 'Shalom! The study companion is ready. Please ensure you are connected to the internet.';
+    typingDiv.querySelector('.msg-bubble').innerHTML = fb;
+    return fb;
+  } finally {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+}
+
+// Main AI chat
+let chatHistory = [];
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim(); if(!text) return;
+  const el = document.getElementById('chatMessages');
+  const userDiv = document.createElement('div');
+  userDiv.className = 'msg user';
+  userDiv.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-name">You</div>`;
+  el.appendChild(userDiv);
+  input.value=''; input.style.height='auto';
+  el.scrollTop = el.scrollHeight;
+  chatHistory.push({role:'user',content:text});
+  const reply = await callClaude(text, el, chatHistory, '📜');
+  chatHistory.push({role:'assistant',content:reply});
+}
+function sendSuggestion(el){document.getElementById('chatInput').value=el.textContent;sendMessage();}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+
+// ── LETTER DATA ──
+const letterData = {
+  aleph:{heb:'א',paleo:'𐤀',name:'Aleph',num:1,meaning:'Ox / Strength / Leader',desc:'The first letter. Paleo pictograph is an ox head — strength, power, the leader. In Yahweh\'s Name (𐤉𐤄𐤅𐤄), the Aleph is the silent strength underlying all creation.'},
+  bet:{heb:'ב',paleo:'𐤁',name:'Bet',num:2,meaning:'House / Tent / Family',desc:'Paleo pictograph is a tent floor plan — house, home, family, dwelling. "Bereshit" starts with Bet — creation as Yahweh\'s household.'},
+  gimel:{heb:'ג',paleo:'𐤂',name:'Gimel',num:3,meaning:'Camel / Lift up / Benefit',desc:'Paleo pictograph is a camel — lifting up, benefit, movement. Related to gemilut chasadim — acts of loving-kindness.'},
+  dalet:{heb:'ד',paleo:'𐤃',name:'Dalet',num:4,meaning:'Door / Path / Movement',desc:'Paleo pictograph is a tent door — a pathway, movement, the one who enters. Every door is an invitation into Yahweh\'s presence.'},
+  hey:{heb:'ה',paleo:'𐤄',name:'Hey',num:5,meaning:'Window / Behold / Breath',desc:'Paleo pictograph is a man with raised arms — "behold!" The letter of breath, revelation, and divine Presence. Yahweh added Hey to both Avraham\'s and Sarah\'s names.'},
+  vav:{heb:'ו',paleo:'𐤅',name:'Vav',num:6,meaning:'Hook / Nail / Connection',desc:'Paleo pictograph is a tent peg or nail — connection, joining, securing. The "Nail" letter. Also the connector joining sentences in Torah — "and."'},
+  zayin:{heb:'ז',paleo:'𐤆',name:'Zayin',num:7,meaning:'Weapon / Sword / Cut',desc:'Paleo pictograph is a weapon — cutting, piercing, the sword of Yahweh\'s Word. Number 7 — Shabbat, completeness, covenant.'},
+  chet:{heb:'ח',paleo:'𐤇',name:'Chet',num:8,meaning:'Fence / Separation / Inner room',desc:'Paleo pictograph is a fence — separation, inside versus outside. 8 is the number of new beginnings — circumcision on day 8.'},
+  tet:{heb:'ט',paleo:'𐤈',name:'Tet',num:9,meaning:'Serpent / Twist / Surround',desc:'Paleo pictograph is a coiled serpent — twisting, surrounding. The first "good" (tov) in Bereshit comes with Tet.'},
+  yod:{heb:'י',paleo:'𐤉',name:'Yod',num:10,meaning:'Hand / Work / Deed / Power',desc:'The smallest letter — yet it begins Yahweh\'s Name. Paleo pictograph is a hand and arm — work, deeds, divine action. Yeshua said not one Yod shall pass from Torah.'},
+  kaf:{heb:'כ',paleo:'𐤊',name:'Kaf',num:20,meaning:'Palm / Open hand / Allow',desc:'Paleo pictograph is an open palm — permission, allowing, what the hand holds or releases. The palm blesses and receives.'},
+  lamed:{heb:'ל',paleo:'𐤋',name:'Lamed',num:30,meaning:'Staff / Goad / Teaching / Authority',desc:'The tallest letter — reaching toward heaven. Paleo pictograph is a shepherd\'s staff — teaching, authority, direction. Root of "limud" — learning.'},
+  mem:{heb:'מ',paleo:'𐤌',name:'Mem',num:40,meaning:'Water / Chaos / Mighty / Blood',desc:'Paleo pictograph is water — water, chaos, the mighty, blood. 40 days of flood, 40 years in wilderness — all connected to Mem.'},
+  nun:{heb:'נ',paleo:'𐤍',name:'Nun',num:50,meaning:'Fish / Activity / Life / Heir',desc:'Paleo pictograph is a seed or fish — activity, life, the heir. 50 is Jubilee — the year of freedom and restoration.'},
+  samech:{heb:'ס',paleo:'𐤎',name:'Samech',num:60,meaning:'Thorn / Support / Protect / Turn',desc:'Paleo pictograph is a support prop — support, protection from enemies, encircling. Yahweh encircles and supports His people.'},
+  ayin:{heb:'ע',paleo:'𐤏',name:'Ayin',num:70,meaning:'Eye / Watch / Know / Experience',desc:'Paleo pictograph is an eye — watching, knowing through experience. To "know" Yahweh is to watch Him work. 70 elders, 70 nations.'},
+  pey:{heb:'פ',paleo:'𐤐',name:'Pey',num:80,meaning:'Mouth / Word / Open / Speak',desc:'Paleo pictograph is a mouth — the mouth, word, speaking. By His Word Yahweh created all things. Guard the Pey — our mouth blesses or curses.'},
+  tsadi:{heb:'צ',paleo:'𐤑',name:'Tsadi',num:90,meaning:'Hook / Righteous / Hunt / Trail',desc:'Paleo pictograph is a fishhook or man on his side — the righteous one, the tzaddik who leads the way.'},
+  qof:{heb:'ק',paleo:'𐤒',name:'Qof',num:100,meaning:'Sun on horizon / Behind / Set-Apart',desc:'Paleo pictograph is a sun at the horizon — what is behind, the last light. Related to Qodesh (holiness) — the Set-Apart One.'},
+  resh:{heb:'ר',paleo:'𐤓',name:'Resh',num:200,meaning:'Head / First / Top / Person',desc:'Paleo pictograph is a human head — the head, first, top, the leader. Bereshit (In the beginning) contains Resh — the head of all beginnings.'},
+  shin:{heb:'ש',paleo:'𐤔',name:'Shin',num:300,meaning:'Teeth / Sharp / Fire / Consume',desc:'Paleo pictograph is teeth — sharp, consuming, fire. Shin represents Shaddai (Almighty) and Shalom. Fire destroys and fire purifies.'},
+  tav:{heb:'ת',paleo:'𐤕',name:'Tav',num:400,meaning:'Mark / Sign / Covenant / Cross',desc:'The final letter. Paleo Hebrew Tav is literally an X or cross — the mark, the seal, the covenant sign. "I will put My mark (Tav) on the foreheads of the men who sigh..." — Yechezkel 9:4.'}
+};
+function showLetter(key) {
+  const d = letterData[key];
+  if(!d) return;
+  document.querySelectorAll('.letter-card').forEach(c=>c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  const el = document.getElementById('letterDetail');
+  el.style.display='block';
+  el.innerHTML=`<div style="display:flex;gap:20px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+    <div style="font-size:56px;color:var(--gold);direction:rtl;line-height:1;">${d.heb}</div>
+    <div style="font-size:40px;color:var(--ink-mid);">${d.paleo}</div>
+    <div><div style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--royal);">${d.name}</div>
+    <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:0.1em;margin-top:4px;">Numerical Value: ${d.num}</div></div></div>
+    <div class="meaning">✦ ${d.meaning}</div>
+    <p>${d.desc}</p>`;
+  el.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function switchLesson(btn, type) {
+  document.querySelectorAll('.lesson-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('lesson-alephbet').style.display = type==='alephbet'?'block':'none';
+  document.getElementById('lesson-vocab').style.display = type==='vocab'?'block':'none';
+  document.getElementById('lesson-covenant').style.display = type==='covenant'?'block':'none';
+  if(type==='vocab') initFlashcards();
+  if(type==='covenant') buildCovenantWords();
+}
+
+// ── FLASHCARDS ──
+const vocabCards = [
+  {heb:'שָׁלוֹם',eng:'Shalom',translit:'sha-LOME',desc:'Peace, wholeness, completeness — nothing missing, nothing broken.'},
+  {heb:'תּוֹרָה',eng:'Torah',translit:'to-RAH',desc:'The instruction of Yahweh — the five books of Moshe. Not "law" but divine teaching.'},
+  {heb:'בְּרִית',eng:'Brit',translit:'brit',desc:'Covenant — a binding agreement sealed with blood. The foundation of Yahweh\'s relationship with Yisrael.'},
+  {heb:'שַׁבָּת',eng:'Shabbat',translit:'sha-BAT',desc:'The seventh day of rest — from Friday evening to Saturday evening. The eternal sign of covenant.'},
+  {heb:'מוֹעֵד',eng:"Mo'ed",translit:"mo-ED",desc:"Appointed time — Yahweh's set feasts (Leviticus 23). Times Yahweh scheduled to meet with His people."},
+  {heb:'תְּשׁוּבָה',eng:'Teshuvah',translit:'te-shu-VAH',desc:'Repentance, turning — returning to Yahweh and His Torah after straying.'},
+  {heb:'אֱמוּנָה',eng:'Emunah',translit:'e-mu-NAH',desc:'Faith, faithfulness, trust — not mere belief but active covenant faithfulness.'},
+  {heb:'צְדָקָה',eng:'Tzedakah',translit:'tze-da-KAH',desc:'Righteousness, charity — giving as a covenant duty, not optional generosity.'},
+  {heb:'מְשִׁיחַ',eng:'Mashiach',translit:'ma-SHEE-ach',desc:'The Anointed One — the promised deliverer. Yeshua is the Mashiach of Yisrael.'},
+  {heb:'קָדוֹשׁ',eng:'Qodesh',translit:'QO-desh',desc:'Set-apart, holy — belonging to Yahweh. Yahweh is Qodesh; His people are called to be Qodesh.'},
+  {heb:'סְגֻלָּה',eng:'Segullah',translit:'se-gu-LAH',desc:'Treasured possession — Yahweh\'s covenant description of Yisrael. "You shall be My segullah." (Shemot 19:5)'},
+  {heb:'יְשׁוּעָה',eng:'Yeshuah',translit:'ye-shu-AH',desc:'Salvation, deliverance — the very root of Yeshua\'s name. "Yahweh saves."'}
+];
+let fcIndex=0;
+function initFlashcards(){fcIndex=0;renderCard();}
+function renderCard(){
+  const c=vocabCards[fcIndex];
+  document.getElementById('fc-hebrew').textContent=c.heb;
+  document.getElementById('fc-english').textContent=c.eng;
+  document.getElementById('fc-translit').textContent=c.translit;
+  document.getElementById('fc-desc').textContent=c.desc;
+  document.getElementById('fc-counter').textContent=`${fcIndex+1} / ${vocabCards.length}`;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%vocabCards.length;renderCard();}
+function prevCard(){fcIndex=(fcIndex-1+vocabCards.length)%vocabCards.length;renderCard();}
+
+// ── COVENANT WORDS ──
+const covenantWords = [
+  {heb:'𐤉𐤄𐤅𐤄',square:'יַהְוֶה',name:'Yahweh',translit:'YAH-weh',desc:'The sacred Name of the Creator — "I AM WHO I AM." Never to be substituted with "LORD" or "God." Written in Paleo Hebrew as the four letters Yod-Hey-Vav-Hey.'},
+  {heb:'יֵשׁוּעַ',name:'Yeshua',translit:'ye-SHUA',desc:'"Yahweh saves / Yahweh is salvation." The Hebrew name of the Messiah. The Greek "Iesous" and English "Jesus" lose this meaning entirely.'},
+  {heb:'אֶבְיוֹן',name:'Evyon / Ebionite',translit:'ev-YON',desc:'"The Poor" — the name of the original Hebrew followers of Yeshua who maintained Torah observance. The tradition Yahweh\'s House of Prayer stands in.'},
+  {heb:'נָצְרִי',name:'Natzri / Nazarene',translit:'natz-REE',desc:'"From Natzeret" — the designation of Yeshua\'s early followers. The Nazarenes were Torah-observant Hebrew believers, distinct from Pauline Christianity.'},
+  {heb:'מוֹעֲדִים',name:"Mo'edim",translit:"mo-e-DEEM",desc:'The plural of mo\'ed — the appointed feasts of Yahweh in Leviticus 23. These are the only biblical holy days YHOP observes — never Christmas or Easter.'}
+];
+function buildCovenantWords(){
+  const el=document.getElementById('covenantWords');
+  if(el.innerHTML) return;
+  el.innerHTML=covenantWords.map(w=>`
+    <div class="prayer-card">
+      <h3>${w.name}</h3>
+      <div class="prayer-heb">${w.heb}</div>
+      <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px;">${w.translit}</div>
+      <div class="prayer-text">${w.desc}</div>
+    </div>`).join('');
+}
+
+// ── COUNTDOWN ──
+function updateCountdown(){
+  const now=new Date();
+  const shavuot=new Date(now.getFullYear(),5,2,0,0,0);
+  if(shavuot<now) shavuot.setFullYear(shavuot.getFullYear()+1);
+  const diff=shavuot-now;
+  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+setInterval(updateCountdown,1000); updateCountdown();
+
+// ── TEXT STUDY ──
+const textStudyData = {
+  peshitta:{title:'The Peshitta',sub:'ܦܫܝܛܬܐ · Aramaic Scriptures',icon:'🕊️',greeting:'Shalom! I am your Peshitta study companion. The Peshitta is the ancient Aramaic Bible — the language Yeshua and His disciples spoke daily. Many Hebrew Roots scholars believe the NT was originally written in Aramaic, not Greek. What would you like to explore?',suggestions:['What is Aramaic Primacy?','How does Peshitta differ from Greek NT?',"Yeshua's Aramaic words",'Why is Aramaic important?'],systemPrompt:'You are a specialist in the Peshitta (Aramaic Bible) for Yahweh\'s House of Prayer — Hebrew Roots congregation. Discuss Aramaic Primacy, word meanings, and Semitic preservation. Always use Hebrew names.'},
+  maccabees:{title:'Books of Maccabees',sub:'מַכַּבִּים · 1st–4th Maccabees',icon:'⚔️',greeting:'Shalom! I am your Maccabees study companion. The Books of Maccabees chronicle Yisrael\'s heroic resistance against Greek Hellenization — the same spiritual corruption YHOP stands against today. What would you like to study?',suggestions:['Who were the Maccabees?','What did Antiochus do?','Hellenization vs Torah','Maccabees and Hebrew Roots'],systemPrompt:'You are a specialist in the Books of Maccabees for Yahweh\'s House of Prayer. Connect the Maccabean resistance to modern Hebrew Roots theology. Always use Hebrew names.'},
+  jasher:{title:'Book of Jasher',sub:'סֵפֶר הַיָּשָׁר · The Upright Book',icon:'📜',greeting:"Shalom! I am your Book of Jasher study companion. Jasher is cited in Yehoshua 10:13 and 2 Shemuel 1:18 — Yahweh's own Word references it. It contains expanded accounts from Bereshit through the Exodus. What would you like to explore?",suggestions:['Where is Jasher cited in Torah?',"Jasher's account of Avraham",'Is Jasher authentic?','The Tower of Babel in Jasher'],systemPrompt:"You are a specialist in the Book of Jasher for Yahweh's House of Prayer. Emphasize its Torah citations as evidence of authority. Always use Hebrew names."},
+  'dead-sea-scrolls':{title:'Dead Sea Scrolls',sub:'Qumran · ~250 BCE',icon:'🏺',greeting:'Shalom! I am your Dead Sea Scrolls study companion. The DSS are the most significant archaeological discovery in biblical history — manuscripts written by a Torah-observant community near the Yarden. What would you like to study?',suggestions:['What are the most important DSS?','Qumran community beliefs','DSS and Book of Enoch','How do DSS confirm Hebrew accuracy?'],systemPrompt:"You are a specialist in the Dead Sea Scrolls for Yahweh's House of Prayer. Always use Hebrew names."},
+  'kebra-nagast':{title:'Kebra Nagast',sub:'Glory of Kings · Ethiopian Canon',icon:'🦁',greeting:"Shalom! I am your Kebra Nagast study companion. The Kebra Nagast — Glory of Kings — chronicles the transfer of Yahweh's covenant blessing to Ethiopia through the son of Shelomoh and the Queen of Sheba. What would you like to explore?",suggestions:['What is the Kebra Nagast?','Who was the Queen of Sheba?','The Ark in Ethiopia','Menelik I'],systemPrompt:"You are a specialist in the Kebra Nagast for Yahweh's House of Prayer. Discuss Shelomoh, the Queen of Sheba, Menelik I, and the Ark. Always use Hebrew names."},
+  'book-of-enoch':{title:'Book of Enoch',sub:'1 Enoch · Ethiopian Canon',icon:'👁️',greeting:"Shalom! I am your Book of Enoch study companion. Enoch is quoted in Yehudah (Jude) 1:14-15, found extensively in the Dead Sea Scrolls, and included in the 81-book Ethiopian Orthodox Bible. What would you like to study?",suggestions:['What are the Watchers?','Who were the Nephilim?','How does Jude quote Enoch?','Why was Enoch removed?'],systemPrompt:"You are a specialist in the Book of Enoch for Yahweh's House of Prayer. Always use Hebrew names."},
+  ebionite:{title:'Ebionite Tradition',sub:'The Original Hebrew Believers',icon:'🕎',greeting:"Shalom! I am your Ebionite tradition study companion. The Ebionites were the earliest Torah-observant Hebrew followers of Yeshua — maintaining Shabbat, the feasts, and the commandments. They rejected Pauline corruption and followed Ya'akov's Jerusalem community. YHOP stands in this same tradition. What would you like to study?",suggestions:["Who were the Ebionites?","Ebionite beliefs about Yeshua","Ebionites vs Pauline Christianity","Ya'akov and the Jerusalem church"],systemPrompt:"You are a specialist in the Ebionite and Nazarene tradition for Yahweh's House of Prayer — a congregation that follows this exact tradition. Always use Hebrew names and affirm this as the authentic original faith."},
+  'psalms-solomon':{title:'Psalms of Solomon',sub:'~50 B.C. · Second Temple Period',icon:'👑',greeting:"Shalom! I am your Psalms of Solomon study companion. These 18 psalms were written around 50 B.C. — decades before Yeshua — as a passionate Messianic cry after Rome's conquest of Yerushalayim. They show exactly what devout Yisraelites expected the Messiah to be. What would you like to study?",suggestions:['What is Psalm of Solomon 17?','How do they describe the Messiah?','Who wrote these psalms?','Connection to Yeshua'],systemPrompt:"You are a specialist in the Psalms of Solomon for Yahweh's House of Prayer. Always use Hebrew names."}
+};
+let currentTextKey=null, textHistory=[];
+function openTextStudy(key){
+  const d=textStudyData[key]; if(!d) return;
+  currentTextKey=key; textHistory=[];
+  document.getElementById('tsIcon').textContent=d.icon;
+  document.getElementById('tsTitle').textContent=d.title;
+  document.getElementById('tsSub').textContent=d.sub;
+  const msgs=document.getElementById('textChatMessages');
+  msgs.innerHTML=`<div class="msg ai"><div class="ai-avatar">${d.icon}</div><div class="msg-bubble">${d.greeting.replace(/\n/g,'<br/>')}</div><div class="msg-name">${d.title} · AI Scholar</div></div>`;
+  document.getElementById('textSuggestions').innerHTML=d.suggestions.map(s=>`<div class="suggestion" onclick="sendTextSuggestion(this)">${s}</div>`).join('');
+  document.getElementById('libraryMain').style.display='none';
+  document.getElementById('textStudyPanel').style.display='block';
+  window.scrollTo({top:document.getElementById('studyTabs').offsetTop-60,behavior:'smooth'});
+}
+function closeTextStudy(){
+  document.getElementById('libraryMain').style.display='block';
+  document.getElementById('textStudyPanel').style.display='none';
+}
+async function sendTextMessage(){
+  const input=document.getElementById('textChatInput');
+  const text=input.value.trim(); if(!text) return;
+  const d=textStudyData[currentTextKey]; if(!d) return;
+  const msgs=document.getElementById('textChatMessages');
+  msgs.innerHTML+=`<div class="msg user"><div class="msg-bubble">${text}</div><div class="msg-name">You</div></div>`;
+  input.value=''; input.style.height='auto';
+  msgs.scrollTop=msgs.scrollHeight;
+  textHistory.push({role:'user',content:text});
+  const reply=await callClaude(text,msgs,textHistory,d.icon,d.systemPrompt);
+  textHistory.push({role:'assistant',content:reply});
+}
+function sendTextSuggestion(el){document.getElementById('textChatInput').value=el.textContent;sendTextMessage();}
+function handleTextKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendTextMessage();}}
+
+// ── PDF TOAST ──
+function pdfSoon(e,title){
+  e.preventDefault();
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--ink);border:1px solid var(--gold);border-radius:4px;padding:14px 24px;z-index:999;font-family:Cinzel,serif;font-size:12px;color:var(--gold);letter-spacing:0.05em;box-shadow:0 8px 32px rgba(44,24,16,0.4);text-align:center;max-width:300px;line-height:1.6;';
+  t.innerHTML=`📖 <strong>${title}</strong><br><span style="color:var(--gold-pale);font-family:EB Garamond,serif;font-size:13px;letter-spacing:0;">Upload PDF to activate this link</span>`;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3200);
+}
+
+// ── INTERLINEAR ──
+const ilBooksOT=['Bereshit (Genesis)','Shemot (Exodus)','Vayikra (Leviticus)','Bamidbar (Numbers)','Devarim (Deuteronomy)','Yehoshua (Joshua)','Shoftim (Judges)','Tehillim (Psalms)','Mishle (Proverbs)','Yeshayahu (Isaiah)'];
+const ilBooksNT=['Mattityahu (Matthew)','Marqus (Mark)','Luqa (Luke)','Yochanan (John)','Acts','Yaakov (James)','Revelation'];
+const ilChaptersMap={'Bereshit (Genesis)':50,'Shemot (Exodus)':40,'Tehillim (Psalms)':150,'Mattityahu (Matthew)':28,'Yochanan (John)':21};
+let ilSource='hebrew-ot', ilBook='Bereshit (Genesis)', ilChapter=1;
+
+// (Word data carried over from app — abbreviated for readability)
+const ilWordData = {
+  'hebrew-ot':{'Bereshit (Genesis)':{1:[
+    {verse:1,words:[
+      {orig:'בְּרֵאשִׁית',translit:'Bereshit',eng:'In the beginning',strong:'H7225',root:'ראש',rootMean:'head/first',paleo:'𐤁𐤓𐤀𐤔',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤔',n:'Shin',m:'Fire'}],audio:'be-re-SHEET',definition:'In/at the beginning — the first, the chief, the head of all things. The opening word of Torah.'},
+      {orig:'בָּרָא',translit:'bara',eng:'created',strong:'H1254',root:'ברא',rootMean:'to create from nothing',paleo:'𐤁𐤓𐤀',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'ba-RA',definition:'To create from nothing — used ONLY with Yahweh as subject. Only the Creator can truly bara.'},
+      {orig:'אֱלֹהִים',translit:'Elohim',eng:'Elohim',strong:'H430',root:'אל',rootMean:'strength/mighty one',paleo:'𐤀𐤋',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤋',n:'Lamed',m:'Authority'}],audio:'e-lo-HEEM',definition:'The Mighty One — Yahweh. Plural of majesty, always paired with singular verbs when referring to Yahweh.'},
+      {orig:'אֵת',translit:'et',eng:'[Aleph-Tav]',strong:'H853',root:'את',rootMean:'sign/mark/covenant',paleo:'𐤀𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant/Cross'}],audio:'et',definition:'The untranslatable Aleph-Tav — first and last letters of the Hebrew alphabet. Yeshua said "I am the Aleph and the Tav." Silently present at the moment of creation.'},
+      {orig:'הַשָּׁמַיִם',translit:'hashamayim',eng:'the heavens',strong:'H8064',root:'שמים',rootMean:'heights/waters above',paleo:'𐤔𐤌𐤉𐤌',paleoParts:[{l:'𐤔',n:'Shin',m:'Consume'},{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤉',n:'Yod',m:'Work'}],audio:'ha-sha-MA-yim',definition:'The heavens — both the physical sky and the spiritual realm. Sham (there) + mayim (water) = "where the waters are."'},
+      {orig:'וְאֵת',translit:'ve-et',eng:'and',strong:'H853',root:'את',rootMean:'sign',paleo:'𐤅𐤀𐤕',paleoParts:[{l:'𐤅',n:'Vav',m:'Nail/Connect'},{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant'}],audio:'ve-et',definition:'Vav (the connector/nail) joined to the Aleph-Tav — Yeshua connecting heaven to earth.'},
+      {orig:'הָאָרֶץ',translit:'haaretz',eng:'the earth',strong:'H776',root:'ארץ',rootMean:'firm ground',paleo:'𐤀𐤓𐤑',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strong'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤑',n:'Tsadi',m:'Righteous'}],audio:'ha-A-retz',definition:'The earth, land, firm ground — the physical creation given to humanity as home and responsibility.'}
+    ],english:'In the beginning Elohim created the heavens and the earth.'},
+    {verse:2,words:[
+      {orig:'וְרוּחַ',translit:'veruach',eng:'and the Spirit/Wind',strong:'H7307',root:'רוח',rootMean:'breath/spirit/wind',paleo:'𐤓𐤅𐤇',paleoParts:[{l:'𐤓',n:'Resh',m:'Head/Person'},{l:'𐤅',n:'Vav',m:'Nail/Connect'},{l:'𐤇',n:'Chet',m:'Fence/Inside'}],audio:'ve-RU-ach',definition:'The Ruach — breath, wind, Spirit. The Ruach Elohim hovering over the waters is the same Ruach HaQodesh (Set-Apart Spirit) throughout Scripture.'},
+      {orig:'אֱלֹהִים',translit:'Elohim',eng:'of Elohim',strong:'H430',root:'אל',rootMean:'mighty',paleo:'𐤀𐤋',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤋',n:'Lamed',m:'Authority'}],audio:'e-lo-HEEM',definition:"Elohim's Spirit — the Mighty One's breath was present and active at creation."},
+      {orig:'מְרַחֶפֶת',translit:'merachefet',eng:'was hovering',strong:'H7363',root:'רחף',rootMean:'to hover/brood',paleo:'𐤌𐤓𐤇𐤐𐤕',paleoParts:[{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤇',n:'Chet',m:'Inside'}],audio:'me-ra-CHE-fet',definition:'Hovering, brooding — as an eagle over its nest (Devarim 32:11). The Ruach actively tending, preparing over the waters like a mother bird about to give life.'}
+    ],english:'And the earth was formless and void, and darkness was over the surface of the deep, and the Spirit of Elohim was hovering over the surface of the waters.'},
+    {verse:3,words:[
+      {orig:'וַיֹּאמֶר',translit:'vayomer',eng:'and said',strong:'H559',root:'אמר',rootMean:'to speak/say',paleo:'𐤅𐤉𐤀𐤌𐤓',paleoParts:[{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'va-YO-mer',definition:'And He said — the divine speech act calling reality into existence. Creation comes through speaking. Compare Yochanan 1:1 — "In the beginning was the Word."'},
+      {orig:'יְהִי',translit:'yehi',eng:'let there be',strong:'H1961',root:'היה',rootMean:'to be/exist/become',paleo:'𐤉𐤄𐤉',paleoParts:[{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤄',n:'Hey',m:'Breath'},{l:'𐤉',n:'Yod',m:'Work'}],definition:'Yehi — "let it be, let it exist." Three of the four letters of YHWH. Even in the first creative command, Yahweh\'s Name is present.'},
+      {orig:'אוֹר',translit:'or',eng:'light',strong:'H216',root:'אור',rootMean:'light/shine',paleo:'𐤀𐤅𐤓',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤓',n:'Resh',m:'Head'}],audio:'OR',definition:'Light — the first creation. Not sunlight (sun created day 4) but divine illuminating light — the light of Yahweh\'s own presence.'}
+    ],english:'And Elohim said, "Let there be light," and there was light.'}
+  ]}},
+  'peshitta-nt':{'Yochanan (John)':{1:[
+    {verse:1,words:[
+      {orig:'ܒܪܫܝܬ',translit:'bereshit',eng:'In the beginning',strong:'G746',root:'ראש',rootMean:'head/first',paleo:'𐤁𐤓𐤀𐤔',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'be-re-SHEET',definition:'Bereshit — The Aramaic Peshitta opens Yochanan 1:1 with the EXACT same word as Bereshit 1:1. This is intentional — Yochanan is writing a new creation narrative.'},
+      {orig:'ܐܝܬܘܗܝ',translit:'ithawhi',eng:'was/existed',strong:'G2258',root:'היה',rootMean:'to be/exist',paleo:'𐤀𐤉𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤕',n:'Tav',m:'Sign'}],audio:'i-TA-whi',definition:'Was, existed — continuous past existence. "In the beginning was" — pre-existing before time began.'},
+      {orig:'ܡܠܬܐ',translit:'Miltha',eng:'the Word',strong:'G3056',root:'מלה',rootMean:'word/matter/deed',paleo:'𐤌𐤋𐤄',paleoParts:[{l:'𐤌',n:'Mem',m:'Mighty'},{l:'𐤋',n:'Lamed',m:'Authority'},{l:'𐤄',n:'Hey',m:'Breath'}],audio:'MIL-tha',definition:'Miltha — the Word, Utterance, Divine Speech. In Aramaic Targums, the Memra (divine Word/presence) was well-known as Yahweh\'s active presence in the world. This is the Miltha — Yahweh\'s Word become flesh.'}
+    ],english:'In the beginning was the Word (Miltha), and the Word was with Elohim, and the Word was Elohim.'}
+  ]}},
+  'greek-nt':{'Mattityahu (Matthew)':{5:[
+    {verse:17,words:[
+      {orig:'Μὴ',translit:'Me',eng:'Do not',strong:'G3361',root:'μή',rootMean:'not',paleo:'',paleoParts:[],audio:'may',definition:'Me — the negative particle. "Do not think, do not suppose." Yeshua directly refutes the misunderstanding before it forms.'},
+      {orig:'νομίσητε',translit:'nomisete',eng:'think/suppose',strong:'G3543',root:'νόμος',rootMean:'law/custom',paleo:'',paleoParts:[],audio:'no-MI-se-te',definition:'From nomos (law) — "do not law-think." The word for "think" comes from the same root as Torah/law — as if Yeshua says: "do not use the law to think I oppose the law."'},
+      {orig:'καταλῦσαι',translit:'katalusai',eng:'to abolish/destroy',strong:'G2647',root:'καταλύω',rootMean:'to dissolve/destroy completely',paleo:'',paleoParts:[],audio:'ka-ta-LU-sai',definition:'Katalusai — to destroy stone by stone, dissolve completely. Yeshua emphatically declares He did NOT come to katalusai the Torah. One of the clearest statements in Scripture on Torah\'s continuing validity.'},
+      {orig:'νόμον',translit:'nomon',eng:'Torah/Law',strong:'G3551',root:'νέμω',rootMean:'to distribute/assign',paleo:'',paleoParts:[],audio:'NO-mon',definition:'Nomon — Torah. In the Septuagint this consistently translates Hebrew Torah. Yeshua is explicitly defending the Torah of Moshe.'}
+    ],english:"Do not think that I came to abolish the Torah or the Prophets; I did not come to abolish but to fulfill."}
+  ]}}
+};
+
+function initInterlinear(){
+  const select=document.getElementById('ilBookSelect');
+  const books=ilSource==='hebrew-ot'?ilBooksOT:ilBooksNT;
+  select.innerHTML=books.map(b=>`<option value="${b}">${b}</option>`).join('');
+  const sourceData=ilWordData[ilSource];
+  if(sourceData){const first=Object.keys(sourceData)[0];if(first){select.value=first;ilBook=first;}}
+  document.getElementById('ilChapterNum').textContent=ilChapter;
+  loadILChapter();
+}
+function setILSource(src,btn){
+  ilSource=src;ilChapter=1;
+  document.querySelectorAll('.il-source-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  initInterlinear();closeWordPanel();
+}
+function changeChapter(d){
+  const max=ilChaptersMap[ilBook]||50;
+  ilChapter=Math.max(1,Math.min(max,ilChapter+d));
+  document.getElementById('ilChapterNum').textContent=ilChapter;
+  loadILChapter();closeWordPanel();
+}
+function loadILChapter(){
+  ilBook=document.getElementById('ilBookSelect').value;
+  const container=document.getElementById('ilContent');
+  const data=ilWordData[ilSource]?.[ilBook]?.[ilChapter];
+  if(!data||data.length===0){
+    container.innerHTML=`<div style="text-align:center;padding:60px 20px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;">
+      <div style="font-size:40px;margin-bottom:16px;">📜</div>
+      <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:8px;">${ilBook} Chapter ${ilChapter}</div>
+      <div style="font-size:15px;color:var(--ink-mid);line-height:1.7;margin-bottom:20px;">This chapter's interlinear data is being expanded.<br/><em>Try Bereshit Ch. 1 (Hebrew OT), Yochanan Ch. 1 (Peshitta), or Mattityahu Ch. 5 (Greek NT).</em></div>
+      <button class="chat-send" onclick="switchStudyTab('ai',document.querySelector('.study-tab'))">Study with AI →</button>
+    </div>`;
+    return;
+  }
+  container.innerHTML=data.map(verse=>`
+    <div class="il-verse-block">
+      <div class="il-verse-num">Verse ${verse.verse}</div>
+      <div class="il-words-row">${verse.words.map((w,wi)=>`
+        <div class="il-word" onclick="showWordPanel(${verse.verse},${wi})">
+          <div class="il-word-orig">${w.orig}</div>
+          <div class="il-word-translit">${w.translit}</div>
+          <div class="il-word-eng">${w.eng}</div>
+        </div>`).join('')}</div>
+      <div class="il-english-verse">${verse.english}</div>
+      <button class="il-ai-btn" onclick="openVerseAI(${verse.verse},'${ilBook}')">✦ Ask AI about this verse</button>
+    </div>`).join('');
+}
+function showWordPanel(verseNum,wordIdx){
+  const data=ilWordData[ilSource]?.[ilBook]?.[ilChapter];
+  if(!data) return;
+  const verse=data.find(v=>v.verse===verseNum); if(!verse) return;
+  const w=verse.words[wordIdx]; if(!w) return;
+  document.querySelectorAll('.il-word').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  const paleoHtml=w.paleoParts&&w.paleoParts.length>0
+    ?`<div class="wp-root-letters">${w.paleoParts.map(p=>`<div class="wp-root-letter"><div class="rl-heb">${p.l}</div><div class="rl-name">${p.n}</div><div class="rl-mean">${p.m}</div></div>`).join('')}</div>`
+    :`<em style="color:var(--ink-mid);font-size:13px;">N/A for this language</em>`;
+  document.getElementById('wordPanelContent').innerHTML=`
+    <div class="wp-original">${w.orig}</div>
+    <div class="wp-translit">${w.translit} · ${w.eng}</div>
+    ${w.strong?`<div class="wp-row"><div class="wp-label">Strong's</div><div class="wp-value"><span class="wp-strong">${w.strong}</span></div></div>`:''}
+    ${w.root?`<div class="wp-row"><div class="wp-label">Root</div><div class="wp-value"><span style="font-size:20px;color:var(--gold);direction:rtl;">${w.root}</span> — ${w.rootMean}</div></div>`:''}
+    ${w.audio?`<div class="wp-row"><div class="wp-label">Pronunciation</div><div class="wp-value" style="font-style:italic;">${w.audio}</div></div>`:''}
+    <div class="wp-row"><div class="wp-label">Definition</div><div class="wp-value" style="text-align:left;">${w.definition||''}</div></div>
+    ${w.paleoParts&&w.paleoParts.length>0?`<div class="wp-row" style="flex-direction:column;gap:10px;"><div class="wp-label">Paleo Hebrew</div>${paleoHtml}</div>`:''}
+    <button class="wp-audio-btn" onclick="speakWord('${w.translit}')">🔊 Hear: ${w.audio||w.translit}</button>
+    <div class="wp-ai-section">
+      <div class="wp-ai-label">✦ AI Word Study</div>
+      <div class="wp-ai-text" id="wpAiText"><em style="color:var(--ink-mid);">Click below for a deep word study...</em></div>
+      <button class="wp-audio-btn" style="margin-top:8px;" onclick="getWordAI('${w.orig}','${w.translit}','${w.strong||''}','${w.root||''}','${ilSource}')">✦ Deep Word Study</button>
+    </div>`;
+  document.getElementById('wordPanel').classList.add('open');
+}
+function closeWordPanel(){
+  document.getElementById('wordPanel').classList.remove('open');
+  document.querySelectorAll('.il-word').forEach(el=>el.classList.remove('active'));
+}
+function speakWord(t){if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(t);u.rate=0.8;speechSynthesis.speak(u);}}
+async function getWordAI(orig,translit,strong,root,source){
+  const el=document.getElementById('wpAiText');
+  el.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+  const lang=source==='hebrew-ot'?'Biblical Hebrew':source==='peshitta-nt'?'Aramaic (Peshitta)':'Greek (NT)';
+  const prompt=`Deep Hebrew Roots word study for "${orig}" (${translit}, ${lang}, Strong's ${strong}, root: ${root}). Cover: 1) Paleo Hebrew pictographic meanings, 2) Usage across Scripture, 3) What the original language reveals that English misses, 4) Theological significance from an Ebionite/Nazarene perspective. Concise — 3 paragraphs. Use Hebrew names.`;
+  try {
+    const res=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,
+        system:'You are a Biblical Hebrew and Aramaic word scholar for Yahweh\'s House of Prayer. Focus on Paleo Hebrew pictographic meanings and spiritual depth. Always use Hebrew names.',
+        messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    el.innerHTML=(data.content?.[0]?.text||'').replace(/\n/g,'<br/>');
+  } catch(e){el.innerHTML='<em>API connection needed for live word studies.</em>';}
+}
+async function openVerseAI(verseNum,book){
+  const data=ilWordData[ilSource]?.[book]?.[ilChapter];
+  const verse=data?.find(v=>v.verse===verseNum);
+  if(!verse) return;
+  const q=`Please give me a deep Hebrew Roots study of ${book} Chapter ${ilChapter} Verse ${verseNum}: "${verse.english}" — explain the key words, what the original language reveals, and the significance from an Ebionite/Nazarene perspective.`;
+  switchStudyTab('ai', document.querySelector('.study-tab'));
+  document.getElementById('chatInput').value=q;
+  sendMessage();
+}
+
+// ── ADMIN PANEL ──
+const ADMIN_PW = 'yhop2024';
+
+// Map of key → {cardId, inputId, labelId (optional)}
+const pdfKeys = {
+  'ethiopian':    {selector:'[data-pdf="ethiopian"]',    inputId:'link-ethiopian'},
+  'isr':          {selector:'[data-pdf="isr"]',          inputId:'link-isr'},
+  'dss':          {selector:'[data-pdf="dss"]',          inputId:'link-dss'},
+  'cepher':       {selector:'[data-pdf="cepher"]',       inputId:'link-cepher'},
+  'peshitta-pdf': {selector:'[data-pdf="peshitta-pdf"]', inputId:'link-peshitta'},
+  'hrb':          {selector:'[data-pdf="hrb"]',          inputId:'link-hrb'},
+  'custom1':      {selector:'[data-pdf="custom1"]',      inputId:'link-custom1', labelId:'label-custom1'},
+  'custom2':      {selector:'[data-pdf="custom2"]',      inputId:'link-custom2', labelId:'label-custom2'},
+};
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminLogin').style.display='block';
+  document.getElementById('adminContent').classList.remove('visible');
+  document.getElementById('adminPw').value='';
+  document.getElementById('adminPwError').style.display='none';
+  // Pre-fill inputs with saved values
+  Object.entries(pdfKeys).forEach(([key,cfg])=>{
+    const saved = localStorage.getItem('pdf_'+key);
+    if(saved) document.getElementById(cfg.inputId).value = saved;
+    if(cfg.labelId){
+      const savedLabel = localStorage.getItem('pdflabel_'+key);
+      if(savedLabel) document.getElementById(cfg.labelId).value = savedLabel;
+    }
+  });
+}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
+function closeAdminOutside(e){if(e.target===document.getElementById('adminOverlay'))closeAdmin();}
+
+function checkAdminPw(){
+  const pw = document.getElementById('adminPw').value;
+  if(pw === ADMIN_PW){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminContent').classList.add('visible');
+  } else {
+    document.getElementById('adminPwError').style.display='block';
+    document.getElementById('adminPw').value='';
+  }
+}
+
+function saveLink(key){
+  const cfg = pdfKeys[key]; if(!cfg) return;
+  const url = document.getElementById(cfg.inputId).value.trim();
+  if(!url) return;
+  // Convert Google Drive view links to direct open links
+  const converted = convertDriveLink(url);
+  localStorage.setItem('pdf_'+key, converted);
+  if(cfg.labelId){
+    const label = document.getElementById(cfg.labelId).value.trim();
+    if(label) localStorage.setItem('pdflabel_'+key, label);
+  }
+  // Visual feedback
+  const btn = document.getElementById(cfg.inputId).closest('.admin-pdf-row').querySelector('.admin-save-btn');
+  btn.textContent='✓ Saved'; btn.classList.add('saved');
+  setTimeout(()=>{btn.textContent='Save';btn.classList.remove('saved');},2000);
+  // Update the live card
+  applyPdfLinks();
+}
+
+function saveAllLinks(){
+  Object.keys(pdfKeys).forEach(key=>{
+    const cfg=pdfKeys[key];
+    const url=document.getElementById(cfg.inputId).value.trim();
+    if(url) localStorage.setItem('pdf_'+key, convertDriveLink(url));
+    if(cfg.labelId){
+      const label=document.getElementById(cfg.labelId).value.trim();
+      if(label) localStorage.setItem('pdflabel_'+key, label);
+    }
+  });
+  applyPdfLinks();
+  // Feedback
+  const btn=document.querySelector('.admin-save-all');
+  const orig=btn.innerHTML;
+  btn.innerHTML='✓ All Links Saved & Library Updated!';
+  btn.style.background='#2d7a50';
+  setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';},2500);
+}
+
+function convertDriveLink(url){
+  // If it's just a filename (no http), treat as relative path in same directory
+  if(!url.startsWith('http') && !url.startsWith('/')) return url;
+  // Otherwise return the URL as-is (Netlify Blob URL, or any direct link)
+  return url;
+}
+
+function applyPdfLinks(){
+  Object.entries(pdfKeys).forEach(([key,cfg])=>{
+    const saved = localStorage.getItem('pdf_'+key);
+    const card = document.querySelector(`[data-pdf="${key}"]`);
+    if(!card) return;
+    if(saved){
+      card.href = saved;
+      card.onclick = null;
+      card.style.display = ''; // show custom slots when they have a link
+      const tags = card.querySelector('.pdf-tags');
+      if(tags){
+        const existing = tags.querySelector('.pdf-tag.green');
+        if(!existing){
+          const tag = document.createElement('span');
+          tag.className='pdf-tag green'; tag.textContent='AVAILABLE';
+          tags.appendChild(tag);
+        }
+      }
+    }
+    if(cfg.labelId){
+      const savedLabel = localStorage.getItem('pdflabel_'+key);
+      if(savedLabel){
+        const titleEl = card.querySelector('.pdf-title');
+        if(titleEl) titleEl.textContent = savedLabel;
+      }
+    }
+  });
+}
+
+// Run on page load to restore any saved links
+document.addEventListener('DOMContentLoaded', applyPdfLinks);
+</script>
+</body>
+</html>
