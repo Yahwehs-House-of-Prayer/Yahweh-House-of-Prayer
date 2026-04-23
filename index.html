@@ -311,119 +311,7 @@ footer .footer-affil a:hover{border-color:var(--gold);}
 footer .footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:16px 0;}
 footer .footer-links a{color:#C9A84C88;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;}
 footer .footer-links a:hover{color:var(--gold);}
-/* ── SOCIAL MEDIA BAR ── */
-.social-bar{
-  background:var(--royal-deep);border-bottom:1px solid rgba(201,168,76,0.2);
-  display:flex;justify-content:center;align-items:center;gap:16px;
-  padding:8px 24px;flex-wrap:wrap;
-}
-.social-btn{
-  display:flex;align-items:center;gap:7px;
-  padding:6px 14px;border-radius:2px;
-  border:1px solid rgba(201,168,76,0.25);
-  color:var(--gold-pale);text-decoration:none;
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;
-  transition:all 0.2s;background:rgba(255,255,255,0.04);
-}
-.social-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08);}
-.social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
-
-/* ── TEACHINGS SECTION ── */
-#teachings{background:var(--parchment-dark);padding:80px 24px;}
-.teachings-intro{
-  max-width:680px;margin:0 auto 48px;text-align:center;
-  font-size:17px;font-style:italic;color:var(--ink-light);line-height:1.8;
-  padding:24px 30px;border:1px solid var(--scroll-border);
-  background:rgba(255,255,255,0.4);border-radius:2px;
-}
-.teachings-filters{
-  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px;
-}
-.teach-filter{
-  padding:7px 18px;border:1px solid var(--scroll-border);border-radius:2px;
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--ink-mid);background:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;
-}
-.teach-filter:hover,.teach-filter.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-.teachings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-bottom:48px;}
-.teaching-card{
-  background:white;border:1px solid var(--parchment-deeper);
-  border-radius:2px;overflow:hidden;
-  box-shadow:0 2px 12px var(--shadow);
-  transition:transform 0.25s,box-shadow 0.25s;
-  display:flex;flex-direction:column;
-}
-.teaching-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px var(--shadow);}
-.teaching-card::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));}
-.tc-type{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 12px;margin:16px 16px 0;
-  border:1px solid var(--scroll-border);border-radius:1px;
-  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.15em;
-  color:var(--gold);text-transform:uppercase;width:fit-content;
-}
-.tc-body{padding:14px 18px 18px;flex:1;display:flex;flex-direction:column;}
-.tc-title{font-family:'Cinzel',serif;font-size:15px;color:var(--ink);margin-bottom:6px;line-height:1.4;}
-.tc-meta{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
-.tc-desc{font-size:15px;color:var(--ink-light);line-height:1.7;flex:1;margin-bottom:14px;}
-.tc-scripture{font-style:italic;font-size:13px;color:var(--gold);border-left:2px solid var(--gold);padding-left:10px;margin-bottom:14px;}
-.tc-footer{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto;}
-.tc-btn{
-  padding:8px 18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
-  color:var(--ink);font-family:'Cinzel',serif;font-size:10px;font-weight:700;
-  letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;
-  border:none;cursor:pointer;border-radius:2px;transition:all 0.2s;
-}
-.tc-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(184,134,11,0.4);}
-.tc-btn.outline{background:transparent;border:1px solid var(--gold);color:var(--gold);}
-.tc-btn.outline:hover{background:rgba(184,134,11,0.08);}
-.tc-tag{
-  padding:4px 10px;border:1px solid var(--parchment-deeper);
-  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;
-  color:var(--ink-mid);border-radius:1px;
-}
-
-/* Admin Panel */
-.admin-bar{
-  background:var(--ink);border:1px solid rgba(201,168,76,0.3);
-  border-radius:2px;padding:20px 24px;margin-bottom:32px;
-  display:none;
-}
-.admin-bar.open{display:block;}
-.admin-bar h3{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-@media(max-width:600px){.admin-form{grid-template-columns:1fr;}}
-.admin-input{
-  padding:10px 14px;background:rgba(255,255,255,0.07);
-  border:1px solid rgba(201,168,76,0.25);border-radius:2px;
-  color:var(--gold-pale);font-family:'EB Garamond',serif;font-size:15px;outline:none;
-  transition:border-color 0.2s;
-}
-.admin-input:focus{border-color:var(--gold);}
-.admin-input::placeholder{color:rgba(201,168,76,0.3);}
-.admin-input.full{grid-column:1/-1;}
-select.admin-input option{background:var(--ink);color:var(--gold-pale);}
-.admin-submit{
-  grid-column:1/-1;padding:12px;
-  background:linear-gradient(135deg,var(--gold),var(--gold-light));
-  color:var(--ink);font-family:'Cinzel',serif;font-size:12px;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
-}
-.admin-login{text-align:center;margin-bottom:32px;}
-.admin-toggle{
-  padding:8px 24px;background:transparent;
-  border:1px solid rgba(201,168,76,0.3);border-radius:2px;
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;
-  color:rgba(201,168,76,0.5);cursor:pointer;transition:all 0.2s;text-transform:uppercase;
-}
-.admin-toggle:hover{border-color:var(--gold);color:var(--gold);}
-.upload-area{
-  grid-column:1/-1;border:2px dashed rgba(201,168,76,0.3);border-radius:2px;
-  padding:24px;text-align:center;cursor:pointer;transition:border-color 0.2s;
-}
-.upload-area:hover{border-color:var(--gold);}
-.upload-area p{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:rgba(201,168,76,0.5);}
-.upload-area input{display:none;}
+footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamond',serif;font-size:16px;color:#C9A84C99;}
 </style>
 </head>
 <body>
@@ -438,29 +326,12 @@ select.admin-input option{background:var(--ink);color:var(--gold-pale);}
     <a class="nav-link" href="#beliefs">Beliefs</a>
     <a class="nav-link" href="#leadership">Leadership</a>
     <a class="nav-link" href="#ministries">Ministries</a>
-    <a class="nav-link" href="#teachings">Teachings</a>
     <a class="nav-link" href="#holydays">Holy Days</a>
-    <a class="nav-link" href="#scrolls">Bible Scrolls</a>
+    <a class="nav-link" href="bible.html">Bible Study</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
 </nav>
-
-<!-- SOCIAL BAR -->
-<div class="social-bar">
-  <a class="social-btn" href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    Facebook
-  </a>
-  <a class="social-btn" href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    X (Twitter)
-  </a>
-  <a class="social-btn" href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    Instagram
-  </a>
-</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -929,168 +800,6 @@ select.admin-input option{background:var(--ink);color:var(--gold-pale);}
 
 <div class="section-divider"></div>
 
-<!-- TEACHINGS & RESEARCH PAPERS -->
-<div id="teachings" style="background:var(--parchment-dark);padding:80px 24px;">
-<section style="padding:0">
-  <div class="section-header">
-    <h2>Teachings &amp; Research</h2>
-    <p>Torah · Hebrew Roots · Ancient Paths</p>
-    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
-  </div>
-
-  <div class="teachings-intro">
-    "My people are destroyed for lack of knowledge." — Hoshea 4:6<br/>
-    <span style="font-size:15px;">These teachings and research papers are provided freely for study, sharing, and the edification of the body of Messiah.</span>
-  </div>
-
-  <!-- Filter Buttons -->
-  <div class="teachings-filters">
-    <button class="teach-filter active" onclick="filterTeachings('all',this)">All</button>
-    <button class="teach-filter" onclick="filterTeachings('torah',this)">Torah</button>
-    <button class="teach-filter" onclick="filterTeachings('history',this)">Church History</button>
-    <button class="teach-filter" onclick="filterTeachings('prophecy',this)">Prophecy</button>
-    <button class="teach-filter" onclick="filterTeachings('identity',this)">Identity</button>
-    <button class="teach-filter" onclick="filterTeachings('research',this)">Research Papers</button>
-  </div>
-
-  <!-- Teachings Grid -->
-  <div class="teachings-grid" id="teachings-grid">
-
-    <!-- Teaching 1 -->
-    <div class="teaching-card" data-category="torah">
-      <div class="tc-type">📜 Teaching</div>
-      <div class="tc-body">
-        <div class="tc-title">The Name of Yahweh — Why It Matters</div>
-        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Torah Study</div>
-        <div class="tc-desc">Yahweh's Name was removed over 6,000 times from scripture and replaced with "LORD." This teaching explores the importance of restoring His Name, the Hebrew meaning of YHWH, and why calling upon the true Name is a covenant requirement.</div>
-        <div class="tc-scripture">"I am Yahweh — that is My Name; I will not give My glory to another." — Yeshayahu 42:8</div>
-        <div class="tc-footer">
-          <span class="tc-tag">Torah</span>
-          <span class="tc-tag">Sacred Name</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Teaching 2 -->
-    <div class="teaching-card" data-category="torah">
-      <div class="tc-type">📜 Teaching</div>
-      <div class="tc-body">
-        <div class="tc-title">Torah Was Never Abolished — Mattityahu 5:17 Explained</div>
-        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Torah Observance</div>
-        <div class="tc-desc">Yeshua said "I did not come to abolish the Torah." The Greek word plēroō — translated "fulfill" — means to make full or complete, not to terminate. A deep study of this foundational verse and what it means for believers today.</div>
-        <div class="tc-scripture">"Do not think that I came to abolish the Torah or the Prophets." — Mattityahu 5:17</div>
-        <div class="tc-footer">
-          <span class="tc-tag">Torah</span>
-          <span class="tc-tag">Greek Study</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Teaching 3 -->
-    <div class="teaching-card" data-category="history">
-      <div class="tc-type">📖 Church History</div>
-      <div class="tc-body">
-        <div class="tc-title">Constantine, Nicaea, and the Corruption of the Faith</div>
-        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Early Church History</div>
-        <div class="tc-desc">In 325 CE the Roman Emperor Constantine convened the Council of Nicaea — imposing Roman political structure on the faith of Yeshua. Shabbat was changed to Sunday, the Name suppressed, and Hebrew identity stripped from the assembly. This teaching documents what happened and why it matters.</div>
-        <div class="tc-scripture">"Contend earnestly for the faith which was once for all delivered to the saints." — Yehudah 1:3</div>
-        <div class="tc-footer">
-          <span class="tc-tag">History</span>
-          <span class="tc-tag">Nicaea</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Teaching 4 -->
-    <div class="teaching-card" data-category="identity">
-      <div class="tc-type">🦁 Identity Teaching</div>
-      <div class="tc-body">
-        <div class="tc-title">The Kebra Nagast — Ethiopia's Covenant with Yahweh</div>
-        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah · Covenant Identity</div>
-        <div class="tc-desc">The Kebra Nagast reveals that the Ark of the Covenant was brought to Ethiopia by Menelik I, son of King Shlomo and the Queen of Sheba. This teaching explores the African covenant lineage, the Ethiopian Orthodox 81-book canon, and what this means for our identity as Yisrael.</div>
-        <div class="tc-scripture">"Ethiopia shall quickly stretch out her hands to Yahweh." — Tehillim 68:31</div>
-        <div class="tc-footer">
-          <span class="tc-tag">Ethiopia</span>
-          <span class="tc-tag">Covenant</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Teaching 5 -->
-    <div class="teaching-card" data-category="prophecy">
-      <div class="tc-type">🔯 Prophecy</div>
-      <div class="tc-body">
-        <div class="tc-title">The Seven Feasts of Yahweh — Prophetic Fulfillment</div>
-        <div class="tc-meta">Head Pastor B'deyah Ben Benyamin · Prophetic Teaching</div>
-        <div class="tc-desc">The seven feasts of Leviticus 23 are not merely ancient Jewish rituals — they are prophetic appointments of Yahweh pointing to the full redemptive work of the Messiah. The spring feasts were fulfilled in Yeshua's first coming; the fall feasts await His return.</div>
-        <div class="tc-scripture">"These are My appointed feasts, the appointed feasts of Yahweh." — Vayikra 23:2</div>
-        <div class="tc-footer">
-          <span class="tc-tag">Prophecy</span>
-          <span class="tc-tag">Mo'edim</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Teaching 6 -->
-    <div class="teaching-card" data-category="research">
-      <div class="tc-type">📄 Research Paper</div>
-      <div class="tc-body">
-        <div class="tc-title">The Ebionites — First Followers of Yeshua</div>
-        <div class="tc-meta">Co-Pastor Sh'muyl Ben Yahdah, D.D. · Academic Research</div>
-        <div class="tc-desc">A research paper examining the historical Ebionite movement — the original Hebrew followers of Yeshua who maintained Torah observance, used Hebrew names, and were later declared "heretical" by Rome. Includes citations from early church fathers and the Dead Sea Scrolls community.</div>
-        <div class="tc-scripture">"Ask for the ancient paths, where the good way is, and walk in it." — Yirmeyahu 6:16</div>
-        <div class="tc-footer">
-          <span class="tc-tag">Research</span>
-          <span class="tc-tag">Ebionites</span>
-          <span class="tc-tag">D.D. Thesis</span>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- end teachings-grid -->
-
-  <!-- Admin Upload Section -->
-  <div class="admin-login" id="admin-login-section">
-    <button class="admin-toggle" onclick="showAdminLogin()">✦ Pastor Login — Add Teaching</button>
-  </div>
-
-  <div id="admin-password-form" style="display:none;max-width:400px;margin:0 auto 24px;text-align:center;">
-    <input type="password" id="admin-pw" class="admin-input" placeholder="Enter admin password" style="width:100%;margin-bottom:10px;"/>
-    <button onclick="checkAdminPW()" class="tc-btn" style="width:100%;">Unlock Admin Panel</button>
-    <div id="pw-error" style="color:#e88;font-size:13px;margin-top:8px;display:none;">Incorrect password. Try again.</div>
-  </div>
-
-  <div class="admin-bar" id="admin-panel">
-    <h3>✦ Add New Teaching or Research Paper</h3>
-    <p style="font-size:14px;color:rgba(201,168,76,0.6);margin-bottom:16px;">Fill in the details below. For PDF papers, paste the Google Drive share link or direct file URL.</p>
-    <div class="admin-form">
-      <input class="admin-input" id="new-title" placeholder="Title of Teaching / Paper" />
-      <input class="admin-input" id="new-author" placeholder="Author (e.g. Co-Pastor Sh'muyl Ben Yahdah)" />
-      <select class="admin-input" id="new-category">
-        <option value="torah">Torah</option>
-        <option value="history">Church History</option>
-        <option value="prophecy">Prophecy</option>
-        <option value="identity">Identity</option>
-        <option value="research">Research Paper</option>
-      </select>
-      <input class="admin-input" id="new-tags" placeholder="Tags (e.g. Torah, Sacred Name)" />
-      <textarea class="admin-input full" id="new-desc" placeholder="Description / Summary" rows="3" style="resize:vertical;"></textarea>
-      <input class="admin-input full" id="new-scripture" placeholder="Key scripture reference (e.g. Yirmeyahu 6:16)" />
-      <input class="admin-input full" id="new-pdf-url" placeholder="PDF link — Google Drive share URL or direct file link (optional)" />
-      <div class="upload-area full" onclick="document.getElementById('pdf-file-input').click()">
-        <input type="file" id="pdf-file-input" accept=".pdf,.doc,.docx" onchange="handleFileSelect(event)"/>
-        <p>📄 Or drag &amp; drop a PDF / Word document here to attach<br/><span style="font-size:10px;opacity:0.6;">Supported: PDF, DOC, DOCX</span></p>
-        <div id="file-selected" style="margin-top:8px;font-size:13px;color:var(--gold);display:none;"></div>
-      </div>
-      <button class="admin-submit" onclick="addTeaching()">✦ Publish Teaching</button>
-    </div>
-  </div>
-
-</section>
-</div>
-
-<div class="section-divider"></div>
-
 <!-- HOLY DAYS -->
 <div id="holydays" style="background:var(--parchment);padding:80px 24px;">
 <section style="padding:0">
@@ -1178,14 +887,51 @@ select.admin-input option{background:var(--ink);color:var(--gold-pale);}
 
 <div class="section-divider"></div>
 
-<!-- BIBLE SCROLLS EMBED -->
-<div id="scrolls">
-  <div class="section-header" style="padding:60px 24px 0;max-width:1000px;margin:0 auto 32px;">
+<!-- BIBLE STUDY PROMO -->
+<div id="scrolls" style="background:linear-gradient(180deg,var(--parchment-dark) 0%,var(--parchment) 100%);padding:80px 24px;">
+<section style="padding:0">
+  <div class="section-header">
     <h2>📜 Yahweh's Bible Scrolls</h2>
     <p>AI-Powered Hebrew Roots Study Platform</p>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
-  <iframe src="yahweh-bible-scrolls-app.html" title="Yahweh's Bible Scrolls App" allowfullscreen></iframe>
+  <p style="text-align:center;max-width:640px;margin:0 auto 40px;font-size:17px;font-style:italic;color:var(--ink-light);line-height:1.8;">"Ask for the ancient paths, where the good way is, and walk in it, and you will find rest for your souls." — Yirmeyahu 6:16</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:44px;">
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">🤖</div>
+      <h3>AI Bible Study</h3>
+      <p>Ask any question about Torah, the Feasts, or the ancient paths — answered from a Hebrew Roots lens.</p>
+    </div>
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">📖</div>
+      <h3>Interlinear Bible</h3>
+      <p>Study Hebrew OT, Aramaic Peshitta NT, and Greek NT word-by-word with Strong's concordance.</p>
+    </div>
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">א</div>
+      <h3>Hebrew Lessons</h3>
+      <p>Learn the Aleph-Bet, Paleo Hebrew script, covenant vocabulary, and key biblical terms.</p>
+    </div>
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">📜</div>
+      <h3>Ancient Texts Library</h3>
+      <p>AI study companions for the Peshitta, Dead Sea Scrolls, Kebra Nagast, Book of Enoch, and more.</p>
+    </div>
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">🌙</div>
+      <h3>Holy Day Calendar</h3>
+      <p>Leviticus 23 feast calendar with live countdowns to each appointed time of Yahweh.</p>
+    </div>
+    <div class="belief-card" style="text-align:center;">
+      <div class="belief-icon">📖</div>
+      <h3>PDF Bible Library</h3>
+      <p>Download the Ethiopian Orthodox Bible, ISR Scriptures, Cepher Bible, Peshitta NT, and more.</p>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <a href="bible.html" class="btn-gold" style="font-size:13px;letter-spacing:0.15em;">Open Bible Study →</a>
+  </div>
+</section>
 </div>
 
 <div class="section-divider"></div>
@@ -1204,10 +950,8 @@ select.admin-input option{background:var(--ink);color:var(--gold-pale);}
         <h3>✦ Find Us Online</h3>
         <div class="contact-row"><span class="icon">📍</span><span>Racine, Wisconsin — Natchez, MS — Atlanta, GA — Global Online Congregation</span></div>
         <div class="contact-row"><span class="icon">📘</span><a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">Facebook: Yahweh's House of Prayer</a></div>
-        <div class="contact-row"><span class="icon">✖️</span><a href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">X (Twitter): @YahwehHousePray</a></div>
-        <div class="contact-row"><span class="icon">📸</span><a href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">Instagram: @YahwehHousePray</a></div>
         <div class="contact-row"><span class="icon">🌐</span><a href="http://yahwehshouseofprayer.com">yahwehshouseofprayer.com</a></div>
-        <div class="contact-row"><span class="icon">📜</span><a href="yahweh-bible-scrolls-app.html">Open Bible Scrolls Study App</a></div>
+        <div class="contact-row"><span class="icon">📜</span><a href="bible.html">Bible Study — AI · Interlinear · Hebrew Lessons · Library</a></div>
         <div class="contact-row"><span class="icon">🌍</span><a href="https://global-kingdom-of-yehudah.netlify.app/#home" target="_blank" style="color:var(--gold);text-decoration:none;">Global Kingdom of Yehudah — Visit Website ↗</a></div>
         <div class="contact-row"><span class="icon">🏠</span><span>Infiniti Diviniti Habitats NGO — Website Coming Soon</span></div>
       </div>
@@ -1242,20 +986,17 @@ select.admin-input option{background:var(--ink);color:var(--gold-pale);}
   <div class="footer-logo">Yahweh's House of Prayer</div>
   <p>Saints of Yahweh · Racine, Wisconsin · Est. 2011 · EIN: 35-2924426</p>
   <div class="footer-affil">
-    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank" rel="noopener">📘 Facebook</a>
-    <a href="https://x.com/YahwehHousePray" target="_blank" rel="noopener">✖️ X (Twitter)</a>
-    <a href="https://www.instagram.com/yahwehs.house.prayer" target="_blank" rel="noopener">📸 Instagram</a>
-    <a href="https://global-kingdom-of-yehudah.netlify.app" target="_blank" rel="noopener">Global Kingdom of Yehudah</a>
+    <a href="#ministries">Global Kingdom of Yehudah</a>
     <a href="#ministries">Infiniti Diviniti Habitats</a>
+    <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank">Facebook</a>
   </div>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#beliefs">Beliefs</a>
     <a href="#leadership">Leadership</a>
     <a href="#ministries">Ministries</a>
-    <a href="#teachings">Teachings</a>
     <a href="#holydays">Holy Days</a>
-    <a href="#scrolls">Bible Scrolls</a>
+    <a href="bible.html">Bible Study</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
@@ -1269,7 +1010,7 @@ function closeNav(){document.getElementById('navLinks').classList.remove('open')
 document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeNav));
 
 // Highlight active nav on scroll
-const sections = ['about','beliefs','leadership','ministries','teachings','holydays','scrolls','contact'];
+const sections = ['about','beliefs','leadership','ministries','holydays','scrolls','contact'];
 window.addEventListener('scroll', () => {
   let cur = '';
   sections.forEach(id => {
@@ -1280,127 +1021,6 @@ window.addEventListener('scroll', () => {
     l.classList.toggle('active', l.getAttribute('href') === '#'+cur);
   });
 });
-
-// ── TEACHINGS FILTER ──
-function filterTeachings(cat, btn) {
-  document.querySelectorAll('.teach-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.teaching-card').forEach(card => {
-    if(cat === 'all' || card.dataset.category === cat) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-// ── ADMIN PANEL ──
-const ADMIN_PASSWORD = 'yhop2024';
-
-function showAdminLogin() {
-  document.getElementById('admin-login-section').style.display = 'none';
-  document.getElementById('admin-password-form').style.display = 'block';
-  setTimeout(() => document.getElementById('admin-pw').focus(), 100);
-}
-
-function checkAdminPW() {
-  const pw = document.getElementById('admin-pw').value;
-  if(pw === ADMIN_PASSWORD) {
-    document.getElementById('admin-password-form').style.display = 'none';
-    document.getElementById('admin-panel').classList.add('open');
-    document.getElementById('pw-error').style.display = 'none';
-  } else {
-    document.getElementById('pw-error').style.display = 'block';
-    document.getElementById('admin-pw').value = '';
-  }
-}
-
-const adminPwEl = document.getElementById('admin-pw');
-if(adminPwEl) adminPwEl.addEventListener('keydown', function(e) {
-  if(e.key === 'Enter') checkAdminPW();
-});
-
-function handleFileSelect(event) {
-  const file = event.target.files[0];
-  if(file) {
-    const el = document.getElementById('file-selected');
-    el.style.display = 'block';
-    el.textContent = '📄 Selected: ' + file.name;
-    // Pre-fill title if empty
-    if(!document.getElementById('new-title').value) {
-      document.getElementById('new-title').value = file.name.replace(/\.(pdf|doc|docx)$/i,'').replace(/_/g,' ');
-    }
-  }
-}
-
-function addTeaching() {
-  const title = document.getElementById('new-title').value.trim();
-  const author = document.getElementById('new-author').value.trim();
-  const category = document.getElementById('new-category').value;
-  const tags = document.getElementById('new-tags').value.trim();
-  const desc = document.getElementById('new-desc').value.trim();
-  const scripture = document.getElementById('new-scripture').value.trim();
-  const pdfUrl = document.getElementById('new-pdf-url').value.trim();
-  const fileInput = document.getElementById('pdf-file-input');
-
-  if(!title || !desc) {
-    alert('Please fill in at least the title and description.');
-    return;
-  }
-
-  const typeLabels = {
-    torah:'📜 Teaching', history:'📖 Church History',
-    prophecy:'🔯 Prophecy', identity:'🦁 Identity Teaching', research:'📄 Research Paper'
-  };
-
-  const tagList = tags.split(',').map(t => t.trim()).filter(Boolean);
-  const tagsHtml = tagList.map(t => `<span class="tc-tag">${t}</span>`).join('');
-
-  let btnHtml = '';
-  if(pdfUrl) {
-    btnHtml = `<a class="tc-btn" href="${pdfUrl}" target="_blank" rel="noopener">📄 Download PDF</a>`;
-  } else if(fileInput.files[0]) {
-    // Create object URL for local file (works in same session)
-    const objectUrl = URL.createObjectURL(fileInput.files[0]);
-    btnHtml = `<a class="tc-btn" href="${objectUrl}" target="_blank" download="${fileInput.files[0].name}">📄 Download PDF</a>`;
-  }
-
-  const card = document.createElement('div');
-  card.className = 'teaching-card';
-  card.dataset.category = category;
-  card.innerHTML = `
-    <div class="tc-type">${typeLabels[category] || '📜 Teaching'}</div>
-    <div class="tc-body">
-      <div class="tc-title">${title}</div>
-      <div class="tc-meta">${author || 'Yahweh\'s House of Prayer'}</div>
-      <div class="tc-desc">${desc}</div>
-      ${scripture ? `<div class="tc-scripture">${scripture}</div>` : ''}
-      <div class="tc-footer">${btnHtml}${tagsHtml}</div>
-    </div>`;
-
-  // Insert at top of grid
-  const grid = document.getElementById('teachings-grid');
-  grid.insertBefore(card, grid.firstChild);
-
-  // Clear form
-  ['new-title','new-author','new-tags','new-desc','new-scripture','new-pdf-url'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  fileInput.value = '';
-  document.getElementById('file-selected').style.display = 'none';
-
-  // Show success
-  const btn = document.querySelector('.admin-submit');
-  btn.textContent = '✦ Published!';
-  btn.style.background = '#4A9B6F';
-  setTimeout(() => {
-    btn.textContent = '✦ Publish Teaching';
-    btn.style.background = '';
-  }, 2500);
-
-  // Scroll to new card
-  card.scrollIntoView({behavior:'smooth', block:'center'});
-}
 </script>
 </body>
 </html>
