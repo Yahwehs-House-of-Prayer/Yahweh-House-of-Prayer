@@ -564,7 +564,7 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="index.html">
-    <img src="corp_seal_YHOP_gold.jpeg" alt="YHOP Seal"/>
+    <img src="corp seal YHOP gold.jpeg" alt="YHOP Seal"/>
     <span>Yahweh's House of Prayer</span>
   </a>
   <div class="nav-links" id="navLinks">
@@ -672,6 +672,7 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
     <button class="lesson-tab active" onclick="switchLesson(this,'alephbet')">Aleph-Bet</button>
     <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
     <button class="lesson-tab" onclick="switchLesson(this,'covenant')">Covenant Words</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'amharic')">Amharic ↔ Hebrew</button>
   </div>
 
   <!-- Aleph-Bet -->
@@ -731,6 +732,55 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
   <!-- Covenant Words -->
   <div id="lesson-covenant" style="display:none;">
     <div style="display:flex;flex-direction:column;gap:16px;" id="covenantWords"></div>
+  </div>
+
+  <!-- Amharic ↔ Hebrew -->
+  <div id="lesson-amharic" style="display:none;">
+    <div style="margin-bottom:20px;padding:16px 18px;background:linear-gradient(135deg,rgba(27,43,107,0.08),rgba(184,134,11,0.06));border:1px solid var(--parchment-deeper);border-radius:3px;border-left:4px solid var(--gold);">
+      <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);margin-bottom:6px;letter-spacing:0.05em;">🦁 Amharic ↔ Hebrew AI Companion</div>
+      <div style="font-size:15px;color:var(--ink-mid);line-height:1.6;">Amharic (አማርኛ) is the language of the Ethiopian Orthodox Church — the language of the Kebra Nagast, the 81-book canon, and the ancient Ge'ez liturgy. Ask the AI to translate words, compare Amharic and Hebrew roots, explain Ge'ez script, or study any Ethiopian biblical text.</div>
+    </div>
+
+    <!-- Ge'ez Alphabet Reference -->
+    <div style="margin-bottom:24px;">
+      <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);padding-bottom:8px;border-bottom:1px solid var(--parchment-deeper);margin-bottom:14px;">✦ Ge'ez Fidel — Ethiopian Alphabet</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:8px;margin-bottom:16px;">
+        ${[['አ','a'],['ሀ','ha'],['ለ','le'],['መ','me'],['ሠ','se'],['ረ','re'],['ሰ','se'],['ቀ','qe'],['በ','be'],['ተ','te'],['ነ','ne'],['ከ','ke'],['ወ','we'],['ዐ','e'],['ዘ','ze'],['የ','ye'],['ደ','de'],['ጀ','je'],['ገ','ge'],['ጠ','te'],['ጰ','pe'],['ጸ','tse'],['ፀ','tse'],['ፈ','fe'],['ፐ','pe']].map(([f,t])=>`
+        <div style="background:white;border:1px solid var(--parchment-deeper);border-radius:3px;padding:10px 4px;text-align:center;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--parchment-deeper)'">
+          <div style="font-size:24px;color:var(--gold);line-height:1;margin-bottom:3px;">${f}</div>
+          <div style="font-family:'Cinzel',serif;font-size:9px;color:var(--ink-mid);">${t}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <!-- AI Chat -->
+    <div class="ai-chat-container">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-icon">🦁</div>
+        <div class="ai-chat-header-text">
+          <h3>Amharic ↔ Hebrew AI Scholar</h3>
+          <p>Ge'ez · Ethiopian Orthodox · Hebrew Roots</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="amharicChatMessages" style="height:380px;">
+        <div class="msg ai">
+          <div class="ai-avatar">🦁</div>
+          <div class="msg-bubble">Shalom! ሰላም (Selam)! I am your Amharic↔Hebrew study companion.<br/><br/>I connect the Hebrew language of Torah with the Amharic language of the Ethiopian Orthodox Church — the language of the Kebra Nagast, the 81-book canon, and the oldest continuous biblical tradition in Africa.<br/><br/>Ask me to translate words between Amharic and Hebrew, explain Ge'ez script, compare Ethiopian and Hebrew biblical concepts, or study any passage in Amharic. I always write Yahweh's Name as ያህዌ (Yahweh) in Amharic — never substituting it.</div>
+          <div class="msg-name">Amharic ↔ Hebrew AI Scholar</div>
+        </div>
+      </div>
+      <div class="chat-suggestions" id="amharicSuggestions">
+        <div class="suggestion" onclick="sendAmharicSuggestion(this)">How do you say Shabbat in Amharic?</div>
+        <div class="suggestion" onclick="sendAmharicSuggestion(this)">Translate Yirmeyahu 6:16 to Amharic</div>
+        <div class="suggestion" onclick="sendAmharicSuggestion(this)">What is ስሙ ያህዌ in Hebrew?</div>
+        <div class="suggestion" onclick="sendAmharicSuggestion(this)">Explain the Ge'ez alphabet origins</div>
+        <div class="suggestion" onclick="sendAmharicSuggestion(this)">Hebrew and Amharic root connections</div>
+      </div>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="amharicChatInput" placeholder="Ask about Amharic, Ge'ez, or Ethiopian Hebrew connections..." rows="1" onkeydown="handleAmharicKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="chat-send" onclick="sendAmharicMessage()">Send ➤</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1150,9 +1200,32 @@ function switchLesson(btn, type) {
   document.getElementById('lesson-alephbet').style.display = type==='alephbet'?'block':'none';
   document.getElementById('lesson-vocab').style.display = type==='vocab'?'block':'none';
   document.getElementById('lesson-covenant').style.display = type==='covenant'?'block':'none';
+  document.getElementById('lesson-amharic').style.display = type==='amharic'?'block':'none';
   if(type==='vocab') initFlashcards();
   if(type==='covenant') buildCovenantWords();
 }
+
+// ── AMHARIC CHAT ──
+let amharicHistory=[];
+const amharicSystemPrompt=`You are an Amharic↔Hebrew language and Bible study AI for Yahweh's House of Prayer — a Hebrew Roots / Ebionite / Nazarene congregation. You specialize in: Amharic language, Ge'ez script, Ethiopian Orthodox biblical tradition, the 81-book Ethiopian canon, Kebra Nagast, and connections between Hebrew and Amharic/Ge'ez root words.
+
+KEY RULE — YAHWIST NAME POLICY: When writing Yahweh's Name in Amharic, ALWAYS write ያህዌ (Yahweh) first, with the familiar Amharic name in parentheses after: ያህዌ (እግዚአብሔር). Never substitute Yahweh's Name with a title. Apply this pattern consistently.
+
+Always use Hebrew sacred names: Yahweh, Yeshua, Moshe, Yisrael, etc. Connect Ethiopian biblical tradition to Hebrew Roots theology. The Ethiopian Orthodox Church preserved the most complete biblical canon in the world — 81 books. Treat all 81 books as valid scripture.`;
+
+async function sendAmharicMessage(){
+  const input=document.getElementById('amharicChatInput');
+  const text=input.value.trim(); if(!text) return;
+  const msgs=document.getElementById('amharicChatMessages');
+  msgs.innerHTML+=`<div class="msg user"><div class="msg-bubble">${text}</div><div class="msg-name">You</div></div>`;
+  input.value=''; input.style.height='auto';
+  msgs.scrollTop=msgs.scrollHeight;
+  amharicHistory.push({role:'user',content:text});
+  const reply=await callClaude(text,msgs,amharicHistory,'🦁',amharicSystemPrompt);
+  amharicHistory.push({role:'assistant',content:reply});
+}
+function sendAmharicSuggestion(el){document.getElementById('amharicChatInput').value=el.textContent;sendAmharicMessage();}
+function handleAmharicKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAmharicMessage();}}
 
 // ── FLASHCARDS ──
 const vocabCards = [
@@ -1272,47 +1345,70 @@ function pdfSoon(e,title){
 }
 
 // ── INTERLINEAR ──
-const ilBooksOT=['Bereshit (Genesis)','Shemot (Exodus)','Vayikra (Leviticus)','Bamidbar (Numbers)','Devarim (Deuteronomy)','Yehoshua (Joshua)','Shoftim (Judges)','Tehillim (Psalms)','Mishle (Proverbs)','Yeshayahu (Isaiah)'];
-const ilBooksNT=['Mattityahu (Matthew)','Marqus (Mark)','Luqa (Luke)','Yochanan (John)','Acts','Yaakov (James)','Revelation'];
-const ilChaptersMap={'Bereshit (Genesis)':50,'Shemot (Exodus)':40,'Tehillim (Psalms)':150,'Mattityahu (Matthew)':28,'Yochanan (John)':21};
+const ilBooksOT=[
+  'Bereshit (Genesis)','Shemot (Exodus)','Vayikra (Leviticus)','Bamidbar (Numbers)','Devarim (Deuteronomy)',
+  'Yehoshua (Joshua)','Shoftim (Judges)','Rut (Ruth)','1 Shemuel','2 Shemuel',
+  '1 Melakhim (Kings)','2 Melakhim (Kings)','1 Divrei HaYamim (Chronicles)','2 Divrei HaYamim',
+  'Ezra','Nechemyah (Nehemiah)','Ester (Esther)','Iyov (Job)','Tehillim (Psalms)',
+  'Mishle (Proverbs)','Qohelet (Ecclesiastes)','Shir HaShirim (Song of Songs)',
+  'Yeshayahu (Isaiah)','Yirmeyahu (Jeremiah)','Eichah (Lamentations)','Yechezkel (Ezekiel)',
+  'Daniyel (Daniel)','Hoshea','Yoel (Joel)','Amos','Ovadyah (Obadiah)',
+  'Yonah (Jonah)','Mikhah (Micah)','Nachum','Chavakuk (Habakkuk)','Tzefanyah (Zephaniah)',
+  'Chaggai','Zekhariah (Zechariah)','Mal\'akhi (Malachi)'
+];
+const ilBooksNT=[
+  'Mattityahu (Matthew)','Marqus (Mark)','Luqa (Luke)','Yochanan (John)',
+  'Ma\'asei HaShlichim (Acts)','Romim (Romans)','1 Corinthians','2 Corinthians',
+  'Galatians','Ephesians','Philippians','Colossians',
+  '1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy',
+  'Titus','Philemon','Ivrim (Hebrews)','Yaakov (James)',
+  '1 Kefa (Peter)','2 Kefa (Peter)','1 Yochanan','2 Yochanan',
+  '3 Yochanan','Yehudah (Jude)','Revelation'
+];
+const ilChaptersMap={
+  'Bereshit (Genesis)':50,'Shemot (Exodus)':40,'Vayikra (Leviticus)':27,
+  'Bamidbar (Numbers)':36,'Devarim (Deuteronomy)':34,'Yehoshua (Joshua)':24,
+  'Shoftim (Judges)':21,'Tehillim (Psalms)':150,'Mishle (Proverbs)':31,
+  'Yeshayahu (Isaiah)':66,'Yirmeyahu (Jeremiah)':52,'Yechezkel (Ezekiel)':48,
+  'Daniyel (Daniel)':12,'Mattityahu (Matthew)':28,'Marqus (Mark)':16,
+  'Luqa (Luke)':24,'Yochanan (John)':21,"Ma'asei HaShlichim (Acts)":28,
+  'Romim (Romans)':16,'Revelation':22,'Ivrim (Hebrews)':13,'Yaakov (James)':5
+};
 let ilSource='hebrew-ot', ilBook='Bereshit (Genesis)', ilChapter=1;
 
-// (Word data carried over from app — abbreviated for readability)
 const ilWordData = {
   'hebrew-ot':{'Bereshit (Genesis)':{1:[
     {verse:1,words:[
       {orig:'בְּרֵאשִׁית',translit:'Bereshit',eng:'In the beginning',strong:'H7225',root:'ראש',rootMean:'head/first',paleo:'𐤁𐤓𐤀𐤔',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤔',n:'Shin',m:'Fire'}],audio:'be-re-SHEET',definition:'In/at the beginning — the first, the chief, the head of all things. The opening word of Torah.'},
       {orig:'בָּרָא',translit:'bara',eng:'created',strong:'H1254',root:'ברא',rootMean:'to create from nothing',paleo:'𐤁𐤓𐤀',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'ba-RA',definition:'To create from nothing — used ONLY with Yahweh as subject. Only the Creator can truly bara.'},
       {orig:'אֱלֹהִים',translit:'Elohim',eng:'Elohim',strong:'H430',root:'אל',rootMean:'strength/mighty one',paleo:'𐤀𐤋',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤋',n:'Lamed',m:'Authority'}],audio:'e-lo-HEEM',definition:'The Mighty One — Yahweh. Plural of majesty, always paired with singular verbs when referring to Yahweh.'},
-      {orig:'אֵת',translit:'et',eng:'[Aleph-Tav]',strong:'H853',root:'את',rootMean:'sign/mark/covenant',paleo:'𐤀𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant/Cross'}],audio:'et',definition:'The untranslatable Aleph-Tav — first and last letters of the Hebrew alphabet. Yeshua said "I am the Aleph and the Tav." Silently present at the moment of creation.'},
-      {orig:'הַשָּׁמַיִם',translit:'hashamayim',eng:'the heavens',strong:'H8064',root:'שמים',rootMean:'heights/waters above',paleo:'𐤔𐤌𐤉𐤌',paleoParts:[{l:'𐤔',n:'Shin',m:'Consume'},{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤉',n:'Yod',m:'Work'}],audio:'ha-sha-MA-yim',definition:'The heavens — both the physical sky and the spiritual realm. Sham (there) + mayim (water) = "where the waters are."'},
-      {orig:'וְאֵת',translit:'ve-et',eng:'and',strong:'H853',root:'את',rootMean:'sign',paleo:'𐤅𐤀𐤕',paleoParts:[{l:'𐤅',n:'Vav',m:'Nail/Connect'},{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant'}],audio:'ve-et',definition:'Vav (the connector/nail) joined to the Aleph-Tav — Yeshua connecting heaven to earth.'},
-      {orig:'הָאָרֶץ',translit:'haaretz',eng:'the earth',strong:'H776',root:'ארץ',rootMean:'firm ground',paleo:'𐤀𐤓𐤑',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strong'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤑',n:'Tsadi',m:'Righteous'}],audio:'ha-A-retz',definition:'The earth, land, firm ground — the physical creation given to humanity as home and responsibility.'}
+      {orig:'אֵת',translit:'et',eng:'[Aleph-Tav]',strong:'H853',root:'את',rootMean:'sign/mark/covenant',paleo:'𐤀𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant/Cross'}],audio:'et',definition:'The untranslatable Aleph-Tav — first and last letters of the Hebrew alphabet. Yeshua said "I am the Aleph and the Tav."'},
+      {orig:'הַשָּׁמַיִם',translit:'hashamayim',eng:'the heavens',strong:'H8064',root:'שמים',rootMean:'heights/waters above',paleo:'𐤔𐤌𐤉𐤌',paleoParts:[{l:'𐤔',n:'Shin',m:'Consume'},{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤉',n:'Yod',m:'Work'}],audio:'ha-sha-MA-yim',definition:'The heavens — both the physical sky and the spiritual realm.'},
+      {orig:'וְאֵת',translit:'ve-et',eng:'and',strong:'H853',root:'את',rootMean:'sign',paleo:'𐤅𐤀𐤕',paleoParts:[{l:'𐤅',n:'Vav',m:'Nail/Connect'},{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤕',n:'Tav',m:'Covenant'}],audio:'ve-et',definition:'Vav (the connector/nail) joined to the Aleph-Tav.'},
+      {orig:'הָאָרֶץ',translit:'haaretz',eng:'the earth',strong:'H776',root:'ארץ',rootMean:'firm ground',paleo:'𐤀𐤓𐤑',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strong'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤑',n:'Tsadi',m:'Righteous'}],audio:'ha-A-retz',definition:'The earth, land, firm ground.'}
     ],english:'In the beginning Elohim created the heavens and the earth.'},
     {verse:2,words:[
-      {orig:'וְרוּחַ',translit:'veruach',eng:'and the Spirit/Wind',strong:'H7307',root:'רוח',rootMean:'breath/spirit/wind',paleo:'𐤓𐤅𐤇',paleoParts:[{l:'𐤓',n:'Resh',m:'Head/Person'},{l:'𐤅',n:'Vav',m:'Nail/Connect'},{l:'𐤇',n:'Chet',m:'Fence/Inside'}],audio:'ve-RU-ach',definition:'The Ruach — breath, wind, Spirit. The Ruach Elohim hovering over the waters is the same Ruach HaQodesh (Set-Apart Spirit) throughout Scripture.'},
-      {orig:'אֱלֹהִים',translit:'Elohim',eng:'of Elohim',strong:'H430',root:'אל',rootMean:'mighty',paleo:'𐤀𐤋',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤋',n:'Lamed',m:'Authority'}],audio:'e-lo-HEEM',definition:"Elohim's Spirit — the Mighty One's breath was present and active at creation."},
-      {orig:'מְרַחֶפֶת',translit:'merachefet',eng:'was hovering',strong:'H7363',root:'רחף',rootMean:'to hover/brood',paleo:'𐤌𐤓𐤇𐤐𐤕',paleoParts:[{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤇',n:'Chet',m:'Inside'}],audio:'me-ra-CHE-fet',definition:'Hovering, brooding — as an eagle over its nest (Devarim 32:11). The Ruach actively tending, preparing over the waters like a mother bird about to give life.'}
+      {orig:'וְרוּחַ',translit:'veruach',eng:'and the Spirit',strong:'H7307',root:'רוח',rootMean:'breath/spirit/wind',paleo:'𐤓𐤅𐤇',paleoParts:[{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤇',n:'Chet',m:'Inside'}],audio:'ve-RU-ach',definition:'The Ruach — breath, wind, Spirit of Yahweh hovering over the waters.'},
+      {orig:'מְרַחֶפֶת',translit:'merachefet',eng:'was hovering',strong:'H7363',root:'רחף',rootMean:'to hover/brood',paleo:'𐤌𐤓𐤇𐤐𐤕',paleoParts:[{l:'𐤌',n:'Mem',m:'Water'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤇',n:'Chet',m:'Inside'}],audio:'me-ra-CHE-fet',definition:'Hovering, brooding — as an eagle over its nest. The Ruach actively tending over the waters.'}
     ],english:'And the earth was formless and void, and darkness was over the surface of the deep, and the Spirit of Elohim was hovering over the surface of the waters.'},
     {verse:3,words:[
-      {orig:'וַיֹּאמֶר',translit:'vayomer',eng:'and said',strong:'H559',root:'אמר',rootMean:'to speak/say',paleo:'𐤅𐤉𐤀𐤌𐤓',paleoParts:[{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'va-YO-mer',definition:'And He said — the divine speech act calling reality into existence. Creation comes through speaking. Compare Yochanan 1:1 — "In the beginning was the Word."'},
-      {orig:'יְהִי',translit:'yehi',eng:'let there be',strong:'H1961',root:'היה',rootMean:'to be/exist/become',paleo:'𐤉𐤄𐤉',paleoParts:[{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤄',n:'Hey',m:'Breath'},{l:'𐤉',n:'Yod',m:'Work'}],definition:'Yehi — "let it be, let it exist." Three of the four letters of YHWH. Even in the first creative command, Yahweh\'s Name is present.'},
-      {orig:'אוֹר',translit:'or',eng:'light',strong:'H216',root:'אור',rootMean:'light/shine',paleo:'𐤀𐤅𐤓',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤓',n:'Resh',m:'Head'}],audio:'OR',definition:'Light — the first creation. Not sunlight (sun created day 4) but divine illuminating light — the light of Yahweh\'s own presence.'}
+      {orig:'יְהִי',translit:'yehi',eng:'let there be',strong:'H1961',root:'היה',rootMean:'to be/exist',paleo:'𐤉𐤄𐤉',paleoParts:[{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤄',n:'Hey',m:'Breath'},{l:'𐤉',n:'Yod',m:'Work'}],audio:'ye-HI',definition:'Three of the four letters of YHWH. Even in the first creative command, Yahweh\'s Name is present.'},
+      {orig:'אוֹר',translit:'or',eng:'light',strong:'H216',root:'אור',rootMean:'light/shine',paleo:'𐤀𐤅𐤓',paleoParts:[{l:'𐤀',n:'Aleph',m:'First'},{l:'𐤅',n:'Vav',m:'Connect'},{l:'𐤓',n:'Resh',m:'Head'}],audio:'OR',definition:'Light — the first creation. Divine illuminating light before any physical source existed.'}
     ],english:'And Elohim said, "Let there be light," and there was light.'}
   ]}},
   'peshitta-nt':{'Yochanan (John)':{1:[
     {verse:1,words:[
-      {orig:'ܒܪܫܝܬ',translit:'bereshit',eng:'In the beginning',strong:'G746',root:'ראש',rootMean:'head/first',paleo:'𐤁𐤓𐤀𐤔',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'be-re-SHEET',definition:'Bereshit — The Aramaic Peshitta opens Yochanan 1:1 with the EXACT same word as Bereshit 1:1. This is intentional — Yochanan is writing a new creation narrative.'},
-      {orig:'ܐܝܬܘܗܝ',translit:'ithawhi',eng:'was/existed',strong:'G2258',root:'היה',rootMean:'to be/exist',paleo:'𐤀𐤉𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤕',n:'Tav',m:'Sign'}],audio:'i-TA-whi',definition:'Was, existed — continuous past existence. "In the beginning was" — pre-existing before time began.'},
-      {orig:'ܡܠܬܐ',translit:'Miltha',eng:'the Word',strong:'G3056',root:'מלה',rootMean:'word/matter/deed',paleo:'𐤌𐤋𐤄',paleoParts:[{l:'𐤌',n:'Mem',m:'Mighty'},{l:'𐤋',n:'Lamed',m:'Authority'},{l:'𐤄',n:'Hey',m:'Breath'}],audio:'MIL-tha',definition:'Miltha — the Word, Utterance, Divine Speech. In Aramaic Targums, the Memra (divine Word/presence) was well-known as Yahweh\'s active presence in the world. This is the Miltha — Yahweh\'s Word become flesh.'}
+      {orig:'ܒܪܫܝܬ',translit:'bereshit',eng:'In the beginning',strong:'G746',root:'ראש',rootMean:'head/first',paleo:'𐤁𐤓𐤀𐤔',paleoParts:[{l:'𐤁',n:'Bet',m:'House'},{l:'𐤓',n:'Resh',m:'Head'},{l:'𐤀',n:'Aleph',m:'Strength'}],audio:'be-re-SHEET',definition:'Bereshit — The Aramaic Peshitta opens with the EXACT same word as Bereshit 1:1. Yochanan is writing a new creation narrative.'},
+      {orig:'ܐܝܬܘܗܝ',translit:'ithawhi',eng:'was/existed',strong:'G2258',root:'היה',rootMean:'to be/exist',paleo:'𐤀𐤉𐤕',paleoParts:[{l:'𐤀',n:'Aleph',m:'Strength'},{l:'𐤉',n:'Yod',m:'Hand'},{l:'𐤕',n:'Tav',m:'Sign'}],audio:'i-TA-whi',definition:'Was, existed — continuous past existence before time began.'},
+      {orig:'ܡܠܬܐ',translit:'Miltha',eng:'the Word',strong:'G3056',root:'מלה',rootMean:'word/matter/deed',paleo:'𐤌𐤋𐤄',paleoParts:[{l:'𐤌',n:'Mem',m:'Mighty'},{l:'𐤋',n:'Lamed',m:'Authority'},{l:'𐤄',n:'Hey',m:'Breath'}],audio:'MIL-tha',definition:'Miltha — the Word, Divine Speech. The Aramaic Memra (divine presence) was Yahweh\'s active Word in the world. This is the Miltha — Yahweh\'s Word become flesh.'}
     ],english:'In the beginning was the Word (Miltha), and the Word was with Elohim, and the Word was Elohim.'}
   ]}},
   'greek-nt':{'Mattityahu (Matthew)':{5:[
     {verse:17,words:[
-      {orig:'Μὴ',translit:'Me',eng:'Do not',strong:'G3361',root:'μή',rootMean:'not',paleo:'',paleoParts:[],audio:'may',definition:'Me — the negative particle. "Do not think, do not suppose." Yeshua directly refutes the misunderstanding before it forms.'},
-      {orig:'νομίσητε',translit:'nomisete',eng:'think/suppose',strong:'G3543',root:'νόμος',rootMean:'law/custom',paleo:'',paleoParts:[],audio:'no-MI-se-te',definition:'From nomos (law) — "do not law-think." The word for "think" comes from the same root as Torah/law — as if Yeshua says: "do not use the law to think I oppose the law."'},
-      {orig:'καταλῦσαι',translit:'katalusai',eng:'to abolish/destroy',strong:'G2647',root:'καταλύω',rootMean:'to dissolve/destroy completely',paleo:'',paleoParts:[],audio:'ka-ta-LU-sai',definition:'Katalusai — to destroy stone by stone, dissolve completely. Yeshua emphatically declares He did NOT come to katalusai the Torah. One of the clearest statements in Scripture on Torah\'s continuing validity.'},
-      {orig:'νόμον',translit:'nomon',eng:'Torah/Law',strong:'G3551',root:'νέμω',rootMean:'to distribute/assign',paleo:'',paleoParts:[],audio:'NO-mon',definition:'Nomon — Torah. In the Septuagint this consistently translates Hebrew Torah. Yeshua is explicitly defending the Torah of Moshe.'}
+      {orig:'Μὴ',translit:'Me',eng:'Do not',strong:'G3361',root:'μή',rootMean:'not',paleo:'',paleoParts:[],audio:'may',definition:'Do not think, do not suppose — Yeshua refutes the misunderstanding before it forms.'},
+      {orig:'νομίσητε',translit:'nomisete',eng:'think/suppose',strong:'G3543',root:'νόμος',rootMean:'law/custom',paleo:'',paleoParts:[],audio:'no-MI-se-te',definition:'From nomos (Torah/law) — as if Yeshua says: do not use the law to think I oppose the law.'},
+      {orig:'καταλῦσαι',translit:'katalusai',eng:'to abolish',strong:'G2647',root:'καταλύω',rootMean:'to dissolve/destroy completely',paleo:'',paleoParts:[],audio:'ka-ta-LU-sai',definition:'To destroy stone by stone. Yeshua emphatically declares He did NOT come to katalusai the Torah.'},
+      {orig:'νόμον',translit:'nomon',eng:'Torah/Law',strong:'G3551',root:'νέμω',rootMean:'to distribute/assign',paleo:'',paleoParts:[],audio:'NO-mon',definition:'Nomon — Torah. The Septuagint consistently uses this to translate Hebrew Torah. Yeshua is explicitly defending Torah.'}
     ],english:"Do not think that I came to abolish the Torah or the Prophets; I did not come to abolish but to fulfill."}
   ]}}
 };
@@ -1338,19 +1434,54 @@ function changeChapter(d){
   document.getElementById('ilChapterNum').textContent=ilChapter;
   loadILChapter();closeWordPanel();
 }
-function loadILChapter(){
+
+// AI-powered interlinear — generates full chapter when no local data exists
+async function loadILChapter(){
   ilBook=document.getElementById('ilBookSelect').value;
   const container=document.getElementById('ilContent');
   const data=ilWordData[ilSource]?.[ilBook]?.[ilChapter];
-  if(!data||data.length===0){
-    container.innerHTML=`<div style="text-align:center;padding:60px 20px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;">
-      <div style="font-size:40px;margin-bottom:16px;">📜</div>
-      <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:8px;">${ilBook} Chapter ${ilChapter}</div>
-      <div style="font-size:15px;color:var(--ink-mid);line-height:1.7;margin-bottom:20px;">This chapter's interlinear data is being expanded.<br/><em>Try Bereshit Ch. 1 (Hebrew OT), Yochanan Ch. 1 (Peshitta), or Mattityahu Ch. 5 (Greek NT).</em></div>
+  if(data&&data.length>0){
+    renderILData(data); return;
+  }
+  // No local data — use AI to generate the chapter
+  const lang=ilSource==='hebrew-ot'?'Hebrew OT':ilSource==='peshitta-nt'?'Aramaic Peshitta NT':'Greek NT';
+  container.innerHTML=`
+    <div style="text-align:center;padding:50px 20px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;">
+      <div style="font-size:36px;margin-bottom:14px;">📜</div>
+      <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--royal);margin-bottom:8px;">${ilBook} — Chapter ${ilChapter}</div>
+      <div style="font-size:15px;color:var(--ink-mid);margin-bottom:20px;">Loading AI interlinear study...</div>
+      <div class="typing" style="justify-content:center;"><span></span><span></span><span></span></div>
+    </div>`;
+  try {
+    const prompt=`Generate a Hebrew Roots interlinear study for ${ilBook} Chapter ${ilChapter} from the ${lang}. For each verse provide: the verse number, an English translation using Hebrew sacred names (Yahweh not LORD, Yeshua not Jesus, etc.), and for 3-5 key words per verse provide: the original word, transliteration, English meaning, and a brief definition (1-2 sentences) explaining the Hebrew/Aramaic/Greek depth from a Hebrew Roots perspective. Format as clean readable text with clear verse breaks. Use Hebrew names throughout.`;
+    const res=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`You are a Biblical languages scholar for Yahweh's House of Prayer — Hebrew Roots / Ebionite / Nazarene congregation. Generate interlinear Bible studies. Always use Hebrew names: Yahweh, Yeshua, Moshe, Yisrael, etc. Provide verse-by-verse studies with key word analysis.`,
+        messages:[{role:'user',content:prompt}]})});
+    const result=await res.json();
+    const text=result.content?.[0]?.text||'';
+    container.innerHTML=`
+      <div style="background:white;border:1px solid var(--parchment-deeper);border-radius:3px;padding:28px;">
+        <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--parchment-deeper);">
+          ✦ ${ilBook} · Chapter ${ilChapter} · ${lang} — AI Interlinear Study
+        </div>
+        <div style="font-size:16px;color:var(--ink-light);line-height:1.9;">${text.replace(/\n\n/g,'</p><p style="margin-bottom:16px;">').replace(/\n/g,'<br/>')}</div>
+        <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--parchment-deeper);text-align:center;">
+          <button class="il-ai-btn" onclick="switchStudyTab('ai',document.querySelector('.study-tab'));document.getElementById('chatInput').value='Study ${ilBook} chapter ${ilChapter} from a Hebrew Roots perspective — key words, original language insights, and Ebionite/Nazarene significance';sendMessage();">
+            ✦ Deep AI Study of This Chapter
+          </button>
+        </div>
+      </div>`;
+  } catch(e){
+    container.innerHTML=`<div style="text-align:center;padding:40px 20px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;">
+      <div style="font-size:15px;color:var(--ink-mid);margin-bottom:16px;">Connect to internet to load AI interlinear study.</div>
       <button class="chat-send" onclick="switchStudyTab('ai',document.querySelector('.study-tab'))">Study with AI →</button>
     </div>`;
-    return;
   }
+}
+
+function renderILData(data){
+  const container=document.getElementById('ilContent');
   container.innerHTML=data.map(verse=>`
     <div class="il-verse-block">
       <div class="il-verse-num">Verse ${verse.verse}</div>
@@ -1363,60 +1494,6 @@ function loadILChapter(){
       <div class="il-english-verse">${verse.english}</div>
       <button class="il-ai-btn" onclick="openVerseAI(${verse.verse},'${ilBook}')">✦ Ask AI about this verse</button>
     </div>`).join('');
-}
-function showWordPanel(verseNum,wordIdx){
-  const data=ilWordData[ilSource]?.[ilBook]?.[ilChapter];
-  if(!data) return;
-  const verse=data.find(v=>v.verse===verseNum); if(!verse) return;
-  const w=verse.words[wordIdx]; if(!w) return;
-  document.querySelectorAll('.il-word').forEach(el=>el.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  const paleoHtml=w.paleoParts&&w.paleoParts.length>0
-    ?`<div class="wp-root-letters">${w.paleoParts.map(p=>`<div class="wp-root-letter"><div class="rl-heb">${p.l}</div><div class="rl-name">${p.n}</div><div class="rl-mean">${p.m}</div></div>`).join('')}</div>`
-    :`<em style="color:var(--ink-mid);font-size:13px;">N/A for this language</em>`;
-  document.getElementById('wordPanelContent').innerHTML=`
-    <div class="wp-original">${w.orig}</div>
-    <div class="wp-translit">${w.translit} · ${w.eng}</div>
-    ${w.strong?`<div class="wp-row"><div class="wp-label">Strong's</div><div class="wp-value"><span class="wp-strong">${w.strong}</span></div></div>`:''}
-    ${w.root?`<div class="wp-row"><div class="wp-label">Root</div><div class="wp-value"><span style="font-size:20px;color:var(--gold);direction:rtl;">${w.root}</span> — ${w.rootMean}</div></div>`:''}
-    ${w.audio?`<div class="wp-row"><div class="wp-label">Pronunciation</div><div class="wp-value" style="font-style:italic;">${w.audio}</div></div>`:''}
-    <div class="wp-row"><div class="wp-label">Definition</div><div class="wp-value" style="text-align:left;">${w.definition||''}</div></div>
-    ${w.paleoParts&&w.paleoParts.length>0?`<div class="wp-row" style="flex-direction:column;gap:10px;"><div class="wp-label">Paleo Hebrew</div>${paleoHtml}</div>`:''}
-    <button class="wp-audio-btn" onclick="speakWord('${w.translit}')">🔊 Hear: ${w.audio||w.translit}</button>
-    <div class="wp-ai-section">
-      <div class="wp-ai-label">✦ AI Word Study</div>
-      <div class="wp-ai-text" id="wpAiText"><em style="color:var(--ink-mid);">Click below for a deep word study...</em></div>
-      <button class="wp-audio-btn" style="margin-top:8px;" onclick="getWordAI('${w.orig}','${w.translit}','${w.strong||''}','${w.root||''}','${ilSource}')">✦ Deep Word Study</button>
-    </div>`;
-  document.getElementById('wordPanel').classList.add('open');
-}
-function closeWordPanel(){
-  document.getElementById('wordPanel').classList.remove('open');
-  document.querySelectorAll('.il-word').forEach(el=>el.classList.remove('active'));
-}
-function speakWord(t){if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(t);u.rate=0.8;speechSynthesis.speak(u);}}
-async function getWordAI(orig,translit,strong,root,source){
-  const el=document.getElementById('wpAiText');
-  el.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
-  const lang=source==='hebrew-ot'?'Biblical Hebrew':source==='peshitta-nt'?'Aramaic (Peshitta)':'Greek (NT)';
-  const prompt=`Deep Hebrew Roots word study for "${orig}" (${translit}, ${lang}, Strong's ${strong}, root: ${root}). Cover: 1) Paleo Hebrew pictographic meanings, 2) Usage across Scripture, 3) What the original language reveals that English misses, 4) Theological significance from an Ebionite/Nazarene perspective. Concise — 3 paragraphs. Use Hebrew names.`;
-  try {
-    const res=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,
-        system:'You are a Biblical Hebrew and Aramaic word scholar for Yahweh\'s House of Prayer. Focus on Paleo Hebrew pictographic meanings and spiritual depth. Always use Hebrew names.',
-        messages:[{role:'user',content:prompt}]})});
-    const data=await res.json();
-    el.innerHTML=(data.content?.[0]?.text||'').replace(/\n/g,'<br/>');
-  } catch(e){el.innerHTML='<em>API connection needed for live word studies.</em>';}
-}
-async function openVerseAI(verseNum,book){
-  const data=ilWordData[ilSource]?.[book]?.[ilChapter];
-  const verse=data?.find(v=>v.verse===verseNum);
-  if(!verse) return;
-  const q=`Please give me a deep Hebrew Roots study of ${book} Chapter ${ilChapter} Verse ${verseNum}: "${verse.english}" — explain the key words, what the original language reveals, and the significance from an Ebionite/Nazarene perspective.`;
-  switchStudyTab('ai', document.querySelector('.study-tab'));
-  document.getElementById('chatInput').value=q;
-  sendMessage();
 }
 
 // ── ADMIN PANEL ──
