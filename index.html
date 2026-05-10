@@ -4,7 +4,29 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Yahweh's House of Prayer — Hebrew Roots Ministry</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;600;700&family=Noto+Serif+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyDdZzrwnaHXfE7r-0u_ZsZ1BneAF7D6-Sk",
+    authDomain: "yhop-congregation.firebaseapp.com",
+    projectId: "yhop-congregation",
+    storageBucket: "yhop-congregation.firebasestorage.app",
+    messagingSenderId: "619369254482",
+    appId: "1:619369254482:web:18bef5f51fae06a160998b"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window.yhopDB = db;
+  window.yhopFS = { collection, addDoc, getDocs, query, orderBy };
+  window.dispatchEvent(new Event('yhopFirebaseReady'));
+</script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("ax88RnM_NTjYALKo3");</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -312,6 +334,51 @@ footer .footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap
 footer .footer-links a{color:#C9A84C88;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.1em;}
 footer .footer-links a:hover{color:var(--gold);}
 footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamond',serif;font-size:16px;color:#C9A84C99;}
+
+/* ── INTERLINEAR SYSTEM ── */
+.il-english{display:block;font-family:inherit;}
+.il-hebrew{
+  display:block;font-family:'Noto Serif Hebrew',serif;
+  direction:rtl;font-size:0.72em;
+  color:var(--gold);line-height:1.7;margin-top:3px;
+  font-weight:400;letter-spacing:0.02em;
+}
+.il-amharic{
+  display:block;font-family:'Noto Serif Ethiopic',serif;
+  font-size:0.65em;color:var(--ink-mid);
+  line-height:1.7;margin-top:2px;opacity:0.75;
+}
+/* On dark backgrounds (ministries, footer) */
+.dark-bg .il-hebrew{color:rgba(201,168,76,0.85);}
+.dark-bg .il-amharic{color:rgba(245,222,179,0.45);}
+/* Section header subline interlinear */
+.section-header .il-hebrew{font-size:13px;color:var(--gold);margin-top:4px;display:block;direction:rtl;font-family:'Noto Serif Hebrew',serif;}
+.section-header .il-amharic{font-size:12px;color:var(--ink-mid);margin-top:2px;display:block;font-family:'Noto Serif Ethiopic',serif;opacity:0.7;}
+/* Belief card interlinear */
+.belief-card .il-hebrew{font-size:0.8em;color:var(--gold);}
+.belief-card .il-amharic{font-size:0.72em;color:var(--ink-mid);}
+/* Ministry card interlinear — dark background */
+.ministry-card .il-hebrew{color:rgba(201,168,76,0.8);}
+.ministry-card .il-amharic{color:rgba(245,222,179,0.4);}
+/* Footer interlinear */
+footer .il-hebrew{color:rgba(201,168,76,0.7);font-size:0.8em;}
+footer .il-amharic{color:rgba(245,222,179,0.35);font-size:0.72em;}
+
+/* ── CONTACT FORM ── */
+.contact-form{margin-top:24px;}
+.contact-form h3{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;background:rgba(255,255,255,0.7);border:1px solid var(--parchment-deeper);
+  border-radius:2px;padding:10px 14px;color:var(--ink);
+  font-family:'EB Garamond',serif;font-size:16px;outline:none;transition:border 0.2s;
+}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group textarea{height:100px;resize:vertical;}
+.form-status{margin-top:10px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;text-align:center;min-height:20px;}
+.form-status.success{color:#2d7a50;}
+.form-status.error{color:#c0392b;}
 </style>
 </head>
 <body>
@@ -339,9 +406,14 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
   <img class="hero-seal" src="Corp_seal_YHOP.jpg" alt="Yahweh's House of Prayer Seal" onerror="this.style.display='none'"/>
 
-  <div class="hero-sub">Restoring the Ancient Paths · Est. 2011</div>
-  <h1>Yahweh's House<br/><span>of Prayer</span></h1>
+  <div class="hero-sub">
+    <span class="il-english">Restoring the Ancient Paths · Est. 2011</span>
+    <span class="il-hebrew">מְשַׁחְזֵר אֶת הַנְּתִיבוֹת הַקְּדוּמוֹת · נוֹסַד 2011</span>
+    <span class="il-amharic">ጥንታዊ መንገዶችን መመለስ · የተቋቋመ 2011</span>
+  </div>
+  <h1><span class="il-english">Yahweh's House<br/><span>of Prayer</span></span></h1>
   <div class="hero-hebrew">בֵּית תְּפִלָּה לְיַהְוֶה</div>
+  <div style="font-family:'Noto Serif Ethiopic',serif;font-size:clamp(13px,2vw,18px);color:var(--ink-mid);font-style:italic;margin-bottom:20px;opacity:0.75;">የያህዌ የጸሎት ቤት</div>
 
   <div class="hero-tagline">
     Returning to the <strong>Hebrew Roots</strong> of authentic first-century faith — honoring
@@ -371,6 +443,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2>Who We Are</h2>
     <p>A Hebrew Roots Congregation</p>
+    <div class="il-hebrew">מִי אֲנַחְנוּ · קְהִלַּת שׁוֹרָשִׁים עִבְרִיִּים</div>
+    <div class="il-amharic">እኛ ማን ነን · የዕብራይስጥ ሥሮች ማኅበር</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
   <div class="about-grid">
@@ -416,6 +490,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2>What We Believe</h2>
     <p>Our Doctrinal Foundation — The Ancient Paths</p>
+    <div class="il-hebrew">מַה שֶּׁאָנוּ מַאֲמִינִים · יְסוֹד הָאֱמוּנָה שֶׁלָּנוּ</div>
+    <div class="il-amharic">የምናምነው · የእምነታችን መሠረት — ጥንታዊ መንገዶች</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
 
@@ -426,19 +502,28 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="beliefs-grid">
     <div class="belief-card">
       <div class="belief-icon">𐤉𐤄𐤅𐤄</div>
-      <h3>The Name of Yahweh</h3>
+      <h3>The Name of Yahweh
+        <span class="il-hebrew">שֵׁם יַהְוֶה</span>
+        <span class="il-amharic">የያህዌ ስም</span>
+      </h3>
       <p>We believe in the one true Elohim whose Name is <strong>Yahweh</strong>. His Name was intentionally removed from scripture over 6,000 times and replaced with "LORD." We restore and honor His Name as revealed to Moshe at the burning bush — because a name is not a title, and Yahweh declared His Name as a memorial forever.</p>
       <div class="belief-verse">"I am Yahweh — that is My Name." — Yeshayahu 42:8</div>
     </div>
     <div class="belief-card">
       <div class="belief-icon">📜</div>
-      <h3>Torah is Eternal</h3>
+      <h3>Torah is Eternal
+        <span class="il-hebrew">הַתּוֹרָה נִצְחִית</span>
+        <span class="il-amharic">ኦሪት ዘላለማዊ ናት</span>
+      </h3>
       <p>Yahweh's Torah (instruction) was not abolished. Yeshua himself said he came not to destroy the Torah but to fulfill it. The Greek word "plēroō" means to complete or make full — not to eliminate. We walk in Torah obedience as the covenant lifestyle Yahweh commanded for all who love Him.</p>
       <div class="belief-verse">"Do not think I came to abolish the Torah." — Mattityahu 5:17</div>
     </div>
     <div class="belief-card">
       <div class="belief-icon">🕎</div>
-      <h3>Yeshua the Messiah</h3>
+      <h3>Yeshua the Messiah
+        <span class="il-hebrew">יֵשׁוּעַ הַמָּשִׁיחַ</span>
+        <span class="il-amharic">ዬሱዕ መሢሑ</span>
+      </h3>
       <p>We believe Yeshua — not "Jesus," a Greek/Latin rendering — was the promised Hebrew Messiah, a Torah-observant teacher from Natzeret. He came to restore Yisrael and teach true covenant living. We follow his actual teachings as recorded in the Hebraic gospel tradition, not the Hellenized Roman version.</p>
       <div class="belief-verse">"I was sent only to the lost sheep of the house of Yisrael." — Mattityahu 15:24</div>
     </div>
@@ -456,7 +541,10 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     </div>
     <div class="belief-card">
       <div class="belief-icon">🕯️</div>
-      <h3>Seventh-Day Shabbat</h3>
+      <h3>Seventh-Day Shabbat
+        <span class="il-hebrew">שַׁבָּת הַיּוֹם הַשְּׁבִיעִי</span>
+        <span class="il-amharic">የሰባተኛ ቀን ሰንበት</span>
+      </h3>
       <p>We honor the Shabbat from Friday evening to Saturday evening as Yahweh commanded at Creation and reaffirmed in Torah. Shabbat was never changed to Sunday — that was a Roman decree under Emperor Constantine in 321 CE. The fourth commandment has never been repealed by Yahweh.</p>
       <div class="belief-verse">"Remember the Shabbat day to keep it holy." — Shemot 20:8</div>
     </div>
@@ -508,6 +596,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2>Our Leadership</h2>
     <p>Ordained Servants of Yahweh</p>
+    <div class="il-hebrew">מַנְהִיגוּתֵנוּ · עֲבָדִים מְמֻנִּים שֶׁל יַהְוֶה</div>
+    <div class="il-amharic">አመራራችን · የያህዌ የተሾሙ አገልጋዮች</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
 
@@ -717,6 +807,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2 style="color:var(--gold-pale)">Our Ministries</h2>
     <p style="color:var(--gold)">Serving Yahweh's People &amp; Community</p>
+    <div class="il-hebrew" style="color:rgba(201,168,76,0.8);">שֵׁרוּתֵינוּ · שֵׁרוּת עַם יַהְוֶה וְהַקְּהִלָּה</div>
+    <div class="il-amharic" style="color:rgba(245,222,179,0.45);">አገልግሎቶቻችን · የያህዌን ሕዝብ እና ማኅበረሰብ ማገልገል</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
 
@@ -806,6 +898,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2>Holy Days of Yahweh</h2>
     <p>The Appointed Times — Vayikra (Leviticus) 23</p>
+    <div class="il-hebrew">מוֹעֲדֵי יַהְוֶה · הַזְּמַנִּים הַמְּיֻעָדִים — וַיִּקְרָא כ״ג</div>
+    <div class="il-amharic">የያህዌ ቅዱሳን ቀናት · የተወሰኑ ዘመናት — ዘሌዋውያን 23</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
   <p class="holydays-intro">"These are the appointed feasts of Yahweh, the holy convocations, which you shall proclaim at the time appointed for them." — Vayikra 23:4</p>
@@ -877,7 +971,10 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   </div>
 
   <div class="shabbat-box">
-    <h3>🕯️ Weekly Shabbat Services</h3>
+    <h3>🕯️ Weekly Shabbat Services
+      <div style="font-family:'Noto Serif Hebrew',serif;direction:rtl;font-size:0.6em;color:rgba(201,168,76,0.75);margin-top:4px;font-weight:400;">שַׁבָּת שָׁלוֹם · שֵׁרוּתֵי שַׁבָּת שְׁבוּעִיִּים</div>
+      <div style="font-family:'Noto Serif Ethiopic',serif;font-size:0.55em;color:rgba(245,222,179,0.5);margin-top:2px;font-weight:400;">ሻባት ሻሎም · ሳምንታዊ የሰንበት አምልኮ</div>
+    </h3>
     <p>Join us every week as we honor the seventh-day Shabbat — online via Zoom</p>
     <div class="shabbat-times">Friday Evening (Sundown) · Through Saturday Evening (Sundown)</div>
     <p style="margin-top:16px;font-size:14px;opacity:0.7">Zoom link coming soon — follow us on Facebook for service announcements</p>
@@ -887,12 +984,14 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
 
 <div class="section-divider"></div>
 
-<!-- BIBLE STUDY PROMO -->
-<div id="scrolls" style="background:linear-gradient(180deg,var(--parchment-dark) 0%,var(--parchment) 100%);padding:80px 24px;">
+<!-- BIBLE STUDY -->
+<div id="scrolls" style="background:var(--parchment-dark);padding:80px 24px;">
 <section style="padding:0">
   <div class="section-header">
-    <h2>📜 Yahweh's Bible Scrolls</h2>
+    <h2>📜 Bible Study</h2>
     <p>AI-Powered Hebrew Roots Study Platform</p>
+    <div class="il-hebrew">לִמּוּד תַּנַ״ך · פְּלַטְפוֹרְמַת לִמּוּד שׁוֹרָשִׁים עִבְרִיִּים</div>
+    <div class="il-amharic">የመጽሐፍ ቅዱስ ጥናት · የዕብራይስጥ ሥሮች ጥናት መድረክ</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
   <p style="text-align:center;max-width:640px;margin:0 auto 40px;font-size:17px;font-style:italic;color:var(--ink-light);line-height:1.8;">"Ask for the ancient paths, where the good way is, and walk in it, and you will find rest for your souls." — Yirmeyahu 6:16</p>
@@ -910,12 +1009,12 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <div class="belief-card" style="text-align:center;">
       <div class="belief-icon">א</div>
       <h3>Hebrew Lessons</h3>
-      <p>Learn the Aleph-Bet, Paleo Hebrew script, covenant vocabulary, and key biblical terms.</p>
+      <p>Learn the Aleph-Bet, Paleo Hebrew, covenant vocabulary, and Amharic↔Hebrew connections.</p>
     </div>
     <div class="belief-card" style="text-align:center;">
       <div class="belief-icon">📜</div>
       <h3>Ancient Texts Library</h3>
-      <p>AI study companions for the Peshitta, Dead Sea Scrolls, Kebra Nagast, Book of Enoch, and more.</p>
+      <p>AI study companions for the Dead Sea Scrolls, Kebra Nagast, Book of Enoch, and more.</p>
     </div>
     <div class="belief-card" style="text-align:center;">
       <div class="belief-icon">🌙</div>
@@ -925,7 +1024,7 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <div class="belief-card" style="text-align:center;">
       <div class="belief-icon">📖</div>
       <h3>PDF Bible Library</h3>
-      <p>Download the Ethiopian Orthodox Bible, ISR Scriptures, Cepher Bible, Peshitta NT, and more.</p>
+      <p>Ethiopian Orthodox Bible, ISR Scriptures, Cepher Bible, Peshitta NT, and more.</p>
     </div>
   </div>
   <div style="text-align:center;">
@@ -942,6 +1041,8 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
   <div class="section-header">
     <h2>Connect With Us</h2>
     <p>Join the Congregation</p>
+    <div class="il-hebrew">הִצְטַרֵּף אֵלֵינוּ · הִצְטָרֵף לְקָהָל</div>
+    <div class="il-amharic">ተቀላቀሉን · ወደ ጉባኤው ተቀላቀሉ</div>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
   <div class="contact-grid">
@@ -976,17 +1077,42 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
         <h3>✦ A Word to New Visitors</h3>
         <p style="font-size:15px;line-height:1.75;color:var(--ink-light)">Whether you are returning to your Hebrew heritage, seeking the ancient paths, or simply hungry for the truth of Yahweh's Word — you are welcome here. Come as you are. Shabbat Shalom.</p>
       </div>
+      <!-- CONTACT FORM -->
+      <div class="contact-form" style="margin-top:20px;">
+        <h3>✦ Send Us a Message</h3>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="cf-name" placeholder="Your Hebrew or given name"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="cf-email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="cf-subject" placeholder="How can we help you?"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="cf-message" placeholder="Shalom! Write your message here..."></textarea>
+        </div>
+        <button class="btn-gold" onclick="sendContactForm()" style="width:100%;">Send Message ✦</button>
+        <div class="form-status" id="cf-status"></div>
+      </div>
     </div>
   </div>
 </section>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Yahweh's House of Prayer</div>
+  <div class="footer-logo">
+    <span class="il-english">Yahweh's House of Prayer</span>
+    <span class="il-hebrew">בֵּית תְּפִלָּה לְיַהְוֶה</span>
+    <span class="il-amharic">የያህዌ የጸሎት ቤት</span>
+  </div>
   <p>Saints of Yahweh · Racine, Wisconsin · Est. 2011 · EIN: 35-2924426</p>
   <div class="footer-affil">
-    <a href="#ministries">Global Kingdom of Yehudah</a>
+    <a href="https://global-kingdom-of-yehudah.netlify.app" target="_blank">Global Kingdom of Yehudah</a>
     <a href="#ministries">Infiniti Diviniti Habitats</a>
     <a href="https://www.facebook.com/share/1GavEUWZiw/" target="_blank">Facebook</a>
   </div>
@@ -999,14 +1125,16 @@ footer .footer-blessing{margin-top:16px;font-style:italic;font-family:'EB Garamo
     <a href="bible.html">Bible Study</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-blessing">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</div>
+  <div class="footer-blessing">
+    <span class="il-english">Shalom · Shabbat Shalom · Baruch HaShem Yahweh</span>
+    <span class="il-hebrew">שָׁלוֹם · שַׁבָּת שָׁלוֹם · בָּרוּךְ הַשֵּׁם יַהְוֶה</span>
+    <span class="il-amharic">ሰላም · ሻባት ሻሎም · ብሩክ ሁን ስም ያህዌ</span>
+  </div>
 </footer>
 
 <script>
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
 function closeNav(){document.getElementById('navLinks').classList.remove('open');}
-
-// Close menu when a link is clicked
 document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeNav));
 
 // Highlight active nav on scroll
@@ -1021,6 +1149,55 @@ window.addEventListener('scroll', () => {
     l.classList.toggle('active', l.getAttribute('href') === '#'+cur);
   });
 });
+
+// ── EMAIL JS CONTACT FORM ──
+async function sendContactForm() {
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const status  = document.getElementById('cf-status');
+
+  if(!name || !email || !message) {
+    status.textContent = 'Please fill in your name, email, and message.';
+    status.className = 'form-status error';
+    return;
+  }
+
+  status.textContent = 'Sending...';
+  status.className = 'form-status';
+
+  try {
+    // Replace YHOP_EMAILJS_SERVICE_ID and YHOP_EMAILJS_TEMPLATE_ID with your actual IDs
+    await emailjs.send('service_ucj2gyh', 'template_elx4ltj', {
+      Notification_type: 'YHOP Website — ' + (subject || 'General Inquiry'),
+      name: name,
+      email: email,
+      message: message || 'No message provided'
+    });
+
+    // Also save to Firebase if available
+    if(window.yhopDB) {
+      const { collection, addDoc } = window.yhopFS;
+      await addDoc(collection(window.yhopDB, 'contacts'), {
+        name, email, subject, message,
+        timestamp: new Date().toISOString(),
+        source: 'yhop-website'
+      });
+    }
+
+    status.textContent = '✦ Shalom! Your message has been received. We will be in touch soon.';
+    status.className = 'form-status success';
+    document.getElementById('cf-name').value = '';
+    document.getElementById('cf-email').value = '';
+    document.getElementById('cf-subject').value = '';
+    document.getElementById('cf-message').value = '';
+  } catch(err) {
+    console.error('EmailJS error:', err);
+    status.textContent = 'There was an issue sending your message. Please try reaching us on Facebook.';
+    status.className = 'form-status error';
+  }
+}
 </script>
 </body>
 </html>
