@@ -35,9 +35,10 @@ body{background:var(--parchment);color:var(--ink);font-family:'EB Garamond',seri
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--parchment-dark)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
 
 /* ── LANGUAGE SWITCHER ── */
-.lang-switcher{display:flex;gap:2px;margin-left:10px;}
-.lang-btn{padding:4px 9px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;background:none;border:1px solid #C9A84C44;color:#C9A84C88;cursor:pointer;border-radius:1px;transition:all 0.2s;}
+.lang-switcher{display:flex;gap:2px;margin-left:8px;flex-wrap:wrap;}
+.lang-btn{padding:4px 8px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.06em;background:none;border:1px solid #C9A84C44;color:#C9A84C88;cursor:pointer;border-radius:1px;transition:all 0.2s;white-space:nowrap;}
 .lang-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+@media(max-width:900px){.lang-switcher{display:none;}}
 [data-en],[data-es],[data-am],[data-he]{display:none;}
 .lang-en [data-en],[.lang-es] [data-es],[.lang-am] [data-am],[.lang-he] [data-he]{display:block;}
 .lang-en [data-en]{display:block;}
@@ -358,13 +359,14 @@ footer .footer-blessing{margin-top:14px;font-style:italic;font-family:'EB Garamo
     <a class="nav-link" href="#ministries">Ministries</a>
     <a class="nav-link" href="#holydays">Holy Days</a>
     <a class="nav-link" href="bible.html">Bible Study</a>
+    <a class="nav-link" href="#amtool">Language</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" onclick="setLang('am')">AM</button>
-    <button class="lang-btn" onclick="setLang('he')">HE</button>
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('es')">Español</button>
+    <button class="lang-btn" onclick="setLang('am')" style="font-family:'Noto Serif Ethiopic',serif;">አማርኛ</button>
+    <button class="lang-btn" onclick="setLang('he')" style="font-family:'Noto Serif Hebrew',serif;direction:rtl;">עִבְרִית</button>
   </div>
   <button class="nav-toggle" onclick="toggleNav()">☰</button>
 </nav>
@@ -753,6 +755,110 @@ footer .footer-blessing{margin-top:14px;font-style:italic;font-family:'EB Garamo
 </section>
 </div>
 
+<!-- AMHARIC ↔ HEBREW LANGUAGE TOOL -->
+<div id="amtool" style="background:var(--parchment-dark);padding:80px 24px;">
+<section style="padding:0">
+  <div class="section-header">
+    <h2>
+      <span data-en>Amharic ↔ Hebrew</span>
+      <span data-es>Amhárico ↔ Hebreo</span>
+      <span data-am style="font-family:'Noto Serif Ethiopic',serif;">አማርኛ ↔ ዕብራይስጥ</span>
+      <span data-he style="font-family:'Noto Serif Hebrew',serif;">עִבְרִית ↔ אַמְהָרִית</span>
+    </h2>
+    <p>Two Ancient Semitic Languages — One Covenant Heritage</p>
+    <div class="il-he">עִבְרִית וְאַמְהָרִית · שְׁתֵּי שָׂפוֹת שֶׁמִּיּוֹת עַתִּיקוֹת</div>
+    <div class="il-am">ዕብራይስጥ እና አማርኛ · ሁለት ጥንታዊ የሴማዊ ቋንቋዎች</div>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+
+  <div class="am-tool">
+    <!-- Tool Tabs -->
+    <div class="am-tabs">
+      <button class="am-tab active" onclick="amSwitch(this,'alphabet')">Alphabet</button>
+      <button class="am-tab" onclick="amSwitch(this,'lessons')">Lessons</button>
+      <button class="am-tab" onclick="amSwitch(this,'flashcards')">Flashcards</button>
+      <button class="am-tab" onclick="amSwitch(this,'vocabulary')">Vocabulary</button>
+      <button class="am-tab" onclick="amSwitch(this,'roots')">Shared Roots</button>
+      <button class="am-tab" onclick="amSwitch(this,'phrases')">Phrases</button>
+    </div>
+
+    <!-- ALPHABET -->
+    <div id="amPanel-alphabet" class="am-panel show">
+      <p style="font-size:14px;color:var(--ink-mid);font-style:italic;margin-bottom:14px;text-align:center;">Hebrew reads right → left · Tap any letter for full details including Amharic equivalents and Paleo Hebrew pictograph</p>
+      <div class="am-alpha-grid" id="amAlphaGrid"></div>
+      <div class="am-detail" id="amLetterDetail"></div>
+    </div>
+
+    <!-- LESSONS -->
+    <div id="amPanel-lessons" class="am-panel">
+      <div class="am-lesson-tabs" id="amLessonTabs"></div>
+      <div id="amLessonContent" style="background:var(--parchment);border:1px solid var(--parchment-deeper);border-radius:2px;padding:20px;"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:14px;">
+        <button onclick="amPrevLesson()" style="padding:8px 18px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;font-family:'Cinzel',serif;font-size:10px;color:var(--ink-mid);cursor:pointer;">← Prev</button>
+        <span id="amLessonCounter" style="font-family:'Cinzel',serif;font-size:11px;color:var(--ink-mid);align-self:center;"></span>
+        <button onclick="amNextLesson()" style="padding:8px 18px;background:white;border:1px solid var(--parchment-deeper);border-radius:2px;font-family:'Cinzel',serif;font-size:10px;color:var(--ink-mid);cursor:pointer;">Next →</button>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <div id="amPanel-flashcards" class="am-panel">
+      <div style="text-align:center;">
+        <div id="amFcProgress" style="font-family:'Cinzel',serif;font-size:11px;color:var(--ink-mid);margin-bottom:12px;letter-spacing:0.08em;"></div>
+        <div id="amFcDone" style="display:none;background:white;border:1px solid var(--scroll-border);border-radius:4px;padding:28px;border-top:4px solid var(--gold);">
+          <div style="font-size:36px;margin-bottom:10px;">🎉</div>
+          <h3 style="font-family:'Cinzel',serif;color:var(--gold);margin-bottom:8px;">Well Done!</h3>
+          <p id="amFcScore" style="font-size:20px;color:var(--ink);margin-bottom:8px;"></p>
+          <button onclick="amResetFc()" style="padding:10px 24px;background:var(--gold);border:none;border-radius:2px;font-family:'Cinzel',serif;font-size:11px;color:var(--ink);cursor:pointer;font-weight:700;">Try Again</button>
+        </div>
+        <div id="amFcCard" class="am-fc" onclick="amFlipCard()">
+          <div class="am-fc-inner">
+            <div class="am-fc-front">
+              <div id="amFcFrontLetter" style="font-size:80px;color:var(--gold);direction:rtl;line-height:1;"></div>
+              <div style="color:var(--ink-mid);font-size:12px;margin-top:10px;font-style:italic;">Tap to reveal</div>
+            </div>
+            <div class="am-fc-back">
+              <div id="amFcBackLetter" style="font-size:56px;color:var(--gold-pale);direction:rtl;margin-bottom:6px;"></div>
+              <div id="amFcBackName" style="font-size:20px;color:var(--gold-pale);font-family:'Cinzel',serif;"></div>
+              <div id="amFcBackSound" style="font-size:14px;color:rgba(245,222,179,0.7);margin-top:3px;"></div>
+              <div id="amFcBackAm" style="font-family:'Noto Serif Ethiopic',serif;font-size:18px;color:rgba(245,222,179,0.8);margin-top:6px;"></div>
+              <div id="amFcBackPaleo" style="font-size:26px;color:rgba(240,192,64,0.8);margin-top:6px;letter-spacing:4px;"></div>
+            </div>
+          </div>
+        </div>
+        <div id="amFcButtons" style="display:none;margin-top:14px;" class="am-fc-controls">
+          <button class="am-fc-btn" onclick="amFcAnswer(false)" style="background:#fff0f0;border:1px solid #e88;color:#c00;">✗ Review</button>
+          <button class="am-fc-btn" onclick="amFcAnswer(true)" style="background:#f0fff0;border:1px solid #8e8;color:#080;">✓ Got it</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VOCABULARY -->
+    <div id="amPanel-vocabulary" class="am-panel">
+      <div style="margin-bottom:12px;display:flex;gap:6px;flex-wrap:wrap;" id="amVocabCats"></div>
+      <input id="amVocabSearch" type="text" placeholder="Search Hebrew, Amharic, or English..." oninput="amVocabFilter()"
+        style="width:100%;padding:9px 12px;border:1px solid var(--parchment-deeper);border-radius:2px;font-family:'EB Garamond',serif;font-size:16px;color:var(--ink);background:var(--parchment);outline:none;margin-bottom:12px;"/>
+      <div id="amVocabGrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;"></div>
+      <div id="amVocabDetail" style="display:none;margin-top:10px;background:var(--parchment);border:1px solid var(--scroll-border);border-left:4px solid var(--gold);border-radius:2px;padding:16px;"></div>
+    </div>
+
+    <!-- SHARED ROOTS -->
+    <div id="amPanel-roots" class="am-panel">
+      <div style="background:rgba(184,134,11,0.08);border:1px solid var(--scroll-border);border-radius:2px;padding:14px;margin-bottom:16px;text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">שֹׁרֶשׁ מְשֻׁתָּף · SHARED SEMITIC ROOTS</div>
+        <div style="font-size:14px;color:var(--ink-light);line-height:1.7;">Hebrew and Amharic descend from the same ancient Semitic family. These root connections are living proof of the shared heritage between the Hebrew people and Ethiopia. Tap any pair to explore the covenant connection.</div>
+      </div>
+      <div id="amRootsList"></div>
+    </div>
+
+    <!-- PHRASES -->
+    <div id="amPanel-phrases" class="am-panel">
+      <p style="font-size:14px;color:var(--ink-mid);font-style:italic;text-align:center;margin-bottom:14px;">Everyday Hebrew phrases with Amharic translations · Tap to expand</p>
+      <div id="amPhrasesList"></div>
+    </div>
+  </div>
+</section>
+</div>
+
 <div class="section-divider"></div>
 
 <!-- CONTACT -->
@@ -875,7 +981,8 @@ const LANGS = ['en','es','am','he'];
 function setLang(l) {
   localStorage.setItem('yhopLang', l);
   document.body.className = 'lang-' + l;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === l));
+  const labels = {en:'English', es:'Español', am:'አማርኛ', he:'עִבְרִית'};
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === labels[l]));
   document.documentElement.lang = l === 'he' ? 'he' : l === 'am' ? 'am' : l === 'es' ? 'es' : 'en';
 }
 (function(){
@@ -886,7 +993,7 @@ function setLang(l) {
 // ── NAV ──
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
 document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
-const _sections=['about','beliefs','leadership','ministries','holydays','scrolls','contact'];
+const _sections=['about','beliefs','leadership','ministries','holydays','scrolls','amtool','contact'];
 window.addEventListener('scroll',()=>{
   let cur='';
   _sections.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-80)cur=id;});
@@ -1157,6 +1264,311 @@ function closeCalPopup(){
   document.getElementById('calOverlay').classList.remove('open');
 }
 
+// ── AMHARIC ↔ HEBREW TOOL ──
+const AM_ALPHABET=[
+  {letter:"א",name:"Aleph",sound:"Silent / A",amharic_equiv:"አ",amharic_note:"Like አ — a glottal start",paleo:"𐤀",meaning:"Ox / Strength / Leader",number:1},
+  {letter:"ב",name:"Bet",sound:"B / V",amharic_equiv:"በ / ቨ",amharic_note:"Like በ (b) or ቨ (v)",paleo:"𐤁",meaning:"House / Tent",number:2},
+  {letter:"ג",name:"Gimel",sound:"G",amharic_equiv:"ገ",amharic_note:"Like ገ — hard G",paleo:"𐤂",meaning:"Camel / Foot",number:3},
+  {letter:"ד",name:"Dalet",sound:"D",amharic_equiv:"ደ",amharic_note:"Like ደ — soft D",paleo:"𐤃",meaning:"Door / Path",number:4},
+  {letter:"ה",name:"He",sound:"H",amharic_equiv:"ሀ / ሃ",amharic_note:"Like ሀ — breathy H",paleo:"𐤄",meaning:"Window / Behold",number:5},
+  {letter:"ו",name:"Vav",sound:"V / W / O / U",amharic_equiv:"ወ / ቨ",amharic_note:"Like ወ or ቨ",paleo:"𐤅",meaning:"Nail / Hook",number:6},
+  {letter:"ז",name:"Zayin",sound:"Z",amharic_equiv:"ዘ",amharic_note:"Like ዘ — Z sound",paleo:"𐤆",meaning:"Weapon / Sword",number:7},
+  {letter:"ח",name:"Chet",sound:"Ch (guttural)",amharic_equiv:"ኸ / ሀ",amharic_note:"Like ኸ — deep throat H",paleo:"𐤇",meaning:"Fence / Wall",number:8},
+  {letter:"ט",name:"Tet",sound:"T",amharic_equiv:"ጠ",amharic_note:"Like ጠ — emphatic T",paleo:"𐤈",meaning:"Serpent / Basket",number:9},
+  {letter:"י",name:"Yod",sound:"Y",amharic_equiv:"የ",amharic_note:"Like የ — Y sound",paleo:"𐤉",meaning:"Hand / Arm",number:10},
+  {letter:"כ",name:"Kaf",sound:"K / Kh",amharic_equiv:"ከ / ኸ",amharic_note:"Like ከ (k) or ኸ (kh)",paleo:"𐤊",meaning:"Palm / Open Hand",number:20},
+  {letter:"ל",name:"Lamed",sound:"L",amharic_equiv:"ለ",amharic_note:"Like ለ — L sound",paleo:"𐤋",meaning:"Staff / Shepherd",number:30},
+  {letter:"מ",name:"Mem",sound:"M",amharic_equiv:"መ",amharic_note:"Like መ — M sound",paleo:"𐤌",meaning:"Water / Chaos",number:40},
+  {letter:"נ",name:"Nun",sound:"N",amharic_equiv:"ነ",amharic_note:"Like ነ — N sound",paleo:"𐤍",meaning:"Fish / Seed",number:50},
+  {letter:"ס",name:"Samech",sound:"S",amharic_equiv:"ሰ",amharic_note:"Like ሰ — S sound",paleo:"𐤎",meaning:"Prop / Support",number:60},
+  {letter:"ע",name:"Ayin",sound:"Guttural",amharic_equiv:"ዐ / አ",amharic_note:"Like ዐ — deep guttural",paleo:"𐤏",meaning:"Eye / Watch",number:70},
+  {letter:"פ",name:"Pe",sound:"P / F",amharic_equiv:"ፐ / ፈ",amharic_note:"Like ፐ (p) or ፈ (f)",paleo:"𐤐",meaning:"Mouth / Word",number:80},
+  {letter:"צ",name:"Tsadi",sound:"Ts",amharic_equiv:"ጸ / ፀ",amharic_note:"Like ጸ — emphatic Ts",paleo:"𐤑",meaning:"Hook / Trail",number:90},
+  {letter:"ק",name:"Qof",sound:"Q",amharic_equiv:"ቀ",amharic_note:"Like ቀ — deep Q",paleo:"𐤒",meaning:"Back of Head / Sun",number:100},
+  {letter:"ר",name:"Resh",sound:"R",amharic_equiv:"ረ",amharic_note:"Like ረ — R sound",paleo:"𐤓",meaning:"Head / Person",number:200},
+  {letter:"ש",name:"Shin/Sin",sound:"Sh / S",amharic_equiv:"ሸ / ሰ",amharic_note:"Like ሸ (sh) or ሰ (s)",paleo:"𐤔",meaning:"Teeth / Sharp / Fire",number:300},
+  {letter:"ת",name:"Tav",sound:"T / Th",amharic_equiv:"ተ / ጠ",amharic_note:"Like ተ — T sound",paleo:"𐤕",meaning:"Mark / Sign / Covenant",number:400},
+];
+
+const AM_LESSONS=[
+  {title:"Lesson 1: Two Ancient Scripts — One Family",content:"You already know the Ge'ez fidel (ፊደል). This gives you a huge advantage! Both Hebrew and Ge'ez scripts are Semitic writing systems descended from the same ancient Phoenician-Canaanite alphabet. Hebrew is written RIGHT to LEFT (←), while Ge'ez is written left to right (→). Hebrew has 22 consonant letters. Vowels are shown using small marks called nikud (נִקּוּד) written under or above letters — similar to how Ge'ez builds vowels into each character, but as separate marks.",example:"Example: שָׁלוֹם = Shalom. The marks under/over the letters indicate the vowels a, o.",tip:"📌 Ge'ez bakes vowels into each character. Hebrew adds vowel marks separately — but beginners can read without them once the roots are familiar."},
+  {title:"Lesson 2: Sounds You Already Know",content:"Many Hebrew sounds exist in Ge'ez! This makes pronunciation easier for you than for English speakers. Sounds you already know: ב(b) like በ, ג(g) like ገ, ד(d) like ደ, מ(m) like መ, נ(n) like ነ, ל(l) like ለ, ר(r) like ረ, ש(sh) like ሸ, ק(q) like ቀ, צ(ts) like ጸ, ח(ch) like ኸ, ע(') like ዐ. The guttural sounds ח and ע are natural to Amharic/Tigrinya speakers — you already have an advantage!",example:"ሰ ↔ ס (S) · ሸ ↔ ש (Sh) · ቀ ↔ ק (Q) · ዐ ↔ ע (Ayin) · ኸ ↔ ח (Chet)",tip:"📌 The hardest Hebrew sounds for English speakers — ח, ע, ק, צ — are sounds you grew up with!"},
+  {title:"Lesson 3: Hebrew Word Structure — Roots (Shoresh)",content:"Hebrew and Amharic both use a ROOT system (Hebrew: שֹׁרֶשׁ shoresh). Most words are built from 3-letter consonant roots. For example, the root כ-ת-ב (K-T-B) relates to writing: כָּתַב (katav) = he wrote, כְּתִיבָה (ktiva) = writing, מִכְתָּב (miktav) = letter/document. In Amharic you know this system: the root ሰ-ብ-ር gives ሰበረ (he broke), መስበሪያ (tool for breaking). In Hebrew this is called the binyan system — same concept!",example:"Root ש-ל-מ: שָׁלוֹם (shalom=peace) · שָׁלֵם (shalem=complete) · שִׁלֵּם (shilem=to pay)",tip:"📌 If you learn a 3-letter root, you can guess the meaning of dozens of related words — just like in Amharic."},
+  {title:"Lesson 4: Sentence Structure",content:"Amharic is SOV: Subject → Object → Verb. Hebrew is VSO in Biblical form: Verb → Subject → Object — or SVO in modern spoken Hebrew. Biblical: אָכַל הָאִישׁ לֶחֶם = Ate the man bread. Modern: הָאִישׁ אָכַל לֶחֶם = The man ate bread. Verbs change based on gender (masculine/feminine) and number — similar to how Amharic verbs change.",example:"אֲנִי אוֹכֵל לֶחֶם (Ani okhel lechem) = I eat bread",tip:"📌 Modern spoken Hebrew is more flexible in word order. Biblical Hebrew is strictly VSO."},
+  {title:"Lesson 5: Gender in Hebrew",content:"Like Amharic, Hebrew has masculine and feminine gender for all nouns — not just people. In Hebrew: יֶלֶד (yeled = boy) vs יַלְדָּה (yalda = girl). Most feminine nouns end in ה- (-ah) or ת- (-et). Adjectives must match the gender of the noun: יֶלֶד טוֹב (yeled tov = good boy) · יַלְדָּה טוֹבָה (yalda tova = good girl). Verbs also change for gender.",example:"שָׁלוֹם (shalom) is masculine · תּוֹרָה (Torah) is feminine · אֶרֶץ (eretz=land) is feminine",tip:"📌 When a noun ends in ה- or ת-, it is almost always feminine — a reliable pattern to remember."},
+];
+
+const AM_SHARED_ROOTS=[
+  {hebrew:"שָׁלוֹם",hRoman:"Shalom",amharic:"ሰላም",aRoman:"Selam",paleo:"𐤔𐤋𐤌",english:"Peace / Wholeness",root:"Š-L-M",connection:"The most iconic shared root. Both mean peace, greeting, and wholeness. The root encodes completeness and covenant harmony. When Ethiopians say Selam and Hebrews say Shalom, they speak from the same ancient mouth."},
+  {hebrew:"אָב",hRoman:"Av",amharic:"አባ",aRoman:"Aba",paleo:"𐤀𐤁",english:"Father",root:"A-B",connection:"Aleph (Ox/Strength) + Bet (House) = Strength of the House. Abba (אַבָּא) in Aramaic/Hebrew is identical to Amharic Aba. Yeshua used Abba in prayer."},
+  {hebrew:"בַּיִת",hRoman:"Bayit",amharic:"ቤት",aRoman:"Bet",paleo:"𐤁𐤉𐤕",english:"House / Home",root:"B-Y-T",connection:"Beth (ቤት / בַּיִת) = house in both languages. Bethlehem (בֵּית לֶחֶם) = House of Bread. Amharic Bet preserved the ancient shortened form of the Semitic root."},
+  {hebrew:"שֵׁם",hRoman:"Shem",amharic:"ስም",aRoman:"Sim",paleo:"𐤔𐤌",english:"Name",root:"Sh-M",connection:"Shem (son of Noach) literally means Name/Renown. Amharic Sim = name. The same two-letter root preserved across thousands of years and hundreds of miles."},
+  {hebrew:"שָׁמַיִם",hRoman:"Shamayim",amharic:"ሰማይ",aRoman:"Semay",paleo:"𐤔𐤌𐤉𐤌",english:"Heaven / Sky",root:"Sh-M-Y",connection:"Both speak of the dwelling place of the Most High. Hebrew uses a dual plural form (mayim suffix). Amharic Semay preserved the core root across millennia."},
+  {hebrew:"מַיִם",hRoman:"Mayim",amharic:"ማይ",aRoman:"May",paleo:"𐤌𐤉𐤌",english:"Water",root:"M-Y-M",connection:"Mem (𐤌) = water in Paleo Hebrew — drawn as waves. Amharic/Tigrinya May = water. One of the oldest Semitic words on earth."},
+  {hebrew:"אֱלֹהִים",hRoman:"Elohim",amharic:"አምላክ",aRoman:"Amlak",paleo:"𐤀𐤋",english:"The Almighty",root:"A-L",connection:"Aleph + Lamed (Mighty Shepherd). El/Al = the strong one. Amharic Amlak shares the same ancient Semitic AL root for the divine. Both peoples preserved this sacred name."},
+  {hebrew:"נָגִיד",hRoman:"Nagid",amharic:"ንጉሥ",aRoman:"Nigus",paleo:"𐤍𐤂𐤃",english:"King / Ruler",root:"N-G-D",connection:"N-G root of leadership. Hebrew Nagid = appointed leader/prince. Amharic Nigus = king. Ethiopian kings held the title Negusa Nagast (King of Kings) — rooted in this Semitic tradition."},
+  {hebrew:"קוֹל",hRoman:"Qol",amharic:"ቃል",aRoman:"Qal",paleo:"𐤒𐤋",english:"Voice / Word",root:"Q-L",connection:"Hebrew Qol = voice/sound. Amharic Qal = word/speech. The voice as the carrier of divine authority — Yahweh speaks and creation responds."},
+  {hebrew:"לֵב",hRoman:"Lev",amharic:"ልብ",aRoman:"Lib",paleo:"𐤋𐤁",english:"Heart",root:"L-B",connection:"Hebrew Lev and Amharic Lib are nearly identical. The heart as the inner throne of a person — shared across both traditions."},
+  {hebrew:"עַיִן",hRoman:"Ayin",amharic:"ዐይን",aRoman:"Ayin",paleo:"𐤏𐤉𐤍",english:"Eye / Spring",root:"A-Y-N",connection:"In both languages, the same word means both eye and a spring of water. Seeing and flowing from the same root — a profound poetic connection."},
+  {hebrew:"שֶׁבַע",hRoman:"Sheva",amharic:"ሰባት",aRoman:"Sebat",paleo:"𐤔𐤁𐤏",english:"Seven / Oath",root:"Sh-B-A",connection:"Seven is the number of covenant and completion in both traditions. To swear an oath in Hebrew is 'to seven oneself.' Amharic Sebat = seven, preserving the same root across millennia."},
+  {hebrew:"לֶחֶם",hRoman:"Lechem",amharic:"ዳቦ",aRoman:"Dabo",paleo:"𐤋𐤇𐤌",english:"Bread / Food",root:"L-Ch-M",connection:"Hebrew Lechem = bread. Bethlehem = House of Bread. The Semitic L-Ch-M root connects to sustenance and the covenant meal."},
+  {hebrew:"שֶׁמֶשׁ",hRoman:"Shemesh",amharic:"ፀሐይ",aRoman:"Tsehay",paleo:"𐤔𐤌𐤔",english:"Sun",root:"Sh-M-Sh",connection:"Both words for sun carry ancient Semitic solar symbolism. Ethiopia's Tsehay reflects the same solar root in the Cushitic-Semitic tradition."},
+  {hebrew:"אֶרֶץ",hRoman:"Eretz",amharic:"ምድር",aRoman:"Midir",paleo:"𐤀𐤓𐤑",english:"Land / Earth",root:"A-R-Ts",connection:"Both words describe the physical earth and territorial land — the physical creation and the promised inheritance of a covenant people."},
+];
+
+const AM_PHRASES=[
+  {hebrew:"שָׁלוֹם",hRoman:"Shalom",amharic:"ሰላም (Selam)",english:"Hello / Peace"},
+  {hebrew:"בּוֹקֶר טוֹב",hRoman:"Boker tov",amharic:"እንደምን አደሩ",english:"Good morning"},
+  {hebrew:"עֶרֶב טוֹב",hRoman:"Erev tov",amharic:"እንደምን አመሹ",english:"Good evening"},
+  {hebrew:"מַה שִּׁמְךָ?",hRoman:"Ma shimkha?",amharic:"ስምህ ማን ነው?",english:"What is your name? (man)"},
+  {hebrew:"שְׁמִי ... הוּא",hRoman:"Shmi ... hu",amharic:"ስሜ ... ነው",english:"My name is ..."},
+  {hebrew:"מַה שְּׁלוֹמְךָ?",hRoman:"Ma shlomkha?",amharic:"እንደምን ነህ?",english:"How are you?"},
+  {hebrew:"בְּסֵדֶר, תּוֹדָה",hRoman:"Beseder, toda",amharic:"ደህና ነኝ፣ አመሰግናለሁ",english:"Fine, thank you"},
+  {hebrew:"תּוֹדָה רַבָּה",hRoman:"Toda raba",amharic:"እጅግ አመሰግናለሁ",english:"Thank you very much"},
+  {hebrew:"בְּבַקָּשָׁה",hRoman:"Bevakasha",amharic:"እባክዎ",english:"Please / You're welcome"},
+  {hebrew:"סְלִיחָה",hRoman:"Slicha",amharic:"ይቅርታ",english:"Sorry / Excuse me"},
+  {hebrew:"כֵּן",hRoman:"Ken",amharic:"አዎ",english:"Yes"},
+  {hebrew:"לֹא",hRoman:"Lo",amharic:"አይ",english:"No"},
+  {hebrew:"אֲנִי לֹא מֵבִין",hRoman:"Ani lo mevin",amharic:"አልገባኝም",english:"I don't understand"},
+  {hebrew:"דַּבֵּר לְאַט",hRoman:"Daber leat",amharic:"ቀስ ብለህ ተናገር",english:"Please speak slowly"},
+  {hebrew:"מַיִם, בְּבַקָּשָׁה",hRoman:"Mayim, bevakasha",amharic:"ውሃ፣ እባክዎ",english:"Water, please"},
+  {hebrew:"שַׁבָּת שָׁלוֹם",hRoman:"Shabbat Shalom",amharic:"ሰንበት ሰላም",english:"Shabbat Shalom"},
+  {hebrew:"בָּרוּךְ הַשֵּׁם יַהְוֶה",hRoman:"Baruch HaShem Yahweh",amharic:"ብሩክ ሁን ስም ያህዌ",english:"Blessed is the Name Yahweh"},
+  {hebrew:"יַהְוֶה אֶחָד",hRoman:"Yahweh Echad",amharic:"ያህዌ አንድ ነው",english:"Yahweh is One"},
+  {hebrew:"אָמֵן",hRoman:"Amen",amharic:"አሜን",english:"Amen — So be it"},
+  {hebrew:"הַלְלוּיָהּ",hRoman:"Halleluyah",amharic:"ሃሌሉያ",english:"Praise Yah"},
+];
+
+const AM_VOCAB = {
+  "Spiritual & Sacred":[
+    {hebrew:"יַהְוֶה",romanized:"Yahweh",amharic:"ያህዌ",amharic_roman:"Yahweh",english:"Yahweh — The Name of the Creator",example_hebrew:"בָּרוּךְ הַשֵּׁם יַהְוֶה",example_amharic:"ብሩክ ሁን ስም ያህዌ"},
+    {hebrew:"תּוֹרָה",romanized:"Torah",amharic:"ኦሪት",amharic_roman:"Orit",english:"Torah — Yahweh's instruction/covenant law",example_hebrew:"תּוֹרַת יַהְוֶה תְּמִימָה",example_amharic:"የያህዌ ኦሪት ፍጹም ናት"},
+    {hebrew:"שַׁבָּת",romanized:"Shabbat",amharic:"ሰንበት",amharic_roman:"Senbet",english:"Shabbat — the seventh day of rest",example_hebrew:"שַׁבָּת שָׁלוֹם",example_amharic:"ሰንበት ሰላም"},
+    {hebrew:"בְּרִית",romanized:"Brit",amharic:"ቃልኪዳን",amharic_roman:"Qalqidan",english:"Covenant — sacred binding agreement",example_hebrew:"בְּרִית עוֹלָם",example_amharic:"የዘላለም ቃልኪዳን"},
+    {hebrew:"מוֹעֵד",romanized:"Mo'ed",amharic:"የሹመት ጊዜ",amharic_roman:"Ye-shumet gize",english:"Appointed time / feast of Yahweh",example_hebrew:"מוֹעֲדֵי יַהְוֶה",example_amharic:"የያህዌ ሹሙ ጊዜያት"},
+    {hebrew:"תְּשׁוּבָה",romanized:"Teshuvah",amharic:"ንስሐ",amharic_roman:"Nsiha",english:"Repentance — returning to Yahweh",example_hebrew:"עֲשׂוּ תְּשׁוּבָה",example_amharic:"ንስሐ ግቡ"},
+    {hebrew:"אֱמוּנָה",romanized:"Emunah",amharic:"እምነት",amharic_roman:"Imnet",english:"Faith / faithfulness / trust",example_hebrew:"הָאֱמוּנָה בְּיַהְוֶה",example_amharic:"ወደ ያህዌ እምነት"},
+    {hebrew:"צְדָקָה",romanized:"Tzedakah",amharic:"ምፅዋት",amharic_roman:"Mitsewat",english:"Righteousness / charitable giving",example_hebrew:"עֲשֵׂה צְדָקָה",example_amharic:"ምፅዋት ስጥ"},
+    {hebrew:"קָדוֹשׁ",romanized:"Qodesh",amharic:"ቅዱስ",amharic_roman:"Qidus",english:"Holy / set-apart",example_hebrew:"קָדוֹשׁ יַהְוֶה צְבָאוֹת",example_amharic:"ቅዱስ ያህዌ"},
+    {hebrew:"סְגֻלָּה",romanized:"Segullah",amharic:"የከበረ ሀብት",amharic_roman:"Yekebere habt",english:"Treasured possession — Yahweh's covenant people",example_hebrew:"עַם סְגֻלָּה",example_amharic:"የሰጉላ ሕዝብ"},
+  ],
+  "Family & Home":[
+    {hebrew:"אָב",romanized:"Av",amharic:"አባ",amharic_roman:"Aba",english:"Father",example_hebrew:"אָבִינוּ שֶׁבַּשָּׁמַיִם",example_amharic:"በሰማይ ያለው አባታችን"},
+    {hebrew:"אֵם",romanized:"Em",amharic:"እናት",amharic_roman:"Inat",english:"Mother",example_hebrew:"כַּבֵּד אֶת אִמֶּךָ",example_amharic:"እናትህን አክብር"},
+    {hebrew:"בֵּן",romanized:"Ben",amharic:"ልጅ",amharic_roman:"Lij",english:"Son / child",example_hebrew:"בְּנִי",example_amharic:"ልጄ"},
+    {hebrew:"בַּת",romanized:"Bat",amharic:"ሴት ልጅ",amharic_roman:"Set lij",english:"Daughter",example_hebrew:"בִּתִּי",example_amharic:"ሴት ልጄ"},
+    {hebrew:"אָח",romanized:"Ach",amharic:"ወንድም",amharic_roman:"Wendim",english:"Brother",example_hebrew:"אָחִי",example_amharic:"ወንድሜ"},
+    {hebrew:"אָחוֹת",romanized:"Achot",amharic:"እህት",amharic_roman:"Ihit",english:"Sister",example_hebrew:"אֲחוֹתִי",example_amharic:"እህቴ"},
+    {hebrew:"בַּיִת",romanized:"Bayit",amharic:"ቤት",amharic_roman:"Bet",english:"House / home",example_hebrew:"בֵּית יַהְוֶה",example_amharic:"የያህዌ ቤት"},
+    {hebrew:"שָׁלוֹם",romanized:"Shalom",amharic:"ሰላም",amharic_roman:"Selam",english:"Peace / wholeness / well-being",example_hebrew:"שָׁלוֹם לְכֶם",example_amharic:"ሰላም ለናንተ"},
+  ],
+  "Everyday Life":[
+    {hebrew:"מַיִם",romanized:"Mayim",amharic:"ውሃ",amharic_roman:"Wiha",english:"Water",example_hebrew:"מַיִם חַיִּים",example_amharic:"ሕያው ውሃ"},
+    {hebrew:"לֶחֶם",romanized:"Lechem",amharic:"ዳቦ",amharic_roman:"Dabo",english:"Bread",example_hebrew:"לֶחֶם חֻקִּי",example_amharic:"የዕለት ዳቦ"},
+    {hebrew:"שֶׁמֶשׁ",romanized:"Shemesh",amharic:"ፀሐይ",amharic_roman:"Tsehay",english:"Sun",example_hebrew:"הַשֶּׁמֶשׁ וְהַיָּרֵחַ",example_amharic:"ፀሐይ እና ጨረቃ"},
+    {hebrew:"יָרֵחַ",romanized:"Yareach",amharic:"ጨረቃ",amharic_roman:"Chereqa",english:"Moon",example_hebrew:"רֹאשׁ חֹדֶשׁ",example_amharic:"ሮሽ ሆዴሽ"},
+    {hebrew:"אֶרֶץ",romanized:"Eretz",amharic:"ምድር",amharic_roman:"Midir",english:"Land / earth",example_hebrew:"אֶרֶץ יִשְׂרָאֵל",example_amharic:"የእስራኤል ምድር"},
+    {hebrew:"שָׁמַיִם",romanized:"Shamayim",amharic:"ሰማይ",amharic_roman:"Semay",english:"Heaven / sky",example_hebrew:"הַשָּׁמַיִם מְסַפְּרִים כְּבוֹד אֵל",example_amharic:"ሰማዩ የአምላክን ክብር ይናገራል"},
+    {hebrew:"שָׁלוֹם",romanized:"Shalom",amharic:"ሰላም",amharic_roman:"Selam",english:"Peace",example_hebrew:"שָׁלוֹם עָלֵינוּ",example_amharic:"ሰላም ለሁላችን"},
+    {hebrew:"יוֹם",romanized:"Yom",amharic:"ቀን",amharic_roman:"Qen",english:"Day",example_hebrew:"יוֹם טוֹב",example_amharic:"መልካም ቀን"},
+  ],
+  "Numbers & Time":[
+    {hebrew:"אֶחָד",romanized:"Echad",amharic:"አንድ",amharic_roman:"And",english:"One",example_hebrew:"יַהְוֶה אֶחָד",example_amharic:"ያህዌ አንድ ነው"},
+    {hebrew:"שְׁנַיִם",romanized:"Shnayim",amharic:"ሁለት",amharic_roman:"Hulet",english:"Two",example_hebrew:"שְׁנֵי לוּחוֹת",example_amharic:"ሁለት ጽላቶች"},
+    {hebrew:"שָׁלוֹשׁ",romanized:"Shalosh",amharic:"ሶስት",amharic_roman:"Sost",english:"Three",example_hebrew:"שָׁלוֹשׁ רְגָלִים",example_amharic:"ሶስት ጊዜ"},
+    {hebrew:"שֶׁבַע",romanized:"Sheva",amharic:"ሰባት",amharic_roman:"Sebat",english:"Seven — number of covenant",example_hebrew:"שֶׁבַע פְּעָמִים",example_amharic:"ሰባት ጊዜ"},
+    {hebrew:"שַׁבָּת",romanized:"Shabbat",amharic:"ሰንበት",amharic_roman:"Senbet",english:"Shabbat — seventh day",example_hebrew:"יוֹם הַשַּׁבָּת",example_amharic:"የሰንበቱ ቀን"},
+    {hebrew:"שָׁנָה",romanized:"Shanah",amharic:"ዓመት",amharic_roman:"Amet",english:"Year",example_hebrew:"שָׁנָה טוֹבָה",example_amharic:"መልካም ዓመት"},
+    {hebrew:"חֹדֶשׁ",romanized:"Chodesh",amharic:"ወር",amharic_roman:"Wer",english:"Month / New Moon",example_hebrew:"רֹאשׁ חֹדֶשׁ",example_amharic:"ሮሽ ሆዴሽ — አዲስ ወር"},
+    {hebrew:"עֶשֶׂר",romanized:"Eser",amharic:"አስር",amharic_roman:"Asir",english:"Ten",example_hebrew:"עֲשֶׂרֶת הַדִּבְּרוֹת",example_amharic:"አስሩ ትዕዛዛት"},
+  ],
+};
+
+// State
+let amActiveTab='alphabet';
+let amSelLetter=null;
+let amFcShuffled=[...AM_ALPHABET].sort(()=>Math.random()-0.5);
+let amFcIdx=0,amFcFlipped=false,amFcScore={c:0,t:0};
+let amActiveLesson=0;
+let amActiveRootIdx=null;
+let amActivePhrase=null;
+let amActiveVocabCat='Spiritual & Sacred';
+let amSelVocab=null;
+
+function amSwitch(btn,tab){
+  document.querySelectorAll('.am-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.am-panel').forEach(p=>p.classList.remove('show'));
+  document.getElementById('amPanel-'+tab).classList.add('show');
+  amActiveTab=tab;
+  if(tab==='alphabet')amBuildAlpha();
+  if(tab==='lessons')amBuildLesson();
+  if(tab==='flashcards')amInitFc();
+  if(tab==='vocabulary')amBuildVocab();
+  if(tab==='roots')amBuildRoots();
+  if(tab==='phrases')amBuildPhrases();
+}
+
+// Alphabet
+function amBuildAlpha(){
+  document.getElementById('amAlphaGrid').innerHTML=AM_ALPHABET.map((l,i)=>`
+    <div class="am-letter-card${amSelLetter===i?' active':''}" onclick="amShowLetter(${i})">
+      <div class="amlc-heb">${l.letter}</div>
+      <div class="amlc-name">${l.name}</div>
+      <div class="amlc-sound">${l.sound}</div>
+      <div class="amlc-am" style="font-family:'Noto Serif Ethiopic',serif;">${l.amharic_equiv}</div>
+    </div>`).join('');
+}
+function amShowLetter(i){
+  amSelLetter=amSelLetter===i?null:i;
+  amBuildAlpha();
+  const det=document.getElementById('amLetterDetail');
+  if(amSelLetter===null){det.classList.remove('show');return;}
+  const l=AM_ALPHABET[i];
+  det.innerHTML=`
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+      <div style="font-size:64px;color:var(--gold);direction:rtl;line-height:1;">${l.letter}</div>
+      <div style="font-size:32px;color:var(--ink-mid);">${l.paleo}</div>
+      <div>
+        <div style="font-family:'Cinzel',serif;font-size:15px;color:var(--gold);">${l.name}</div>
+        <div style="font-size:14px;color:var(--ink-mid);">Sound: ${l.sound}</div>
+        <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:0.1em;margin-top:3px;">Number: ${l.number}</div>
+      </div>
+    </div>
+    <div style="font-size:15px;color:var(--royal);margin-bottom:8px;">Amharic equivalent: <span style="font-family:'Noto Serif Ethiopic',serif;font-size:20px;">${l.amharic_equiv}</span></div>
+    <div style="font-size:14px;color:var(--ink-mid);margin-bottom:8px;font-style:italic;">${l.amharic_note}</div>
+    <div style="background:var(--parchment-dark);padding:10px 12px;border-left:3px solid var(--gold);font-size:14px;color:var(--ink-light);">Ancient meaning: <strong>${l.meaning}</strong></div>`;
+  det.classList.add('show');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+amBuildAlpha();
+
+// Lessons
+function amBuildLesson(){
+  document.getElementById('amLessonTabs').innerHTML=AM_LESSONS.map((l,i)=>`
+    <button class="am-lesson-tab${amActiveLesson===i?' active':''}" onclick="amGoLesson(${i})">${i+1}</button>`).join('');
+  amRenderLesson();
+}
+function amGoLesson(i){amActiveLesson=i;amBuildLesson();}
+function amPrevLesson(){if(amActiveLesson>0){amActiveLesson--;amBuildLesson();}}
+function amNextLesson(){if(amActiveLesson<AM_LESSONS.length-1){amActiveLesson++;amBuildLesson();}}
+function amRenderLesson(){
+  const l=AM_LESSONS[amActiveLesson];
+  document.getElementById('amLessonContent').innerHTML=`
+    <h3 style="font-family:'Cinzel',serif;font-size:15px;color:var(--gold);margin-bottom:12px;">${l.title}</h3>
+    <p style="font-size:15px;line-height:1.85;color:var(--ink-light);margin-bottom:12px;">${l.content}</p>
+    <div style="background:var(--parchment-dark);padding:10px 12px;border-left:3px solid var(--ink-mid);margin-bottom:10px;font-size:14px;"><span style="color:var(--ink-mid);">Example: </span>${l.example}</div>
+    <div style="background:rgba(184,134,11,0.08);padding:10px 12px;border-left:3px solid var(--gold);font-size:14px;color:var(--gold);">${l.tip}</div>`;
+  document.getElementById('amLessonCounter').textContent=`${amActiveLesson+1} / ${AM_LESSONS.length}`;
+}
+
+// Flashcards
+function amInitFc(){
+  amFcShuffled=[...AM_ALPHABET].sort(()=>Math.random()-0.5);
+  amFcIdx=0;amFcFlipped=false;amFcScore={c:0,t:0};
+  document.getElementById('amFcDone').style.display='none';
+  document.getElementById('amFcCard').style.display='block';
+  document.getElementById('amFcButtons').style.display='none';
+  amRenderFc();
+}
+function amRenderFc(){
+  const l=amFcShuffled[amFcIdx];
+  document.getElementById('amFcProgress').textContent=`Card ${amFcIdx+1} of ${amFcShuffled.length} · ✅ ${amFcScore.c}/${amFcScore.t}`;
+  document.getElementById('amFcFrontLetter').textContent=l.letter;
+  document.getElementById('amFcBackLetter').textContent=l.letter;
+  document.getElementById('amFcBackName').textContent=l.name;
+  document.getElementById('amFcBackSound').textContent='Sound: '+l.sound;
+  document.getElementById('amFcBackAm').textContent='Amharic: '+l.amharic_equiv;
+  document.getElementById('amFcBackPaleo').textContent=l.paleo+' Paleo';
+  document.getElementById('amFcCard').classList.remove('flipped');
+  amFcFlipped=false;
+  document.getElementById('amFcButtons').style.display='none';
+}
+function amFlipCard(){
+  amFcFlipped=!amFcFlipped;
+  document.getElementById('amFcCard').classList.toggle('flipped',amFcFlipped);
+  document.getElementById('amFcButtons').style.display=amFcFlipped?'flex':'none';
+}
+function amFcAnswer(ok){
+  amFcScore.t++;if(ok)amFcScore.c++;
+  if(amFcIdx+1>=amFcShuffled.length){
+    document.getElementById('amFcCard').style.display='none';
+    document.getElementById('amFcButtons').style.display='none';
+    document.getElementById('amFcDone').style.display='block';
+    document.getElementById('amFcScore').textContent=amFcScore.c+' / '+amFcScore.t;
+  } else {amFcIdx++;amRenderFc();}
+}
+function amResetFc(){amInitFc();}
+
+// Vocabulary
+function amBuildVocab(){
+  const cats=Object.keys(AM_VOCAB);
+  document.getElementById('amVocabCats').innerHTML=cats.map(c=>`
+    <button onclick="amSetVocabCat('${c}')" style="padding:6px 14px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid ${amActiveVocabCat===c?'var(--gold)':'var(--parchment-deeper)'};background:${amActiveVocabCat===c?'var(--gold)':'white'};color:${amActiveVocabCat===c?'var(--ink)':'var(--ink-mid)'};">${c}</button>`).join('');
+  amRenderVocab();
+}
+function amSetVocabCat(c){amActiveVocabCat=c;amSelVocab=null;document.getElementById('amVocabSearch').value='';amBuildVocab();}
+function amVocabFilter(){amRenderVocab();}
+function amRenderVocab(){
+  const search=document.getElementById('amVocabSearch').value.toLowerCase();
+  const words=(AM_VOCAB[amActiveVocabCat]||[]).filter(w=>!search||w.english.toLowerCase().includes(search)||w.romanized.toLowerCase().includes(search)||w.amharic_roman.toLowerCase().includes(search));
+  document.getElementById('amVocabGrid').innerHTML=words.map((w,i)=>`
+    <div onclick="amShowVocab(${i})" style="background:${amSelVocab===i?'rgba(184,134,11,0.08)':'white'};border:1px solid ${amSelVocab===i?'var(--gold)':'var(--parchment-deeper)'};border-radius:2px;padding:10px;cursor:pointer;transition:all 0.2s;">
+      <div style="font-size:22px;color:var(--gold);direction:rtl;text-align:right;">${w.hebrew}</div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;">
+        <span style="font-size:12px;color:var(--ink-mid);">${w.romanized}</span>
+        <span style="font-family:'Noto Serif Ethiopic',serif;font-size:14px;color:var(--royal);">${w.amharic}</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-mid);margin-top:2px;">${w.english}</div>
+    </div>`).join('');
+  const det=document.getElementById('amVocabDetail');
+  if(amSelVocab!==null&&words[amSelVocab]){
+    const w=words[amSelVocab];
+    det.style.display='block';
+    det.innerHTML=`
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div style="text-align:right;"><div style="font-size:44px;color:var(--gold);direction:rtl;">${w.hebrew}</div><div style="font-size:14px;color:var(--ink-mid);">${w.romanized}</div></div>
+        <div style="text-align:center;"><div style="font-family:'Noto Serif Ethiopic',serif;font-size:36px;color:var(--royal);">${w.amharic}</div><div style="font-size:12px;color:var(--ink-mid);">${w.amharic_roman}</div></div>
+        <div style="align-self:center;font-size:14px;color:var(--ink-mid);font-style:italic;">${w.english}</div>
+      </div>
+      ${w.example_hebrew?`<div style="background:var(--parchment-dark);border-left:3px solid var(--gold);padding:10px 12px;"><div style="font-size:16px;color:var(--gold);direction:rtl;text-align:right;margin-bottom:5px;">${w.example_hebrew}</div><div style="font-family:'Noto Serif Ethiopic',serif;font-size:14px;color:var(--royal);">${w.example_amharic}</div></div>`:''}`;
+  } else {
+    det.style.display='none';
+  }
+}
+function amShowVocab(i){amSelVocab=amSelVocab===i?null:i;amRenderVocab();}
+
+// Shared Roots
+function amBuildRoots(){
+  document.getElementById('amRootsList').innerHTML=AM_SHARED_ROOTS.map((r,i)=>`
+    <div class="am-root-card${amActiveRootIdx===i?' active':''}" onclick="amToggleRoot(${i})">
+      <div class="am-root-row">
+        <div class="am-root-pair">
+          <div style="text-align:right;"><div style="font-size:22px;color:var(--gold);direction:rtl;">${r.hebrew}</div><div style="font-size:10px;color:var(--ink-mid);">${r.hRoman}</div></div>
+          <div style="color:var(--gold);font-size:18px;">⟷</div>
+          <div style="text-align:center;"><div style="font-family:'Noto Serif Ethiopic',serif;font-size:20px;color:var(--royal);">${r.amharic}</div><div style="font-size:10px;color:var(--ink-mid);">${r.aRoman}</div></div>
+          <div style="color:var(--gold);">⟷</div>
+          <div style="text-align:center;"><div style="font-size:18px;color:var(--gold-light);letter-spacing:3px;">${r.paleo}</div><div style="font-size:9px;color:var(--ink-mid);">Paleo</div></div>
+        </div>
+        <div style="text-align:right;"><div style="font-size:13px;color:var(--ink-mid);font-style:italic;">${r.english}</div><div style="font-family:'Cinzel',serif;font-size:9px;color:var(--gold);letter-spacing:0.08em;">Root: ${r.root}</div></div>
+      </div>
+      <div class="am-root-detail${amActiveRootIdx===i?' show':''}">${r.connection}</div>
+    </div>`).join('');
+}
+function amToggleRoot(i){amActiveRootIdx=amActiveRootIdx===i?null:i;amBuildRoots();}
+
+// Phrases
+function amBuildPhrases(){
+  document.getElementById('amPhrasesList').innerHTML=AM_PHRASES.map((p,i)=>`
+    <div class="am-phrase-card" onclick="amTogglePhrase(${i})" style="border-color:${amActivePhrase===i?'var(--gold)':'var(--parchment-deeper)'};">
+      <div><div style="font-size:20px;color:var(--gold);direction:rtl;">${p.hebrew}</div><div style="font-size:12px;color:var(--ink-mid);margin-top:2px;">${p.hRoman}</div></div>
+      <div style="text-align:right;"><div style="font-family:'Noto Serif Ethiopic',serif;font-size:15px;color:var(--royal);">${p.amharic}</div><div style="font-size:11px;color:var(--ink-mid);font-style:italic;">${p.english}</div></div>
+    </div>`).join('');
+}
+function amTogglePhrase(i){amActivePhrase=amActivePhrase===i?null:i;amBuildPhrases();}
+
+// Init on page load
+amBuildAlpha();
 // Init calendar
 yhopRender();
 </script>
