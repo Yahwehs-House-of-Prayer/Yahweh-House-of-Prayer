@@ -594,6 +594,7 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
   <button class="study-tab active" onclick="switchStudyTab('ai',this)">🤖 AI Study</button>
   <button class="study-tab" onclick="switchStudyTab('interlinear',this)">📖 Interlinear</button>
   <button class="study-tab" onclick="switchStudyTab('hebrew',this)">א Hebrew</button>
+  <button class="study-tab" onclick="switchStudyTab('amharic',this)">ሀ Amharic</button>
   <button class="study-tab" onclick="switchStudyTab('calendar',this)">🌙 Feasts</button>
   <button class="study-tab" onclick="switchStudyTab('prayer',this)">🙏 Prayer</button>
   <button class="study-tab" onclick="switchStudyTab('library',this)">📜 Library</button>
@@ -672,7 +673,11 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
     <button class="lesson-tab active" onclick="switchLesson(this,'alephbet')">Aleph-Bet</button>
     <button class="lesson-tab" onclick="switchLesson(this,'vocab')">Vocabulary</button>
     <button class="lesson-tab" onclick="switchLesson(this,'covenant')">Covenant Words</button>
-    <button class="lesson-tab" onclick="switchLesson(this,'amharic')">Amharic ↔ Hebrew</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'grammar')">Grammar</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'verbs')">Verbs</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'reading')">Torah Reading</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'numbers')">Numbers</button>
+    <button class="lesson-tab" onclick="switchLesson(this,'roots')">Word Roots</button>
   </div>
 
   <!-- Aleph-Bet -->
@@ -734,6 +739,13 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
     <div style="display:flex;flex-direction:column;gap:16px;" id="covenantWords"></div>
   </div>
 
+  <!-- New Lesson Panels -->
+  <div id="lesson-grammar" style="display:none;"></div>
+  <div id="lesson-verbs" style="display:none;"></div>
+  <div id="lesson-reading" style="display:none;"></div>
+  <div id="lesson-numbers" style="display:none;"></div>
+  <div id="lesson-roots" style="display:none;"></div>
+
   <!-- Amharic ↔ Hebrew -->
   <div id="lesson-amharic" style="display:none;">
     <div style="margin-bottom:20px;padding:16px 18px;background:linear-gradient(135deg,rgba(27,43,107,0.08),rgba(184,134,11,0.06));border:1px solid var(--parchment-deeper);border-radius:3px;border-left:4px solid var(--gold);">
@@ -784,6 +796,26 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
   </div>
 </div>
 
+<!-- ══════════════ AMHARIC ↔ HEBREW ══════════════ -->
+<div id="panel-amharic" class="tab-panel">
+  <div class="section-header">
+    <h2>አማርኛ ↔ עִבְרִית</h2>
+    <p>Amharic ↔ Hebrew · Two Ancient Semitic Languages — One Covenant Heritage</p>
+    <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
+  </div>
+  <div class="lessons-tabs">
+    <button class="lesson-tab active" onclick="switchAmTab(this,'alphabet')">Alphabet</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'lessons')">Lessons</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'flashcards')">Flashcards</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'vocab')">Vocabulary</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'roots')">Shared Roots</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'covenant')">Covenant Names</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'scripture')">Scripture</button>
+    <button class="lesson-tab" onclick="switchAmTab(this,'phrases')">Phrases</button>
+  </div>
+  <div id="amharic-content" style="min-height:400px;margin-top:20px;"></div>
+</div>
+
 <!-- ══════════════ FEASTS / CALENDAR ══════════════ -->
 <div id="panel-calendar" class="tab-panel">
   <div class="section-header">
@@ -820,43 +852,178 @@ footer p{color:rgba(245,222,179,0.5);margin-bottom:16px;font-size:11px;letter-sp
     <p>Shabbat Liturgy · Hebrew Prayers · Psalms of Yahweh</p>
     <div class="orn"><div class="orn-line2"></div><span style="color:var(--gold)">✦</span><div class="orn-line2"></div></div>
   </div>
-  <div class="prayer-grid">
-    <div class="prayer-card">
-      <h3>The Shema — Foundation of Faith</h3>
-      <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
-      <div class="prayer-text">"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One. And you shall love Yahweh your Elohim with all your heart, with all your soul, and with all your strength."</div>
-      <div class="prayer-ref">Devarim (Deuteronomy) 6:4–5</div>
-    </div>
-    <div class="prayer-card">
-      <h3>Shabbat Candle Blessing</h3>
-      <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה</div>
-      <div class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the universe, who has sanctified us with His commandments and commanded us to kindle the Shabbat light."</div>
-      <div class="prayer-ref">Friday Evening · Shabbat Begins at Sundown</div>
-    </div>
-    <div class="prayer-card">
-      <h3>Kiddush — Shabbat Sanctification</h3>
-      <div class="prayer-heb">וַיְכֻלּוּ הַשָּׁמַיִם וְהָאָרֶץ</div>
-      <div class="prayer-text">"And the heavens and the earth were finished, and all the host of them. And on the seventh day Yahweh finished His work... and He rested on the seventh day from all His work that He had done."</div>
-      <div class="prayer-ref">Bereshit (Genesis) 2:1–3 · Shabbat Evening Kiddush</div>
-    </div>
-    <div class="prayer-card">
-      <h3>Havdalah — End of Shabbat</h3>
-      <div class="prayer-heb">הַמַּבְדִּיל בֵּין קֹדֶשׁ לְחֹל</div>
-      <div class="prayer-text">"Blessed is Yahweh who separates between the holy and the ordinary, between light and darkness, between Yisrael and the nations, between the seventh day and the six days of creation."</div>
-      <div class="prayer-ref">Saturday Evening · Shabbat Ends · Week Begins</div>
-    </div>
-    <div class="prayer-card">
-      <h3>Psalm 119 — Torah Meditation</h3>
-      <div class="prayer-heb">אַשְׁרֵי תְמִימֵי דָרֶךְ הַהֹלְכִים בְּתוֹרַת יַהְוֶה</div>
-      <div class="prayer-text">"How blessed are those whose way is blameless, who walk in the Torah of Yahweh. How blessed are those who keep His testimonies, who seek Him with all their heart."</div>
-      <div class="prayer-ref">Tehillim (Psalms) 119:1–2 · The Great Torah Psalm</div>
-    </div>
-    <div class="prayer-card">
-      <h3>The Priestly Blessing</h3>
-      <div class="prayer-heb">יְבָרֶכְךָ יַהְוֶה וְיִשְׁמְרֶךָ</div>
-      <div class="prayer-text">"Yahweh bless you and keep you; Yahweh make His face shine on you and be gracious to you; Yahweh turn His face toward you and give you peace."</div>
-      <div class="prayer-ref">Bamidbar (Numbers) 6:24–26 · The Aaronic Blessing</div>
-    </div>
+  <!-- Prayer Category Tabs -->
+<div class="lessons-tabs" style="margin-bottom:28px;">
+  <button class="lesson-tab active" onclick="switchPrayerCat(this,'shabbat')">Shabbat</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'meals')">Meals</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'morning')">Morning</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'evening')">Evening</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'ark')">Ark / Torah</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'feasts')">Feast Days</button>
+  <button class="lesson-tab" onclick="switchPrayerCat(this,'psalms')">Psalms</button>
+</div>
+
+<!-- SHABBAT -->
+<div class="prayer-grid" id="pcat-shabbat">
+  <div class="prayer-card">
+    <h3>The Shema — Foundation of Faith</h3>
+    <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Sh'ma Yisrael — Yahweh Eloheinu — Yahweh Echad</div>
+    <p class="prayer-text">"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One. And you shall love Yahweh your Elohim with all your heart, with all your soul, and with all your strength."</p>
+    <div class="prayer-ref">Devarim 6:4–5 · Recited at every Shabbat service · The Foundation of Faith</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Shabbat Candle Blessing</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ לְהַדְלִיק נֵר שֶׁל שַׁבָּת</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — asher qid'shanu b'mitzvotav v'tzivanu l'hadliq ner shel Shabbat</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who has sanctified us with His commandments and commanded us to kindle the Shabbat light."</p>
+    <div class="prayer-ref">Friday Evening · Shabbat begins at sundown · Light two candles</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Kiddush — Shabbat Sanctification</h3>
+    <div class="prayer-heb">וַיְכֻלּוּ הַשָּׁמַיִם וְהָאָרֶץ וְכָל צְבָאָם</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Vaykhulu hashamayim v'ha'aretz v'khol tzva'am</div>
+    <p class="prayer-text">"And the heavens and the earth were finished, and all the host of them. And on the seventh day Yahweh finished His work that He had done, and He rested on the seventh day. So Yahweh blessed the seventh day and made it holy."</p>
+    <div class="prayer-ref">Bereshit 2:1–3 · Shabbat Evening Kiddush over wine</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Havdalah — End of Shabbat</h3>
+    <div class="prayer-heb">הַמַּבְדִּיל בֵּין קֹדֶשׁ לְחֹל בֵּין אוֹר לְחֹשֶׁךְ בֵּין יִשְׂרָאֵל לָעַמִּים</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">HaMavdil bein kodesh l'chol — bein or l'choshekh — bein Yisrael la'amim</div>
+    <p class="prayer-text">"Blessed is Yahweh who separates between the holy and the ordinary, between light and darkness, between Yisrael and the nations, between the seventh day and the six days of creation."</p>
+    <div class="prayer-ref">Saturday Evening · Shabbat ends · Three stars visible</div>
+  </div>
+</div>
+
+<!-- MEALS -->
+<div class="prayer-grid" id="pcat-meals" style="display:none;">
+  <div class="prayer-card">
+    <h3>Hamotzi — Blessing Over Bread</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַמּוֹצִיא לֶחֶם מִן הָאָרֶץ</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — HaMotzi Lechem min ha'Aretz</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe — who brings forth bread from the earth."</p>
+    <div class="prayer-ref">Tehillim 104:14 · Recited before eating bread · Hold the bread, bless, then break and eat</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Birkat HaMazon — Thanksgiving After Eating</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַזָּן אֶת הָעוֹלָם כֻּלּוֹ בְּטוּבוֹ בְּחֵן בְּחֶסֶד וּבְרַחֲמִים</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — haZan et ha'Olam kullo b'tuvo b'chen b'chesed uv'rachamim</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who nourishes the whole world with His goodness — with grace, with lovingkindness (chesed), and with compassion. He gives food to all flesh, for His chesed endures forever. Through His great goodness we have never lacked food, and may we never lack food, for the sake of His great Name."</p>
+    <div class="prayer-ref">Devarim 8:10 · Torah commands blessing after eating · Recited after meals with bread</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Blessing Over Wine</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם בּוֹרֵא פְּרִי הַגָּפֶן</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — Borei p'ri hagafen</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who creates the fruit of the vine."</p>
+    <div class="prayer-ref">Recited at Kiddush, Havdalah, Pesach Seder, and covenant meals</div>
+  </div>
+</div>
+
+<!-- MORNING -->
+<div class="prayer-grid" id="pcat-morning" style="display:none;">
+  <div class="prayer-card">
+    <h3>Modeh Ani — Morning Gratitude</h3>
+    <div class="prayer-heb">מוֹדֶה אֲנִי לְפָנֶיךָ מֶלֶךְ חַי וְקַיָּם שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי בְּחֶמְלָה רַבָּה אֱמוּנָתֶךָ</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Modeh ani l'fanekha Melekh chai v'kayam — she'hechezarta bi nishmatai b'chemlah — rabah emunatekha</div>
+    <p class="prayer-text">"I give thanks before You, living and eternal King — for You have restored my soul to me with compassion. Great is Your faithfulness."</p>
+    <div class="prayer-ref">Recited immediately upon waking · First words of the morning · Lamentations 3:23</div>
+  </div>
+  <div class="prayer-card">
+    <h3>The Shema — Morning Declaration</h3>
+    <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
+    <p class="prayer-text">"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One." Recited every morning as the covenant declaration that begins the day in Yahweh's Name.</p>
+    <div class="prayer-ref">Devarim 6:4 · Recited morning and evening</div>
+  </div>
+</div>
+
+<!-- EVENING -->
+<div class="prayer-grid" id="pcat-evening" style="display:none;">
+  <div class="prayer-card">
+    <h3>The Shema — Evening Declaration</h3>
+    <div class="prayer-heb">שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד</div>
+    <p class="prayer-text">"Hear, O Yisrael: Yahweh our Elohim, Yahweh is One." Recited every evening — entrusting the soul back to Yahweh before sleep.</p>
+    <div class="prayer-ref">Devarim 6:4 · The last words on a Hebrew believer's lips each night</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Hashkiveinu — Evening Protection</h3>
+    <div class="prayer-heb">הַשְׁכִּיבֵנוּ יַהְוֶה אֱלֹהֵינוּ לְשָׁלוֹם וְהַעֲמִידֵנוּ מַלְכֵּנוּ לְחַיִּים</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Hashkiveinu Yahweh Eloheinu l'shalom — v'ha'amideinu Malkeinu l'chayyim</div>
+    <p class="prayer-text">"Lay us down, Yahweh our Elohim, in peace, and raise us up, our King, to life. Spread over us the shelter of Your shalom, and guard our going out and coming in for life and for peace."</p>
+    <div class="prayer-ref">Ma'ariv evening prayers · Entrusting the night to Yahweh's protection</div>
+  </div>
+</div>
+
+<!-- ARK / TORAH SCROLL -->
+<div class="prayer-grid" id="pcat-ark" style="display:none;">
+  <div class="prayer-card">
+    <h3>Raising of the Ark — When the Torah is Lifted</h3>
+    <div class="prayer-heb">וַיְהִי בִּנְסֹעַ הָאָרֹן וַיֹּאמֶר מֹשֶׁה קוּמָה יַהְוֶה וְיָפֻצוּ אֹיְבֶיךָ וְיָנֻסוּ מְשַׂנְאֶיךָ מִפָּנֶיךָ</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Vayehi binso'a ha'Aron vayomer Moshe — Kumah Yahweh v'yafutzu oyvekha — v'yanusu m'san'ekha mipanekha</div>
+    <p class="prayer-text">"And it came to pass, whenever the Ark set out, that Moshe said: Rise up, Yahweh! Let Your enemies be scattered, and let those who hate You flee before You."</p>
+    <div class="prayer-ref">Bamidbar (Numbers) 10:35 · Prayed when the Torah scroll is raised before the congregation</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Lowering of the Ark — When the Torah is Returned</h3>
+    <div class="prayer-heb">וּבְנֻחֹה יֹאמַר שׁוּבָה יַהְוֶה רִבְבוֹת אַלְפֵי יִשְׂרָאֵל</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Uv'nucho yomar — Shuvah Yahweh — rivevot alfei Yisrael</div>
+    <p class="prayer-text">"And when it rested, he said: Return, Yahweh, to the countless thousands of Yisrael."</p>
+    <div class="prayer-ref">Bamidbar (Numbers) 10:36 · Prayed when the Torah scroll is returned to the Ark after reading</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Before Torah Reading</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר בָּחַר בָּנוּ מִכָּל הָעַמִּים וְנָתַן לָנוּ אֶת תּוֹרָתוֹ</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — asher bachar banu mikol ha'amim — v'natan lanu et Torato</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who has chosen us from all peoples and given us His Torah."</p>
+    <div class="prayer-ref">Recited before the Torah portion is read aloud</div>
+  </div>
+  <div class="prayer-card">
+    <h3>After Torah Reading</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר נָתַן לָנוּ תּוֹרַת אֱמֶת וְחַיֵּי עוֹלָם נָטַע בְּתוֹכֵנוּ</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — asher natan lanu Torat emet — v'chayyei olam nata b'tokheinu</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who has given us a Torah of truth and has planted eternal life within us."</p>
+    <div class="prayer-ref">Recited after the Torah portion is read · Seals the reading with covenant gratitude</div>
+  </div>
+</div>
+
+<!-- FEAST DAYS -->
+<div class="prayer-grid" id="pcat-feasts" style="display:none;">
+  <div class="prayer-card">
+    <h3>Feast Day Kiddush</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר בָּחַר בָּנוּ מִכָּל עָם וְקִדְּשָׁנוּ בְּמִצְוֹתָיו</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — asher bachar banu mikol am — v'qid'shanu b'mitzvotav</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who has chosen us from every people and sanctified us with His commandments."</p>
+    <div class="prayer-ref">Recited at Pesach, Shavuot, Yom Teruah, Sukkot — the mo'edim of Vayikra 23</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Shehecheyanu — Blessing for New Seasons</h3>
+    <div class="prayer-heb">בָּרוּךְ אַתָּה יַהְוֶה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁהֶחֱיָנוּ וְקִיְּמָנוּ וְהִגִּיעָנוּ לַזְּמַן הַזֶּה</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Barukh Atah Yahweh Eloheinu Melekh ha'Olam — shehecheyanu v'qiy'manu v'higi'anu lazman hazeh</div>
+    <p class="prayer-text">"Blessed are You, Yahweh our Elohim, King of the Universe, who has kept us alive, sustained us, and brought us to this appointed time."</p>
+    <div class="prayer-ref">Recited at the first night of each feast · Gratitude for reaching each mo'ed alive</div>
+  </div>
+</div>
+
+<!-- PSALMS -->
+<div class="prayer-grid" id="pcat-psalms" style="display:none;">
+  <div class="prayer-card">
+    <h3>Tehillim 119 — Torah Meditation</h3>
+    <div class="prayer-heb">אַשְׁרֵי תְמִימֵי דָרֶךְ הַהֹלְכִים בְּתוֹרַת יַהְוֶה</div>
+    <p class="prayer-text">"How blessed are those whose way is blameless, who walk in the Torah of Yahweh. How blessed are those who keep His testimonies, who seek Him with all their heart."</p>
+    <div class="prayer-ref">Tehillim 119:1–2 · The Great Torah Psalm</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Priestly Blessing — Birkat Kohanim</h3>
+    <div class="prayer-heb">יְבָרֶכְךָ יַהְוֶה וְיִשְׁמְרֶךָ יָאֵר יַהְוֶה פָּנָיו אֵלֶיךָ וִיחֻנֶּךָּ יִשָּׂא יַהְוֶה פָּנָיו אֵלֶיךָ וְיָשֵׂם לְךָ שָׁלוֹם</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:10px;">Yevarekh'kha Yahweh v'yishmerekha — ya'er Yahweh panav elekha — yisa Yahweh panav elekha v'yasem l'kha shalom</div>
+    <p class="prayer-text">"Yahweh bless you and keep you; Yahweh make His face shine on you and be gracious to you; Yahweh turn His face toward you and give you shalom." Contains Yahweh's Name THREE times.</p>
+    <div class="prayer-ref">Bamidbar 6:24–26 · Pronounced over the congregation at the close of every service</div>
+  </div>
+  <div class="prayer-card">
+    <h3>Tehillim 23 — Yahweh is My Shepherd</h3>
+    <div class="prayer-heb">יַהְוֶה רֹעִי לֹא אֶחְסָר בִּנְאוֹת דֶּשֶׁא יַרְבִּיצֵנִי</div>
+    <p class="prayer-text">"Yahweh is my shepherd; I shall not want. He makes me lie down in green pastures; He leads me beside still waters. He restores my soul; He leads me in paths of righteousness for His Name's sake."</p>
+    <div class="prayer-ref">Tehillim 23:1–3 · The Psalm of Dawid</div>
   </div>
 </div>
 
@@ -1101,6 +1268,7 @@ function switchStudyTab(tab, btn) {
   window.scrollTo({top:document.getElementById('studyTabs').offsetTop - 60, behavior:'smooth'});
   if(tab==='interlinear') setTimeout(initInterlinear,50);
   if(tab==='hebrew') buildCovenantWords();
+  if(tab==='amharic') setTimeout(initAmharicTool, 50);
 }
 
 // ── CLAUDE API (via Netlify proxy) ──
@@ -1195,14 +1363,34 @@ function showLetter(key) {
   el.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function switchLesson(btn, type) {
-  document.querySelectorAll('.lesson-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#panel-hebrew .lesson-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('lesson-alephbet').style.display = type==='alephbet'?'block':'none';
-  document.getElementById('lesson-vocab').style.display = type==='vocab'?'block':'none';
-  document.getElementById('lesson-covenant').style.display = type==='covenant'?'block':'none';
-  document.getElementById('lesson-amharic').style.display = type==='amharic'?'block':'none';
+  ['alephbet','vocab','covenant','grammar','verbs','reading','numbers','roots'].forEach(function(p){
+    var el = document.getElementById('lesson-'+p);
+    if(el) el.style.display = type===p ? 'block' : 'none';
+  });
   if(type==='vocab') initFlashcards();
   if(type==='covenant') buildCovenantWords();
+  if(type==='grammar') buildGrammar();
+  if(type==='verbs') buildVerbs();
+  if(type==='reading') buildReading();
+  if(type==='numbers') buildNumbers();
+  if(type==='roots') buildRoots();
+}
+
+function switchPrayerCat(btn, cat) {
+  document.querySelectorAll('#panel-prayer .lesson-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  ['shabbat','meals','morning','evening','ark','feasts','psalms'].forEach(function(c){
+    var el = document.getElementById('pcat-'+c);
+    if(el) el.style.display = c===cat ? 'block' : 'none';
+  });
+}
+
+function switchAmTab(btn, tab) {
+  document.querySelectorAll('#panel-amharic .lesson-tab').forEach(function(t){t.classList.remove('active');});
+  btn.classList.add('active');
+  buildAmharicContent(tab);
 }
 
 // ── AMHARIC CHAT ──
@@ -1617,6 +1805,403 @@ function applyPdfLinks(){
 
 // Run on page load to restore any saved links
 document.addEventListener('DOMContentLoaded', applyPdfLinks);
+
+// ── HEBREW LESSON BUILDERS ──
+function buildGrammar() {
+  var el = document.getElementById('lesson-grammar');
+  if (el.innerHTML) return;
+  var topics = [
+    ['Root System — Shoresh (שֹׁרֶשׁ)', 'Most Hebrew words grow from 3-letter roots. Root SH-L-M: shalom (peace) · shalem (complete) · shilem (paid) · Yerushalayim (City of Peace). Root B-R-Kh: barukh (blessed) · berakhah (blessing) · barakh (to bless). Learn the root, learn dozens of words.'],
+    ['Construct Chain — Smichut (סְמִיכוּת)', 'Two nouns linked to mean "of": Beit Yahweh = House OF Yahweh · Torat Yahweh = Torah OF Yahweh · Am Yahweh = People OF Yahweh · Beit Lechem = House of Bread = Bethlehem. Like the Amharic ye- prefix — you already know this grammar!'],
+    ['Gender — Masculine & Feminine', 'Every noun has gender. Feminine nouns usually end in -ah (ה-) or -et (ת-). Yeled (boy) vs yaldah (girl). Adjectives match gender: yeled tov (good boy) · yaldah tovah (good girl). Verbs also change: hu halakh (he went) · hi halkhah (she went).'],
+    ['Definite Article — Ha- (הַ)', 'No indefinite article in Hebrew ("a/an"). To say THE, add ha- as a prefix: ish = a man · ha-ish = THE man · Torah · ha-Torah = THE Torah. The definite article also affects following adjectives.'],
+    ['Plural Forms', 'Masculine plural adds -im (ים-): melekh (king) → m\'lakhim (kings). Feminine plural adds -ot (וֹת-): malkhah (queen) → malkhot (queens). Note: shamayim (heavens) is always dual plural — the waters above and below.'],
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Core Hebrew grammar patterns that unlock the Torah.</p>';
+  html += '<div style="display:flex;flex-direction:column;gap:16px;">';
+  topics.forEach(function(t) {
+    html += '<div class="prayer-card" style="border-top:3px solid var(--gold);"><h3>' + t[0] + '</h3><div class="prayer-text">' + t[1] + '</div></div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function buildVerbs() {
+  var el = document.getElementById('lesson-verbs');
+  if (el.innerHTML) return;
+  var binyanim = [
+    ['Qal — Simple Active', 'Basic action: katav (he wrote) · shamar (he kept) · halakh (he walked) · amar (he said) · natan (he gave).'],
+    ['Nifal — Simple Passive', 'Action happens TO the subject: nikhtav (it was written) · nishmar (it was kept) · ne\'emar (it was said).'],
+    ['Piel — Intensive Active', 'Intensified action: diber (he spoke) · qidesh (he sanctified) · berakh (he blessed) · limed (he taught).'],
+    ['Hifil — Causative Active', 'Causing someone to act: hishmia (he caused to hear) · he\'emin (he caused to trust = he believed).'],
+    ['Hitpael — Reflexive', 'Action done to oneself: hitqadesh (he sanctified himself) · hitpalel (he prayed — literally judged himself).'],
+  ];
+  var conj = [
+    ['שָׁמַרְתִּי','shamarti','I kept'],
+    ['שָׁמַרְתָּ','shamarta','you kept (m)'],
+    ['שָׁמַר','shamar','he kept'],
+    ['שָׁמְרָה','shamrah','she kept'],
+    ['שָׁמַרְנוּ','shamarnu','we kept'],
+    ['שָׁמְרוּ','shamru','they kept'],
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Hebrew has 7 verb patterns (binyanim) — the same 3-letter root changes meaning in each pattern.</p>';
+  html += '<div style="display:flex;flex-direction:column;gap:12px;">';
+  binyanim.forEach(function(b) {
+    html += '<div class="prayer-card" style="border-left:4px solid var(--gold);border-top:none;"><h3>' + b[0] + '</h3><div class="prayer-text">' + b[1] + '</div></div>';
+  });
+  html += '<div class="prayer-card" style="border-top:3px solid var(--royal);"><h3 style="color:var(--royal);">Key Verb: שָׁמַר (Shamar) — To Guard / Keep / Observe</h3>';
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">';
+  conj.forEach(function(c) {
+    html += '<div style="background:var(--parchment);border:1px solid var(--parchment-deeper);padding:8px 10px;border-radius:3px;"><div style="font-size:18px;color:var(--gold);direction:rtl;">' + c[0] + '</div><div style="font-size:12px;color:var(--ink-mid);">' + c[1] + ' = ' + c[2] + '</div></div>';
+  });
+  html += '</div></div></div>';
+  el.innerHTML = html;
+}
+
+function buildReading() {
+  var el = document.getElementById('lesson-reading');
+  if (el.innerHTML) return;
+  var passages = [
+    {ref:'Devarim 6:4 — The Shema', heb:'שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד', t:'Sh-ma Yisrael — Yahweh Eloheinu — Yahweh Echad', e:'Hear O Yisrael: Yahweh our Elohim, Yahweh is One.', words:[['שְׁמַע','Sh-ma','Hear!'],['יִשְׂרָאֵל','Yisrael','Yisrael'],['יַהְוֶה','Yahweh','The Name'],['אֱלֹהֵינוּ','Eloheinu','our Elohim'],['יַהְוֶה','Yahweh','The Name again'],['אֶחָד','Echad','is ONE']]},
+    {ref:'Bereshit 1:1 — Creation', heb:'בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ', t:'Bereshit bara Elohim et hashamayim ve-et haaretz', e:'In the beginning Elohim created the heavens and the earth.', words:[['בְּרֵאשִׁית','Bereshit','In the beginning'],['בָּרָא','bara','He created'],['אֱלֹהִים','Elohim','Elohim'],['אֵת','et','Aleph-Tav'],['הַשָּׁמַיִם','hashamayim','the heavens'],['הָאָרֶץ','haaretz','the earth']]},
+    {ref:'Bamidbar 6:24-26 — Aaronic Blessing', heb:'יְבָרֶכְךָ יַהְוֶה וְיִשְׁמְרֶךָ', t:'Yevarekh-kha Yahweh veyishmerekha', e:'Yahweh bless you and keep you.', words:[['יְבָרֶכְךָ','Yevarekh-kha','He will bless you'],['יַהְוֶה','Yahweh','Yahweh'],['וְיִשְׁמְרֶךָ','veyishmerekha','and guard you']]},
+    {ref:'Zekharyah 14:9 — His Name ONE', heb:'יַהְוֶה יִהְיֶה אֶחָד וּשְׁמוֹ אֶחָד', t:'Yahweh yihyeh Echad ushmo Echad', e:'On that day Yahweh will be ONE and His Name ONE.', words:[['יַהְוֶה','Yahweh','Yahweh'],['יִהְיֶה','yihyeh','will be'],['אֶחָד','Echad','ONE'],['שְׁמוֹ','shmo','His Name'],['אֶחָד','Echad','ONE']]},
+    {ref:'Yirmeyahu 6:16 — Ancient Paths', heb:'שַׁאֲלוּ לִשְׁבִילֵי עוֹלָם אֵי זֶה דֶרֶךְ הַטּוֹב', t:'Sha-alu lishvilei olam — derekh hatov', e:'Ask for the ancient paths, ask where the good way is, and walk in it.', words:[['שַׁאֲלוּ','sha-alu','Ask!'],['שְׁבִילֵי עוֹלָם','shvilei olam','ancient paths'],['דֶרֶךְ הַטּוֹב','derekh hatov','the good way']]},
+  ];
+  var html = passages.map(function(p) {
+    var wordCards = p.words.map(function(w) {
+      return '<div style="background:var(--parchment);border:1px solid var(--parchment-deeper);border-radius:3px;padding:8px 10px;text-align:center;min-width:56px;"><div style="font-size:18px;color:var(--gold);direction:rtl;">' + w[0] + '</div><div style="font-size:10px;color:var(--ink-mid);font-style:italic;">' + w[1] + '</div><div style="font-size:10px;color:var(--ink-light);">' + w[2] + '</div></div>';
+    }).join('');
+    return '<div class="prayer-card" style="margin-bottom:16px;"><h3>' + p.ref + '</h3><div class="prayer-heb">' + p.heb + '</div><div style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:8px;">' + p.t + '</div><div class="prayer-text">"' + p.e + '"</div><div style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin:12px 0 8px;">Word by Word:</div><div style="display:flex;flex-wrap:wrap;gap:8px;">' + wordCards + '</div></div>';
+  }).join('');
+  el.innerHTML = html;
+}
+
+function buildNumbers() {
+  var el = document.getElementById('lesson-numbers');
+  if (el.innerHTML) return;
+  var nums = [
+    [1, 'אֶחָד', 'Echad', 'ONE — Yahweh is Echad (Devarim 6:4) · Unity and uniqueness of the Creator'],
+    [2, 'שְׁנַיִם', 'Shnayim', 'TWO — Two witnesses required · Two tablets of Torah at Sinai'],
+    [3, 'שָׁלוֹשׁ', 'Shalosh', 'THREE — Divine completeness · Three patriarchs: Avraham, Yitzhak, Yaakov'],
+    [5, 'חָמֵשׁ', 'Chamesh', 'FIVE — Five books of Torah (Chamisha Chumshei Torah)'],
+    [6, 'שֵׁשׁ', 'Shesh', 'SIX — Six days of creation · Six days of work before Shabbat'],
+    [7, 'שֶׁבַע', 'Sheva', 'SEVEN — The covenant number embedded in Shabbat (שַׁבָּת) itself · Completion'],
+    [8, 'שְׁמוֹנֶה', 'Shmone', 'EIGHT — New beginnings · Circumcision on day 8 · Shemini Atzeret'],
+    [10, 'עֶשֶׂר', 'Eser', 'TEN — Ten Commandments · Ten plagues · Ten men for a minyan'],
+    [12, 'שְׁנֵים עָשָׂר', 'Shnem Asar', 'TWELVE — Twelve tribes of Yisrael · Twelve emissaries of Yeshua'],
+    [40, 'אַרְבָּעִים', 'Arbaim', 'FORTY — Testing and preparation · 40 days of rain · 40 years in the wilderness'],
+    [50, 'חֲמִשִּׁים', 'Chamishim', 'FIFTY — Jubilee year (Vayikra 25) · Shavuot is 50 days after Firstfruits'],
+    [70, 'שִׁבְעִים', 'Shivim', 'SEVENTY — Nations of the world · 70 elders of Yisrael'],
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Hebrew numbers carry covenant significance — not just quantities but theological statements embedded in the calendar and Torah.</p>';
+  html += '<div style="display:flex;flex-direction:column;gap:8px;">';
+  nums.forEach(function(n) {
+    html += '<div style="display:grid;grid-template-columns:44px 100px 110px 1fr;gap:10px;align-items:center;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;padding:12px;box-shadow:0 1px 4px var(--shadow);">';
+    html += '<div style="font-family:\'Cinzel Decorative\',serif;font-size:20px;color:var(--gold);text-align:center;">' + n[0] + '</div>';
+    html += '<div style="font-size:22px;color:var(--gold);direction:rtl;text-align:right;">' + n[1] + '</div>';
+    html += '<div style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--ink-mid);font-style:italic;">' + n[2] + '</div>';
+    html += '<div style="font-size:14px;color:var(--ink-light);line-height:1.5;">' + n[3] + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function buildRoots() {
+  var el = document.getElementById('lesson-roots');
+  if (el.innerHTML) return;
+  var roots = [
+    {r:'ש-ל-מ', t:'SH-L-M', m:'Peace / Complete', w:'שָׁלוֹם (shalom=peace) · שָׁלֵם (shalem=complete) · שִׁלֵּם (shilem=paid) · יְרוּשָׁלַיִם (Yerushalayim=City of Peace)'},
+    {r:'ק-ד-שׁ', t:'Q-D-SH', m:'Holy / Set-apart', w:'קָדוֹשׁ (qadosh=holy) · קִדֵּשׁ (qidesh=sanctified) · מִקְדָּשׁ (miqdash=sanctuary) · קִדּוּשׁ (kiddush=sanctification)'},
+    {r:'ב-ר-כ', t:'B-R-Kh', m:'Bless / Kneel', w:'בָּרוּךְ (barukh=blessed) · בְּרָכָה (berakhah=blessing) · בָּרַךְ (barakh=he blessed)'},
+    {r:'מ-ל-כ', t:'M-L-Kh', m:'King / Rule', w:'מֶלֶךְ (melekh=king) · מַלְכָּה (malkhah=queen) · מַמְלָכָה (mamlakhah=kingdom) · מָלַךְ (malakh=he reigned)'},
+    {r:'ד-ב-ר', t:'D-B-R', m:'Word / Speak', w:'דָּבָר (davar=word/thing) · דִּבֵּר (diber=he spoke) · מִדְבָּר (midbar=wilderness/desert)'},
+    {r:'י-שׁ-ע', t:'Y-SH-A', m:'Save / Salvation', w:'יֵשׁוּעַ (Yeshua=Yahweh saves) · יְשׁוּעָה (yeshuah=salvation) · מוֹשִׁיעַ (moshia=savior)'},
+    {r:'א-ה-ב', t:'A-H-V', m:'Love', w:'אָהַב (ahav=he loved) · אַהֲבָה (ahavah=love) · אָהוּב (ahuv=beloved)'},
+    {r:'ז-כ-ר', t:'Z-K-R', m:'Remember', w:'זָכַר (zakhar=he remembered) · זִכָּרוֹן (zikaron=memorial) · זֵכֶר (zekher=memory)'},
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:20px;">Learn a 3-letter root and unlock an entire family of Hebrew words — the most powerful key to reading the Hebrew Bible.</p>';
+  html += '<div style="display:flex;flex-direction:column;gap:12px;">';
+  roots.forEach(function(r) {
+    html += '<div class="prayer-card" style="border-left:4px solid var(--gold);border-top:none;">';
+    html += '<div style="display:flex;gap:12px;align-items:center;margin-bottom:8px;"><div style="font-size:22px;color:var(--gold);direction:rtl;">' + r.r + '</div><div><div style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold);letter-spacing:0.08em;">' + r.t + ' — ' + r.m + '</div></div></div>';
+    html += '<div class="prayer-text">' + r.w + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// ── AMHARIC TOOL ──
+var AM_ALPHA = [
+  {h:'א',n:'Aleph',s:'Silent/A',a:'አ',an:'Like አ — glottal start',p:'𐤀',m:'Ox / Strength / Leader',num:1},
+  {h:'ב',n:'Bet',s:'B/V',a:'በ/ቨ',an:'Like በ (b) or ቨ (v)',p:'𐤁',m:'House / Tent',num:2},
+  {h:'ג',n:'Gimel',s:'G',a:'ገ',an:'Like ገ — hard G',p:'𐤂',m:'Camel / Foot',num:3},
+  {h:'ד',n:'Dalet',s:'D',a:'ደ',an:'Like ደ — soft D',p:'𐤃',m:'Door / Path',num:4},
+  {h:'ה',n:'Hey',s:'H',a:'ሀ/ሃ',an:'Like ሀ — breathy H',p:'𐤄',m:'Window / Behold',num:5},
+  {h:'ו',n:'Vav',s:'V/W/O/U',a:'ወ/ቨ',an:'Like ወ or ቨ',p:'𐤅',m:'Nail / Hook',num:6},
+  {h:'ז',n:'Zayin',s:'Z',a:'ዘ',an:'Like ዘ — Z sound',p:'𐤆',m:'Weapon / Sword',num:7},
+  {h:'ח',n:'Chet',s:'Ch guttural',a:'ኸ/ሀ',an:'Like ኸ — deep throat H',p:'𐤇',m:'Fence / Wall',num:8},
+  {h:'ט',n:'Tet',s:'T emphatic',a:'ጠ',an:'Like ጠ — emphatic T',p:'𐤈',m:'Serpent / Basket',num:9},
+  {h:'י',n:'Yod',s:'Y',a:'የ',an:'Like የ — Y sound',p:'𐤉',m:'Hand / Arm',num:10},
+  {h:'כ',n:'Kaf',s:'K/Kh',a:'ከ/ኸ',an:'Like ከ (k) or ኸ (kh)',p:'𐤊',m:'Palm / Open Hand',num:20},
+  {h:'ל',n:'Lamed',s:'L',a:'ለ',an:'Like ለ — L sound',p:'𐤋',m:'Staff / Shepherd',num:30},
+  {h:'מ',n:'Mem',s:'M',a:'መ',an:'Like መ — M sound',p:'𐤌',m:'Water / Chaos',num:40},
+  {h:'נ',n:'Nun',s:'N',a:'ነ',an:'Like ነ — N sound',p:'𐤍',m:'Fish / Seed',num:50},
+  {h:'ס',n:'Samech',s:'S',a:'ሰ',an:'Like ሰ — S sound',p:'𐤎',m:'Prop / Support',num:60},
+  {h:'ע',n:'Ayin',s:'Guttural',a:'ዐ/አ',an:'Like ዐ — deep guttural',p:'𐤏',m:'Eye / Watch',num:70},
+  {h:'פ',n:'Pe',s:'P/F',a:'ፐ/ፈ',an:'Like ፐ (p) or ፈ (f)',p:'𐤐',m:'Mouth / Word',num:80},
+  {h:'צ',n:'Tsadi',s:'Ts',a:'ጸ/ፀ',an:'Like ጸ — emphatic Ts',p:'𐤑',m:'Hook / Righteous',num:90},
+  {h:'ק',n:'Qof',s:'Q',a:'ቀ',an:'Like ቀ — deep Q',p:'𐤒',m:'Back of Head / Sun',num:100},
+  {h:'ר',n:'Resh',s:'R',a:'ረ',an:'Like ረ — R sound',p:'𐤓',m:'Head / Person',num:200},
+  {h:'ש',n:'Shin/Sin',s:'Sh/S',a:'ሸ/ሰ',an:'Like ሸ (sh) or ሰ (s)',p:'𐤔',m:'Teeth / Fire',num:300},
+  {h:'ת',n:'Tav',s:'T/Th',a:'ተ/ጠ',an:'Like ተ — T sound',p:'𐤕',m:'Mark / Sign / Covenant',num:400},
+];
+var amSelLetter = null;
+var amFcIdx = 0, amFcFlipped = false, amFcScore = {c:0, t:0};
+var amShuffled = AM_ALPHA.slice().sort(function(){return Math.random()-0.5;});
+var _amLessonSel = 0;
+
+function initAmharicTool() { buildAmharicContent('alphabet'); }
+
+function buildAmharicContent(tab) {
+  var el = document.getElementById('amharic-content');
+  if (tab === 'alphabet') el.innerHTML = amBuildAlphabet();
+  else if (tab === 'lessons') el.innerHTML = amBuildLessons();
+  else if (tab === 'flashcards') el.innerHTML = amBuildFlashcards();
+  else if (tab === 'vocab') el.innerHTML = amBuildVocab();
+  else if (tab === 'roots') el.innerHTML = amBuildRoots();
+  else if (tab === 'covenant') el.innerHTML = amBuildCovenant();
+  else if (tab === 'scripture') el.innerHTML = amBuildScripture();
+  else if (tab === 'phrases') el.innerHTML = amBuildPhrases();
+}
+
+function amBuildAlphabet() {
+  var grid = AM_ALPHA.map(function(l, i) {
+    var active = amSelLetter === i;
+    return '<div onclick="amSelLetter=' + (active ? 'null' : i) + ';document.getElementById(\'amharic-content\').innerHTML=amBuildAlphabet();" style="background:' + (active ? 'rgba(184,134,11,0.1)' : 'white') + ';border:1px solid ' + (active ? 'var(--gold)' : 'var(--parchment-deeper)') + ';border-radius:3px;padding:12px 6px;text-align:center;cursor:pointer;box-shadow:0 1px 4px var(--shadow);">'
+      + '<div style="font-size:28px;color:var(--gold);direction:rtl;line-height:1;">' + l.h + '</div>'
+      + '<div style="font-family:\'Cinzel\',serif;font-size:8px;color:var(--ink-mid);margin-top:3px;">' + l.n + '</div>'
+      + '<div style="font-size:12px;color:var(--royal);margin-top:3px;">' + l.a + '</div>'
+      + '</div>';
+  }).join('');
+  var detail = '';
+  if (amSelLetter !== null) {
+    var l = AM_ALPHA[amSelLetter];
+    detail = '<div class="prayer-card" style="margin-top:16px;border-top:4px solid var(--gold);">'
+      + '<div style="display:flex;gap:18px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">'
+      + '<div style="font-size:60px;color:var(--gold);direction:rtl;line-height:1;">' + l.h + '</div>'
+      + '<div style="font-size:34px;color:var(--ink-mid);">' + l.p + '</div>'
+      + '<div><div style="font-family:\'Cinzel Decorative\',serif;font-size:17px;color:var(--royal);">' + l.n + '</div>'
+      + '<div style="font-size:14px;color:var(--ink-mid);">Sound: ' + l.s + '</div>'
+      + '<div style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold);margin-top:4px;">Number value: ' + l.num + '</div></div></div>'
+      + '<div style="font-size:16px;color:var(--royal);margin-bottom:6px;">Amharic equivalent: <span style="font-size:22px;">' + l.a + '</span></div>'
+      + '<div style="font-size:14px;color:var(--ink-mid);font-style:italic;margin-bottom:10px;">' + l.an + '</div>'
+      + '<div style="background:var(--parchment);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px;color:var(--ink-light);">Ancient meaning: <strong>' + l.m + '</strong></div>'
+      + '</div>';
+  }
+  return '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:16px;">Tap any letter to see its Amharic equivalent, Paleo Hebrew form, and covenant meaning.</p>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:8px;">' + grid + '</div>'
+    + detail;
+}
+
+function amBuildLessons() {
+  var lessons = [
+    ['Two Ancient Scripts — One Family', 'Both Hebrew and Ge\'ez are Semitic writing systems from the same ancient Phoenician-Canaanite alphabet. Hebrew is written right to left, Ge\'ez left to right. Hebrew vowels are small marks (nikud) added separately — similar to Ge\'ez but not baked into each character.', 'Shalom = SH-L-M · the nikud marks show vowels a and o', 'Ge\'ez bakes vowels into each character. Hebrew adds them separately — but you already have a huge advantage over English speakers!'],
+    ['Sounds You Already Know', 'Many Hebrew sounds exist in Ge\'ez. Bet (b) like be-et · Gimel (g) like ge-et · Dalet (d) like de-et · Mem (m) like me-et · Nun (n) like ne-et · Lamed (l) like le-et · Resh (r) like re-et · Shin (sh) like she-et · Qof (q) like qe-et · Tsadi (ts) like tse-et · Chet (ch) like khe-et · Ayin like e-in.', 'The guttural sounds Chet and Ayin are difficult for English speakers — natural for Amharic speakers!', 'The hardest Hebrew sounds for English speakers are sounds you grew up with!'],
+    ['The Root System — Shoresh', 'Hebrew and Amharic both use a root system. Root SH-L-M: shalom (peace) · shalem (complete) · shilem (paid). Amharic root S-B-R: sebere (broke) · mesberia (tool for breaking). Same structure — learn a root and you know many words!', 'Shalom in Hebrew · Selam in Amharic — same root, same meaning, same ancient Semitic family', 'Learn one 3-letter root and you can guess dozens of Hebrew words — just like in Amharic.'],
+    ['Construct Chains — Of', 'Hebrew: Beit Yahweh = House OF Yahweh. Amharic: Ye-Yahweh bet = House of Yahweh. The Amharic ye- prefix functions exactly like the Hebrew construct state — you already know this grammar pattern!', 'Beit Lechem = House of Bread = BETHLEHEM · Beit Yisrael = House of Yisrael', 'Every Hebrew place name with two parts is a construct chain. You already understand this concept!'],
+    ['Gender in Hebrew', 'Like Amharic, Hebrew has masculine and feminine gender for all nouns. Feminine nouns end in -ah or -et. Adjectives match gender: yeled tov (good boy) · yaldah tovah (good girl). Verbs also change: hu halakh (he went) · hi halkhah (she went).', 'Torah = feminine · shalom = masculine · When a noun ends in -ah it is almost always feminine', 'This grammar concept is natural to you as an Amharic speaker — you already think this way!'],
+  ];
+  var sel = _amLessonSel || 0;
+  var tabs = lessons.map(function(_, i) {
+    return '<button onclick="_amLessonSel=' + i + ';document.getElementById(\'amharic-content\').innerHTML=amBuildLessons();" style="padding:7px 14px;font-family:\'Cinzel\',serif;font-size:10px;background:' + (sel === i ? 'var(--gold)' : 'var(--parchment)') + ';border:1px solid ' + (sel === i ? 'var(--gold)' : 'var(--parchment-deeper)') + ';border-radius:2px;color:' + (sel === i ? 'var(--ink)' : 'var(--ink-mid)') + ';cursor:pointer;">' + (i + 1) + '</button>';
+  }).join('');
+  return '<div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;">' + tabs + '</div>'
+    + '<div class="prayer-card" style="border-top:3px solid var(--gold);">'
+    + '<h3>Lesson ' + (sel + 1) + ': ' + lessons[sel][0] + '</h3>'
+    + '<div class="prayer-text" style="margin-bottom:12px;">' + lessons[sel][1] + '</div>'
+    + '<div style="background:var(--parchment);border-left:3px solid var(--parchment-deeper);padding:10px 14px;margin-bottom:10px;font-size:15px;color:var(--ink-mid);">Example: ' + lessons[sel][2] + '</div>'
+    + '<div style="background:rgba(184,134,11,0.07);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px;color:var(--gold);">' + lessons[sel][3] + '</div>'
+    + '</div>'
+    + '<div style="display:flex;justify-content:space-between;margin-top:14px;">'
+    + '<button onclick="_amLessonSel=Math.max(0,(_amLessonSel||0)-1);document.getElementById(\'amharic-content\').innerHTML=amBuildLessons();" style="padding:9px 18px;font-family:\'Cinzel\',serif;font-size:10px;background:var(--parchment);border:1px solid var(--parchment-deeper);border-radius:2px;color:var(--ink-mid);cursor:pointer;">Prev</button>'
+    + '<span style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--ink-mid);align-self:center;">' + (sel + 1) + ' / ' + lessons.length + '</span>'
+    + '<button onclick="_amLessonSel=Math.min(' + (lessons.length - 1) + ',(_amLessonSel||0)+1);document.getElementById(\'amharic-content\').innerHTML=amBuildLessons();" style="padding:9px 18px;font-family:\'Cinzel\',serif;font-size:10px;background:var(--parchment);border:1px solid var(--parchment-deeper);border-radius:2px;color:var(--ink-mid);cursor:pointer;">Next</button>'
+    + '</div>';
+}
+
+function amBuildFlashcards() {
+  if (amFcIdx >= amShuffled.length) {
+    return '<div class="prayer-card" style="text-align:center;border-top:4px solid var(--gold);">'
+      + '<div style="font-size:36px;margin-bottom:12px;">🎉</div>'
+      + '<h3>Well Done!</h3>'
+      + '<div style="font-size:20px;color:var(--royal);margin:8px 0;">' + amFcScore.c + ' / ' + amFcScore.t + '</div>'
+      + '<button onclick="amFcIdx=0;amFcScore={c:0,t:0};amFcFlipped=false;document.getElementById(\'amharic-content\').innerHTML=amBuildFlashcards();" class="fc-btn fc-btn-next">Try Again</button>'
+      + '</div>';
+  }
+  var l = amShuffled[amFcIdx];
+  var backContent = amFcFlipped
+    ? '<div style="font-family:\'Cinzel Decorative\',serif;font-size:20px;color:var(--gold-pale);">' + l.n + '</div>'
+      + '<div style="font-size:14px;color:rgba(245,222,179,0.7);">Sound: ' + l.s + '</div>'
+      + '<div style="font-size:20px;color:rgba(245,222,179,0.85);">' + l.a + '</div>'
+      + '<div style="font-size:28px;color:rgba(245,222,179,0.5);letter-spacing:5px;">' + l.p + ' Paleo</div>'
+    : '<div style="font-family:\'Cinzel\',serif;font-size:12px;color:var(--ink-mid);letter-spacing:0.1em;">Tap to reveal</div>';
+  var btns = amFcFlipped
+    ? '<div style="display:flex;gap:14px;justify-content:center;margin-top:16px;">'
+      + '<button onclick="amFcScore.t++;amFcFlipped=false;amFcIdx++;document.getElementById(\'amharic-content\').innerHTML=amBuildFlashcards();" class="fc-btn fc-btn-prev">Review</button>'
+      + '<button onclick="amFcScore.c++;amFcScore.t++;amFcFlipped=false;amFcIdx++;document.getElementById(\'amharic-content\').innerHTML=amBuildFlashcards();" class="fc-btn fc-btn-next">Got it</button>'
+      + '</div>' : '';
+  return '<div style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--ink-mid);text-align:center;margin-bottom:14px;letter-spacing:0.1em;">Card ' + (amFcIdx + 1) + ' of ' + amShuffled.length + ' — ' + amFcScore.c + '/' + amFcScore.t + '</div>'
+    + '<div onclick="amFcFlipped=!amFcFlipped;document.getElementById(\'amharic-content\').innerHTML=amBuildFlashcards();" style="background:' + (amFcFlipped ? 'linear-gradient(135deg,var(--royal-deep),var(--royal))' : 'white') + ';border:1px solid var(--scroll-border);border-radius:4px;padding:40px 24px;text-align:center;cursor:pointer;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 24px var(--shadow);border-top:4px solid var(--gold);">'
+    + '<div style="font-size:72px;color:' + (amFcFlipped ? 'var(--gold-pale)' : 'var(--gold)') + ';direction:rtl;line-height:1;">' + l.h + '</div>'
+    + backContent + '</div>' + btns;
+}
+
+function amBuildVocab() {
+  var words = [
+    ['יַהְוֶה','Yahweh','ያህዌ','Yahweh — The Name of the Creator'],
+    ['תּוֹרָה','Torah','ኦሪት','Torah — Yahweh\'s instruction'],
+    ['שַׁבָּת','Shabbat','ሰንበት','The seventh day of rest'],
+    ['שָׁלוֹם','Shalom','ሰላም','Peace / Wholeness'],
+    ['בְּרִית','Brit','ቃልኪዳን','Covenant'],
+    ['קָדוֹשׁ','Qadosh','ቅዱስ','Holy / Set-apart'],
+    ['נֶפֶשׁ','Nefesh','ነፍስ','Soul / Life-force'],
+    ['רוּחַ','Ruach','መንፈስ','Spirit / Breath / Wind'],
+    ['אָב','Av','አባ','Father'],
+    ['בַּיִת','Bayit','ቤት','House / Home'],
+    ['שֵׁם','Shem','ስም','Name'],
+    ['אוֹר','Or','ብርሃን','Light'],
+    ['מַיִם','Mayim','ማይ','Water'],
+    ['אֶחָד','Echad','አንድ','One'],
+    ['לֵב','Lev','ልብ','Heart'],
+    ['מֶלֶךְ','Melekh','ንጉሥ','King'],
+    ['נָבִיא','Navi','ነቢይ','Prophet'],
+    ['כֹּהֵן','Kohen','ካህን','Priest'],
+    ['הַלְלוּיָהּ','Halleluyah','ሃሌሉያ','Praise Yahweh'],
+    ['אָמֵן','Amen','አሜን','Amen — So be it'],
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:16px;">Hebrew and Amharic covenant vocabulary — two ancient Semitic languages sharing the same roots.</p>';
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">';
+  words.forEach(function(w) {
+    html += '<div class="prayer-card" style="padding:16px;border-top:2px solid var(--gold);">'
+      + '<div style="font-size:24px;color:var(--gold);direction:rtl;text-align:right;margin-bottom:4px;">' + w[0] + '</div>'
+      + '<div style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px;">' + w[1] + '</div>'
+      + '<div style="font-size:20px;color:var(--royal);margin-bottom:3px;">' + w[2] + '</div>'
+      + '<div style="font-size:13px;color:var(--ink-mid);">' + w[3] + '</div>'
+      + '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function amBuildRoots() {
+  var roots = [
+    {h:'שָׁלוֹם',hr:'Shalom',a:'ሰላም',ar:'Selam',p:'𐤔𐤋𐤌',e:'Peace/Wholeness',r:'SH-L-M',c:'The most iconic shared root. When Ethiopians say Selam and Hebrews say Shalom, they speak from the same ancient Semitic mouth — the same covenant family.'},
+    {h:'אָב',hr:'Av',a:'አባ',ar:'Aba',p:'𐤀𐤁',e:'Father',r:'A-B',c:'Aleph+Bet = Strength of the House. Hebrew Abba = Amharic Aba. Yeshua used Abba in prayer to Yahweh — the same word still spoken by millions in Ethiopia today.'},
+    {h:'בַּיִת',hr:'Bayit',a:'ቤት',ar:'Bet',p:'𐤁𐤉𐤕',e:'House',r:'B-Y-T',c:'Bethlehem = Beit Lechem = House of Bread. Amharic Bet preserved the ancient shortened Semitic form of this root perfectly across thousands of years.'},
+    {h:'נֶפֶשׁ',hr:'Nefesh',a:'ነፍስ',ar:'Nefis',p:'𐤍𐤐𐤔',e:'Soul',r:'N-F-SH',c:'One of the most remarkable identicals — Hebrew Nefesh and Amharic Nefis are virtually the same word for soul. The same word for the innermost life-force preserved in both traditions.'},
+    {h:'קָדוֹשׁ',hr:'Qadosh',a:'ቅዱስ',ar:'Qidus',p:'𐤒𐤃𐤔',e:'Holy',r:'Q-D-SH',c:'Hebrew Qadosh and Amharic Qidus share the same Semitic root. Ethiopian Orthodox Qidus saints = Hebrew Qodesh holiness. The same concept of divine set-apartness in both traditions.'},
+    {h:'מַלְאָךְ',hr:'Malakh',a:'መልዐክ',ar:'Melak',p:'𐤌𐤋𐤀𐤊',e:'Angel/Messenger',r:'M-L-Kh',c:'Hebrew Malakh and Amharic Melak are nearly identical — messenger, angel, envoy of Yahweh. The Book of Enoch preserved by Ethiopia uses this shared vocabulary extensively.'},
+    {h:'צִיּוֹן',hr:'Tzion',a:'ጽዮን',ar:'Tsion',p:'𐤑𐤉𐤅𐤍',e:'Zion',r:'TS-Y-N',c:'Spelled and pronounced almost identically in both languages. The Ethiopian Orthodox Church calls the Ark of the Covenant the Tsion and claims to hold it at Aksum — one of the most profound Hebrew-Ethiopian covenant connections.'},
+    {h:'אָמֵן',hr:'Amen',a:'አሜን',ar:'Amen',p:'𐤀𐤌𐤍',e:'So be it',r:'A-M-N',c:'The same word in both languages — never translated, only transliterated — because the meaning transcends all cultures. The root A-M-N means faithfulness and truth.'},
+  ];
+  var html = '<div style="background:rgba(184,134,11,0.07);border:1px solid var(--scroll-border);border-radius:3px;padding:16px 18px;margin-bottom:20px;font-size:15px;color:var(--ink-light);line-height:1.7;">Hebrew and Amharic descend from the same ancient Semitic family. These root connections are living proof of the shared heritage. Tap any pair to expand the covenant connection.</div>';
+  roots.forEach(function(r) {
+    html += '<div onclick="var d=this.querySelector(\'.root-detail\');d.style.display=d.style.display===\'none\'?\'block\':\'none\';" class="prayer-card" style="border-left:4px solid var(--gold);border-top:none;cursor:pointer;margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">'
+      + '<div style="display:flex;gap:12px;align-items:center;">'
+      + '<div style="text-align:right;"><div style="font-size:22px;color:var(--gold);direction:rtl;">' + r.h + '</div><div style="font-family:\'Cinzel\',serif;font-size:9px;color:var(--gold);">' + r.hr + '</div></div>'
+      + '<span style="color:var(--gold);">⟷</span>'
+      + '<div><div style="font-size:20px;color:var(--royal);">' + r.a + '</div><div style="font-family:\'Cinzel\',serif;font-size:9px;color:var(--royal);">' + r.ar + '</div></div>'
+      + '<span style="color:var(--gold);">⟷</span>'
+      + '<div style="text-align:center;"><div style="font-size:16px;color:var(--ink-mid);letter-spacing:3px;">' + r.p + '</div><div style="font-family:\'Cinzel\',serif;font-size:8px;color:var(--ink-mid);">Paleo</div></div>'
+      + '</div>'
+      + '<div style="text-align:right;"><div style="font-size:13px;color:var(--ink-mid);font-style:italic;">' + r.e + '</div><div style="font-family:\'Cinzel\',serif;font-size:9px;color:var(--gold);">Root: ' + r.r + '</div></div>'
+      + '</div>'
+      + '<div class="root-detail" style="display:none;margin-top:10px;padding:10px 14px;background:var(--parchment);border-left:3px solid var(--gold);border-radius:0 3px 3px 0;font-size:15px;color:var(--ink-light);line-height:1.75;">' + r.c + '</div>'
+      + '</div>';
+  });
+  return html;
+}
+
+function amBuildCovenant() {
+  var names = [
+    {h:'יַהְוֶה',hr:'Yahweh',a:'ያህዌ',p:'𐤉𐤄𐤅𐤄',pr:'YAH-weh',m:'He Who Is / He Causes to Be',d:'The personal covenant Name of the Creator — four Hebrew letters: Yod-Hey-Vav-Hey. In Paleo Hebrew: Hand-Behold-Nail-Behold — a prophetic picture of Yeshua. Always written as Yahweh in Amharic. His Name is never substituted with a title.'},
+    {h:'יֵשׁוּעַ',hr:'Yeshua',a:'ዬሱዕ',p:'𐤉𐤔𐤅𐤏',pr:'Ye-SHOO-ah',m:'Yahweh Saves',d:'The Hebrew name of the Messiah — contains YH (Yahweh) inside it. Jesus is a Greek/Latin rendering that loses the covenant meaning entirely. Yeshua literally means Yahweh is salvation.'},
+    {h:'יְהוּדָה',hr:'Yehudah',a:'ይሁዳ',p:'𐤉𐤄𐤅𐤃𐤄',pr:'Ye-HOO-dah',m:'Praised / I will praise Yahweh',d:'Contains the Name YH (Yahweh) at its core. The tribe of Yehudah carries the royal Davidic lineage. Zekharyah 12:7 says Yahweh will save the tents of YEHUDAH FIRST — the foundation of the Global Kingdom of Yehudah.'},
+    {h:'צִיּוֹן',hr:'Tzion',a:'ጽዮን',p:'𐤑𐤉𐤅𐤍',pr:'Tsi-ON',m:'Sacred Mountain of Yahweh',d:'Nearly identical in Hebrew and Amharic. The Ethiopian Orthodox Church calls the Ark of the Covenant the Tsion and claims to hold it at Aksum — one of the most profound Hebrew-Ethiopian covenant connections in the world.'},
+    {h:'שַׁבָּת',hr:'Shabbat',a:'ሰንበት',p:'𐤔𐤁𐤕',pr:'Sha-BAT',m:'Rest / The Seventh',d:'The eternal sign between Yahweh and His people. Amharic Senbet preserves the same Semitic root. Both are observed from Friday evening to Saturday evening — the same covenant day, never moved to Sunday by any command of Yahweh.'},
+    {h:'תּוֹרָה',hr:'Torah',a:'ኦሪት',p:'𐤕𐤅𐤓𐤄',pr:'To-RAH',m:'Instruction / Teaching / Direction',d:'Yahweh\'s covenant instruction for His people. Amharic Orit = Torah — used in the Ethiopian Orthodox Church for the books of Moshe. Not cold law but divine direction — Yahweh pointing His people toward life.'},
+  ];
+  var html = '<div style="background:rgba(184,134,11,0.07);border:1px solid var(--scroll-border);border-radius:3px;padding:16px 18px;margin-bottom:20px;font-size:15px;color:var(--ink-light);line-height:1.7;">The sacred Names and titles of Yahweh\'s House of Prayer — with Hebrew, Amharic (following the Yahwist policy), Paleo Hebrew, and covenant significance. Tap any Name to study.</div>';
+  names.forEach(function(n) {
+    html += '<div onclick="var d=this.querySelector(\'.cov-detail\');d.style.display=d.style.display===\'none\'?\'block\':\'none\';" class="prayer-card" style="cursor:pointer;margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">'
+      + '<div style="display:flex;gap:14px;align-items:center;">'
+      + '<div style="font-size:26px;color:var(--gold);direction:rtl;">' + n.h + '</div>'
+      + '<div style="font-size:22px;color:var(--royal);">' + n.a + '</div>'
+      + '<div style="font-size:18px;color:var(--ink-mid);letter-spacing:2px;">' + n.p + '</div>'
+      + '</div>'
+      + '<div style="text-align:right;"><div style="font-size:14px;color:var(--ink);">' + n.m + '</div><div style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold);">/' + n.pr + '/</div></div>'
+      + '</div>'
+      + '<div class="cov-detail" style="display:none;margin-top:10px;padding:10px 14px;background:var(--parchment);border-left:3px solid var(--gold);border-radius:0 3px 3px 0;font-size:15px;color:var(--ink-light);line-height:1.75;">' + n.d + '</div>'
+      + '</div>';
+  });
+  return html;
+}
+
+function amBuildScripture() {
+  var scriptures = [
+    {ref:'Devarim 6:4 — The Shema', h:'שְׁמַע יִשְׂרָאֵל יַהְוֶה אֱלֹהֵינוּ יַהְוֶה אֶחָד', t:'Sh-ma Yisrael — Yahweh Eloheinu — Yahweh Echad', am:'ስማ ኢስራኤል ያህዌ አምላካችን ያህዌ አንድ ነው', e:'Hear O Yisrael: Yahweh our Elohim, Yahweh is ONE.', sig:'The most important declaration in all of Scripture. Recited every Shabbat, morning and evening. Yeshua called this the greatest commandment (Marqus 12:29).'},
+    {ref:'Bereshit 1:1 — In the Beginning', h:'בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ', t:'Bereshit bara Elohim et hashamayim ve-et haaretz', am:'በመጀመሪያ አምላክ ሰማይና ምድርን ፈጠረ', e:'In the beginning Elohim created the heavens and the earth.', sig:'The first word of Torah — Bereshit. The silent Aleph-Tav between Elohim created and the heavens represents the first and last letters of the Hebrew alphabet. Yeshua said: I am the Aleph and the Tav.'},
+    {ref:'Yirmeyahu 6:16 — Ancient Paths', h:'שַׁאֲלוּ לִשְׁבִילֵי עוֹלָם אֵי זֶה דֶרֶךְ הַטּוֹב', t:'Sha-alu lishvilei olam — derekh hatov', am:'የዘላለም መንገዶችን ጠይቁ — ጥሩ መንገድ የቱ ነው', e:'Ask for the ancient paths, ask where the good way is, and walk in it.', sig:'The founding scripture of Yahweh\'s House of Prayer — the call to return to the original Hebrew faith of the first-century believers.'},
+    {ref:'Zekharyah 14:9 — His Name ONE', h:'יַהְוֶה יִהְיֶה אֶחָד וּשְׁמוֹ אֶחָד', t:'Yahweh yihyeh Echad ushmo Echad', am:'ያህዌ አንድ ይሆናል ስሙም አንድ ይሆናል', e:'On that day Yahweh will be ONE and His Name ONE.', sig:'The prophetic destination of all history — His Name Yahweh will be universally proclaimed over all the earth. The Yahwist vision: His Name restored to every language and every nation.'},
+    {ref:'Bamidbar 6:24-26 — Aaronic Blessing', h:'יְבָרֶכְךָ יַהְוֶה וְיִשְׁמְרֶךָ יָאֵר יַהְוֶה פָּנָיו אֵלֶיךָ', t:'Yevarekh-kha Yahweh veyishmerekha — yair Yahweh panav elekha', am:'ያህዌ ይባርክህ ይጠብቅህ — ያህዌ ፊቱን ወደ አንተ ያብራ', e:'Yahweh bless you and keep you; Yahweh make His face shine on you.', sig:'Yahweh\'s commanded blessing — spoken three times using His Name. YHOP pronounces this over the congregation at the close of every Shabbat service.'},
+  ];
+  return scriptures.map(function(s) {
+    return '<div class="prayer-card" style="margin-bottom:16px;">'
+      + '<h3>' + s.ref + '</h3>'
+      + '<div class="prayer-heb">' + s.h + '</div>'
+      + '<div style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:8px;">' + s.t + '</div>'
+      + '<div style="font-size:17px;color:var(--royal);margin-bottom:6px;">' + s.am + '</div>'
+      + '<div class="prayer-text">"' + s.e + '"</div>'
+      + '<div style="margin-top:10px;padding:10px 14px;background:var(--parchment);border-left:3px solid var(--gold);border-radius:0 3px 3px 0;font-size:14px;color:var(--ink-light);line-height:1.7;">' + s.sig + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function amBuildPhrases() {
+  var phrases = [
+    ['שָׁלוֹם','Shalom','ሰላም (Selam)','Hello / Peace'],
+    ['שַׁבָּת שָׁלוֹם','Shabbat Shalom','ሰንበት ሰላም','Shabbat Shalom'],
+    ['בָּרוּךְ הַשֵּׁם יַהְוֶה','Baruch HaShem Yahweh','ብሩክ ሁን ስም ያህዌ','Blessed is the Name Yahweh'],
+    ['יַהְוֶה אֶחָד','Yahweh Echad','ያህዌ አንድ ነው','Yahweh is One'],
+    ['תּוֹדָה רַבָּה','Toda raba','እጅግ አመሰግናለሁ','Thank you very much'],
+    ['בְּבַקָּשָׁה','Bevakasha','እባክዎ','Please / You are welcome'],
+    ['סְלִיחָה','Slicha','ይቅርታ','Sorry / Excuse me'],
+    ['כֵּן / לֹא','Ken / Lo','አዎ / አይ','Yes / No'],
+    ['אָמֵן','Amen','አሜን','Amen — So be it'],
+    ['הַלְלוּיָהּ','Halleluyah','ሃሌሉያ','Praise Yahweh'],
+    ['מַיִם בְּבַקָּשָׁה','Mayim bevakasha','ውሃ እባክዎ','Water, please'],
+    ['בָּרוּךְ אַתָּה יַהְוֶה','Baruch Atah Yahweh','ቡሩክ አንተ ያህዌ','Blessed are You Yahweh'],
+    ['שָׁלוֹם עֲלֵיכֶם','Shalom Aleikhem','ሰላም ለናንተ','Peace be upon you'],
+    ['חַג שָׂמֵחַ','Chag Sameach','ደስተኛ በዓል','Happy feast day'],
+    ['בְּשֵׁם יַהְוֶה','B-Shem Yahweh','በያህዌ ስም','In the Name of Yahweh'],
+  ];
+  var html = '<p style="font-size:15px;color:var(--ink-mid);font-style:italic;margin-bottom:16px;">Hebrew phrases with Amharic translations — including covenant-specific blessings used in YHOP services.</p>';
+  html += '<div style="display:flex;flex-direction:column;gap:8px;">';
+  phrases.forEach(function(p) {
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:white;border:1px solid var(--parchment-deeper);border-radius:3px;padding:12px 16px;box-shadow:0 1px 4px var(--shadow);">'
+      + '<div><div style="font-size:20px;color:var(--gold);direction:rtl;">' + p[0] + '</div><div style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold);font-style:italic;margin-top:2px;">' + p[1] + '</div></div>'
+      + '<div style="text-align:right;"><div style="font-size:18px;color:var(--royal);">' + p[2] + '</div><div style="font-size:13px;color:var(--ink-mid);font-style:italic;margin-top:2px;">' + p[3] + '</div></div>'
+      + '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
 </script>
 </body>
 </html>
